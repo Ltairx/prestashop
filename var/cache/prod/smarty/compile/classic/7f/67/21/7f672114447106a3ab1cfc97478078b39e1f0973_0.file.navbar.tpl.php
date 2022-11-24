@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-10-25 20:31:07
+/* Smarty version 3.1.43, created on 2022-11-22 13:12:16
   from '/var/www/html/prestashop/modules/welcome/views/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_63582b6b2d6934_20147365',
+  'unifunc' => 'content_637cbca0b86f21_32489112',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63582b6b2d6934_20147365 (Smarty_Internal_Template $_smarty_tpl) {
+function content_637cbca0b86f21_32489112 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="onboarding-navbar bootstrap">
   <div class="row text">

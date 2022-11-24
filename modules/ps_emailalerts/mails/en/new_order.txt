@@ -1,43 +1,59 @@
- 
 
-{shop_url}
+[{shop_url}] 
 
-Congratulations!
+Congratulations! 
 
-A new order was placed on {shop_name} by the following customer: {firstname} {lastname} ({email})
+A new order was placed on {shop_name} by the following customer:
+{firstname} {lastname} ({email}) 
 
-Order details
+ORDER: {order_name} Placed on {date}
 
-Order: {order_name} Placed on {date}
+PAYMENT: {payment} 		 
 
-Payment: {payment}
+REFERENCE
 
-Reference	Product	Unit price	Quantity	Total price   {items}
-Products	{total_products}
-Discounts	{total_discounts}
-Gift-wrapping	{total_wrapping}
-Shipping	{total_shipping}
-Including total tax	{total_tax_paid}
-Total paid	{total_paid}
+PRODUCT
 
-Carrier
+UNIT PRICE
 
-Carrier: {carrier}
+QUANTITY
 
-Payment: {payment}
+TOTAL PRICE
 
-Delivery address
+{items} 
 
-{delivery_block_html}
+PRODUCTS 
 
-Billing address
+{total_products} 
 
-{invoice_block_html}
+DISCOUNTS 
 
-Customer message:
+{total_discounts} 
 
-{message}
+GIFT-WRAPPING 
 
-[{shop_name}]({shop_url})
+{total_wrapping} 
 
-Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)
+SHIPPING 
+
+{total_shipping} 
+
+TOTAL TAX PAID 
+
+{total_tax_paid} 
+
+TOTAL PAID 
+
+{total_paid} 
+
+{carrier} 
+
+{delivery_block_html} 
+
+{invoice_block_html} 
+
+{message} 
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

@@ -206,4 +206,5 @@
   206 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsLegacyStatsController',
   207 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsOauthController',
   208 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsResolverController',
+  209 => 'PaypalAddons\\classes\\Form\\Controller\\AdminPayPalInstallment\\FormInstallment',
 );

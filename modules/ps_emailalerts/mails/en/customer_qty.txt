@@ -1,15 +1,15 @@
- 
 
-{shop_url}
+[{shop_url}] 
 
-Hi,
+Hi, 
 
-{product} is now available.
+This item is once again in-stock.
 
-Good news, this item is back in stock!
+You can access the product page by clicking on the link: {product}
+[{product_link}]
 
-Click on the following link to visit the product page and order it: [{product}]({product_link})
+You can order it right now from our online shop. 		 
 
-[{shop_name}]({shop_url})
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
 
-Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)

@@ -15,7 +15,6 @@ Payment: {payment}
 Reference	Product	Unit price	Quantity	Total price   {items}
 Products	{total_products}
 Discounts	{total_discounts}
-Gift-wrapping	{total_wrapping}
 Shipping	{total_shipping}
 Including total tax	{total_tax_paid}
 Total paid	{total_paid}

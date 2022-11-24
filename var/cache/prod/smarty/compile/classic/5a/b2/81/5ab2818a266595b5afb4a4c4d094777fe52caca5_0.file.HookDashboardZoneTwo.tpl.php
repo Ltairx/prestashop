@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-10-25 20:31:07
+/* Smarty version 3.1.43, created on 2022-11-22 13:41:50
   from '/var/www/html/prestashop/modules/ps_metrics/views/templates/hook/HookDashboardZoneTwo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_63582b6b21d3d0_01408765',
+  'unifunc' => 'content_637cc38ea65c35_71610448',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63582b6b21d3d0_01408765 (Smarty_Internal_Template $_smarty_tpl) {
+function content_637cc38ea65c35_71610448 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathMetricsApp']->value,'htmlall','UTF-8' ));?>
 " rel=preload as=script>
 
