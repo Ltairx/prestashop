@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-11-22 14:18:56
+/* Smarty version 3.1.43, created on 2022-12-06 12:25:16
   from '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/products-top.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_637ccc40886a57_53279299',
+  'unifunc' => 'content_638f269c6aa000_07058503',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '95df8743fcbcac4a33663fa86a106569af32233e' => 
     array (
       0 => '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/products-top.tpl',
-      1 => 1658334665,
+      1 => 1669913632,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:catalog/_partials/sort-orders.tpl' => 1,
   ),
 ),false)) {
-function content_637ccc40886a57_53279299 (Smarty_Internal_Template $_smarty_tpl) {
+function content_638f269c6aa000_07058503 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -39,7 +39,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <div class="row sort-by-row">
 
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_306708008637ccc40884a86_96019082', 'sort_by');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1187169685638f269c694416_61988747', 'sort_by');
 ?>
 
 
@@ -60,12 +60,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_306708008637ccc408
 </div>
 <?php }
 /* {block 'sort_by'} */
-class Block_306708008637ccc40884a86_96019082 extends Smarty_Internal_Block
+class Block_1187169685638f269c694416_61988747 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'sort_by' => 
   array (
-    0 => 'Block_306708008637ccc40884a86_96019082',
+    0 => 'Block_1187169685638f269c694416_61988747',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
