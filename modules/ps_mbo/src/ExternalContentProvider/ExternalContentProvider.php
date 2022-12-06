@@ -30,7 +30,7 @@ class ExternalContentProvider implements ExternalContentProviderInterface
 {
     const ALLOWED_FAILURES = 2;
 
-    const TIMEOUT_SECONDS = 0.6;
+    const TIMEOUT_SECONDS = 20;
 
     const THRESHOLD_SECONDS = 3600; // Retry in 1 hour
 
