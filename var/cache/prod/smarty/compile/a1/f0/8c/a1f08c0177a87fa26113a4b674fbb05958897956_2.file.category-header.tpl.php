@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-11-22 14:19:21
+/* Smarty version 3.1.43, created on 2022-12-06 12:30:43
   from '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/category-header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_637ccc59d867a1_20089173',
+  'unifunc' => 'content_638f27e31e78d9_31197250',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1f08c0177a87fa26113a4b674fbb05958897956' => 
     array (
       0 => '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/category-header.tpl',
-      1 => 1658334665,
+      1 => 1669913632,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_637ccc59d867a1_20089173 (Smarty_Internal_Template $_smarty_tpl) {
+function content_638f27e31e78d9_31197250 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="js-product-list-header">
     <?php if ($_smarty_tpl->tpl_vars['listing']->value['pagination']['items_shown_from'] == 1) {?>
         <div class="block-category card card-block">

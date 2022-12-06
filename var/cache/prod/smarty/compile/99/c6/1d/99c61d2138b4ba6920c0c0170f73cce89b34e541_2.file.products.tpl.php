@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-11-22 14:19:21
+/* Smarty version 3.1.43, created on 2022-12-06 12:30:42
   from '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_637ccc59cfae47_35406374',
+  'unifunc' => 'content_638f27e2f029d2_98991663',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '99c61d2138b4ba6920c0c0170f73cce89b34e541' => 
     array (
       0 => '/var/www/html/prestashop/themes/classic/templates/catalog/_partials/products.tpl',
-      1 => 1658334665,
+      1 => 1669913632,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_partials/pagination.tpl' => 1,
   ),
 ),false)) {
-function content_637ccc59cfae47_35406374 (Smarty_Internal_Template $_smarty_tpl) {
+function content_638f27e2f029d2_98991663 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -31,7 +31,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
 
   <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2144307328637ccc59cfa318_93977469', 'pagination');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1535883787638f27e2f00fa8_73067414', 'pagination');
 ?>
 
 
@@ -45,12 +45,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2144307328637ccc59
 </div>
 <?php }
 /* {block 'pagination'} */
-class Block_2144307328637ccc59cfa318_93977469 extends Smarty_Internal_Block
+class Block_1535883787638f27e2f00fa8_73067414 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'pagination' => 
   array (
-    0 => 'Block_2144307328637ccc59cfa318_93977469',
+    0 => 'Block_1535883787638f27e2f00fa8_73067414',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

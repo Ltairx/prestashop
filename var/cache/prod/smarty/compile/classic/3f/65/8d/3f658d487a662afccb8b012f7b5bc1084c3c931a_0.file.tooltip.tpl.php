@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-11-22 13:12:16
+/* Smarty version 3.1.43, created on 2022-12-06 12:19:58
   from '/var/www/html/prestashop/modules/welcome/views/templates/tooltip.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_637cbca0b8c208_22070831',
+  'unifunc' => 'content_638f255e5a5947_63752591',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3f658d487a662afccb8b012f7b5bc1084c3c931a' => 
     array (
       0 => '/var/www/html/prestashop/modules/welcome/views/templates/tooltip.tpl',
-      1 => 1630340105,
+      1 => 1669913632,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_637cbca0b8c208_22070831 (Smarty_Internal_Template $_smarty_tpl) {
+function content_638f255e5a5947_63752591 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="onboarding-tooltip">
   <div class="content"></div>
