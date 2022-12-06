@@ -39,8 +39,7 @@ class ExternalContentProvider implements ExternalContentProviderInterface
      */
     private $circuitBreakerFactory;
 
-    /**
-     * @var OptionsResolver
+    /*     * @var OptionsResolver
      */
     private $optionsResolver;
 
