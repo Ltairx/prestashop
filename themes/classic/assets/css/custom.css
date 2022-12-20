@@ -16,11 +16,20 @@
 
 .col-md-6{
     width: inherit;
+    float: left;
 }
 
 .col-md-2, .col-md-10{
-    width:100%;
+    width:auto;
     height:10%;
+}
+
+#order-items .col-md-6 {
+   margin-right: 360px;
+}
+
+.col-md-2 {
+   float: left;
 }
 
 #header .header-top .position-static {
@@ -70,7 +79,7 @@
     display: none;
 }
 
-   
+.col   
 .card card-block {
     display: none;
 }
