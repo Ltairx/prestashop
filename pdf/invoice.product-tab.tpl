@@ -30,8 +30,8 @@
   {/if}
   <thead>
   <tr>
-    <th class="product header small" width="{$layout.reference.width}%">{l s='Reference' d='Shop.Pdf' pdf='true'}</th>
-    <th class="product header small" width="{$widthColProduct}%">{l s='Product' d='Shop.Pdf' pdf='true'}</th>
+    <th class="product header small" width="{$layout.reference.width}%">{l s='ZMIANY ZMIANY' d='Shop.Pdf' pdf='true'}</th>
+    <th class="product header small" width="{$widthColProduct}%">{l s='Produkt' d='Shop.Pdf' pdf='true'}</th>
     {if $isTaxEnabled}
       <th class="product header small" width="{$layout.tax_code.width}%">{l s='Tax Rate' d='Shop.Pdf' pdf='true'}</th>
     {/if}

@@ -33,12 +33,12 @@
     <table id="tax-tab" width="100%">
       <thead>
         <tr>
-          <th class="header small">{l s='Tax Detail' d='Shop.Pdf' pdf='true'}</th>
-          <th class="header small">{l s='Tax Rate' d='Shop.Pdf' pdf='true'}</th>
+          <th class="header small">{l s='PODATKI_BYŁYŚMY TU' d='Shop.Pdf' pdf='true'}</th>
+          <th class="header small">{l s='Wyskość podatku' d='Shop.Pdf' pdf='true'}</th>
           {if $display_tax_bases_in_breakdowns}
-            <th class="header small">{l s='Base price' d='Shop.Pdf' pdf='true'}</th>
+            <th class="header small">{l s='Cena bazowa' d='Shop.Pdf' pdf='true'}</th>
           {/if}
-          <th class="header-right small">{l s='Total Tax' d='Shop.Pdf' pdf='true'}</th>
+          <th class="header-right small">{l s='Podatek całkowity' d='Shop.Pdf' pdf='true'}</th>
         </tr>
       </thead>
       <tbody>
@@ -59,13 +59,13 @@
             <td class="white">
               {if !$label_printed}
                 {if $label == 'product_tax'}
-                  {l s='Products' d='Shop.Pdf' pdf='true'}
+                  {l s='Produkty' d='Shop.Pdf' pdf='true'}
                 {elseif $label == 'shipping_tax'}
-                  {l s='Shipping' d='Shop.Pdf' pdf='true'}
+                  {l s='Dostawa' d='Shop.Pdf' pdf='true'}
                 {elseif $label == 'ecotax_tax'}
-                  {l s='Ecotax' d='Shop.Pdf' pdf='true'}
+                  {l s='Podatek ekologiczny' d='Shop.Pdf' pdf='true'}
                 {elseif $label == 'wrapping_tax'}
-                  {l s='Wrapping' d='Shop.Pdf' pdf='true'}
+                  {l s='Pakowanie' d='Shop.Pdf' pdf='true'}
                 {/if}
                 {assign var=label_printed value=true}
               {/if}
@@ -93,7 +93,7 @@
       {if !$has_line}
         <tr>
           <td class="white center" colspan="{if $display_tax_bases_in_breakdowns}4{else}3{/if}">
-            {l s='No taxes' d='Shop.Pdf' pdf='true'}
+            {l s='Brak podatków' d='Shop.Pdf' pdf='true'}
           </td>
         </tr>
       {/if}
