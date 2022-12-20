@@ -91,3 +91,13 @@
 .product-information{
     width: 500px;
 }
+
+.card-block.checkout .btn-primary {
+    width:110%;
+   }
+
+#main .page-content {
+    margin-bottom:1.563rem;
+    width: 110%;
+}
+   
