@@ -2,9 +2,9 @@
 
 {shop_url}
 
-Hi {firstname} {lastname},
+Cześć {firstname} {lastname},
 
-Thank you for shopping on {shop_name}!
+Dziękujemy za zakupy na stronie {shop_name}!
 
 Order details
 

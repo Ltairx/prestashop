@@ -2,15 +2,15 @@
 
 {shop_url}
 
-Hi {firstname} {lastname},
+Cześć {firstname} {lastname},
 
-Thank you for shopping on {shop_name}!
+Dziękujemy za zakupy na stronie {shop_name}!
 
-Order details
+Szczegóły zamówienia
 
-Order: {order_name} Placed on {date}
+Zamówienie: {order_name} data: {date}
 
-Payment: {payment}
+Płatność: {payment}
 
 Reference	Product	Unit price	Quantity	Total price  {products_txt} {discounts_txt}
 Products	{total_products}
@@ -36,10 +36,6 @@ Billing address
 
 {invoice_block_txt}
 
-Follow your order and download your invoice on our shop, go to the [Order history and details]({history_url}) section of your customer account.
-
-If you have a guest account, you can follow your order via the [Guest Tracking]({guest_tracking_url}) section on our shop.
-
 [{shop_name}]({shop_url})
 
-Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)
+H&M
