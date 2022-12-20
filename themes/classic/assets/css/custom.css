@@ -49,7 +49,7 @@
 }
 
 #search_widget {
-    margin-right: -30%;
+    margin-right: -20%;
     margin-top: 1%;
 }
 
@@ -66,5 +66,19 @@
     background:white;
 }
 
+#subcategories {
+    display: none;
+}
 
    
+.card card-block {
+    display: none;
+}
+
+#content-wrapper .products-selection .sort-by{
+    width: auto;
+}
+
+.product-information{
+    width: 500px;
+}

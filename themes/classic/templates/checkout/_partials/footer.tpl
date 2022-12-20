@@ -37,5 +37,5 @@
   {if $tos_cms != false}
     <span class="d-block js-terms">{$tos_cms nofilter}</span>
   {/if}
-  {l s='%copyright% %year% - Ecommerce software by %prestashop%' sprintf=['%prestashop%' => 'PrestaShop™', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
+  Zawartość tej strony jest chroniona prawem autorskim i należy do spółki H & M Hennes & Mauritz AB. H&M oferuje modę najwyższej jakości, która jest przyjazna dla ludzi, środowiska i portfela. Od momentu założenia w 1947 roku nieustannie się rozwijamy – dziś H&M jest jedną z największychna świecie firm odzieżowych. 
 </div>

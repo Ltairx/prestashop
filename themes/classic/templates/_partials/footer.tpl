@@ -29,7 +29,8 @@
     {/block}
   </div>
 </div>
-<div class="footer-container">
+<span style="color: black">
+<div class="footer-container" style="background-color: lightgrey" >
   <div class="container">
     <div class="row">
       {block name='hook_footer'}
@@ -45,12 +46,16 @@
       <div class="col-md-12">
         <p class="text-sm-center">
           {block name='copyright_link'}
-            <a href="https://www.prestashop.com" target="_blank" rel="noopener noreferrer nofollow">
-              {l s='%copyright% %year% - Ecommerce software by %prestashop%' sprintf=['%prestashop%' => 'PrestaShop™', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
-            </a>
+		<span style="color: black; font-size: x-small">
+Zawartość tej strony jest chroniona prawem autorskim i należy do spółki H & M Hennes & Mauritz AB. H&M <br>
+oferuje modę najwyższej jakości, która jest przyjazna dla ludzi, środowiska i portfela. Od momentu <br>
+założenia w 1947 roku nieustannie się rozwijamy – dziś H&M jest jedną z największych na świecie firm
+odzieżowych.
+		</span>
           {/block}
         </p>
       </div>
     </div>
   </div>
 </div>
+</span>
