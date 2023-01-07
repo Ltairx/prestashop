@@ -22,12 +22,11 @@
     $default_language = Configuration::get('PS_LANG_DEFAULT');
 
     foreach ($data as $csv) {
-        
         $csv_values = explode(";", $csv);
 
         $reference = ' ';
         $name = $csv_values[1];
-        $price = $csv_values[2];
+        $price = $csv_values[2] / 1.23;
         $quantity = $csv_values[4];
         $category = $csv_values[0];
         $description = $csv_values[5];
