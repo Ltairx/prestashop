@@ -2,7 +2,7 @@ version: '3.17'
 
 services:
   be_184542_presta:
-    image: mojapresta
+    image: ltairx/be_184542_presta
     environment: 
       - DATABASE_HOST=be_184542_db
       - DATABASE_PORT=3306
@@ -13,11 +13,9 @@ services:
       - 18456:80
       - 18455:443
   be_184542_db: 
-    image: mojamaria
+    image: ltairx/be_184542_db
     environment: 
       - MARIADB_ROOT_PASSWORD=test
       - MARIADB_USER=prestashopuser
       - MARIADB_PASSWORD=test
       - MARIADB_DATABASE=prestashop
-    ports:
-      - 18457:3306
