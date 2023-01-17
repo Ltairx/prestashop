@@ -1,21 +1,33 @@
-version: '3.17'
+version: '3.7'
 
 services:
-  presta:
-    image: mojapresta
+  be_184542_presta:
+    image: ltairx/be_184542_presta
     environment: 
-      - DATABASE_HOST=db
+      - DATABASE_HOST=be_184542_db
       - DATABASE_PORT=3306
       - DATABASE_NAME=prestashop
       - DATABASE_USER=prestashopuser
       - DATABASE_PASSWORD=test
+    deploy:
+      restart_policy:
+      condition: on-failure
+      delay: 3s
+      max_attempts: 3
+      window: 60s
     ports: 
       - 18456:80
       - 18455:443
-  db: 
-    image: mojamaria
+  be_184542_db: 
+    image: ltairx/be_184542_db
     environment: 
       - MARIADB_ROOT_PASSWORD=test
       - MARIADB_USER=prestashopuser
       - MARIADB_PASSWORD=test
       - MARIADB_DATABASE=prestashop
+    deploy:
+      restart_policy:
+      condition: on-failure
+      delay: 3s
+      max_attempts: 3
+      window: 60s
