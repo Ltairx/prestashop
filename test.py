@@ -21,41 +21,47 @@ def addProduct(url):
     num = 0
     prod = 0
 
-    while prod < 5:
+    while prod < 3:
         browser.get(url)
         all = browser.find_elements("class name", "quick-view")
 
         browser.execute_script("arguments[0].click();", all[prod+num])
-        time.sleep(1)
+        time.sleep(10)
 
         c = browser.find_element("class name", "touchspin-up")
-        time.sleep(1)
+        time.sleep(5)
         for _ in range(0, random.randint(1, 10)):
             c.click()
 
-        time.sleep(5)
+        time.sleep(10)
         if len(browser.find_elements("class name", "product-unavailable")) == 1: 
             num += 1
             continue
 
         b = browser.find_element("class name", "add-to-cart")
+        time.sleep(1)
         b.click()
+        time.sleep(1)
         prod += 1
 
-addProduct('https://127.0.0.1/prestashop/index.php?id_category=47&controller=category')
-addProduct('https://127.0.0.1/prestashop/index.php?id_category=46&controller=category')
+addProduct('https://localhost:18455/index.php?id_category=47&controller=category')
+#addProduct('https://localhost:18455/index.php?id_category=46&controller=category')
 
 # odpalenie koszyka
 
-browser.get('https://127.0.0.1/prestashop/index.php?controller=cart&action=show')
+browser.get('https://localhost:18455/index.php?controller=cart&action=show')
 
 b = browser.find_element("class name", "remove-from-cart")
 b.click()
 
-time.sleep(1)
+time.sleep(5)
 
-b = browser.find_element("class name", "btn-primary")
-b.click()
+b = browser.find_elements("class name", "btn-primary")
+for i in b:
+    if i.is_displayed():
+        break
+
+i.click()
 
 # uzupelnianie pol do zamowienia
 
@@ -90,7 +96,7 @@ b.click()
 b = browser.find_element("name", "psgdpr")
 b.click()
 
-time.sleep(1)
+time.sleep(5)
 b = browser.find_element("class name", "continue")
 b.click()
 
@@ -147,7 +153,7 @@ for i in b:
 i.click()
 
 
-browser.get('https://127.0.0.1/prestashop/index.php?controller=history')
+browser.get('https://localhost:18455/index.php?controller=history')
 
 b = browser.find_elements("class name", "label")
 for i in b:

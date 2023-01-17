@@ -1,7 +1,6 @@
 /* Backup for localhost:18455/
- *  at 1673913741
+ *  at 1673990812
  */
-
 USE prestashop;
 SET NAMES 'utf8mb4';
 SET FOREIGN_KEY_CHECKS = 0;
@@ -13,7 +12,7 @@ CREATE TABLE `ps_access` (
   `id_profile` int(10) unsigned NOT NULL,
   `id_authorization_role` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_profile`,`id_authorization_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_access` VALUES
 ('1','1'),
@@ -890,7 +889,7 @@ CREATE TABLE `ps_accessory` (
   `id_product_1` int(10) unsigned NOT NULL,
   `id_product_2` int(10) unsigned NOT NULL,
   KEY `accessory_product` (`id_product_1`,`id_product_2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_address */
 DROP TABLE IF EXISTS `ps_address`;
@@ -926,7 +925,7 @@ CREATE TABLE `ps_address` (
   KEY `id_manufacturer` (`id_manufacturer`),
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_address` VALUES
 ('1','14','0','1','0','0','0','Anonymous','Anonymous','Anonymous','Anonymous','Anonymous',NULL,'00000','Anonymous',NULL,'0000000000','0000000000','0000','0000','2022-10-25 19:37:55','2022-10-25 19:37:55','1','0'),
@@ -945,14 +944,16 @@ INSERT INTO `ps_address` VALUES
 ('14','14','0','13','0','0','0','Mój adres',NULL,'xczf','rqlkvgjvg','dtv 29',NULL,'80-961','tdgysrt',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:02:33','2022-12-21 16:02:33','1','0'),
 ('15','14','0','14','0','0','0','Mój adres',NULL,'wgoejshoh','jpyakntym','zlw 84',NULL,'80-234','dhe',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:38:50','2022-12-21 16:38:50','1','0'),
 ('16','14','0','16','0','0','0','Mój adres',NULL,'dfh','sfd','fgzd',NULL,'12-123','fes',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:51:44','2022-12-21 16:51:44','1','0'),
-('17','14','0','17','0','0','0','Mój adres',NULL,'hfdh','xdf','h',NULL,'90-123','fsd',NULL,NULL,NULL,NULL,NULL,'2023-01-16 18:04:59','2023-01-16 18:04:59','1','0');
+('17','14','0','17','0','0','0','Mój adres',NULL,'hfdh','xdf','h',NULL,'90-123','fsd',NULL,NULL,NULL,NULL,NULL,'2023-01-16 18:04:59','2023-01-16 18:04:59','1','0'),
+('18','14','0','18','0','0','0','Mój adres',NULL,'asdf','sdf','hdf',NULL,'89-088','dg',NULL,NULL,NULL,NULL,NULL,'2023-01-17 22:06:09','2023-01-17 22:06:09','1','0'),
+('19','14','0','20','0','0','0','Mój adres',NULL,'fwmx','cyjwgqzt','hodxe 21',NULL,'80-645','achhwnxvxo',NULL,NULL,NULL,NULL,NULL,'2023-01-17 22:25:03','2023-01-17 22:25:03','1','0');
 /* Scheme for table ps_address_format */
 DROP TABLE IF EXISTS `ps_address_format`;
 CREATE TABLE `ps_address_format` (
   `id_country` int(10) unsigned NOT NULL,
   `format` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_address_format` VALUES
 ('1','firstname lastname\ncompany\nvat_number\naddress1\naddress2\npostcode city\nCountry:name\nphone'),
@@ -1203,10 +1204,10 @@ CREATE TABLE `ps_admin_filter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `employee` int(11) NOT NULL,
   `shop` int(11) NOT NULL,
-  `controller` varchar(60) NOT NULL,
-  `action` varchar(100) NOT NULL,
-  `filter` longtext NOT NULL,
-  `filter_id` varchar(191) NOT NULL,
+  `controller` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `action` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filter` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filter_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_filter_search_id_idx` (`employee`,`shop`,`controller`,`action`,`filter_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1255,7 +1256,7 @@ CREATE TABLE `ps_advice` (
   `stop_day` int(11) NOT NULL DEFAULT 0,
   `weight` int(11) DEFAULT 1,
   PRIMARY KEY (`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_advice_lang */
 DROP TABLE IF EXISTS `ps_advice_lang`;
@@ -1264,7 +1265,7 @@ CREATE TABLE `ps_advice_lang` (
   `id_lang` int(11) NOT NULL,
   `html` text DEFAULT NULL,
   PRIMARY KEY (`id_advice`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_alias */
 DROP TABLE IF EXISTS `ps_alias`;
@@ -1275,7 +1276,7 @@ CREATE TABLE `ps_alias` (
   `active` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_alias`),
   UNIQUE KEY `alias` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_alias` VALUES
 ('1','bloose','blouse','1'),
@@ -1289,7 +1290,7 @@ CREATE TABLE `ps_attachment` (
   `file_size` bigint(20) unsigned NOT NULL DEFAULT 0,
   `mime` varchar(128) NOT NULL,
   PRIMARY KEY (`id_attachment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_attachment_lang */
 DROP TABLE IF EXISTS `ps_attachment_lang`;
@@ -1299,14 +1300,14 @@ CREATE TABLE `ps_attachment_lang` (
   `name` varchar(32) DEFAULT NULL,
   `description` text DEFAULT NULL,
   PRIMARY KEY (`id_attachment`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_attribute */
 DROP TABLE IF EXISTS `ps_attribute`;
 CREATE TABLE `ps_attribute` (
   `id_attribute` int(11) NOT NULL AUTO_INCREMENT,
   `id_attribute_group` int(11) NOT NULL,
-  `color` varchar(32) NOT NULL,
+  `color` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute`),
   KEY `attribute_group` (`id_attribute_group`)
@@ -1323,7 +1324,7 @@ DROP TABLE IF EXISTS `ps_attribute_group`;
 CREATE TABLE `ps_attribute_group` (
   `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT,
   `is_color_group` tinyint(1) NOT NULL,
-  `group_type` varchar(255) NOT NULL,
+  `group_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute_group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1335,8 +1336,8 @@ DROP TABLE IF EXISTS `ps_attribute_group_lang`;
 CREATE TABLE `ps_attribute_group_lang` (
   `id_attribute_group` int(11) NOT NULL,
   `id_lang` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL,
-  `public_name` varchar(64) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `public_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_attribute_group`,`id_lang`),
   KEY `IDX_4653726C67A664FB` (`id_attribute_group`),
   KEY `IDX_4653726CBA299860` (`id_lang`)
@@ -1367,14 +1368,14 @@ CREATE TABLE `ps_attribute_impact` (
   `price` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_attribute_impact`),
   UNIQUE KEY `id_product` (`id_product`,`id_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_attribute_lang */
 DROP TABLE IF EXISTS `ps_attribute_lang`;
 CREATE TABLE `ps_attribute_lang` (
   `id_attribute` int(11) NOT NULL,
   `id_lang` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_attribute`,`id_lang`),
   KEY `IDX_3ABE46A77A4F53DC` (`id_attribute`),
   KEY `IDX_3ABE46A7BA299860` (`id_lang`)
@@ -1414,7 +1415,7 @@ CREATE TABLE `ps_authorization_role` (
   `slug` varchar(191) NOT NULL,
   PRIMARY KEY (`id_authorization_role`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_authorization_role` VALUES
 ('837','ROLE_MOD_MODULE_BLOCKREASSURANCE_CREATE'),
@@ -1473,6 +1474,18 @@ INSERT INTO `ps_authorization_role` VALUES
 ('544','ROLE_MOD_MODULE_PRODUCTCOMMENTS_DELETE'),
 ('542','ROLE_MOD_MODULE_PRODUCTCOMMENTS_READ'),
 ('543','ROLE_MOD_MODULE_PRODUCTCOMMENTS_UPDATE'),
+('741','ROLE_MOD_MODULE_PSADDONSCONNECT_CREATE'),
+('744','ROLE_MOD_MODULE_PSADDONSCONNECT_DELETE'),
+('742','ROLE_MOD_MODULE_PSADDONSCONNECT_READ'),
+('743','ROLE_MOD_MODULE_PSADDONSCONNECT_UPDATE'),
+('745','ROLE_MOD_MODULE_PSGDPR_CREATE'),
+('748','ROLE_MOD_MODULE_PSGDPR_DELETE'),
+('746','ROLE_MOD_MODULE_PSGDPR_READ'),
+('747','ROLE_MOD_MODULE_PSGDPR_UPDATE'),
+('833','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_CREATE'),
+('836','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_DELETE'),
+('834','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_READ'),
+('835','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_UPDATE'),
 ('545','ROLE_MOD_MODULE_PS_BANNER_CREATE'),
 ('548','ROLE_MOD_MODULE_PS_BANNER_DELETE'),
 ('546','ROLE_MOD_MODULE_PS_BANNER_READ'),
@@ -1597,18 +1610,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('656','ROLE_MOD_MODULE_PS_WIREPAYMENT_DELETE'),
 ('654','ROLE_MOD_MODULE_PS_WIREPAYMENT_READ'),
 ('655','ROLE_MOD_MODULE_PS_WIREPAYMENT_UPDATE'),
-('741','ROLE_MOD_MODULE_PSADDONSCONNECT_CREATE'),
-('744','ROLE_MOD_MODULE_PSADDONSCONNECT_DELETE'),
-('742','ROLE_MOD_MODULE_PSADDONSCONNECT_READ'),
-('743','ROLE_MOD_MODULE_PSADDONSCONNECT_UPDATE'),
-('745','ROLE_MOD_MODULE_PSGDPR_CREATE'),
-('748','ROLE_MOD_MODULE_PSGDPR_DELETE'),
-('746','ROLE_MOD_MODULE_PSGDPR_READ'),
-('747','ROLE_MOD_MODULE_PSGDPR_UPDATE'),
-('833','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_CREATE'),
-('836','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_DELETE'),
-('834','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_READ'),
-('835','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_UPDATE'),
 ('657','ROLE_MOD_MODULE_STATSBESTCATEGORIES_CREATE'),
 ('660','ROLE_MOD_MODULE_STATSBESTCATEGORIES_DELETE'),
 ('658','ROLE_MOD_MODULE_STATSBESTCATEGORIES_READ'),
@@ -1706,10 +1707,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('792','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_DELETE'),
 ('790','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_READ'),
 ('791','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_UPDATE'),
-('781','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_CREATE'),
-('784','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_DELETE'),
-('782','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_READ'),
-('783','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_UPDATE'),
 ('817','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_CREATE'),
 ('820','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_DELETE'),
 ('818','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_READ'),
@@ -1722,6 +1719,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('832','ROLE_MOD_TAB_ADMINAJAXPSXMKTGWITHGOOGLE_DELETE'),
 ('830','ROLE_MOD_TAB_ADMINAJAXPSXMKTGWITHGOOGLE_READ'),
 ('831','ROLE_MOD_TAB_ADMINAJAXPSXMKTGWITHGOOGLE_UPDATE'),
+('781','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_CREATE'),
+('784','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_DELETE'),
+('782','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_READ'),
+('783','ROLE_MOD_TAB_ADMINAJAXPS_BUYBUTTONLITE_UPDATE'),
 ('21','ROLE_MOD_TAB_ADMINATTACHMENTS_CREATE'),
 ('24','ROLE_MOD_TAB_ADMINATTACHMENTS_DELETE'),
 ('22','ROLE_MOD_TAB_ADMINATTACHMENTS_READ'),
@@ -1899,10 +1900,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('804','ROLE_MOD_TAB_ADMINMETRICSLEGACYSTATSCONTROLLER_DELETE'),
 ('802','ROLE_MOD_TAB_ADMINMETRICSLEGACYSTATSCONTROLLER_READ'),
 ('803','ROLE_MOD_TAB_ADMINMETRICSLEGACYSTATSCONTROLLER_UPDATE'),
-('161','ROLE_MOD_TAB_ADMINMODULES_CREATE'),
-('164','ROLE_MOD_TAB_ADMINMODULES_DELETE'),
-('162','ROLE_MOD_TAB_ADMINMODULES_READ'),
-('163','ROLE_MOD_TAB_ADMINMODULES_UPDATE'),
 ('473','ROLE_MOD_TAB_ADMINMODULESCATALOG_CREATE'),
 ('476','ROLE_MOD_TAB_ADMINMODULESCATALOG_DELETE'),
 ('474','ROLE_MOD_TAB_ADMINMODULESCATALOG_READ'),
@@ -1927,6 +1924,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('172','ROLE_MOD_TAB_ADMINMODULESUPDATES_DELETE'),
 ('170','ROLE_MOD_TAB_ADMINMODULESUPDATES_READ'),
 ('171','ROLE_MOD_TAB_ADMINMODULESUPDATES_UPDATE'),
+('161','ROLE_MOD_TAB_ADMINMODULES_CREATE'),
+('164','ROLE_MOD_TAB_ADMINMODULES_DELETE'),
+('162','ROLE_MOD_TAB_ADMINMODULES_READ'),
+('163','ROLE_MOD_TAB_ADMINMODULES_UPDATE'),
 ('181','ROLE_MOD_TAB_ADMINORDERMESSAGE_CREATE'),
 ('184','ROLE_MOD_TAB_ADMINORDERMESSAGE_DELETE'),
 ('182','ROLE_MOD_TAB_ADMINORDERMESSAGE_READ'),
@@ -1955,10 +1956,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('208','ROLE_MOD_TAB_ADMINPARENTCOUNTRIES_DELETE'),
 ('206','ROLE_MOD_TAB_ADMINPARENTCOUNTRIES_READ'),
 ('207','ROLE_MOD_TAB_ADMINPARENTCOUNTRIES_UPDATE'),
-('209','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_CREATE'),
-('212','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_DELETE'),
-('210','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_READ'),
-('211','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_UPDATE'),
 ('213','ROLE_MOD_TAB_ADMINPARENTCUSTOMERPREFERENCES_CREATE'),
 ('216','ROLE_MOD_TAB_ADMINPARENTCUSTOMERPREFERENCES_DELETE'),
 ('214','ROLE_MOD_TAB_ADMINPARENTCUSTOMERPREFERENCES_READ'),
@@ -1967,6 +1964,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('220','ROLE_MOD_TAB_ADMINPARENTCUSTOMERTHREADS_DELETE'),
 ('218','ROLE_MOD_TAB_ADMINPARENTCUSTOMERTHREADS_READ'),
 ('219','ROLE_MOD_TAB_ADMINPARENTCUSTOMERTHREADS_UPDATE'),
+('209','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_CREATE'),
+('212','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_DELETE'),
+('210','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_READ'),
+('211','ROLE_MOD_TAB_ADMINPARENTCUSTOMER_UPDATE'),
 ('221','ROLE_MOD_TAB_ADMINPARENTEMPLOYEES_CREATE'),
 ('224','ROLE_MOD_TAB_ADMINPARENTEMPLOYEES_DELETE'),
 ('222','ROLE_MOD_TAB_ADMINPARENTEMPLOYEES_READ'),
@@ -1987,10 +1988,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('240','ROLE_MOD_TAB_ADMINPARENTMETA_DELETE'),
 ('238','ROLE_MOD_TAB_ADMINPARENTMETA_READ'),
 ('239','ROLE_MOD_TAB_ADMINPARENTMETA_UPDATE'),
-('241','ROLE_MOD_TAB_ADMINPARENTMODULES_CREATE'),
-('244','ROLE_MOD_TAB_ADMINPARENTMODULES_DELETE'),
-('242','ROLE_MOD_TAB_ADMINPARENTMODULES_READ'),
-('243','ROLE_MOD_TAB_ADMINPARENTMODULES_UPDATE'),
 ('477','ROLE_MOD_TAB_ADMINPARENTMODULESCATALOG_CREATE'),
 ('480','ROLE_MOD_TAB_ADMINPARENTMODULESCATALOG_DELETE'),
 ('478','ROLE_MOD_TAB_ADMINPARENTMODULESCATALOG_READ'),
@@ -1999,6 +1996,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('236','ROLE_MOD_TAB_ADMINPARENTMODULESSF_DELETE'),
 ('234','ROLE_MOD_TAB_ADMINPARENTMODULESSF_READ'),
 ('235','ROLE_MOD_TAB_ADMINPARENTMODULESSF_UPDATE'),
+('241','ROLE_MOD_TAB_ADMINPARENTMODULES_CREATE'),
+('244','ROLE_MOD_TAB_ADMINPARENTMODULES_DELETE'),
+('242','ROLE_MOD_TAB_ADMINPARENTMODULES_READ'),
+('243','ROLE_MOD_TAB_ADMINPARENTMODULES_UPDATE'),
 ('245','ROLE_MOD_TAB_ADMINPARENTORDERPREFERENCES_CREATE'),
 ('248','ROLE_MOD_TAB_ADMINPARENTORDERPREFERENCES_DELETE'),
 ('246','ROLE_MOD_TAB_ADMINPARENTORDERPREFERENCES_READ'),
@@ -2048,14 +2049,14 @@ INSERT INTO `ps_authorization_role` VALUES
 ('288','ROLE_MOD_TAB_ADMINPARENTTHEMES_DELETE'),
 ('286','ROLE_MOD_TAB_ADMINPARENTTHEMES_READ'),
 ('287','ROLE_MOD_TAB_ADMINPARENTTHEMES_UPDATE'),
-('289','ROLE_MOD_TAB_ADMINPAYMENT_CREATE'),
-('292','ROLE_MOD_TAB_ADMINPAYMENT_DELETE'),
-('290','ROLE_MOD_TAB_ADMINPAYMENT_READ'),
-('291','ROLE_MOD_TAB_ADMINPAYMENT_UPDATE'),
 ('293','ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_CREATE'),
 ('296','ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_DELETE'),
 ('294','ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_READ'),
 ('295','ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_UPDATE'),
+('289','ROLE_MOD_TAB_ADMINPAYMENT_CREATE'),
+('292','ROLE_MOD_TAB_ADMINPAYMENT_DELETE'),
+('290','ROLE_MOD_TAB_ADMINPAYMENT_READ'),
+('291','ROLE_MOD_TAB_ADMINPAYMENT_UPDATE'),
 ('857','ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_CREATE'),
 ('860','ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_DELETE'),
 ('858','ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_READ'),
@@ -2200,10 +2201,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('368','ROLE_MOD_TAB_ADMINSTATUSES_DELETE'),
 ('366','ROLE_MOD_TAB_ADMINSTATUSES_READ'),
 ('367','ROLE_MOD_TAB_ADMINSTATUSES_UPDATE'),
-('369','ROLE_MOD_TAB_ADMINSTOCK_CREATE'),
-('372','ROLE_MOD_TAB_ADMINSTOCK_DELETE'),
-('370','ROLE_MOD_TAB_ADMINSTOCK_READ'),
-('371','ROLE_MOD_TAB_ADMINSTOCK_UPDATE'),
 ('373','ROLE_MOD_TAB_ADMINSTOCKCONFIGURATION_CREATE'),
 ('376','ROLE_MOD_TAB_ADMINSTOCKCONFIGURATION_DELETE'),
 ('374','ROLE_MOD_TAB_ADMINSTOCKCONFIGURATION_READ'),
@@ -2219,12 +2216,16 @@ INSERT INTO `ps_authorization_role` VALUES
 ('385','ROLE_MOD_TAB_ADMINSTOCKMANAGEMENT_CREATE'),
 ('388','ROLE_MOD_TAB_ADMINSTOCKMANAGEMENT_DELETE'),
 ('386','ROLE_MOD_TAB_ADMINSTOCKMANAGEMENT_READ'),
-('387','ROLE_MOD_TAB_ADMINSTOCKMANAGEMENT_UPDATE');
-INSERT INTO `ps_authorization_role` VALUES
+('387','ROLE_MOD_TAB_ADMINSTOCKMANAGEMENT_UPDATE'),
 ('389','ROLE_MOD_TAB_ADMINSTOCKMVT_CREATE'),
 ('392','ROLE_MOD_TAB_ADMINSTOCKMVT_DELETE'),
 ('390','ROLE_MOD_TAB_ADMINSTOCKMVT_READ'),
-('391','ROLE_MOD_TAB_ADMINSTOCKMVT_UPDATE'),
+('391','ROLE_MOD_TAB_ADMINSTOCKMVT_UPDATE');
+INSERT INTO `ps_authorization_role` VALUES
+('369','ROLE_MOD_TAB_ADMINSTOCK_CREATE'),
+('372','ROLE_MOD_TAB_ADMINSTOCK_DELETE'),
+('370','ROLE_MOD_TAB_ADMINSTOCK_READ'),
+('371','ROLE_MOD_TAB_ADMINSTOCK_UPDATE'),
 ('393','ROLE_MOD_TAB_ADMINSTORES_CREATE'),
 ('396','ROLE_MOD_TAB_ADMINSTORES_DELETE'),
 ('394','ROLE_MOD_TAB_ADMINSTORES_READ'),
@@ -2249,10 +2250,6 @@ INSERT INTO `ps_authorization_role` VALUES
 ('416','ROLE_MOD_TAB_ADMINTAXRULESGROUP_DELETE'),
 ('414','ROLE_MOD_TAB_ADMINTAXRULESGROUP_READ'),
 ('415','ROLE_MOD_TAB_ADMINTAXRULESGROUP_UPDATE'),
-('417','ROLE_MOD_TAB_ADMINTHEMES_CREATE'),
-('420','ROLE_MOD_TAB_ADMINTHEMES_DELETE'),
-('418','ROLE_MOD_TAB_ADMINTHEMES_READ'),
-('419','ROLE_MOD_TAB_ADMINTHEMES_UPDATE'),
 ('421','ROLE_MOD_TAB_ADMINTHEMESCATALOG_CREATE'),
 ('424','ROLE_MOD_TAB_ADMINTHEMESCATALOG_DELETE'),
 ('422','ROLE_MOD_TAB_ADMINTHEMESCATALOG_READ'),
@@ -2261,6 +2258,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('644','ROLE_MOD_TAB_ADMINTHEMESPARENT_DELETE'),
 ('642','ROLE_MOD_TAB_ADMINTHEMESPARENT_READ'),
 ('643','ROLE_MOD_TAB_ADMINTHEMESPARENT_UPDATE'),
+('417','ROLE_MOD_TAB_ADMINTHEMES_CREATE'),
+('420','ROLE_MOD_TAB_ADMINTHEMES_DELETE'),
+('418','ROLE_MOD_TAB_ADMINTHEMES_READ'),
+('419','ROLE_MOD_TAB_ADMINTHEMES_UPDATE'),
 ('425','ROLE_MOD_TAB_ADMINTRACKING_CREATE'),
 ('428','ROLE_MOD_TAB_ADMINTRACKING_DELETE'),
 ('426','ROLE_MOD_TAB_ADMINTRACKING_READ'),
@@ -2329,7 +2330,7 @@ CREATE TABLE `ps_badge` (
   `awb` int(11) DEFAULT 0,
   `validated` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_badge`)
-) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_badge` VALUES
 ('1','159','feature','41','1','5','1','0'),
@@ -2576,7 +2577,7 @@ CREATE TABLE `ps_badge_lang` (
   `description` varchar(255) DEFAULT NULL,
   `group_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_badge`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_badge_lang` VALUES
 ('1','1','Shopgate installed','You have installed the Shopgate module','Partners'),
@@ -3059,7 +3060,7 @@ CREATE TABLE `ps_blockwishlist_statistics` (
   `date_add` datetime NOT NULL,
   `id_shop` int(10) unsigned DEFAULT 1,
   PRIMARY KEY (`id_statistics`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_carrier */
 DROP TABLE IF EXISTS `ps_carrier`;
@@ -3089,7 +3090,7 @@ CREATE TABLE `ps_carrier` (
   KEY `deleted` (`deleted`,`active`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `reference` (`id_reference`,`deleted`,`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier` VALUES
 ('1','1','0','0',NULL,'1','0','0','0','0','1','0','0',NULL,'0','0','0','0','0','0.000000','0'),
@@ -3111,7 +3112,7 @@ CREATE TABLE `ps_carrier_group` (
   `id_carrier` int(10) unsigned NOT NULL,
   `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier_group` VALUES
 ('1','1'),
@@ -3159,7 +3160,7 @@ CREATE TABLE `ps_carrier_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `delay` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_lang`,`id_shop`,`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier_lang` VALUES
 ('1','1','1','Pick up in-store'),
@@ -3195,7 +3196,7 @@ CREATE TABLE `ps_carrier_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier_shop` VALUES
 ('1','1'),
@@ -3218,7 +3219,7 @@ CREATE TABLE `ps_carrier_tax_rules_group_shop` (
   `id_tax_rules_group` int(10) unsigned NOT NULL,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_tax_rules_group`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier_tax_rules_group_shop` VALUES
 ('1','1','1'),
@@ -3240,7 +3241,7 @@ CREATE TABLE `ps_carrier_zone` (
   `id_carrier` int(10) unsigned NOT NULL,
   `id_zone` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_zone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier_zone` VALUES
 ('1','1'),
@@ -3298,7 +3299,7 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart` VALUES
 ('1','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2022-10-25 19:38:26','2022-10-25 19:38:26',NULL),
@@ -3330,7 +3331,16 @@ INSERT INTO `ps_cart` VALUES
 ('30','1','1','6','{\"15\":\"6,\"}','2','15','15','1','14','49','254e79e6f9aa7e2cbcabd38e213ad20d','0','0',NULL,'0','0','2022-12-21 16:37:21','2022-12-21 16:38:51','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"a52d52033025fc5813580bab51a127bc3312457a\"}'),
 ('32','1','1','1','{\"16\":\"1,\"}','2','16','16','1','16','50','cd704be908f57d6425494ebfc4f40a99','0','0',NULL,'0','0','2022-12-21 16:51:12','2022-12-21 16:51:46','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"7ded9d20de1d0c34224e67e67750098ab6342a5f\"}'),
 ('33','1','1','13','{\"16\":\"13,\"}','2','16','16','1','16','50','cd704be908f57d6425494ebfc4f40a99','0','0',NULL,'0','0','2022-12-21 17:30:27','2023-01-07 12:54:03','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"5fbab431db302492c4fd8ed2747496be69ebb50b\"}'),
-('34','1','1','1','{\"17\":\"1,\"}','2','17','17','1','17','93','702fcecf3afaca7fa9b28c118c59ce4f','0','0',NULL,'0','0','2023-01-16 18:04:09','2023-01-16 18:05:01','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"2b672a56be854bfe82125775d388f631a60bf776\"}');
+('35','1','1','1','{\"18\":\"1,\"}','2','18','18','1','18','51','5c3d91b93c18b14af3fd7ca09b6c56ea','0','0',NULL,'0','0','2023-01-17 17:05:57','2023-01-17 22:06:13','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"5cdc511f62ba01d9280ff64a3fe9ae59b509a0cc\"}'),
+('36','1','1','1','{\"18\":\"1,\"}','2','18','18','1','18','51','5c3d91b93c18b14af3fd7ca09b6c56ea','0','0',NULL,'0','0','2023-01-17 22:07:46','2023-01-17 22:08:13','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"0e6229bbba40c7a3c158cc91a5009604a746b1c4\"}'),
+('37','1','1','0','','2','0','0','1','19','52','cc646d8fa059a303c9a546c669e4e553','0','0',NULL,'0','0','2023-01-17 22:11:26','2023-01-17 22:26:32',NULL),
+('38','1','1','0','','2','0','0','1','0','53','','0','0',NULL,'0','0','2023-01-17 22:18:11','2023-01-17 22:18:12',NULL),
+('39','1','1','0','','2','0','0','1','0','53','','0','0',NULL,'0','0','2023-01-17 22:18:38','2023-01-17 22:18:38',NULL),
+('40','1','1','0','','2','0','0','1','0','53','','0','0',NULL,'0','0','2023-01-17 22:19:05','2023-01-17 22:19:05',NULL),
+('41','1','1','0','','2','0','0','1','0','54','','0','0',NULL,'0','0','2023-01-17 22:20:19','2023-01-17 22:20:19',NULL),
+('42','1','1','0','','2','0','0','1','0','54','','0','0',NULL,'0','0','2023-01-17 22:20:23','2023-01-17 22:20:23',NULL),
+('43','1','1','0','','2','0','0','1','0','55','','0','0',NULL,'0','0','2023-01-17 22:22:13','2023-01-17 22:22:13',NULL),
+('44','1','1','6','{\"19\":\"6,\"}','2','19','19','1','20','56','2cb1ca8527c13748da58f87063f1e35e','0','0',NULL,'0','0','2023-01-17 22:23:27','2023-01-17 22:25:05','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"4fd6609429c28fba59747861d19ed49ae23e91eb\"}');
 /* Scheme for table ps_cart_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_cart_rule`;
 CREATE TABLE `ps_cart_cart_rule` (
@@ -3338,7 +3348,7 @@ CREATE TABLE `ps_cart_cart_rule` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart`,`id_cart_rule`),
   KEY `id_cart_rule` (`id_cart_rule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart_cart_rule` VALUES
 ('11','1'),
@@ -3358,7 +3368,7 @@ CREATE TABLE `ps_cart_product` (
   PRIMARY KEY (`id_cart`,`id_product`,`id_product_attribute`,`id_customization`,`id_address_delivery`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_cart_order` (`id_cart`,`date_add`,`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart_product` VALUES
 ('14','852','0','1','0','0','4','2022-12-20 17:14:10'),
@@ -3407,7 +3417,17 @@ INSERT INTO `ps_cart_product` VALUES
 ('32','1421','16','1','385','0','1','2022-12-21 16:51:33'),
 ('33','1421','16','1','385','0','1','2023-01-07 12:53:35'),
 ('33','1588','16','1','381','0','1','2022-12-21 17:30:27'),
-('34','1421','17','1','385','0','1','2023-01-16 18:04:09');
+('35','1588','18','1','381','0','1','2023-01-17 22:04:44'),
+('36','1432','18','1','422','0','1','2023-01-17 22:08:03'),
+('37','1421','0','1','385','0','11','2023-01-17 22:19:32'),
+('38','1421','0','1','385','0','10','2023-01-17 22:18:11'),
+('39','1422','0','1','388','0','2','2023-01-17 22:18:38'),
+('40','1423','0','1','393','0','8','2023-01-17 22:19:05'),
+('41','1421','0','1','385','0','10','2023-01-17 22:20:19'),
+('42','1422','0','1','388','0','1','2023-01-17 22:20:23'),
+('43','1421','0','1','385','0','7','2023-01-17 22:22:13'),
+('44','1422','19','1','388','0','2','2023-01-17 22:23:55'),
+('44','1423','19','1','393','0','3','2023-01-17 22:24:23');
 /* Scheme for table ps_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_rule`;
 CREATE TABLE `ps_cart_rule` (
@@ -3451,17 +3471,17 @@ CREATE TABLE `ps_cart_rule` (
   KEY `group_restriction_2` (`group_restriction`,`active`,`highlight`,`date_to`),
   KEY `date_from` (`date_from`),
   KEY `date_to` (`date_to`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart_rule` VALUES
-('1','0','2022-12-06 12:00:00','2022-12-22 12:00:00','Otrzymaj 15% rabatu przy zakupach powyżej 150zł. Promocje nie łączą się.','100','1','1','1','GET15','150.000000','0','1','0','0','0','0','0','0','0','0','15.00','0.000000','0','1','0','0','0','0','0','1','2022-12-06 12:24:19','2022-12-20 17:02:13');
+('1','0','2022-12-06 12:00:00','2023-01-29 12:00:00','Otrzymaj 15% rabatu przy zakupach powyżej 150zł. Promocje nie łączą się.','100','1','1','1','GET15','150.000000','0','1','0','0','0','0','0','0','0','0','15.00','0.000000','0','1','0','0','0','0','0','1','2022-12-06 12:24:19','2023-01-17 22:05:45');
 /* Scheme for table ps_cart_rule_carrier */
 DROP TABLE IF EXISTS `ps_cart_rule_carrier`;
 CREATE TABLE `ps_cart_rule_carrier` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   `id_carrier` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_combination */
 DROP TABLE IF EXISTS `ps_cart_rule_combination`;
@@ -3471,7 +3491,7 @@ CREATE TABLE `ps_cart_rule_combination` (
   PRIMARY KEY (`id_cart_rule_1`,`id_cart_rule_2`),
   KEY `id_cart_rule_1` (`id_cart_rule_1`),
   KEY `id_cart_rule_2` (`id_cart_rule_2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_country */
 DROP TABLE IF EXISTS `ps_cart_rule_country`;
@@ -3479,7 +3499,7 @@ CREATE TABLE `ps_cart_rule_country` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   `id_country` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_group */
 DROP TABLE IF EXISTS `ps_cart_rule_group`;
@@ -3487,7 +3507,7 @@ CREATE TABLE `ps_cart_rule_group` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_lang */
 DROP TABLE IF EXISTS `ps_cart_rule_lang`;
@@ -3496,7 +3516,7 @@ CREATE TABLE `ps_cart_rule_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(254) NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart_rule_lang` VALUES
 ('1','1','15% przy zakupach powyżej 150 zł'),
@@ -3508,7 +3528,7 @@ CREATE TABLE `ps_cart_rule_product_rule` (
   `id_product_rule_group` int(10) unsigned NOT NULL,
   `type` enum('products','categories','attributes','manufacturers','suppliers') NOT NULL,
   PRIMARY KEY (`id_product_rule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_product_rule_group */
 DROP TABLE IF EXISTS `ps_cart_rule_product_rule_group`;
@@ -3517,7 +3537,7 @@ CREATE TABLE `ps_cart_rule_product_rule_group` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   `quantity` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_product_rule_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_product_rule_value */
 DROP TABLE IF EXISTS `ps_cart_rule_product_rule_value`;
@@ -3525,7 +3545,7 @@ CREATE TABLE `ps_cart_rule_product_rule_value` (
   `id_product_rule` int(10) unsigned NOT NULL,
   `id_item` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_rule`,`id_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cart_rule_shop */
 DROP TABLE IF EXISTS `ps_cart_rule_shop`;
@@ -3533,7 +3553,7 @@ CREATE TABLE `ps_cart_rule_shop` (
   `id_cart_rule` int(10) unsigned NOT NULL,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_category */
 DROP TABLE IF EXISTS `ps_category`;
@@ -3556,7 +3576,7 @@ CREATE TABLE `ps_category` (
   KEY `nright` (`nright`),
   KEY `activenleft` (`active`,`nleft`),
   KEY `activenright` (`active`,`nright`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_category` VALUES
 ('1','0','1','0','1','14','1','2022-10-25 19:36:50','2022-10-25 19:36:50','0','0'),
@@ -3574,7 +3594,7 @@ CREATE TABLE `ps_category_group` (
   PRIMARY KEY (`id_category`,`id_group`),
   KEY `id_category` (`id_category`),
   KEY `id_group` (`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_category_group` VALUES
 ('2','1'),
@@ -3609,7 +3629,7 @@ CREATE TABLE `ps_category_lang` (
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_category`,`id_shop`,`id_lang`),
   KEY `category_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_category_lang` VALUES
 ('1','1','1','Root',NULL,'root',NULL,NULL,NULL),
@@ -3635,7 +3655,7 @@ CREATE TABLE `ps_category_product` (
   PRIMARY KEY (`id_category`,`id_product`),
   KEY `id_product` (`id_product`),
   KEY `id_category` (`id_category`,`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_category_product` VALUES
 ('12','612','1'),
@@ -6073,7 +6093,7 @@ CREATE TABLE `ps_category_shop` (
   `id_shop` int(11) NOT NULL,
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_category`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_category_shop` VALUES
 ('1','1','0'),
@@ -6092,7 +6112,7 @@ CREATE TABLE `ps_cms` (
   `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `indexation` tinyint(3) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_cms`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms` VALUES
 ('1','1','0','1','0'),
@@ -6112,7 +6132,7 @@ CREATE TABLE `ps_cms_category` (
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_cms_category`),
   KEY `category_parent` (`id_parent`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_category` VALUES
 ('1','0','1','1','2022-10-25 19:36:51','2022-10-25 19:36:51','0');
@@ -6130,7 +6150,7 @@ CREATE TABLE `ps_cms_category_lang` (
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_cms_category`,`id_shop`,`id_lang`),
   KEY `category_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_category_lang` VALUES
 ('1','1','1','Home',NULL,'home',NULL,NULL,NULL),
@@ -6142,7 +6162,7 @@ CREATE TABLE `ps_cms_category_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms_category`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_category_shop` VALUES
 ('1','1');
@@ -6159,7 +6179,7 @@ CREATE TABLE `ps_cms_lang` (
   `content` longtext DEFAULT NULL,
   `link_rewrite` varchar(128) NOT NULL,
   PRIMARY KEY (`id_cms`,`id_shop`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_lang` VALUES
 ('1','1','1','Delivery',NULL,'Our terms and conditions of delivery','conditions, delivery, delay, shipment, pack','<h2>Shipments and returns</h2>\n<h3>Your pack shipment</h3>\n<p>Packages are generally dispatched within 2 days after receipt of payment and are shipped via UPS with tracking and drop-off without signature. If you prefer delivery by UPS Extra with required signature, an additional cost will be applied, so please contact us before choosing this method. Whichever shipment choice you make, we will provide you with a link to track your package online.</p>\n<p>Shipping fees include handling and packing fees as well as postage costs. Handling fees are fixed, whereas transport fees vary according to total weight of the shipment. We advise you to group your items in one order. We cannot group two distinct orders placed separately, and shipping fees will apply to each of them. Your package will be dispatched at your own risk, but special care is taken to protect fragile objects.<br /><br />Boxes are amply sized and your items are well-protected.</p>','delivery'),
@@ -6180,7 +6200,7 @@ CREATE TABLE `ps_cms_role` (
   `id_cms` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms_role`,`id_cms`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_role` VALUES
 ('1','LEGAL_CONDITIONS','3'),
@@ -6193,7 +6213,7 @@ CREATE TABLE `ps_cms_role_lang` (
   `id_shop` int(10) unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_cms_role`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_cms_shop */
 DROP TABLE IF EXISTS `ps_cms_shop`;
@@ -6202,7 +6222,7 @@ CREATE TABLE `ps_cms_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cms_shop` VALUES
 ('1','1'),
@@ -6226,7 +6246,7 @@ CREATE TABLE `ps_condition` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_condition`,`id_ps_condition`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_condition` VALUES
 ('1','1','configuration','PS_REWRITING_SETTINGS','==','1',NULL,'hook','actionAdminMetaControllerUpdate_optionsAfter','0','2022-11-08 13:43:50','2022-11-08 13:43:50'),
@@ -6481,7 +6501,7 @@ CREATE TABLE `ps_condition_advice` (
   `id_advice` int(11) NOT NULL,
   `display` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_condition`,`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_condition_badge */
 DROP TABLE IF EXISTS `ps_condition_badge`;
@@ -6489,7 +6509,7 @@ CREATE TABLE `ps_condition_badge` (
   `id_condition` int(11) NOT NULL,
   `id_badge` int(11) NOT NULL,
   PRIMARY KEY (`id_condition`,`id_badge`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_condition_badge` VALUES
 ('1','125'),
@@ -6743,7 +6763,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration` VALUES
 ('1',NULL,NULL,'PS_LANG_DEFAULT','2','2022-10-25 19:36:46','2022-11-19 14:05:39'),
@@ -6892,7 +6912,7 @@ INSERT INTO `ps_configuration` VALUES
 ('144',NULL,NULL,'PS_SPECIFIC_PRICE_FEATURE_ACTIVE','1','0000-00-00 00:00:00','2022-12-21 00:28:48'),
 ('145',NULL,NULL,'PS_VIRTUAL_PROD_FEATURE_ACTIVE','1','0000-00-00 00:00:00','2022-10-25 19:38:28'),
 ('146',NULL,NULL,'PS_CUSTOMIZATION_FEATURE_ACTIVE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-('147',NULL,NULL,'PS_CART_RULE_FEATURE_ACTIVE','1','0000-00-00 00:00:00','2022-12-20 17:02:13'),
+('147',NULL,NULL,'PS_CART_RULE_FEATURE_ACTIVE','1','0000-00-00 00:00:00','2023-01-17 22:05:45'),
 ('148',NULL,NULL,'PS_PACK_FEATURE_ACTIVE',NULL,'0000-00-00 00:00:00','2022-12-21 00:56:37'),
 ('149',NULL,NULL,'PS_ALIAS_FEATURE_ACTIVE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('150',NULL,NULL,'PS_TAX_ADDRESS_TYPE','id_address_delivery','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -7272,7 +7292,7 @@ CREATE TABLE `ps_configuration_kpi` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration_kpi` VALUES
 ('1',NULL,NULL,'DASHGOALS_TRAFFIC_01_2022','600','2022-10-25 19:37:02','2022-10-25 19:37:02'),
@@ -7355,7 +7375,7 @@ CREATE TABLE `ps_configuration_kpi_lang` (
   `value` text DEFAULT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_configuration_kpi`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration_kpi_lang` VALUES
 ('41','1','Clothes','2022-11-08 15:24:10'),
@@ -7374,7 +7394,7 @@ CREATE TABLE `ps_configuration_lang` (
   `value` text DEFAULT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_configuration`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration_lang` VALUES
 ('38','1','#IN',NULL),
@@ -7430,7 +7450,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_connections_page */
 DROP TABLE IF EXISTS `ps_connections_page`;
@@ -7440,7 +7460,7 @@ CREATE TABLE `ps_connections_page` (
   `time_start` datetime NOT NULL,
   `time_end` datetime DEFAULT NULL,
   PRIMARY KEY (`id_connections`,`id_page`,`time_start`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_connections_source */
 DROP TABLE IF EXISTS `ps_connections_source`;
@@ -7456,7 +7476,7 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_contact */
 DROP TABLE IF EXISTS `ps_contact`;
@@ -7466,7 +7486,7 @@ CREATE TABLE `ps_contact` (
   `customer_service` tinyint(1) NOT NULL DEFAULT 0,
   `position` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_contact` VALUES
 ('1','nabepresta@outlook.com','1','0'),
@@ -7479,7 +7499,7 @@ CREATE TABLE `ps_contact_lang` (
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   PRIMARY KEY (`id_contact`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_contact_lang` VALUES
 ('1','1','Webmaster','If a technical problem occurs on this website'),
@@ -7493,7 +7513,7 @@ CREATE TABLE `ps_contact_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_contact`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_contact_shop` VALUES
 ('1','1'),
@@ -7515,7 +7535,7 @@ CREATE TABLE `ps_country` (
   PRIMARY KEY (`id_country`),
   KEY `country_iso_code` (`iso_code`),
   KEY `country_` (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_country` VALUES
 ('1','1','0','DE','49','0','0','0','1','NNNNN','1'),
@@ -7767,7 +7787,7 @@ CREATE TABLE `ps_country_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_country`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_country_lang` VALUES
 ('1','1','Germany'),
@@ -8261,7 +8281,7 @@ CREATE TABLE `ps_country_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_country`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_country_shop` VALUES
 ('1','1'),
@@ -8521,7 +8541,7 @@ CREATE TABLE `ps_currency` (
   `modified` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_currency`),
   KEY `currency_iso_code` (`iso_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_currency` VALUES
 ('1','','PLN','985','2','1.000000','0','1','0','0');
@@ -8534,7 +8554,7 @@ CREATE TABLE `ps_currency_lang` (
   `symbol` varchar(255) NOT NULL,
   `pattern` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_currency`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_currency_lang` VALUES
 ('1','1','Polish Zloty','zł',NULL),
@@ -8547,7 +8567,7 @@ CREATE TABLE `ps_currency_shop` (
   `conversion_rate` decimal(13,6) NOT NULL,
   PRIMARY KEY (`id_currency`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_currency_shop` VALUES
 ('1','1','1.000000');
@@ -8594,7 +8614,7 @@ CREATE TABLE `ps_customer` (
   KEY `id_gender` (`id_gender`),
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer` VALUES
 ('1','1','1','1','3','1','0',NULL,NULL,NULL,'Anonymous','Anonymous','anonymous@psgdpr.com','$2y$10$tN9DNwRuPXi3hL3g46tW8uNg.zGjk/2eZcMy.gYYHnZ8fvfjpsTuG','2022-10-25 13:37:54','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','defa8848a31ae1df2f7e26cdb31b257e',NULL,'0','0','0','2022-10-25 19:37:54','2022-10-25 19:37:54',NULL,'0000-00-00 00:00:00'),
@@ -8609,7 +8629,9 @@ INSERT INTO `ps_customer` VALUES
 ('13','1','1','1','3','2','0',NULL,NULL,NULL,'rqlkvgjvg','xczf','lnvaokn@wp.pl','$2y$10$tb1.GgJXlQHraiUJfpt7rezvL2JPyNYl3OhKzD9.3gGARyL6zaC2S','2022-12-21 10:02:30','1967-12-28','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','35f3e91844d426bb1bf89f534fa92e37',NULL,'1','0','0','2022-12-21 16:02:30','2022-12-21 16:02:30',NULL,'0000-00-00 00:00:00'),
 ('14','1','1','1','3','2','0',NULL,NULL,NULL,'jpyakntym','wgoejshoh','rlul@wp.pl','$2y$10$MlzF9rV48sKO2UR5HtX.NucHk37hzaji/zdl6nequiaxnF.H4iUqW','2022-12-21 10:38:47','1964-10-13','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','254e79e6f9aa7e2cbcabd38e213ad20d',NULL,'1','0','0','2022-12-21 16:38:47','2022-12-21 16:38:47',NULL,'0000-00-00 00:00:00'),
 ('16','1','1','1','3','2','0',NULL,NULL,NULL,'sfd','dfh','nabepresta@outlook.com','$2y$10$ky37vPif/kh7XuZy1Alu4ulMpZm0mM3yPuQCGzox/DT0WLnJmfDnm','2022-12-21 10:51:12','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','cd704be908f57d6425494ebfc4f40a99',NULL,'1','0','0','2022-12-21 16:51:12','2022-12-21 16:51:12',NULL,'0000-00-00 00:00:00'),
-('17','1','1','2','2','2','0',NULL,NULL,NULL,'xdf','hfdh','jalapka@wp.pl','$2y$10$vm15G13J9P6KC31cGcCvf.BPWIgymx3llfbfJTWl4E14u3i0PsUP6','2023-01-16 12:04:47','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','702fcecf3afaca7fa9b28c118c59ce4f',NULL,'1','1','0','2023-01-16 18:04:47','2023-01-16 18:04:47',NULL,'0000-00-00 00:00:00');
+('18','1','1','1','3','2','0',NULL,NULL,NULL,'sdf','asdf','vvu44060@nezid.com','$2y$10$39oEQMGKEDRZCqEzRlbp5uNqtf6JjqWUs2TxUSonoaV/PePqtGz5O','2023-01-17 11:05:57','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','5c3d91b93c18b14af3fd7ca09b6c56ea',NULL,'1','0','0','2023-01-17 17:05:57','2023-01-17 22:07:46',NULL,'0000-00-00 00:00:00'),
+('19','1','1','1','3','2','0',NULL,NULL,NULL,'asd','dsa','jalapka@wp.pl','$2y$10$whfICPT1kAsUR3XnU3HmIOInS1w.VQUFjdvfFyxdV.LNLtpD3hbBG','2023-01-17 16:11:26','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','cc646d8fa059a303c9a546c669e4e553',NULL,'1','0','0','2023-01-17 22:11:26','2023-01-17 22:11:26',NULL,'0000-00-00 00:00:00'),
+('20','1','1','1','3','2','0',NULL,NULL,NULL,'cyjwgqzt','fwmx','exn@wp.pl','$2y$10$3JGksAB5LupIypGTJ2pLeegXXQ4c8LbcK0IT347AVcbsDQAyER9qa','2023-01-17 16:24:37','2002-12-24','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','2cb1ca8527c13748da58f87063f1e35e',NULL,'1','0','0','2023-01-17 22:24:37','2023-01-17 22:24:37',NULL,'0000-00-00 00:00:00');
 /* Scheme for table ps_customer_group */
 DROP TABLE IF EXISTS `ps_customer_group`;
 CREATE TABLE `ps_customer_group` (
@@ -8618,7 +8640,7 @@ CREATE TABLE `ps_customer_group` (
   PRIMARY KEY (`id_customer`,`id_group`),
   KEY `customer_login` (`id_group`),
   KEY `id_customer` (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer_group` VALUES
 ('1','3'),
@@ -8633,7 +8655,9 @@ INSERT INTO `ps_customer_group` VALUES
 ('13','3'),
 ('14','3'),
 ('16','3'),
-('17','2');
+('18','3'),
+('19','3'),
+('20','3');
 /* Scheme for table ps_customer_message */
 DROP TABLE IF EXISTS `ps_customer_message`;
 CREATE TABLE `ps_customer_message` (
@@ -8651,7 +8675,7 @@ CREATE TABLE `ps_customer_message` (
   PRIMARY KEY (`id_customer_message`),
   KEY `id_customer_thread` (`id_customer_thread`),
   KEY `id_employee` (`id_employee`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer_message` VALUES
 ('1','1','0','wyślijcie szybko!',NULL,NULL,NULL,'2022-12-20 12:13:51','2022-12-20 12:13:51','0','0');
@@ -8660,7 +8684,7 @@ DROP TABLE IF EXISTS `ps_customer_message_sync_imap`;
 CREATE TABLE `ps_customer_message_sync_imap` (
   `md5_header` varbinary(32) NOT NULL,
   KEY `md5_header_index` (`md5_header`(4))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_customer_session */
 DROP TABLE IF EXISTS `ps_customer_session`;
@@ -8669,7 +8693,7 @@ CREATE TABLE `ps_customer_session` (
   `id_customer` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_customer_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer_session` VALUES
 ('4','6','d789c7b91aa3a397e0fe60e75973fbc0329e11bc'),
@@ -8680,7 +8704,10 @@ INSERT INTO `ps_customer_session` VALUES
 ('12','12','2fb905053128c65bbbe6c787ae72395a6b310864'),
 ('13','13','1eea35cf3ba01f7dc3ec145a5c6dad8ce855fa03'),
 ('14','14','f5d1a633aa232f3a9710c54c6a925e8860063cd1'),
-('16','16','5e0a8eb2813227faa60112156f147bfa4b8920f9');
+('16','16','5e0a8eb2813227faa60112156f147bfa4b8920f9'),
+('18','18','08ccb3929353cf7b84c4a6ae8a6c45299fe16c4b'),
+('20','19','af5ce5181fa71050e8e18ba9607afee30ed9b803'),
+('21','20','63fe9d85a33b31a4b00e4076ac331658a7cc4fd6');
 /* Scheme for table ps_customer_thread */
 DROP TABLE IF EXISTS `ps_customer_thread`;
 CREATE TABLE `ps_customer_thread` (
@@ -8703,7 +8730,7 @@ CREATE TABLE `ps_customer_thread` (
   KEY `id_customer` (`id_customer`),
   KEY `id_order` (`id_order`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer_thread` VALUES
 ('1','1','2','0','7','9','0','open','kevin@gmail.com','rWJF2nr7LrmF','2022-12-20 12:13:51','2022-12-20 12:13:51');
@@ -8722,7 +8749,7 @@ CREATE TABLE `ps_customization` (
   PRIMARY KEY (`id_customization`,`id_cart`,`id_product`,`id_address_delivery`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_cart_product` (`id_cart`,`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_customization_field */
 DROP TABLE IF EXISTS `ps_customization_field`;
@@ -8735,7 +8762,7 @@ CREATE TABLE `ps_customization_field` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_customization_field`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_customization_field_lang */
 DROP TABLE IF EXISTS `ps_customization_field_lang`;
@@ -8745,7 +8772,7 @@ CREATE TABLE `ps_customization_field_lang` (
   `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_customization_field`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_customized_data */
 DROP TABLE IF EXISTS `ps_customized_data`;
@@ -8758,7 +8785,7 @@ CREATE TABLE `ps_customized_data` (
   `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `weight` decimal(20,6) NOT NULL DEFAULT 0.000000,
   PRIMARY KEY (`id_customization`,`type`,`index`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_date_range */
 DROP TABLE IF EXISTS `ps_date_range`;
@@ -8767,7 +8794,7 @@ CREATE TABLE `ps_date_range` (
   `time_start` datetime NOT NULL,
   `time_end` datetime NOT NULL,
   PRIMARY KEY (`id_date_range`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_delivery */
 DROP TABLE IF EXISTS `ps_delivery`;
@@ -8785,7 +8812,7 @@ CREATE TABLE `ps_delivery` (
   KEY `id_carrier` (`id_carrier`,`id_zone`),
   KEY `id_range_price` (`id_range_price`),
   KEY `id_range_weight` (`id_range_weight`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_delivery` VALUES
 ('1',NULL,NULL,'2','0','1','1','5.000000'),
@@ -8850,7 +8877,7 @@ CREATE TABLE `ps_emailsubscription` (
   `active` tinyint(1) NOT NULL DEFAULT 0,
   `id_lang` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_employee */
 DROP TABLE IF EXISTS `ps_employee`;
@@ -8888,7 +8915,7 @@ CREATE TABLE `ps_employee` (
   KEY `employee_login` (`email`,`passwd`),
   KEY `id_employee_passwd` (`id_employee`,`passwd`),
   KEY `id_profile` (`id_profile`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_employee` VALUES
 ('1','1','1','Elektroniczny','Biznes','nabepresta@outlook.com','$2y$10$R586ch5gze8lbgoi4hLU6uH/xY6JxXw/RlO2wBR8znpnP9yjgnMsS','2022-10-25 13:36:58','2022-09-25','2022-10-25','0000-00-00','0000-00-00','1',NULL,NULL,'default','theme.css','1','0','1','1',NULL,'14','1','15','2023-01-17','7d5bb03561a884abc352f9bfe40ba74612e0f91b','2022-11-20 12:05:17','0');
@@ -8899,7 +8926,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_employee_session` VALUES
 ('1','1','19fcf2b5a3d61052e66655720c6299db4389e070'),
@@ -8930,7 +8957,7 @@ INSERT INTO `ps_employee_session` VALUES
 ('32','1','c669418db07bdfe7f09b662d46d35a14a1abd190'),
 ('37','1','2c7e5a02e9c34cf0a4f6b159ea00bf5b19b7e752'),
 ('38','1','5f0ffd8214107e34d33a7639d8e9a2e211f2e4da'),
-('40','1','d7f0bd2b2b72de79d8c59239771dfcb7564514aa');
+('42','1','d7b3e42c949e50bfda2d2e1f3d5ef8867cf525bb');
 /* Scheme for table ps_employee_shop */
 DROP TABLE IF EXISTS `ps_employee_shop`;
 CREATE TABLE `ps_employee_shop` (
@@ -8938,7 +8965,7 @@ CREATE TABLE `ps_employee_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_employee`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_employee_shop` VALUES
 ('1','1');
@@ -8954,7 +8981,7 @@ CREATE TABLE `ps_fb_category_match` (
   `id_shop` int(11) NOT NULL,
   PRIMARY KEY (`id_category`,`id_shop`),
   KEY `id_category` (`id_category`,`google_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_feature */
 DROP TABLE IF EXISTS `ps_feature`;
@@ -8962,7 +8989,7 @@ CREATE TABLE `ps_feature` (
   `id_feature` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_feature`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_feature` VALUES
 ('1','0'),
@@ -8971,12 +8998,12 @@ INSERT INTO `ps_feature` VALUES
 DROP TABLE IF EXISTS `ps_feature_flag`;
 CREATE TABLE `ps_feature_flag` (
   `id_feature_flag` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT 0,
-  `label_wording` varchar(191) NOT NULL DEFAULT '',
-  `label_domain` varchar(255) NOT NULL DEFAULT '',
-  `description_wording` varchar(191) NOT NULL DEFAULT '',
-  `description_domain` varchar(255) NOT NULL DEFAULT '',
+  `label_wording` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `label_domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description_wording` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description_domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id_feature_flag`),
   UNIQUE KEY `UNIQ_91700F175E237E06` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -8991,7 +9018,7 @@ CREATE TABLE `ps_feature_lang` (
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature`,`id_lang`),
   KEY `id_lang` (`id_lang`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_feature_lang` VALUES
 ('1','1','Composition'),
@@ -9007,7 +9034,7 @@ CREATE TABLE `ps_feature_product` (
   PRIMARY KEY (`id_feature`,`id_product`,`id_feature_value`),
   KEY `id_feature_value` (`id_feature_value`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_feature_shop */
 DROP TABLE IF EXISTS `ps_feature_shop`;
@@ -9016,7 +9043,7 @@ CREATE TABLE `ps_feature_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_feature`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_feature_shop` VALUES
 ('1','1'),
@@ -9029,7 +9056,7 @@ CREATE TABLE `ps_feature_value` (
   `custom` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`),
   KEY `feature` (`id_feature`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_feature_value` VALUES
 ('1','1','0'),
@@ -9049,7 +9076,7 @@ CREATE TABLE `ps_feature_value_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `value` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_feature_value_lang` VALUES
 ('1','1','Polyester'),
@@ -9078,7 +9105,7 @@ CREATE TABLE `ps_gender` (
   `id_gender` int(11) NOT NULL AUTO_INCREMENT,
   `type` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_gender`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_gender` VALUES
 ('1','0'),
@@ -9091,7 +9118,7 @@ CREATE TABLE `ps_gender_lang` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id_gender`,`id_lang`),
   KEY `id_gender` (`id_gender`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_gender_lang` VALUES
 ('1','1','Mr.'),
@@ -9108,7 +9135,7 @@ CREATE TABLE `ps_group` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_group` VALUES
 ('1','0.00','0','1','2022-10-25 19:36:50','2022-10-25 19:36:50'),
@@ -9121,7 +9148,7 @@ CREATE TABLE `ps_group_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_group`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_group_lang` VALUES
 ('1','1','Visitor'),
@@ -9139,7 +9166,7 @@ CREATE TABLE `ps_group_reduction` (
   `reduction` decimal(5,4) NOT NULL,
   PRIMARY KEY (`id_group_reduction`),
   UNIQUE KEY `id_group` (`id_group`,`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_group_shop */
 DROP TABLE IF EXISTS `ps_group_shop`;
@@ -9148,7 +9175,7 @@ CREATE TABLE `ps_group_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_group`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_group_shop` VALUES
 ('1','1'),
@@ -9159,7 +9186,7 @@ DROP TABLE IF EXISTS `ps_gsitemap_sitemap`;
 CREATE TABLE `ps_gsitemap_sitemap` (
   `link` varchar(255) DEFAULT NULL,
   `id_shop` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_guest */
 DROP TABLE IF EXISTS `ps_guest`;
@@ -9184,7 +9211,7 @@ CREATE TABLE `ps_guest` (
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_homeslider */
 DROP TABLE IF EXISTS `ps_homeslider`;
@@ -9192,7 +9219,7 @@ CREATE TABLE `ps_homeslider` (
   `id_homeslider_slides` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_homeslider_slides`,`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_homeslider` VALUES
 ('1','1'),
@@ -9205,7 +9232,7 @@ CREATE TABLE `ps_homeslider_slides` (
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_homeslider_slides`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_homeslider_slides` VALUES
 ('1','1','0'),
@@ -9222,7 +9249,7 @@ CREATE TABLE `ps_homeslider_slides_lang` (
   `url` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id_homeslider_slides`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_homeslider_slides_lang` VALUES
 ('1','1','Sample 1','<h3>EXCEPTEUR OCCAECAT</h3>\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit</p>','sample-1','http://www.prestashop.com/?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-EN&utm_content=download','sample-1.jpg'),
@@ -9242,7 +9269,7 @@ CREATE TABLE `ps_hook` (
   `position` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_hook`),
   UNIQUE KEY `hook_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=776 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=776 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_hook` VALUES
 ('1','actionValidateOrder','New orders',NULL,'1','1'),
@@ -10028,7 +10055,7 @@ CREATE TABLE `ps_hook_alias` (
   `name` varchar(191) NOT NULL,
   PRIMARY KEY (`id_hook_alias`),
   UNIQUE KEY `alias` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_hook_alias` VALUES
 ('1','newOrder','actionValidateOrder'),
@@ -10130,7 +10157,7 @@ CREATE TABLE `ps_hook_module` (
   KEY `id_hook` (`id_hook`),
   KEY `id_module` (`id_module`),
   KEY `position` (`id_shop`,`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_hook_module` VALUES
 ('60','1','693','0'),
@@ -10427,7 +10454,7 @@ CREATE TABLE `ps_hook_module_exceptions` (
   PRIMARY KEY (`id_hook_module_exceptions`),
   KEY `id_module` (`id_module`),
   KEY `id_hook` (`id_hook`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_image */
 DROP TABLE IF EXISTS `ps_image`;
@@ -10440,7 +10467,7 @@ CREATE TABLE `ps_image` (
   UNIQUE KEY `id_product_cover` (`id_product`,`cover`),
   UNIQUE KEY `idx_product_image` (`id_image`,`id_product`,`cover`),
   KEY `image_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=1919 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1919 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_image` VALUES
 ('1418','1421','1','1'),
@@ -10954,7 +10981,7 @@ CREATE TABLE `ps_image_lang` (
   `legend` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_image`,`id_lang`),
   KEY `id_image` (`id_image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_image_lang` VALUES
 ('1418','1',NULL),
@@ -11974,7 +12001,7 @@ CREATE TABLE `ps_image_shop` (
   PRIMARY KEY (`id_image`,`id_shop`),
   UNIQUE KEY `id_product` (`id_product`,`id_shop`,`cover`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_image_shop` VALUES
 ('1421','1418','1','1'),
@@ -12494,7 +12521,7 @@ CREATE TABLE `ps_image_type` (
   `stores` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_image_type`),
   KEY `image_type_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_image_type` VALUES
 ('1','cart_default','125','125','1','0','0','0','0'),
@@ -12512,7 +12539,7 @@ CREATE TABLE `ps_import_match` (
   `match` text NOT NULL,
   `skip` int(11) NOT NULL,
   PRIMARY KEY (`id_import_match`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_import_match` VALUES
 ('1','c/n/p/i','category|name|price_tex|image','1');
@@ -12521,7 +12548,7 @@ DROP TABLE IF EXISTS `ps_info`;
 CREATE TABLE `ps_info` (
   `id_info` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_info`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_info` VALUES
 ('1');
@@ -12533,18 +12560,18 @@ CREATE TABLE `ps_info_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id_info`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_info_lang` VALUES
 ('1','1','1','<h2>Custom Text Block</h2>\n<p><strong class=\"dark\">Lorem ipsum dolor sit amet conse ctetu</strong></p>\n<p>Sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>'),
-('1','1','2','<div class=\"AEVS ab-banner ab-noCTABanner __5uyR\"><br class=\"fZ6i KBO5 FCZR __6xS_\" />\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"><span style=\"color:#000000;\"><a href=\"http://localhost:18455/index.php?id_category=48&amp;controller=category\" style=\"color:#000000;\">10% rabatu na wszystkie bluzy!</a> </span>       Czas dostawy to 2-3 dni robocze           15% rabatu na całe zakupy z kodem GET15</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\">  </p>\n<h3 class=\"fZ6i KBO5 FCZR __6xS_\">Potrzebujesz więcej czasu na decyzję? Wydłużamy termin zwrotu produktów do 45 dni!</h3>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\">W sklepach i online</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"></p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\"></p>\n</div>');
+('1','1','2','<div class=\"AEVS ab-banner ab-noCTABanner __5uyR\"><br class=\"fZ6i KBO5 FCZR __6xS_\" />\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"><span style=\"color:#000000;\"><a href=\"https://localhost:18455/index.php?id_category=48&amp;controller=category\" style=\"color:#000000;\">10% rabatu na wszystkie bluzy!</a> </span>       Czas dostawy to 2-3 dni robocze           15% rabatu na całe zakupy z kodem GET15</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\">  </p>\n<h3 class=\"fZ6i KBO5 FCZR __6xS_\">Potrzebujesz więcej czasu na decyzję? Wydłużamy termin zwrotu produktów do 45 dni!</h3>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\">W sklepach i online</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"></p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\"></p>\n</div>');
 /* Scheme for table ps_info_shop */
 DROP TABLE IF EXISTS `ps_info_shop`;
 CREATE TABLE `ps_info_shop` (
   `id_info` int(10) unsigned NOT NULL,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_info`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_info_shop` VALUES
 ('1','1');
@@ -12552,13 +12579,13 @@ INSERT INTO `ps_info_shop` VALUES
 DROP TABLE IF EXISTS `ps_lang`;
 CREATE TABLE `ps_lang` (
   `id_lang` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `iso_code` varchar(2) NOT NULL,
-  `language_code` varchar(5) NOT NULL,
-  `locale` varchar(5) NOT NULL,
-  `date_format_lite` varchar(32) NOT NULL,
-  `date_format_full` varchar(32) NOT NULL,
+  `iso_code` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language_code` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format_lite` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format_full` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_rtl` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_lang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -12593,7 +12620,7 @@ CREATE TABLE `ps_layered_category` (
   PRIMARY KEY (`id_layered_category`),
   KEY `id_category_shop` (`id_category`,`id_shop`,`type`,`id_value`,`position`),
   KEY `id_category` (`id_category`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_category` VALUES
 ('1','1','2',NULL,'category','1','0','0'),
@@ -12665,7 +12692,7 @@ CREATE TABLE `ps_layered_filter` (
   `n_categories` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_layered_filter`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_filter` VALUES
 ('1','My template 2022-10-25','a:14:{s:10:\"categories\";a:5:{i:0;i:2;i:2;i:4;i:3;i:5;i:6;i:8;i:7;i:7;}s:9:\"shop_list\";a:1:{i:1;i:1;}s:31:\"layered_selection_subcategories\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:31:\"layered_selection_weight_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_price_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_4\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}','8','2022-10-25 19:38:40');
@@ -12675,8 +12702,12 @@ CREATE TABLE `ps_layered_filter_block` (
   `hash` char(32) NOT NULL DEFAULT '',
   `data` text DEFAULT NULL,
   PRIMARY KEY (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+INSERT INTO `ps_layered_filter_block` VALUES
+('1a3e5846e482553215414a8d571df79a','a:1:{s:7:\"filters\";a:0:{}}'),
+('1b30c580e31e6e42dd80ef5f117fe62f','a:1:{s:7:\"filters\";a:0:{}}'),
+('ae76b3a9463ba5fda5ca39549aae0250','a:1:{s:7:\"filters\";a:0:{}}');
 /* Scheme for table ps_layered_filter_shop */
 DROP TABLE IF EXISTS `ps_layered_filter_shop`;
 CREATE TABLE `ps_layered_filter_shop` (
@@ -12684,7 +12715,7 @@ CREATE TABLE `ps_layered_filter_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_layered_filter`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_filter_shop` VALUES
 ('1','1');
@@ -12694,7 +12725,7 @@ CREATE TABLE `ps_layered_indexable_attribute_group` (
   `id_attribute_group` int(11) NOT NULL,
   `indexable` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_attribute_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_indexable_attribute_group` VALUES
 ('1','0'),
@@ -12709,7 +12740,7 @@ CREATE TABLE `ps_layered_indexable_attribute_group_lang_value` (
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_attribute_group`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_layered_indexable_attribute_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_attribute_lang_value`;
@@ -12719,7 +12750,7 @@ CREATE TABLE `ps_layered_indexable_attribute_lang_value` (
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_attribute`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_layered_indexable_feature */
 DROP TABLE IF EXISTS `ps_layered_indexable_feature`;
@@ -12727,7 +12758,7 @@ CREATE TABLE `ps_layered_indexable_feature` (
   `id_feature` int(11) NOT NULL,
   `indexable` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_feature`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_indexable_feature` VALUES
 ('1','0'),
@@ -12740,7 +12771,7 @@ CREATE TABLE `ps_layered_indexable_feature_lang_value` (
   `url_name` varchar(128) NOT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_layered_indexable_feature_value_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_feature_value_lang_value`;
@@ -12750,7 +12781,7 @@ CREATE TABLE `ps_layered_indexable_feature_value_lang_value` (
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_layered_price_index */
 DROP TABLE IF EXISTS `ps_layered_price_index`;
@@ -12765,7 +12796,7 @@ CREATE TABLE `ps_layered_price_index` (
   KEY `id_currency` (`id_currency`),
   KEY `price_min` (`price_min`),
   KEY `price_max` (`price_max`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_price_index` VALUES
 ('1','1','1','149.990000','149.990000','14'),
@@ -14362,176 +14393,176 @@ INSERT INTO `ps_layered_price_index` VALUES
 ('1585','1','1','129.002400','129.002400','14'),
 ('1586','1','1','199.001700','199.001700','14'),
 ('1587','1','1','79.002900','79.002900','14'),
-('1588','1','1','129.002400','129.002400','14'),
-('1589','1','1','129.002400','129.002400','14'),
-('1590','1','1','79.002900','79.002900','14'),
-('1591','1','1','149.002200','149.002200','14'),
-('1592','1','1','129.002400','129.002400','14'),
-('1593','1','1','129.002400','129.002400','14'),
-('1594','1','1','139.002300','139.002300','14'),
-('1595','1','1','89.002800','89.002800','14'),
-('1596','1','1','89.002800','89.002800','14'),
-('1597','1','1','79.002900','79.002900','14'),
-('1598','1','1','79.002900','79.002900','14'),
-('1599','1','1','79.002900','79.002900','14'),
-('1600','1','1','129.002400','129.002400','14');
+('1588','1','1','116.102160','129.002400','14'),
+('1589','1','1','116.102160','129.002400','14'),
+('1590','1','1','71.102610','79.002900','14'),
+('1591','1','1','134.101980','149.002200','14'),
+('1592','1','1','116.102160','129.002400','14'),
+('1593','1','1','116.102160','129.002400','14'),
+('1594','1','1','125.102070','139.002300','14'),
+('1595','1','1','80.102520','89.002800','14'),
+('1596','1','1','80.102520','89.002800','14'),
+('1597','1','1','71.102610','79.002900','14'),
+('1598','1','1','71.102610','79.002900','14'),
+('1599','1','1','71.102610','79.002900','14'),
+('1600','1','1','116.102160','129.002400','14');
 INSERT INTO `ps_layered_price_index` VALUES
-('1601','1','1','79.002900','79.002900','14'),
-('1602','1','1','39.003300','39.003300','14'),
-('1603','1','1','129.002400','129.002400','14'),
-('1604','1','1','79.002900','79.002900','14'),
-('1605','1','1','99.002700','99.002700','14'),
-('1606','1','1','79.002900','79.002900','14'),
-('1607','1','1','79.002900','79.002900','14'),
-('1608','1','1','99.002700','99.002700','14'),
-('1609','1','1','79.002900','79.002900','14'),
-('1610','1','1','79.002900','79.002900','14'),
-('1611','1','1','79.002900','79.002900','14'),
-('1612','1','1','79.002900','79.002900','14'),
-('1613','1','1','79.002900','79.002900','14'),
-('1614','1','1','129.002400','129.002400','14'),
-('1615','1','1','39.003300','39.003300','14'),
-('1616','1','1','79.002900','79.002900','14'),
-('1617','1','1','129.002400','129.002400','14'),
-('1618','1','1','129.002400','129.002400','14'),
-('1619','1','1','99.002700','99.002700','14'),
-('1620','1','1','79.002900','79.002900','14'),
-('1621','1','1','129.002400','129.002400','14'),
-('1622','1','1','79.002900','79.002900','14'),
-('1623','1','1','49.003200','49.003200','14'),
-('1624','1','1','79.002900','79.002900','14'),
-('1625','1','1','49.003200','49.003200','14'),
-('1626','1','1','129.002400','129.002400','14'),
-('1627','1','1','129.002400','129.002400','14'),
-('1628','1','1','149.002200','149.002200','14'),
-('1629','1','1','59.003100','59.003100','14'),
-('1630','1','1','129.002400','129.002400','14'),
-('1631','1','1','129.002400','129.002400','14'),
-('1632','1','1','129.002400','129.002400','14'),
-('1633','1','1','79.002900','79.002900','14'),
-('1634','1','1','129.002400','129.002400','14'),
-('1635','1','1','99.002700','99.002700','14'),
-('1636','1','1','79.002900','79.002900','14'),
-('1637','1','1','59.003100','59.003100','14'),
-('1638','1','1','79.002900','79.002900','14'),
-('1639','1','1','149.002200','149.002200','14'),
-('1640','1','1','59.003100','59.003100','14'),
-('1641','1','1','139.002300','139.002300','14'),
-('1642','1','1','129.002400','129.002400','14'),
-('1643','1','1','89.002800','89.002800','14'),
-('1644','1','1','79.002900','79.002900','14'),
-('1645','1','1','129.002400','129.002400','14'),
-('1646','1','1','79.002900','79.002900','14'),
-('1647','1','1','99.002700','99.002700','14'),
-('1648','1','1','59.003100','59.003100','14'),
-('1649','1','1','129.002400','129.002400','14'),
-('1650','1','1','49.003200','49.003200','14'),
-('1651','1','1','59.003100','59.003100','14'),
-('1652','1','1','129.002400','129.002400','14'),
-('1653','1','1','79.002900','79.002900','14'),
-('1654','1','1','59.003100','59.003100','14'),
-('1655','1','1','129.002400','129.002400','14'),
-('1656','1','1','59.003100','59.003100','14'),
-('1657','1','1','59.003100','59.003100','14'),
-('1658','1','1','129.002400','129.002400','14'),
-('1659','1','1','49.003200','49.003200','14'),
-('1660','1','1','99.002700','99.002700','14'),
-('1661','1','1','99.002700','99.002700','14'),
-('1662','1','1','79.002900','79.002900','14'),
-('1663','1','1','39.003300','39.003300','14'),
-('1664','1','1','79.002900','79.002900','14'),
-('1665','1','1','99.002700','99.002700','14'),
-('1666','1','1','129.002400','129.002400','14'),
-('1667','1','1','99.002700','99.002700','14'),
-('1668','1','1','79.002900','79.002900','14'),
-('1669','1','1','79.002900','79.002900','14'),
-('1670','1','1','59.003100','59.003100','14'),
-('1671','1','1','79.002900','79.002900','14'),
-('1672','1','1','129.002400','129.002400','14'),
-('1673','1','1','129.002400','129.002400','14'),
-('1674','1','1','79.002900','79.002900','14'),
-('1675','1','1','79.002900','79.002900','14'),
-('1676','1','1','79.002900','79.002900','14'),
-('1677','1','1','99.002700','99.002700','14'),
-('1678','1','1','99.002700','99.002700','14'),
-('1679','1','1','129.002400','129.002400','14'),
-('1680','1','1','39.003300','39.003300','14'),
-('1681','1','1','89.002800','89.002800','14'),
-('1682','1','1','79.002900','79.002900','14'),
-('1683','1','1','79.002900','79.002900','14'),
-('1684','1','1','129.002400','129.002400','14'),
-('1685','1','1','129.002400','129.002400','14'),
-('1686','1','1','99.002700','99.002700','14'),
-('1687','1','1','129.002400','129.002400','14'),
-('1688','1','1','79.002900','79.002900','14'),
-('1689','1','1','79.002900','79.002900','14'),
-('1690','1','1','129.002400','129.002400','14'),
-('1691','1','1','129.002400','129.002400','14'),
-('1692','1','1','99.002700','99.002700','14'),
-('1693','1','1','59.003100','59.003100','14'),
-('1694','1','1','39.003300','39.003300','14'),
-('1695','1','1','79.002900','79.002900','14'),
-('1696','1','1','59.003100','59.003100','14'),
-('1697','1','1','79.002900','79.002900','14'),
-('1698','1','1','129.002400','129.002400','14'),
-('1699','1','1','49.003200','49.003200','14'),
-('1700','1','1','139.002300','139.002300','14'),
-('1701','1','1','129.002400','129.002400','14'),
-('1702','1','1','129.002400','129.002400','14'),
-('1703','1','1','129.002400','129.002400','14'),
-('1704','1','1','79.002900','79.002900','14'),
-('1705','1','1','129.002400','129.002400','14'),
-('1706','1','1','79.002900','79.002900','14'),
-('1707','1','1','69.003000','69.003000','14'),
-('1708','1','1','79.002900','79.002900','14'),
-('1709','1','1','79.002900','79.002900','14'),
-('1710','1','1','79.002900','79.002900','14'),
-('1711','1','1','79.002900','79.002900','14'),
-('1712','1','1','79.002900','79.002900','14'),
-('1713','1','1','79.002900','79.002900','14'),
-('1714','1','1','59.003100','59.003100','14'),
-('1715','1','1','49.003200','49.003200','14'),
-('1716','1','1','99.002700','99.002700','14'),
-('1717','1','1','129.002400','129.002400','14'),
-('1718','1','1','89.002800','89.002800','14'),
-('1719','1','1','99.002700','99.002700','14'),
-('1720','1','1','129.002400','129.002400','14'),
-('1721','1','1','129.002400','129.002400','14'),
-('1722','1','1','129.002400','129.002400','14'),
-('1723','1','1','149.002200','149.002200','14'),
-('1724','1','1','129.002400','129.002400','14'),
-('1725','1','1','79.002900','79.002900','14'),
-('1726','1','1','99.002700','99.002700','14'),
-('1727','1','1','79.002900','79.002900','14'),
-('1728','1','1','79.002900','79.002900','14'),
-('1729','1','1','99.002700','99.002700','14'),
-('1730','1','1','99.002700','99.002700','14'),
-('1731','1','1','129.002400','129.002400','14'),
-('1732','1','1','59.003100','59.003100','14'),
-('1733','1','1','99.002700','99.002700','14'),
-('1734','1','1','129.002400','129.002400','14'),
-('1735','1','1','99.002700','99.002700','14'),
-('1736','1','1','79.002900','79.002900','14'),
-('1737','1','1','59.003100','59.003100','14'),
-('1738','1','1','99.002700','99.002700','14'),
-('1739','1','1','79.002900','79.002900','14'),
-('1740','1','1','99.002700','99.002700','14'),
-('1741','1','1','129.002400','129.002400','14'),
-('1742','1','1','69.003000','69.003000','14'),
-('1743','1','1','79.002900','79.002900','14'),
-('1744','1','1','59.003100','59.003100','14'),
-('1745','1','1','59.003100','59.003100','14'),
-('1746','1','1','79.002900','79.002900','14'),
-('1747','1','1','99.002700','99.002700','14'),
-('1748','1','1','59.003100','59.003100','14'),
-('1749','1','1','79.002900','79.002900','14'),
-('1750','1','1','79.002900','79.002900','14'),
-('1751','1','1','59.003100','59.003100','14'),
-('1752','1','1','49.003200','49.003200','14'),
-('1753','1','1','79.002900','79.002900','14'),
-('1754','1','1','79.002900','79.002900','14'),
-('1755','1','1','99.002700','99.002700','14'),
-('1756','1','1','299.000700','299.000700','14'),
+('1601','1','1','71.102610','79.002900','14'),
+('1602','1','1','35.102970','39.003300','14'),
+('1603','1','1','116.102160','129.002400','14'),
+('1604','1','1','71.102610','79.002900','14'),
+('1605','1','1','89.102430','99.002700','14'),
+('1606','1','1','71.102610','79.002900','14'),
+('1607','1','1','71.102610','79.002900','14'),
+('1608','1','1','89.102430','99.002700','14'),
+('1609','1','1','71.102610','79.002900','14'),
+('1610','1','1','71.102610','79.002900','14'),
+('1611','1','1','71.102610','79.002900','14'),
+('1612','1','1','71.102610','79.002900','14'),
+('1613','1','1','71.102610','79.002900','14'),
+('1614','1','1','116.102160','129.002400','14'),
+('1615','1','1','35.102970','39.003300','14'),
+('1616','1','1','71.102610','79.002900','14'),
+('1617','1','1','116.102160','129.002400','14'),
+('1618','1','1','116.102160','129.002400','14'),
+('1619','1','1','89.102430','99.002700','14'),
+('1620','1','1','71.102610','79.002900','14'),
+('1621','1','1','116.102160','129.002400','14'),
+('1622','1','1','71.102610','79.002900','14'),
+('1623','1','1','44.102880','49.003200','14'),
+('1624','1','1','71.102610','79.002900','14'),
+('1625','1','1','44.102880','49.003200','14'),
+('1626','1','1','116.102160','129.002400','14'),
+('1627','1','1','116.102160','129.002400','14'),
+('1628','1','1','134.101980','149.002200','14'),
+('1629','1','1','53.102790','59.003100','14'),
+('1630','1','1','116.102160','129.002400','14'),
+('1631','1','1','116.102160','129.002400','14'),
+('1632','1','1','116.102160','129.002400','14'),
+('1633','1','1','71.102610','79.002900','14'),
+('1634','1','1','116.102160','129.002400','14'),
+('1635','1','1','89.102430','99.002700','14'),
+('1636','1','1','71.102610','79.002900','14'),
+('1637','1','1','53.102790','59.003100','14'),
+('1638','1','1','71.102610','79.002900','14'),
+('1639','1','1','134.101980','149.002200','14'),
+('1640','1','1','53.102790','59.003100','14'),
+('1641','1','1','125.102070','139.002300','14'),
+('1642','1','1','116.102160','129.002400','14'),
+('1643','1','1','80.102520','89.002800','14'),
+('1644','1','1','71.102610','79.002900','14'),
+('1645','1','1','116.102160','129.002400','14'),
+('1646','1','1','71.102610','79.002900','14'),
+('1647','1','1','89.102430','99.002700','14'),
+('1648','1','1','53.102790','59.003100','14'),
+('1649','1','1','116.102160','129.002400','14'),
+('1650','1','1','44.102880','49.003200','14'),
+('1651','1','1','53.102790','59.003100','14'),
+('1652','1','1','116.102160','129.002400','14'),
+('1653','1','1','71.102610','79.002900','14'),
+('1654','1','1','53.102790','59.003100','14'),
+('1655','1','1','116.102160','129.002400','14'),
+('1656','1','1','53.102790','59.003100','14'),
+('1657','1','1','53.102790','59.003100','14'),
+('1658','1','1','116.102160','129.002400','14'),
+('1659','1','1','44.102880','49.003200','14'),
+('1660','1','1','89.102430','99.002700','14'),
+('1661','1','1','89.102430','99.002700','14'),
+('1662','1','1','71.102610','79.002900','14'),
+('1663','1','1','35.102970','39.003300','14'),
+('1664','1','1','71.102610','79.002900','14'),
+('1665','1','1','89.102430','99.002700','14'),
+('1666','1','1','116.102160','129.002400','14'),
+('1667','1','1','89.102430','99.002700','14'),
+('1668','1','1','71.102610','79.002900','14'),
+('1669','1','1','71.102610','79.002900','14'),
+('1670','1','1','53.102790','59.003100','14'),
+('1671','1','1','71.102610','79.002900','14'),
+('1672','1','1','116.102160','129.002400','14'),
+('1673','1','1','116.102160','129.002400','14'),
+('1674','1','1','71.102610','79.002900','14'),
+('1675','1','1','71.102610','79.002900','14'),
+('1676','1','1','71.102610','79.002900','14'),
+('1677','1','1','89.102430','99.002700','14'),
+('1678','1','1','89.102430','99.002700','14'),
+('1679','1','1','116.102160','129.002400','14'),
+('1680','1','1','35.102970','39.003300','14'),
+('1681','1','1','80.102520','89.002800','14'),
+('1682','1','1','71.102610','79.002900','14'),
+('1683','1','1','71.102610','79.002900','14'),
+('1684','1','1','116.102160','129.002400','14'),
+('1685','1','1','116.102160','129.002400','14'),
+('1686','1','1','89.102430','99.002700','14'),
+('1687','1','1','116.102160','129.002400','14'),
+('1688','1','1','71.102610','79.002900','14'),
+('1689','1','1','71.102610','79.002900','14'),
+('1690','1','1','116.102160','129.002400','14'),
+('1691','1','1','116.102160','129.002400','14'),
+('1692','1','1','89.102430','99.002700','14'),
+('1693','1','1','53.102790','59.003100','14'),
+('1694','1','1','35.102970','39.003300','14'),
+('1695','1','1','71.102610','79.002900','14'),
+('1696','1','1','53.102790','59.003100','14'),
+('1697','1','1','71.102610','79.002900','14'),
+('1698','1','1','116.102160','129.002400','14'),
+('1699','1','1','44.102880','49.003200','14'),
+('1700','1','1','125.102070','139.002300','14'),
+('1701','1','1','116.102160','129.002400','14'),
+('1702','1','1','116.102160','129.002400','14'),
+('1703','1','1','116.102160','129.002400','14'),
+('1704','1','1','71.102610','79.002900','14'),
+('1705','1','1','116.102160','129.002400','14'),
+('1706','1','1','71.102610','79.002900','14'),
+('1707','1','1','62.102700','69.003000','14'),
+('1708','1','1','71.102610','79.002900','14'),
+('1709','1','1','71.102610','79.002900','14'),
+('1710','1','1','71.102610','79.002900','14'),
+('1711','1','1','71.102610','79.002900','14'),
+('1712','1','1','71.102610','79.002900','14'),
+('1713','1','1','71.102610','79.002900','14'),
+('1714','1','1','53.102790','59.003100','14'),
+('1715','1','1','44.102880','49.003200','14'),
+('1716','1','1','89.102430','99.002700','14'),
+('1717','1','1','116.102160','129.002400','14'),
+('1718','1','1','80.102520','89.002800','14'),
+('1719','1','1','89.102430','99.002700','14'),
+('1720','1','1','116.102160','129.002400','14'),
+('1721','1','1','116.102160','129.002400','14'),
+('1722','1','1','116.102160','129.002400','14'),
+('1723','1','1','134.101980','149.002200','14'),
+('1724','1','1','116.102160','129.002400','14'),
+('1725','1','1','71.102610','79.002900','14'),
+('1726','1','1','89.102430','99.002700','14'),
+('1727','1','1','71.102610','79.002900','14'),
+('1728','1','1','71.102610','79.002900','14'),
+('1729','1','1','89.102430','99.002700','14'),
+('1730','1','1','89.102430','99.002700','14'),
+('1731','1','1','116.102160','129.002400','14'),
+('1732','1','1','53.102790','59.003100','14'),
+('1733','1','1','89.102430','99.002700','14'),
+('1734','1','1','116.102160','129.002400','14'),
+('1735','1','1','89.102430','99.002700','14'),
+('1736','1','1','71.102610','79.002900','14'),
+('1737','1','1','53.102790','59.003100','14'),
+('1738','1','1','89.102430','99.002700','14'),
+('1739','1','1','71.102610','79.002900','14'),
+('1740','1','1','89.102430','99.002700','14'),
+('1741','1','1','116.102160','129.002400','14'),
+('1742','1','1','62.102700','69.003000','14'),
+('1743','1','1','71.102610','79.002900','14'),
+('1744','1','1','53.102790','59.003100','14'),
+('1745','1','1','53.102790','59.003100','14'),
+('1746','1','1','71.102610','79.002900','14'),
+('1747','1','1','89.102430','99.002700','14'),
+('1748','1','1','53.102790','59.003100','14'),
+('1749','1','1','71.102610','79.002900','14'),
+('1750','1','1','71.102610','79.002900','14'),
+('1751','1','1','53.102790','59.003100','14'),
+('1752','1','1','44.102880','49.003200','14'),
+('1753','1','1','71.102610','79.002900','14'),
+('1754','1','1','71.102610','79.002900','14'),
+('1755','1','1','89.102430','99.002700','14'),
+('1756','1','1','269.100630','299.000700','14'),
 ('1757','1','1','279.000900','279.000900','14'),
 ('1758','1','1','229.001400','229.001400','14'),
 ('1759','1','1','279.000900','279.000900','14'),
@@ -14707,7 +14738,7 @@ CREATE TABLE `ps_layered_product_attribute` (
   `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_attribute`,`id_product`,`id_shop`),
   UNIQUE KEY `id_attribute_group` (`id_attribute_group`,`id_attribute`,`id_product`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_layered_product_attribute` VALUES
 ('1','1','1','1'),
@@ -15188,7 +15219,7 @@ CREATE TABLE `ps_link_block` (
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   `content` text DEFAULT NULL,
   PRIMARY KEY (`id_link_block`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_link_block` VALUES
 ('1','41','0','{\"cms\":[false],\"static\":[false],\"product\":[false],\"category\":[false]}'),
@@ -15202,11 +15233,11 @@ CREATE TABLE `ps_link_block_lang` (
   `name` varchar(40) NOT NULL DEFAULT '',
   `custom_content` text DEFAULT NULL,
   PRIMARY KEY (`id_link_block`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_link_block_lang` VALUES
 ('1','1','Products','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"On\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Divided\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Niemowle\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Dziecko\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"h&m home\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"sport\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"}]'),
-('1','2','Kupuj','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost:18456\\/index.php?id_category=10&controller=category&id_lang=2\"}]'),
+('1','2','Kupuj','[{\"title\":\"Ona\",\"url\":\"https:\\/\\/localhost:18455\\/index.php?id_category=10&controller=category&id_lang=2\"}]'),
 ('2','1','Informacje o firmie','[{\"title\":\"Praca w H&M\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"O Grupie H&M\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Nasza odpowiedzialno\\u015b\\u0107\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Dla medi\\u00f3w\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Relacje inwestorskie\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Nadz\\u00f3r w\\u0142a\\u015bcicielski\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"}]'),
 ('2','2','Informacje o firmie',NULL),
 ('4','1','Pomoc',NULL),
@@ -15218,7 +15249,7 @@ CREATE TABLE `ps_link_block_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_link_block`,`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_link_block_shop` VALUES
 ('1','1','0'),
@@ -15232,7 +15263,7 @@ CREATE TABLE `ps_linksmenutop` (
   `new_window` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_linksmenutop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_linksmenutop` VALUES
 ('1','1','0');
@@ -15245,11 +15276,11 @@ CREATE TABLE `ps_linksmenutop_lang` (
   `label` varchar(128) NOT NULL,
   `link` varchar(128) NOT NULL,
   KEY `id_linksmenutop` (`id_linksmenutop`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_linksmenutop_lang` VALUES
-('1','1','1','Ona','http://localhost:18456/index.php?id_category=10&controller=category&id_lang=2'),
-('1','2','1','Ona','http://localhost:18456/index.php?id_category=10&controller=category&id_lang=2');
+('1','1','1','Ona','https://localhost:18455/index.php?id_category=10&controller=category&id_lang=2'),
+('1','2','1','Ona','https://localhost:18455/index.php?id_category=10&controller=category&id_lang=2');
 /* Scheme for table ps_log */
 DROP TABLE IF EXISTS `ps_log`;
 CREATE TABLE `ps_log` (
@@ -15267,8 +15298,21 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `ps_log` VALUES
+('1','1','0','Połączenie z panelem administracyjnym z 172.18.0.1',NULL,'0',NULL,NULL,'2','1','1','2023-01-17 17:06:57','2023-01-17 17:06:57'),
+('2','1','0','Połączenie z panelem administracyjnym z 10.0.0.2',NULL,'0',NULL,NULL,'2','1','1','2023-01-17 21:59:56','2023-01-17 21:59:56'),
+('3','1','0','SpecificPriceRule modification','SpecificPriceRule','1',NULL,NULL,'1','1','1','2023-01-17 22:05:18','2023-01-17 22:05:18'),
+('4','1','0','CartRule modification','CartRule','1','1',NULL,'1','0','1','2023-01-17 22:05:45','2023-01-17 22:05:45'),
+('5','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=PAXP193MB2059.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2023-01-17 22:06:22','2023-01-17 22:06:22'),
+('6','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','35','1',NULL,'2','0','0','2023-01-17 22:06:22','2023-01-17 22:06:22'),
+('7','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=PAXP193MB2059.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2023-01-17 22:08:18','2023-01-17 22:08:18'),
+('8','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','36','1',NULL,'2','0','0','2023-01-17 22:08:18','2023-01-17 22:08:18'),
+('9','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=PAXP193MB2059.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2023-01-17 22:11:27','2023-01-17 22:11:27'),
+('10','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"nabepresta@outlook.com\\\" using 2 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535 5.7.139 Authentication unsuccessful, account locked. Contact your administrator. [BE1P281CA0031.DEUP281.PROD.OUTLOOK.COM]\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 235 but got code \\\"535\\\", with message \\\"535 5.7.3 Authentication unsuccessful [BE1P281CA0031.DEUP281.PROD.OUTLOOK.COM]\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2023-01-17 22:25:02','2023-01-17 22:25:02'),
+('11','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','44','1',NULL,'2','0','0','2023-01-17 22:25:12','2023-01-17 22:25:12'),
+('12','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"nabepresta@outlook.com\\\" using 2 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535 5.7.139 Authentication unsuccessful, account locked. Contact your administrator. [BE1P281CA0067.DEUP281.PROD.OUTLOOK.COM]\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 235 but got code \\\"535\\\", with message \\\"535 5.7.3 Authentication unsuccessful [BE1P281CA0067.DEUP281.PROD.OUTLOOK.COM]\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2023-01-17 22:25:32','2023-01-17 22:25:32');
 /* Scheme for table ps_mail */
 DROP TABLE IF EXISTS `ps_mail`;
 CREATE TABLE `ps_mail` (
@@ -15280,7 +15324,7 @@ CREATE TABLE `ps_mail` (
   `date_add` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_mail`),
   KEY `recipient` (`recipient`(10))
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_mail` VALUES
 ('1','qgyvjm@wp.pl','account','[h&m] Witaj !','2','2022-12-20 17:22:05'),
@@ -15295,7 +15339,8 @@ INSERT INTO `ps_mail` VALUES
 ('10','nabepresta@outlook.com','account','[h&m] Witaj !','2','2022-12-21 16:51:14'),
 ('11','nabepresta@outlook.com','order_conf','[h&m] Potwierdzenie zamówienia','2','2022-12-21 16:51:51'),
 ('12','nabepresta@outlook.com','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-07 12:54:19'),
-('13','jalapka@wp.pl','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-16 18:05:07');
+('13','jalapka@wp.pl','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-16 18:05:07'),
+('14','adf@wasder.pl','account','[h&m] Witaj !','2','2023-01-17 17:06:01');
 /* Scheme for table ps_mailalert_customer_oos */
 DROP TABLE IF EXISTS `ps_mailalert_customer_oos`;
 CREATE TABLE `ps_mailalert_customer_oos` (
@@ -15306,7 +15351,7 @@ CREATE TABLE `ps_mailalert_customer_oos` (
   `id_shop` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_customer`,`customer_email`,`id_product`,`id_product_attribute`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_manufacturer */
 DROP TABLE IF EXISTS `ps_manufacturer`;
@@ -15317,7 +15362,7 @@ CREATE TABLE `ps_manufacturer` (
   `date_upd` datetime NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_manufacturer`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_manufacturer` VALUES
 ('1','Studio Design','2022-10-25 19:38:24','2022-10-25 19:38:24','1'),
@@ -15333,7 +15378,7 @@ CREATE TABLE `ps_manufacturer_lang` (
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_manufacturer`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_manufacturer_lang` VALUES
 ('1','1','<p>Studio Design offers a range of items from ready-to-wear collections to contemporary objects. The brand has been presenting new ideas and trends since its creation in 2012.</p>',NULL,NULL,NULL,NULL),
@@ -15347,7 +15392,7 @@ CREATE TABLE `ps_manufacturer_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_manufacturer`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_manufacturer_shop` VALUES
 ('1','1'),
@@ -15360,7 +15405,7 @@ CREATE TABLE `ps_memcached_servers` (
   `port` int(10) unsigned NOT NULL,
   `weight` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_memcached_server`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_message */
 DROP TABLE IF EXISTS `ps_message`;
@@ -15378,7 +15423,7 @@ CREATE TABLE `ps_message` (
   KEY `id_cart` (`id_cart`),
   KEY `id_customer` (`id_customer`),
   KEY `id_employee` (`id_employee`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_message` VALUES
 ('1','11','7','0','9','wyślijcie szybko!','0','2022-12-20 12:13:07');
@@ -15389,7 +15434,7 @@ CREATE TABLE `ps_message_readed` (
   `id_employee` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_message`,`id_employee`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_meta */
 DROP TABLE IF EXISTS `ps_meta`;
@@ -15399,7 +15444,7 @@ CREATE TABLE `ps_meta` (
   `configurable` tinyint(3) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_meta`),
   UNIQUE KEY `page` (`page`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_meta` VALUES
 ('1','pagenotfound','1'),
@@ -15459,7 +15504,7 @@ CREATE TABLE `ps_meta_lang` (
   PRIMARY KEY (`id_meta`,`id_shop`,`id_lang`),
   KEY `id_shop` (`id_shop`),
   KEY `id_lang` (`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_meta_lang` VALUES
 ('1','1','1','404 error','This page cannot be found',NULL,'page-not-found'),
@@ -15544,7 +15589,7 @@ CREATE TABLE `ps_module` (
   PRIMARY KEY (`id_module`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module` VALUES
 ('1','blockwishlist','1','2.1.0'),
@@ -15619,7 +15664,7 @@ CREATE TABLE `ps_module_access` (
   `id_profile` int(10) unsigned NOT NULL,
   `id_authorization_role` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_profile`,`id_authorization_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_access` VALUES
 ('1','497'),
@@ -15894,7 +15939,7 @@ CREATE TABLE `ps_module_carrier` (
   `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `id_reference` int(11) NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_carrier` VALUES
 ('35','1','1'),
@@ -15920,7 +15965,7 @@ CREATE TABLE `ps_module_country` (
   `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `id_country` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_country` VALUES
 ('14','1','14'),
@@ -16377,7 +16422,7 @@ CREATE TABLE `ps_module_currency` (
   `id_currency` int(11) NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_currency`),
   KEY `id_module` (`id_module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_currency` VALUES
 ('35','1','1'),
@@ -16391,7 +16436,7 @@ CREATE TABLE `ps_module_group` (
   `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_group` VALUES
 ('1','1','1'),
@@ -16609,7 +16654,7 @@ INSERT INTO `ps_module_history` VALUES
 ('6','1','65','2022-11-22 12:06:13','2022-11-22 12:06:13'),
 ('7','1','67','2022-11-22 13:04:58','2022-11-22 13:04:58'),
 ('8','1','21','2022-12-20 12:09:37','2022-12-20 12:09:37'),
-('9','1','11','2023-01-07 12:16:15','2023-01-07 12:16:15');
+('9','1','11','2023-01-07 12:16:15','2023-01-17 22:26:17');
 /* Scheme for table ps_module_preference */
 DROP TABLE IF EXISTS `ps_module_preference`;
 CREATE TABLE `ps_module_preference` (
@@ -16620,7 +16665,7 @@ CREATE TABLE `ps_module_preference` (
   `favorite` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_module_preference`),
   UNIQUE KEY `employee_module` (`id_employee`,`module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_module_shop */
 DROP TABLE IF EXISTS `ps_module_shop`;
@@ -16630,7 +16675,7 @@ CREATE TABLE `ps_module_shop` (
   `enable_device` tinyint(1) NOT NULL DEFAULT 7,
   PRIMARY KEY (`id_module`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_shop` VALUES
 ('2','1','7'),
@@ -16703,7 +16748,7 @@ CREATE TABLE `ps_operating_system` (
   `id_operating_system` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_operating_system`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_operating_system` VALUES
 ('1','Windows XP'),
@@ -16731,7 +16776,7 @@ CREATE TABLE `ps_order_carrier` (
   KEY `id_order` (`id_order`),
   KEY `id_carrier` (`id_carrier`),
   KEY `id_order_invoice` (`id_order_invoice`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_carrier` VALUES
 ('1','1','2','0','0.000000','7.000000','8.400000',NULL,'2022-10-25 19:38:32'),
@@ -16750,7 +16795,10 @@ INSERT INTO `ps_order_carrier` VALUES
 ('14','14','6','0','0.000000','0.000000','0.000000',NULL,'2022-12-21 16:38:53'),
 ('15','15','1','0','0.000000','0.000000','0.000000',NULL,'2022-12-21 16:51:49'),
 ('16','16','13','0','0.000000','1.000000','1.230000',NULL,'2023-01-07 12:54:13'),
-('17','17','1','0','0.000000','0.000000','0.000000',NULL,'2023-01-16 18:05:04');
+('17','17','1','0','0.000000','0.000000','0.000000',NULL,'2023-01-16 18:05:04'),
+('18','18','1','0','0.000000','0.000000','0.000000',NULL,'2023-01-17 22:06:19'),
+('19','19','1','0','0.000000','0.000000','0.000000',NULL,'2023-01-17 22:08:17'),
+('20','20','6','0','0.000000','0.000000','0.000000',NULL,'2023-01-17 22:25:07');
 /* Scheme for table ps_order_cart_rule */
 DROP TABLE IF EXISTS `ps_order_cart_rule`;
 CREATE TABLE `ps_order_cart_rule` (
@@ -16766,7 +16814,7 @@ CREATE TABLE `ps_order_cart_rule` (
   PRIMARY KEY (`id_order_cart_rule`),
   KEY `id_order` (`id_order`),
   KEY `id_cart_rule` (`id_cart_rule`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_cart_rule` VALUES
 ('1','9','1','1','15% przy zakupach powyżej 150 zł','32.395500','32.395500','0','0');
@@ -16828,7 +16876,7 @@ CREATE TABLE `ps_order_detail` (
   KEY `product_attribute_id` (`product_attribute_id`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_order_id_order_detail` (`id_order`,`id_order_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_detail` VALUES
 ('1','1','0','0','1','1','1','0','Hummingbird printed t-shirt - Color : White, Size : S','1','1','0','0','0','23.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_1',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','23.900000','23.900000','23.900000','23.900000','0.000000','0.000000','0.000000','23.900000','0.000000','0.000000','0.000000'),
@@ -16880,7 +16928,11 @@ INSERT INTO `ps_order_detail` VALUES
 ('47','15','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000'),
 ('48','16','0','0','1','1588','381','0','Bluza oversize z kapturem (Rozmiar: XS)','1','1','0','0','0','104.880000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','129.000000','104.880000','129.002400','104.880000','0.000000','0.000000','0.000000','104.880000','0.000000','0.000000','0.000000'),
 ('49','16','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000'),
-('50','17','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000');
+('50','17','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000'),
+('51','18','0','0','1','1588','381','0','Bluza oversize z kapturem (Rozmiar: XS)','1','1','0','0','0','94.392000','10.00','0.000000','0.000000','0.000000','0.00','117.330000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','116.100000','94.390000','116.102160','94.392000','0.000000','0.000000','0.000000','104.880000','0.000000','0.000000','0.000000'),
+('52','19','0','0','1','1432','422','0','V-neck dress (Rozmiar: S)','1','1','0','0','0','80.490000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','99.000000','80.490000','99.002700','80.490000','0.000000','0.000000','0.000000','80.490000','0.000000','0.000000','0.000000'),
+('53','20','0','0','1','1422','388','0','Drawstring-detail bodycon dress (Rozmiar: S)','2','2','0','0','0','186.180000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','458.000000','372.360000','229.001400','186.180000','0.000000','0.000000','0.000000','186.180000','0.000000','0.000000','0.000000'),
+('54','20','0','0','1','1423','393','0','Sukienka bodycon z zakładkami (Rozmiar: M)','3','3','0','0','0','161.790000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','597.010000','485.370000','199.001700','161.790000','0.000000','0.000000','0.000000','161.790000','0.000000','0.000000','0.000000');
 /* Scheme for table ps_order_detail_tax */
 DROP TABLE IF EXISTS `ps_order_detail_tax`;
 CREATE TABLE `ps_order_detail_tax` (
@@ -16890,7 +16942,7 @@ CREATE TABLE `ps_order_detail_tax` (
   `total_amount` decimal(16,6) NOT NULL DEFAULT 0.000000,
   KEY `id_order_detail` (`id_order_detail`),
   KEY `id_tax` (`id_tax`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_detail_tax` VALUES
 ('8','1','6.605600','6.610000'),
@@ -16930,7 +16982,11 @@ INSERT INTO `ps_order_detail_tax` VALUES
 ('47','1','25.992300','25.990000'),
 ('49','1','25.992300','25.990000'),
 ('48','1','24.122400','24.120000'),
-('50','1','25.992300','25.990000');
+('50','1','25.992300','25.990000'),
+('51','1','21.710160','21.710000'),
+('52','1','18.512700','18.510000'),
+('54','1','37.211700','111.640000'),
+('53','1','42.821400','85.640000');
 /* Scheme for table ps_order_history */
 DROP TABLE IF EXISTS `ps_order_history`;
 CREATE TABLE `ps_order_history` (
@@ -16943,7 +16999,7 @@ CREATE TABLE `ps_order_history` (
   KEY `order_history_order` (`id_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_order_state` (`id_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_history` VALUES
 ('1','0','1','1','2022-10-25 19:38:33'),
@@ -16964,7 +17020,10 @@ INSERT INTO `ps_order_history` VALUES
 ('16','0','14','13','2022-12-21 16:38:53'),
 ('17','0','15','13','2022-12-21 16:51:49'),
 ('18','0','16','13','2023-01-07 12:54:14'),
-('19','0','17','13','2023-01-16 18:05:04');
+('19','0','17','13','2023-01-16 18:05:04'),
+('20','0','18','13','2023-01-17 22:06:19'),
+('21','0','19','13','2023-01-17 22:08:17'),
+('22','0','20','13','2023-01-17 22:25:07');
 /* Scheme for table ps_order_invoice */
 DROP TABLE IF EXISTS `ps_order_invoice`;
 CREATE TABLE `ps_order_invoice` (
@@ -16989,7 +17048,7 @@ CREATE TABLE `ps_order_invoice` (
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_invoice`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_invoice` VALUES
 ('1','9','1','0','0000-00-00 00:00:00','32.400000','32.400000','183.570000','183.570000','215.970000','215.970000','0.000000','0.000000','0','0.000000','0.000000','h&amp;m<br />Poland',NULL,'2022-12-20 12:54:54'),
@@ -17003,7 +17062,7 @@ CREATE TABLE `ps_order_invoice_payment` (
   PRIMARY KEY (`id_order_invoice`,`id_order_payment`),
   KEY `order_payment` (`id_order_payment`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_invoice_tax */
 DROP TABLE IF EXISTS `ps_order_invoice_tax`;
@@ -17013,7 +17072,7 @@ CREATE TABLE `ps_order_invoice_tax` (
   `id_tax` int(11) NOT NULL,
   `amount` decimal(10,6) NOT NULL DEFAULT 0.000000,
   KEY `id_tax` (`id_tax`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_invoice_tax` VALUES
 ('1','shipping','1','0.000000'),
@@ -17024,7 +17083,7 @@ CREATE TABLE `ps_order_message` (
   `id_order_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_message`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_message` VALUES
 ('1','2022-10-25 19:38:33');
@@ -17036,7 +17095,7 @@ CREATE TABLE `ps_order_message_lang` (
   `name` varchar(128) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id_order_message`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_message_lang` VALUES
 ('1','1','Delay','Hi,\r\n\r\nUnfortunately, an item on your order is currently out of stock. This may cause a slight delay in delivery.\r\nPlease accept our apologies and rest assured that we are working hard to rectify this.\r\n\r\nBest regards,'),
@@ -17058,7 +17117,7 @@ CREATE TABLE `ps_order_payment` (
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_payment`),
   KEY `order_reference` (`order_reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_return */
 DROP TABLE IF EXISTS `ps_order_return`;
@@ -17073,7 +17132,7 @@ CREATE TABLE `ps_order_return` (
   PRIMARY KEY (`id_order_return`),
   KEY `order_return_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_return_detail */
 DROP TABLE IF EXISTS `ps_order_return_detail`;
@@ -17083,7 +17142,7 @@ CREATE TABLE `ps_order_return_detail` (
   `id_customization` int(10) unsigned NOT NULL DEFAULT 0,
   `product_quantity` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_return`,`id_order_detail`,`id_customization`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_return_state */
 DROP TABLE IF EXISTS `ps_order_return_state`;
@@ -17091,7 +17150,7 @@ CREATE TABLE `ps_order_return_state` (
   `id_order_return_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_order_return_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_return_state` VALUES
 ('1','#4169E1'),
@@ -17106,7 +17165,7 @@ CREATE TABLE `ps_order_return_state_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_order_return_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_return_state_lang` VALUES
 ('1','1','Waiting for confirmation'),
@@ -17140,7 +17199,7 @@ CREATE TABLE `ps_order_slip` (
   PRIMARY KEY (`id_order_slip`),
   KEY `order_slip_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_slip_detail */
 DROP TABLE IF EXISTS `ps_order_slip_detail`;
@@ -17155,7 +17214,7 @@ CREATE TABLE `ps_order_slip_detail` (
   `amount_tax_excl` decimal(20,6) DEFAULT NULL,
   `amount_tax_incl` decimal(20,6) DEFAULT NULL,
   PRIMARY KEY (`id_order_slip`,`id_order_detail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_order_state */
 DROP TABLE IF EXISTS `ps_order_state`;
@@ -17176,7 +17235,7 @@ CREATE TABLE `ps_order_state` (
   `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_state`),
   KEY `module_name` (`module_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_state` VALUES
 ('1','0','1','ps_checkpayment','#34209E','1','0','0','0','0','0','0','0','0'),
@@ -17208,7 +17267,7 @@ CREATE TABLE `ps_order_state_lang` (
   `name` varchar(64) NOT NULL,
   `template` varchar(64) NOT NULL,
   PRIMARY KEY (`id_order_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_state_lang` VALUES
 ('1','1','Awaiting check payment','cheque'),
@@ -17317,7 +17376,7 @@ CREATE TABLE `ps_orders` (
   KEY `current_state` (`current_state`),
   KEY `id_shop` (`id_shop`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_orders` VALUES
 ('1','XKBKNABJK','1','1','2','1','2','1','1','5','5','6','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','61.800000','68.200000','66.800000','0.000000','59.800000','59.800000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-10-25 19:38:32','2022-10-25 19:38:33','Test'),
@@ -17336,7 +17395,10 @@ INSERT INTO `ps_orders` VALUES
 ('14','SKMAIQYYS','1','1','6','2','14','30','1','15','15','13','254e79e6f9aa7e2cbcabd38e213ad20d','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','13437.100000','13437.100000','10924.470000','0.000000','10924.470000','13437.090000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-12-21 16:38:53','2022-12-21 16:38:53',NULL),
 ('15','HNUCQELCC','1','1','1','2','16','32','1','16','16','13','cd704be908f57d6425494ebfc4f40a99','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','139.000000','139.000000','113.010000','0.000000','113.010000','139.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-12-21 16:51:49','2022-12-21 16:51:49',NULL),
 ('16','PEIAYXHXH','1','1','13','2','16','33','1','16','16','13','cd704be908f57d6425494ebfc4f40a99','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','269.230000','269.230000','218.890000','0.000000','217.890000','268.000000','1.230000','1.230000','1.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-07 12:54:13','2023-01-07 12:54:14',NULL),
-('17','YXJTDSHFC','1','1','1','2','17','34','1','17','17','13','702fcecf3afaca7fa9b28c118c59ce4f','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','139.000000','139.000000','113.010000','0.000000','113.010000','139.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-16 18:05:04','2023-01-16 18:05:04',NULL);
+('17','YXJTDSHFC','1','1','1','2','17','34','1','17','17','13','702fcecf3afaca7fa9b28c118c59ce4f','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','139.000000','139.000000','113.010000','0.000000','113.010000','139.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-16 18:05:04','2023-01-16 18:05:04',NULL),
+('18','WKRYBNYAG','1','1','1','2','18','35','1','18','18','13','5c3d91b93c18b14af3fd7ca09b6c56ea','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','116.100000','116.100000','94.390000','0.000000','94.390000','116.100000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-17 22:06:19','2023-01-17 22:06:19',NULL),
+('19','PTROOROLK','1','1','1','2','18','36','1','18','18','13','5c3d91b93c18b14af3fd7ca09b6c56ea','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','99.000000','99.000000','80.490000','0.000000','80.490000','99.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-17 22:08:17','2023-01-17 22:08:17',NULL),
+('20','EGOCKMQXG','1','1','6','2','20','44','1','19','19','13','2cb1ca8527c13748da58f87063f1e35e','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','1055.010000','1055.010000','857.730000','0.000000','857.730000','1055.010000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-17 22:25:07','2023-01-17 22:25:07',NULL);
 /* Scheme for table ps_pack */
 DROP TABLE IF EXISTS `ps_pack`;
 CREATE TABLE `ps_pack` (
@@ -17346,7 +17408,7 @@ CREATE TABLE `ps_pack` (
   `quantity` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_product_pack`,`id_product_item`,`id_product_attribute_item`),
   KEY `product_item` (`id_product_item`,`id_product_attribute_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_page */
 DROP TABLE IF EXISTS `ps_page`;
@@ -17357,7 +17419,7 @@ CREATE TABLE `ps_page` (
   PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_page` VALUES
 ('1','1',NULL),
@@ -17377,7 +17439,7 @@ CREATE TABLE `ps_page_type` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_page_type` VALUES
 ('5','authentication'),
@@ -17395,7 +17457,7 @@ CREATE TABLE `ps_page_viewed` (
   `id_date_range` int(10) unsigned NOT NULL,
   `counter` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_page`,`id_date_range`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_pagenotfound */
 DROP TABLE IF EXISTS `ps_pagenotfound`;
@@ -17408,7 +17470,7 @@ CREATE TABLE `ps_pagenotfound` (
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_pagenotfound`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_capture */
 DROP TABLE IF EXISTS `ps_paypal_capture`;
@@ -17421,7 +17483,7 @@ CREATE TABLE `ps_paypal_capture` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_capture`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_ipn */
 DROP TABLE IF EXISTS `ps_paypal_ipn`;
@@ -17432,7 +17494,7 @@ CREATE TABLE `ps_paypal_ipn` (
   `response` text NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_ipn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_order */
 DROP TABLE IF EXISTS `ps_paypal_order`;
@@ -17454,7 +17516,7 @@ CREATE TABLE `ps_paypal_order` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_processlogger */
 DROP TABLE IF EXISTS `ps_paypal_processlogger`;
@@ -17471,7 +17533,7 @@ CREATE TABLE `ps_paypal_processlogger` (
   `date_add` datetime NOT NULL,
   `date_transaction` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_processlogger`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_vaulting */
 DROP TABLE IF EXISTS `ps_paypal_vaulting`;
@@ -17484,7 +17546,7 @@ CREATE TABLE `ps_paypal_vaulting` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_vaulting`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_paypal_webhook */
 DROP TABLE IF EXISTS `ps_paypal_webhook`;
@@ -17498,7 +17560,7 @@ CREATE TABLE `ps_paypal_webhook` (
   `date_add` datetime NOT NULL,
   `date_completed` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_webhook`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_product */
 DROP TABLE IF EXISTS `ps_product`;
@@ -17567,7 +17629,7 @@ CREATE TABLE `ps_product` (
   KEY `indexed` (`indexed`),
   KEY `date_add` (`date_add`),
   KEY `state` (`state`,`date_upd`)
-) ENGINE=InnoDB AUTO_INCREMENT=1922 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1922 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product` VALUES
 ('1421','0','0','47','1','1','0','0',NULL,NULL,NULL,NULL,'0.000000','0','1',NULL,'0','113.010000','0.000000',NULL,'0.000000','0.000000',NULL,NULL,'','0.000000','0.000000','0.000000','0.000000','2','1','0','0','0','0','1','301-category','0','1','0000-00-00','0','new','1','1','both','0','0','0','385','2022-12-20 23:54:38','2022-12-21 00:51:15','0','3','1','combinations'),
@@ -18079,7 +18141,7 @@ CREATE TABLE `ps_product_attachment` (
   `id_product` int(10) unsigned NOT NULL,
   `id_attachment` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_attachment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_attribute */
 DROP TABLE IF EXISTS `ps_product_attribute`;
@@ -18110,7 +18172,7 @@ CREATE TABLE `ps_product_attribute` (
   KEY `reference` (`reference`),
   KEY `supplier_reference` (`supplier_reference`),
   KEY `id_product_id_product_attribute` (`id_product_attribute`,`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product_attribute` VALUES
 ('339','1599',NULL,NULL,'',NULL,NULL,NULL,NULL,'0.000000','0.000000','0.000000','564','0.000000','0.000000','1','1',NULL,'1','0000-00-00'),
@@ -18250,7 +18312,7 @@ CREATE TABLE `ps_product_attribute_combination` (
   `id_product_attribute` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_attribute`,`id_product_attribute`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product_attribute_combination` VALUES
 ('1','340'),
@@ -18390,7 +18452,7 @@ CREATE TABLE `ps_product_attribute_image` (
   `id_image` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_attribute`,`id_image`),
   KEY `id_image` (`id_image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_attribute_shop */
 DROP TABLE IF EXISTS `ps_product_attribute_shop`;
@@ -18410,7 +18472,7 @@ CREATE TABLE `ps_product_attribute_shop` (
   `available_date` date DEFAULT NULL,
   PRIMARY KEY (`id_product_attribute`,`id_shop`),
   UNIQUE KEY `id_product` (`id_product`,`id_shop`,`default_on`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product_attribute_shop` VALUES
 ('1599','339','1','0.000000','0.000000','0.000000','0.000000','0.000000','1','1',NULL,'1','0000-00-00'),
@@ -18550,7 +18612,7 @@ CREATE TABLE `ps_product_carrier` (
   `id_carrier_reference` int(10) unsigned NOT NULL,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_carrier_reference`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_comment */
 DROP TABLE IF EXISTS `ps_product_comment`;
@@ -18570,11 +18632,13 @@ CREATE TABLE `ps_product_comment` (
   KEY `id_product` (`id_product`),
   KEY `id_customer` (`id_customer`),
   KEY `id_guest` (`id_guest`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_product_comment` VALUES
 ('1','1','4','11','dfg','h',NULL,'3','0','0','2022-11-22 10:55:19'),
-('2','1421','16','50','idealna','najlepsza recenzja',NULL,'5','1','0','2023-01-07 11:01:41');
+('2','1421','16','50','idealna','najlepsza recenzja',NULL,'5','1','0','2023-01-07 11:01:41'),
+('3','1447','18','51','yey','to żyje',NULL,'5','1','0','2023-01-17 16:09:53'),
+('4','1447','18','51','więcej','opinii',NULL,'1','1','0','2023-01-17 20:58:27');
 /* Scheme for table ps_product_comment_criterion */
 DROP TABLE IF EXISTS `ps_product_comment_criterion`;
 CREATE TABLE `ps_product_comment_criterion` (
@@ -18582,7 +18646,7 @@ CREATE TABLE `ps_product_comment_criterion` (
   `id_product_comment_criterion_type` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_product_comment_criterion` VALUES
 ('1','1','1');
@@ -18593,7 +18657,7 @@ CREATE TABLE `ps_product_comment_criterion_category` (
   `id_category` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`,`id_category`),
   KEY `id_category` (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_product_comment_criterion_lang */
 DROP TABLE IF EXISTS `ps_product_comment_criterion_lang`;
@@ -18602,7 +18666,7 @@ CREATE TABLE `ps_product_comment_criterion_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_product_comment_criterion_lang` VALUES
 ('1','1','Quality'),
@@ -18614,7 +18678,7 @@ CREATE TABLE `ps_product_comment_criterion_product` (
   `id_product_comment_criterion` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_product_comment_criterion`),
   KEY `id_product_comment_criterion` (`id_product_comment_criterion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_product_comment_grade */
 DROP TABLE IF EXISTS `ps_product_comment_grade`;
@@ -18624,18 +18688,20 @@ CREATE TABLE `ps_product_comment_grade` (
   `grade` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_product_comment_criterion`),
   KEY `id_product_comment_criterion` (`id_product_comment_criterion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_product_comment_grade` VALUES
 ('1','1','3'),
-('2','1','5');
+('2','1','5'),
+('3','1','5'),
+('4','1','1');
 /* Scheme for table ps_product_comment_report */
 DROP TABLE IF EXISTS `ps_product_comment_report`;
 CREATE TABLE `ps_product_comment_report` (
   `id_product_comment` int(10) unsigned NOT NULL,
   `id_customer` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_product_comment_usefulness */
 DROP TABLE IF EXISTS `ps_product_comment_usefulness`;
@@ -18644,8 +18710,10 @@ CREATE TABLE `ps_product_comment_usefulness` (
   `id_customer` int(10) unsigned NOT NULL,
   `usefulness` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+INSERT INTO `ps_product_comment_usefulness` VALUES
+('3','18','0');
 /* Scheme for table ps_product_country_tax */
 DROP TABLE IF EXISTS `ps_product_country_tax`;
 CREATE TABLE `ps_product_country_tax` (
@@ -18653,7 +18721,7 @@ CREATE TABLE `ps_product_country_tax` (
   `id_country` int(11) NOT NULL,
   `id_tax` int(11) NOT NULL,
   PRIMARY KEY (`id_product`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_download */
 DROP TABLE IF EXISTS `ps_product_download`;
@@ -18669,7 +18737,7 @@ CREATE TABLE `ps_product_download` (
   `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `is_shareable` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_product_download`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_group_reduction_cache */
 DROP TABLE IF EXISTS `ps_product_group_reduction_cache`;
@@ -18678,7 +18746,7 @@ CREATE TABLE `ps_product_group_reduction_cache` (
   `id_group` int(10) unsigned NOT NULL,
   `reduction` decimal(5,4) NOT NULL,
   PRIMARY KEY (`id_product`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_lang */
 DROP TABLE IF EXISTS `ps_product_lang`;
@@ -18700,7 +18768,7 @@ CREATE TABLE `ps_product_lang` (
   PRIMARY KEY (`id_product`,`id_shop`,`id_lang`),
   KEY `id_lang` (`id_lang`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product_lang` VALUES
 ('1421','1','1','Calf-length, fitted dress in woven fabric. V-neck, a cut-out section and drawstring at the front to create a draped effect and long sleeves.',NULL,'krepowana-sukienka-z-marszczeniem',NULL,NULL,NULL,'Krepowana sukienka z marszczeniem',NULL,NULL,NULL,NULL),
@@ -19719,7 +19787,7 @@ CREATE TABLE `ps_product_sale` (
   `date_upd` date DEFAULT NULL,
   PRIMARY KEY (`id_product`),
   KEY `quantity` (`quantity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_shop */
 DROP TABLE IF EXISTS `ps_product_shop`;
@@ -19761,7 +19829,7 @@ CREATE TABLE `ps_product_shop` (
   KEY `id_category_default` (`id_category_default`),
   KEY `date_add` (`date_add`,`active`,`visibility`),
   KEY `indexed` (`indexed`,`active`,`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_product_shop` VALUES
 ('1421','1','47','1','0','0','0.000000','1',NULL,'0','113.010000','0.000000',NULL,'0.000000','0.000000','0','0','0','1','301-category','0','1','0000-00-00','0','new','1','1','both','385','0','2022-12-20 23:54:38','2022-12-21 00:51:15','3'),
@@ -20280,7 +20348,7 @@ CREATE TABLE `ps_product_supplier` (
   PRIMARY KEY (`id_product_supplier`),
   UNIQUE KEY `id_product` (`id_product`,`id_product_attribute`,`id_supplier`),
   KEY `id_supplier` (`id_supplier`,`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_product_tag */
 DROP TABLE IF EXISTS `ps_product_tag`;
@@ -20291,14 +20359,14 @@ CREATE TABLE `ps_product_tag` (
   PRIMARY KEY (`id_product`,`id_tag`),
   KEY `id_tag` (`id_tag`),
   KEY `id_lang` (`id_lang`,`id_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_profile */
 DROP TABLE IF EXISTS `ps_profile`;
 CREATE TABLE `ps_profile` (
   `id_profile` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_profile`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_profile` VALUES
 ('1'),
@@ -20312,7 +20380,7 @@ CREATE TABLE `ps_profile_lang` (
   `id_profile` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id_profile`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_profile_lang` VALUES
 ('1','1','SuperAdmin'),
@@ -20340,7 +20408,7 @@ CREATE TABLE `ps_pscheckout_cart` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_pscheckout_cart`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_pscheckout_funding_source */
 DROP TABLE IF EXISTS `ps_pscheckout_funding_source`;
@@ -20351,7 +20419,7 @@ CREATE TABLE `ps_pscheckout_funding_source` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`name`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_pscheckout_order_matrice */
 DROP TABLE IF EXISTS `ps_pscheckout_order_matrice`;
@@ -20360,7 +20428,7 @@ CREATE TABLE `ps_pscheckout_order_matrice` (
   `id_order_prestashop` int(10) unsigned NOT NULL,
   `id_order_paypal` varchar(20) NOT NULL,
   PRIMARY KEY (`id_order_matrice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_psgdpr_consent */
 DROP TABLE IF EXISTS `ps_psgdpr_consent`;
@@ -20373,7 +20441,7 @@ CREATE TABLE `ps_psgdpr_consent` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_gdpr_consent`,`id_module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_psgdpr_consent_lang */
 DROP TABLE IF EXISTS `ps_psgdpr_consent_lang`;
@@ -20383,7 +20451,7 @@ CREATE TABLE `ps_psgdpr_consent_lang` (
   `message` text DEFAULT NULL,
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_gdpr_consent`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_psgdpr_log */
 DROP TABLE IF EXISTS `ps_psgdpr_log`;
@@ -20399,7 +20467,7 @@ CREATE TABLE `ps_psgdpr_log` (
   PRIMARY KEY (`id_gdpr_log`),
   KEY `id_customer` (`id_customer`),
   KEY `idx_id_customer` (`id_customer`,`id_guest`,`client_name`,`id_module`,`date_add`,`date_upd`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_psgdpr_log` VALUES
 ('1','3','0','a a','0','1','2022-10-26 09:12:14','2022-10-26 09:12:14'),
@@ -20416,7 +20484,10 @@ INSERT INTO `ps_psgdpr_log` VALUES
 ('12','14','0','jpyakntym wgoejshoh','0','1','2022-12-21 16:38:49','2022-12-21 16:38:49'),
 ('13','15','0','sfd hfg','0','1','2022-12-21 16:45:11','2022-12-21 16:45:11'),
 ('14','16','0','sfd dfh','0','1','2022-12-21 16:51:14','2022-12-21 16:51:14'),
-('15','17','0','xdf hfdh','0','1','2023-01-16 18:04:47','2023-01-16 18:04:47');
+('15','17','0','xdf hfdh','0','1','2023-01-16 18:04:47','2023-01-16 18:04:47'),
+('16','18','0','sdf asdf','0','1','2023-01-17 17:06:01','2023-01-17 17:06:01'),
+('17','19','0','asd dsa','0','1','2023-01-17 22:11:27','2023-01-17 22:11:27'),
+('18','20','0','cyjwgqzt fwmx','0','1','2023-01-17 22:25:02','2023-01-17 22:25:02');
 /* Scheme for table ps_psreassurance */
 DROP TABLE IF EXISTS `ps_psreassurance`;
 CREATE TABLE `ps_psreassurance` (
@@ -20431,7 +20502,7 @@ CREATE TABLE `ps_psreassurance` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_psreassurance`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_psreassurance` VALUES
 ('1','/prestashop/modules/blockreassurance/views/img/reassurance/pack2/security.svg',NULL,'1','1','1','0','5','2022-11-22 11:43:04','2022-11-22 11:43:04'),
@@ -20447,7 +20518,7 @@ CREATE TABLE `ps_psreassurance_lang` (
   `description` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id_psreassurance`,`id_shop`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_psreassurance_lang` VALUES
 ('1','1','1','Security policy','(edit with the Customer Reassurance module)',''),
@@ -20463,7 +20534,7 @@ CREATE TABLE `ps_quick_access` (
   `new_window` tinyint(1) NOT NULL DEFAULT 0,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id_quick_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_quick_access` VALUES
 ('1','0','index.php?controller=AdminOrders'),
@@ -20479,7 +20550,7 @@ CREATE TABLE `ps_quick_access_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_quick_access`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_quick_access_lang` VALUES
 ('1','1','Orders'),
@@ -20503,7 +20574,7 @@ CREATE TABLE `ps_range_price` (
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_price`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_range_price` VALUES
 ('1','2','0.000000','10000.000000'),
@@ -20536,7 +20607,7 @@ CREATE TABLE `ps_range_weight` (
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_weight`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_range_weight` VALUES
 ('1','2','0.000000','10000.000000'),
@@ -20566,7 +20637,7 @@ CREATE TABLE `ps_referrer` (
   `click_fee` decimal(5,2) NOT NULL DEFAULT 0.00,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_referrer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_referrer_cache */
 DROP TABLE IF EXISTS `ps_referrer_cache`;
@@ -20574,7 +20645,7 @@ CREATE TABLE `ps_referrer_cache` (
   `id_connections_source` int(10) unsigned NOT NULL,
   `id_referrer` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_connections_source`,`id_referrer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_referrer_shop */
 DROP TABLE IF EXISTS `ps_referrer_shop`;
@@ -20590,7 +20661,7 @@ CREATE TABLE `ps_referrer_shop` (
   `cache_reg_rate` decimal(5,4) DEFAULT NULL,
   `cache_order_rate` decimal(5,4) DEFAULT NULL,
   PRIMARY KEY (`id_referrer`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_request_sql */
 DROP TABLE IF EXISTS `ps_request_sql`;
@@ -20599,7 +20670,7 @@ CREATE TABLE `ps_request_sql` (
   `name` varchar(200) NOT NULL,
   `sql` text NOT NULL,
   PRIMARY KEY (`id_request_sql`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_required_field */
 DROP TABLE IF EXISTS `ps_required_field`;
@@ -20609,7 +20680,7 @@ CREATE TABLE `ps_required_field` (
   `field_name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_required_field`),
   KEY `object_name` (`object_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_risk */
 DROP TABLE IF EXISTS `ps_risk`;
@@ -20618,7 +20689,7 @@ CREATE TABLE `ps_risk` (
   `percent` tinyint(4) NOT NULL,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_risk`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_risk` VALUES
 ('1','0','#32CD32'),
@@ -20633,7 +20704,7 @@ CREATE TABLE `ps_risk_lang` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id_risk`,`id_lang`),
   KEY `id_risk` (`id_risk`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_risk_lang` VALUES
 ('1','1','None'),
@@ -20651,7 +20722,7 @@ CREATE TABLE `ps_search_engine` (
   `server` varchar(64) NOT NULL,
   `getvar` varchar(16) NOT NULL,
   PRIMARY KEY (`id_search_engine`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_search_engine` VALUES
 ('1','google','q'),
@@ -20700,7 +20771,7 @@ CREATE TABLE `ps_search_index` (
   `weight` smallint(5) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_word`,`id_product`),
   KEY `id_product` (`id_product`,`weight`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_search_index` VALUES
 ('612','6737','1'),
@@ -67532,7 +67603,7 @@ CREATE TABLE `ps_search_word` (
   `word` varchar(30) NOT NULL,
   PRIMARY KEY (`id_word`),
   UNIQUE KEY `id_lang` (`id_lang`,`id_shop`,`word`)
-) ENGINE=InnoDB AUTO_INCREMENT=75137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75137 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_search_word` VALUES
 ('66538','1','1','a-line'),
@@ -69618,10 +69689,10 @@ DROP TABLE IF EXISTS `ps_shop`;
 CREATE TABLE `ps_shop` (
   `id_shop` int(11) NOT NULL AUTO_INCREMENT,
   `id_shop_group` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `color` varchar(50) NOT NULL,
+  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_category` int(11) NOT NULL,
-  `theme_name` varchar(255) NOT NULL,
+  `theme_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_shop`),
@@ -69634,8 +69705,8 @@ INSERT INTO `ps_shop` VALUES
 DROP TABLE IF EXISTS `ps_shop_group`;
 CREATE TABLE `ps_shop_group` (
   `id_shop_group` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
-  `color` varchar(50) NOT NULL,
+  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `share_customer` tinyint(1) NOT NULL,
   `share_order` tinyint(1) NOT NULL,
   `share_stock` tinyint(1) NOT NULL,
@@ -69659,7 +69730,7 @@ CREATE TABLE `ps_shop_url` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_shop_url`),
   KEY `IDX_279F19DA274A50A0` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_shop_url` VALUES
 ('1','1','localhost:18456','localhost:18455','/','','1','1');
@@ -69675,7 +69746,7 @@ CREATE TABLE `ps_smarty_cache` (
   KEY `name` (`name`),
   KEY `cache_id` (`cache_id`),
   KEY `modified` (`modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_smarty_last_flush */
 DROP TABLE IF EXISTS `ps_smarty_last_flush`;
@@ -69683,7 +69754,7 @@ CREATE TABLE `ps_smarty_last_flush` (
   `type` enum('compile','template') NOT NULL,
   `last_flush` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_smarty_lazy_cache */
 DROP TABLE IF EXISTS `ps_smarty_lazy_cache`;
@@ -69694,7 +69765,7 @@ CREATE TABLE `ps_smarty_lazy_cache` (
   `filepath` varchar(255) NOT NULL DEFAULT '',
   `last_update` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`template_hash`,`cache_id`,`compile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_specific_price */
 DROP TABLE IF EXISTS `ps_specific_price`;
@@ -69728,178 +69799,178 @@ CREATE TABLE `ps_specific_price` (
   KEY `id_customer` (`id_customer`),
   KEY `from` (`from`),
   KEY `to` (`to`)
-) ENGINE=InnoDB AUTO_INCREMENT=1442 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1611 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_specific_price` VALUES
-('1273','1','0','1588','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1274','1','0','1589','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1275','1','0','1590','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1276','1','0','1591','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1277','1','0','1592','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1278','1','0','1593','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1279','1','0','1594','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1280','1','0','1595','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1281','1','0','1596','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1282','1','0','1597','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1283','1','0','1598','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1284','1','0','1599','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1285','1','0','1600','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1286','1','0','1601','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1287','1','0','1602','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1288','1','0','1603','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1289','1','0','1604','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1290','1','0','1605','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1291','1','0','1606','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1292','1','0','1607','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1293','1','0','1608','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1294','1','0','1609','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1295','1','0','1610','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1296','1','0','1611','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1297','1','0','1612','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1298','1','0','1613','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1299','1','0','1614','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1300','1','0','1615','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1301','1','0','1616','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1302','1','0','1617','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1303','1','0','1618','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1304','1','0','1619','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1305','1','0','1620','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1306','1','0','1621','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1307','1','0','1622','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1308','1','0','1623','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1309','1','0','1624','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1310','1','0','1625','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1311','1','0','1626','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1312','1','0','1627','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1313','1','0','1628','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1314','1','0','1629','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1315','1','0','1630','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1316','1','0','1631','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1317','1','0','1632','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1318','1','0','1633','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1319','1','0','1634','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1320','1','0','1635','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1321','1','0','1636','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1322','1','0','1637','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1323','1','0','1638','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1324','1','0','1639','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1325','1','0','1640','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1326','1','0','1641','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1327','1','0','1642','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1328','1','0','1643','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1329','1','0','1644','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1330','1','0','1645','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1331','1','0','1646','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1332','1','0','1647','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1333','1','0','1648','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1334','1','0','1649','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1335','1','0','1650','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1336','1','0','1651','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1337','1','0','1652','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1338','1','0','1653','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1339','1','0','1654','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1340','1','0','1655','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1341','1','0','1656','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1342','1','0','1657','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1343','1','0','1658','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1344','1','0','1659','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1345','1','0','1660','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1346','1','0','1661','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1347','1','0','1662','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1348','1','0','1663','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1349','1','0','1664','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1350','1','0','1665','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1351','1','0','1666','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1352','1','0','1667','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1353','1','0','1668','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1354','1','0','1669','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1355','1','0','1670','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1356','1','0','1671','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1357','1','0','1672','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1358','1','0','1673','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1359','1','0','1674','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1360','1','0','1675','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1361','1','0','1676','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1362','1','0','1677','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1363','1','0','1678','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1364','1','0','1679','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1365','1','0','1680','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1366','1','0','1681','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1367','1','0','1682','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1368','1','0','1683','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1369','1','0','1684','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1370','1','0','1685','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1371','1','0','1686','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1372','1','0','1687','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1373','1','0','1688','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1374','1','0','1689','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1375','1','0','1690','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1376','1','0','1691','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1377','1','0','1692','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1378','1','0','1693','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1379','1','0','1694','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1380','1','0','1695','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1381','1','0','1696','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1382','1','0','1697','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1383','1','0','1698','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1384','1','0','1699','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1385','1','0','1700','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1386','1','0','1701','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1387','1','0','1702','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1388','1','0','1703','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1389','1','0','1704','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1390','1','0','1705','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1391','1','0','1706','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1392','1','0','1707','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1393','1','0','1708','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1394','1','0','1709','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1395','1','0','1710','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1396','1','0','1711','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1397','1','0','1712','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1398','1','0','1713','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1399','1','0','1714','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1400','1','0','1715','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1401','1','0','1716','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1402','1','0','1717','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1403','1','0','1718','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1404','1','0','1719','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1405','1','0','1720','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1406','1','0','1721','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1407','1','0','1722','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1408','1','0','1723','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1409','1','0','1724','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1410','1','0','1725','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1411','1','0','1726','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1412','1','0','1727','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1413','1','0','1728','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1414','1','0','1729','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1415','1','0','1730','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1416','1','0','1731','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1417','1','0','1732','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1418','1','0','1733','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1419','1','0','1734','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1420','1','0','1735','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1421','1','0','1736','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1422','1','0','1737','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1423','1','0','1738','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1424','1','0','1739','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1425','1','0','1740','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1426','1','0','1741','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1427','1','0','1742','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1428','1','0','1743','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1429','1','0','1744','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1430','1','0','1745','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1431','1','0','1746','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1432','1','0','1747','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1433','1','0','1748','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1434','1','0','1749','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1435','1','0','1750','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1436','1','0','1751','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1437','1','0','1752','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1438','1','0','1753','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1439','1','0','1754','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1440','1','0','1755','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1441','1','0','1756','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00');
+('1442','1','0','1588','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1443','1','0','1589','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1444','1','0','1590','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1445','1','0','1591','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1446','1','0','1592','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1447','1','0','1593','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1448','1','0','1594','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1449','1','0','1595','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1450','1','0','1596','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1451','1','0','1597','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1452','1','0','1598','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1453','1','0','1599','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1454','1','0','1600','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1455','1','0','1601','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1456','1','0','1602','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1457','1','0','1603','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1458','1','0','1604','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1459','1','0','1605','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1460','1','0','1606','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1461','1','0','1607','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1462','1','0','1608','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1463','1','0','1609','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1464','1','0','1610','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1465','1','0','1611','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1466','1','0','1612','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1467','1','0','1613','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1468','1','0','1614','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1469','1','0','1615','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1470','1','0','1616','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1471','1','0','1617','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1472','1','0','1618','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1473','1','0','1619','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1474','1','0','1620','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1475','1','0','1621','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1476','1','0','1622','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1477','1','0','1623','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1478','1','0','1624','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1479','1','0','1625','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1480','1','0','1626','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1481','1','0','1627','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1482','1','0','1628','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1483','1','0','1629','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1484','1','0','1630','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1485','1','0','1631','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1486','1','0','1632','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1487','1','0','1633','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1488','1','0','1634','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1489','1','0','1635','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1490','1','0','1636','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1491','1','0','1637','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1492','1','0','1638','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1493','1','0','1639','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1494','1','0','1640','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1495','1','0','1641','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1496','1','0','1642','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1497','1','0','1643','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1498','1','0','1644','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1499','1','0','1645','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1500','1','0','1646','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1501','1','0','1647','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1502','1','0','1648','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1503','1','0','1649','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1504','1','0','1650','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1505','1','0','1651','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1506','1','0','1652','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1507','1','0','1653','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1508','1','0','1654','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1509','1','0','1655','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1510','1','0','1656','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1511','1','0','1657','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1512','1','0','1658','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1513','1','0','1659','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1514','1','0','1660','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1515','1','0','1661','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1516','1','0','1662','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1517','1','0','1663','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1518','1','0','1664','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1519','1','0','1665','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1520','1','0','1666','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1521','1','0','1667','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1522','1','0','1668','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1523','1','0','1669','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1524','1','0','1670','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1525','1','0','1671','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1526','1','0','1672','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1527','1','0','1673','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1528','1','0','1674','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1529','1','0','1675','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1530','1','0','1676','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1531','1','0','1677','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1532','1','0','1678','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1533','1','0','1679','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1534','1','0','1680','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1535','1','0','1681','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1536','1','0','1682','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1537','1','0','1683','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1538','1','0','1684','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1539','1','0','1685','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1540','1','0','1686','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1541','1','0','1687','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1542','1','0','1688','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1543','1','0','1689','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1544','1','0','1690','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1545','1','0','1691','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1546','1','0','1692','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1547','1','0','1693','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1548','1','0','1694','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1549','1','0','1695','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1550','1','0','1696','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1551','1','0','1697','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1552','1','0','1698','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1553','1','0','1699','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1554','1','0','1700','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1555','1','0','1701','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1556','1','0','1702','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1557','1','0','1703','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1558','1','0','1704','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1559','1','0','1705','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1560','1','0','1706','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1561','1','0','1707','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1562','1','0','1708','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1563','1','0','1709','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1564','1','0','1710','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1565','1','0','1711','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1566','1','0','1712','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1567','1','0','1713','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1568','1','0','1714','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1569','1','0','1715','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1570','1','0','1716','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1571','1','0','1717','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1572','1','0','1718','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1573','1','0','1719','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1574','1','0','1720','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1575','1','0','1721','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1576','1','0','1722','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1577','1','0','1723','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1578','1','0','1724','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1579','1','0','1725','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1580','1','0','1726','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1581','1','0','1727','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1582','1','0','1728','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1583','1','0','1729','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1584','1','0','1730','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1585','1','0','1731','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1586','1','0','1732','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1587','1','0','1733','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1588','1','0','1734','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1589','1','0','1735','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1590','1','0','1736','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1591','1','0','1737','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1592','1','0','1738','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1593','1','0','1739','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1594','1','0','1740','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1595','1','0','1741','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1596','1','0','1742','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1597','1','0','1743','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1598','1','0','1744','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1599','1','0','1745','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1600','1','0','1746','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1601','1','0','1747','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1602','1','0','1748','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1603','1','0','1749','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1604','1','0','1750','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1605','1','0','1751','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1606','1','0','1752','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1607','1','0','1753','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1608','1','0','1754','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1609','1','0','1755','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00'),
+('1610','1','0','1756','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00');
 /* Scheme for table ps_specific_price_priority */
 DROP TABLE IF EXISTS `ps_specific_price_priority`;
 CREATE TABLE `ps_specific_price_priority` (
@@ -69908,7 +69979,7 @@ CREATE TABLE `ps_specific_price_priority` (
   `priority` varchar(80) NOT NULL,
   PRIMARY KEY (`id_specific_price_priority`,`id_product`),
   UNIQUE KEY `id_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=1436 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1436 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_specific_price_priority` VALUES
 ('1','1','id_shop;id_currency;id_country;id_group'),
@@ -70973,10 +71044,10 @@ CREATE TABLE `ps_specific_price_rule` (
   `to` datetime NOT NULL,
   PRIMARY KEY (`id_specific_price_rule`),
   KEY `id_product` (`id_shop`,`id_currency`,`id_country`,`id_group`,`from_quantity`,`from`,`to`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_specific_price_rule` VALUES
-('1','10% rabatu na wszystkie bluzy','1','0','0','0','1','-1.000000','10.000000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00');
+('1','10% rabatu na wszystkie bluzy','1','0','0','0','1','-1.000000','10.000000','1','percentage','2022-12-06 00:00:00','2023-01-29 00:00:00');
 /* Scheme for table ps_specific_price_rule_condition */
 DROP TABLE IF EXISTS `ps_specific_price_rule_condition`;
 CREATE TABLE `ps_specific_price_rule_condition` (
@@ -70986,20 +71057,20 @@ CREATE TABLE `ps_specific_price_rule_condition` (
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id_specific_price_rule_condition`),
   KEY `id_specific_price_rule_condition_group` (`id_specific_price_rule_condition_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_specific_price_rule_condition` VALUES
-('4','4','category','48');
+('5','5','category','48');
 /* Scheme for table ps_specific_price_rule_condition_group */
 DROP TABLE IF EXISTS `ps_specific_price_rule_condition_group`;
 CREATE TABLE `ps_specific_price_rule_condition_group` (
   `id_specific_price_rule_condition_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_specific_price_rule` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_specific_price_rule_condition_group`,`id_specific_price_rule`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_specific_price_rule_condition_group` VALUES
-('4','1');
+('5','1');
 /* Scheme for table ps_state */
 DROP TABLE IF EXISTS `ps_state`;
 CREATE TABLE `ps_state` (
@@ -71014,7 +71085,7 @@ CREATE TABLE `ps_state` (
   KEY `id_country` (`id_country`),
   KEY `name` (`name`),
   KEY `id_zone` (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_state` VALUES
 ('1','21','2','AA','AA','0','1'),
@@ -71380,7 +71451,7 @@ CREATE TABLE `ps_statssearch` (
   `results` int(11) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_statssearch`)
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_stock */
 DROP TABLE IF EXISTS `ps_stock`;
@@ -71401,7 +71472,7 @@ CREATE TABLE `ps_stock` (
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_product` (`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_stock_available */
 DROP TABLE IF EXISTS `ps_stock_available`;
@@ -71423,7 +71494,7 @@ CREATE TABLE `ps_stock_available` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_product` (`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB AUTO_INCREMENT=2464 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2464 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_stock_available` VALUES
 ('632','1','0','1','0','0','2','2','0','0',''),
@@ -71501,8 +71572,8 @@ INSERT INTO `ps_stock_available` VALUES
 ('1631','862','0','1','0','0','0','0','0','0',''),
 ('1632','863','0','1','0','0','0','0','0','0',''),
 ('1833','1421','0','1','0','366','366','0','0','2',''),
-('1834','1422','0','1','0','1257','1257','0','0','2',''),
-('1835','1423','0','1','0','1592','1592','0','0','2',''),
+('1834','1422','0','1','0','1255','1255','0','0','2',''),
+('1835','1423','0','1','0','1589','1589','0','0','2',''),
 ('1836','1424','0','1','0','112','112','0','0','2',''),
 ('1837','1425','0','1','0','1225','1225','0','0','2',''),
 ('1838','1426','0','1','0','96','0','0','0','2',''),
@@ -71511,7 +71582,7 @@ INSERT INTO `ps_stock_available` VALUES
 ('1841','1429','0','1','0','380','0','0','0','2',''),
 ('1842','1430','0','1','0','201','0','0','0','2',''),
 ('1843','1431','0','1','0','1772','0','0','0','2',''),
-('1844','1432','0','1','0','369','0','0','0','2',''),
+('1844','1432','0','1','0','368','368','0','0','2',''),
 ('1845','1433','0','1','0','64','0','0','0','2',''),
 ('1846','1434','0','1','0','18','0','0','0','2',''),
 ('1847','1435','0','1','0','56','0','0','0','2',''),
@@ -71668,7 +71739,7 @@ INSERT INTO `ps_stock_available` VALUES
 ('1997','1585','0','1','0','18','0','0','0','2',''),
 ('1998','1586','0','1','0','65','0','0','0','2',''),
 ('1999','1587','0','1','0','65','0','0','0','2',''),
-('2000','1588','0','1','0','135','135','0','0','2',''),
+('2000','1588','0','1','0','134','134','0','0','2',''),
 ('2001','1589','0','1','0','2601','0','0','0','2',''),
 ('2002','1590','0','1','0','380','0','0','0','2',''),
 ('2003','1591','0','1','0','156','0','0','0','2',''),
@@ -72046,19 +72117,19 @@ INSERT INTO `ps_stock_available` VALUES
 ('2373','1589','378','1','0','867','0','0','0','2',''),
 ('2374','1589','379','1','0','867','0','0','0','2',''),
 ('2375','1589','380','1','0','867','0','0','0','2',''),
-('2376','1588','381','1','0','33','34','1','0','2',''),
+('2376','1588','381','1','0','32','34','2','0','2',''),
 ('2377','1588','382','1','0','34','34','0','0','2',''),
 ('2378','1588','383','1','0','34','34','0','0','2',''),
 ('2379','1588','384','1','0','34','34','0','0','2',''),
 ('2380','1421','385','1','0','120','123','3','0','2',''),
 ('2381','1421','386','1','0','123','123','0','0','2',''),
 ('2382','1421','387','1','0','123','123','0','0','2',''),
-('2383','1422','388','1','0','415','421','6','0','2',''),
+('2383','1422','388','1','0','413','421','8','0','2',''),
 ('2384','1422','389','1','0','421','421','0','0','2',''),
 ('2385','1422','390','1','0','421','421','0','0','2',''),
 ('2386','1423','391','1','0','534','534','0','0','2',''),
 ('2387','1423','392','1','0','534','534','0','0','2',''),
-('2388','1423','393','1','0','524','534','10','0','2',''),
+('2388','1423','393','1','0','521','534','13','0','2',''),
 ('2389','1424','394','1','0','32','32','0','0','2',''),
 ('2390','1424','395','1','0','32','32','0','0','2',''),
 ('2391','1424','396','1','0','32','32','0','0','2',''),
@@ -72087,9 +72158,9 @@ INSERT INTO `ps_stock_available` VALUES
 ('2414','1431','419','1','0','443','0','0','0','2',''),
 ('2415','1431','420','1','0','443','0','0','0','2',''),
 ('2416','1431','421','1','0','443','0','0','0','2',''),
-('2417','1432','422','1','0','123','0','0','0','2',''),
-('2418','1432','423','1','0','123','0','0','0','2',''),
-('2419','1432','424','1','0','123','0','0','0','2',''),
+('2417','1432','422','1','0','122','123','1','0','2',''),
+('2418','1432','423','1','0','123','123','0','0','2',''),
+('2419','1432','424','1','0','123','123','0','0','2',''),
 ('2420','1768','425','1','0','23','0','0','0','2',''),
 ('2421','1768','426','1','0','23','0','0','0','2',''),
 ('2422','1768','427','1','0','23','0','0','0','2',''),
@@ -72143,8 +72214,8 @@ CREATE TABLE `ps_stock_mvt` (
   `id_supply_order` int(11) DEFAULT NULL,
   `id_stock_mvt_reason` int(11) NOT NULL,
   `id_employee` int(11) NOT NULL,
-  `employee_lastname` varchar(32) DEFAULT NULL,
-  `employee_firstname` varchar(32) DEFAULT NULL,
+  `employee_lastname` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_firstname` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `physical_quantity` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `sign` smallint(6) NOT NULL DEFAULT 1,
@@ -73143,7 +73214,7 @@ CREATE TABLE `ps_stock_mvt_reason` (
   `date_upd` datetime NOT NULL,
   `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_stock_mvt_reason`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_stock_mvt_reason` VALUES
 ('1','1','2022-10-25 19:36:53','2022-10-25 19:36:53','0'),
@@ -73163,9 +73234,9 @@ DROP TABLE IF EXISTS `ps_stock_mvt_reason_lang`;
 CREATE TABLE `ps_stock_mvt_reason_lang` (
   `id_stock_mvt_reason` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 NOT NULL,
   PRIMARY KEY (`id_stock_mvt_reason`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_stock_mvt_reason_lang` VALUES
 ('1','1','Increase'),
@@ -73209,7 +73280,7 @@ CREATE TABLE `ps_store` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_store`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store` VALUES
 ('6','14','0','Gdansk','80-806','54.34948000','18.64322000',NULL,NULL,NULL,'1','2022-12-07 13:25:12','2022-12-20 11:40:58'),
@@ -73225,7 +73296,7 @@ CREATE TABLE `ps_store_lang` (
   `hours` text DEFAULT NULL,
   `note` text DEFAULT NULL,
   PRIMARY KEY (`id_store`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store_lang` VALUES
 ('6','1','FORUM GDANSK','ul. Targ Sienny 7',NULL,'[[\"\"],[\"\"],[\"\"],[\"\"],[\"\"],[\"\"],[\"\"]]',NULL),
@@ -73239,7 +73310,7 @@ CREATE TABLE `ps_store_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_store`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store_shop` VALUES
 ('6','1'),
@@ -73253,7 +73324,7 @@ CREATE TABLE `ps_supplier` (
   `date_upd` datetime NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_supplier`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_supplier` VALUES
 ('1','Fashion supplier','2022-10-25 19:38:24','2022-10-25 19:38:24','1'),
@@ -73268,7 +73339,7 @@ CREATE TABLE `ps_supplier_lang` (
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_supplier`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_supplier_lang` VALUES
 ('1','1',NULL,NULL,NULL,NULL),
@@ -73282,7 +73353,7 @@ CREATE TABLE `ps_supplier_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_supplier`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_supplier_shop` VALUES
 ('1','1'),
@@ -73313,7 +73384,7 @@ CREATE TABLE `ps_supply_order` (
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `reference` (`reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_supply_order_detail */
 DROP TABLE IF EXISTS `ps_supply_order_detail`;
@@ -73347,7 +73418,7 @@ CREATE TABLE `ps_supply_order_detail` (
   KEY `id_supply_order` (`id_supply_order`,`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_product_product_attribute` (`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_supply_order_history */
 DROP TABLE IF EXISTS `ps_supply_order_history`;
@@ -73363,7 +73434,7 @@ CREATE TABLE `ps_supply_order_history` (
   KEY `id_supply_order` (`id_supply_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_state` (`id_state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_supply_order_receipt_history */
 DROP TABLE IF EXISTS `ps_supply_order_receipt_history`;
@@ -73379,7 +73450,7 @@ CREATE TABLE `ps_supply_order_receipt_history` (
   PRIMARY KEY (`id_supply_order_receipt_history`),
   KEY `id_supply_order_detail` (`id_supply_order_detail`),
   KEY `id_supply_order_state` (`id_supply_order_state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_supply_order_state */
 DROP TABLE IF EXISTS `ps_supply_order_state`;
@@ -73392,7 +73463,7 @@ CREATE TABLE `ps_supply_order_state` (
   `enclosed` tinyint(1) NOT NULL DEFAULT 0,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_supply_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_supply_order_state` VALUES
 ('1','0','1','0','0','0','#faab00'),
@@ -73408,7 +73479,7 @@ CREATE TABLE `ps_supply_order_state_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_supply_order_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_supply_order_state_lang` VALUES
 ('1','1','1 - Creation in progress'),
@@ -73429,15 +73500,15 @@ CREATE TABLE `ps_tab` (
   `id_tab` int(11) NOT NULL AUTO_INCREMENT,
   `id_parent` int(11) NOT NULL,
   `position` int(11) NOT NULL,
-  `module` varchar(64) DEFAULT NULL,
-  `class_name` varchar(64) NOT NULL,
-  `route_name` varchar(256) DEFAULT NULL,
+  `module` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `hide_host_mode` tinyint(1) NOT NULL,
-  `icon` varchar(32) DEFAULT NULL,
-  `wording` varchar(255) DEFAULT NULL,
-  `wording_domain` varchar(255) DEFAULT NULL,
+  `icon` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wording` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wording_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_tab`)
 ) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -73609,14 +73680,14 @@ CREATE TABLE `ps_tab_advice` (
   `id_tab` int(11) NOT NULL,
   `id_advice` int(11) NOT NULL,
   PRIMARY KEY (`id_tab`,`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_tab_lang */
 DROP TABLE IF EXISTS `ps_tab_lang`;
 CREATE TABLE `ps_tab_lang` (
   `id_tab` int(11) NOT NULL,
   `id_lang` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_tab`,`id_lang`),
   KEY `IDX_CFD9262DED47AB56` (`id_tab`),
   KEY `IDX_CFD9262DBA299860` (`id_lang`)
@@ -73947,7 +74018,7 @@ CREATE TABLE `ps_tab_module_preference` (
   `module` varchar(191) NOT NULL,
   PRIMARY KEY (`id_tab_module_preference`),
   UNIQUE KEY `employee_module` (`id_employee`,`id_tab`,`module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_tag */
 DROP TABLE IF EXISTS `ps_tag`;
@@ -73958,7 +74029,7 @@ CREATE TABLE `ps_tag` (
   PRIMARY KEY (`id_tag`),
   KEY `tag_name` (`name`),
   KEY `id_lang` (`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_tag_count */
 DROP TABLE IF EXISTS `ps_tag_count`;
@@ -73970,7 +74041,7 @@ CREATE TABLE `ps_tag_count` (
   `counter` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_group`,`id_tag`),
   KEY `id_group` (`id_group`,`id_lang`,`id_shop`,`counter`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_tax */
 DROP TABLE IF EXISTS `ps_tax`;
@@ -73980,7 +74051,7 @@ CREATE TABLE `ps_tax` (
   `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_tax`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_tax` VALUES
 ('1','23.000','1','0'),
@@ -74021,7 +74092,7 @@ CREATE TABLE `ps_tax_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_tax`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_tax_lang` VALUES
 ('1','1','PTU PL 23%'),
@@ -74102,7 +74173,7 @@ CREATE TABLE `ps_tax_rule` (
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_tax` (`id_tax`),
   KEY `category_getproducts` (`id_tax_rules_group`,`id_country`,`id_state`,`zipcode_from`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_tax_rule` VALUES
 ('1','1','3','0','0','0','1','0',''),
@@ -74253,7 +74324,7 @@ CREATE TABLE `ps_tax_rules_group` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_tax_rules_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_tax_rules_group` VALUES
 ('1','PL Standard Rate (23%)','1','0','2022-10-25 19:36:56','2022-10-25 19:36:56'),
@@ -74268,7 +74339,7 @@ CREATE TABLE `ps_tax_rules_group_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_tax_rules_group`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_tax_rules_group_shop` VALUES
 ('1','1'),
@@ -74282,7 +74353,7 @@ CREATE TABLE `ps_timezone` (
   `id_timezone` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_timezone`)
-) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_timezone` VALUES
 ('1','Africa/Abidjan'),
@@ -74853,9 +74924,9 @@ CREATE TABLE `ps_translation` (
   `id_translation` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
   `key` text CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
-  `translation` text NOT NULL,
-  `domain` varchar(80) NOT NULL,
-  `theme` varchar(32) DEFAULT NULL,
+  `translation` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_translation`),
   KEY `IDX_ADEBEB36BA299860` (`id_lang`),
   KEY `key` (`domain`)
@@ -74878,7 +74949,7 @@ CREATE TABLE `ps_warehouse` (
   `management_type` enum('WA','FIFO','LIFO') NOT NULL DEFAULT 'WA',
   `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_warehouse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_warehouse_carrier */
 DROP TABLE IF EXISTS `ps_warehouse_carrier`;
@@ -74888,7 +74959,7 @@ CREATE TABLE `ps_warehouse_carrier` (
   PRIMARY KEY (`id_warehouse`,`id_carrier`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_carrier` (`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_warehouse_product_location */
 DROP TABLE IF EXISTS `ps_warehouse_product_location`;
@@ -74900,7 +74971,7 @@ CREATE TABLE `ps_warehouse_product_location` (
   `location` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_warehouse_product_location`),
   UNIQUE KEY `id_product` (`id_product`,`id_product_attribute`,`id_warehouse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_warehouse_shop */
 DROP TABLE IF EXISTS `ps_warehouse_shop`;
@@ -74910,7 +74981,7 @@ CREATE TABLE `ps_warehouse_shop` (
   PRIMARY KEY (`id_warehouse`,`id_shop`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_web_browser */
 DROP TABLE IF EXISTS `ps_web_browser`;
@@ -74918,7 +74989,7 @@ CREATE TABLE `ps_web_browser` (
   `id_web_browser` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_web_browser` VALUES
 ('1','Safari'),
@@ -74944,7 +75015,7 @@ CREATE TABLE `ps_webservice_account` (
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_webservice_account`),
   KEY `key` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_webservice_account_shop */
 DROP TABLE IF EXISTS `ps_webservice_account_shop`;
@@ -74953,7 +75024,7 @@ CREATE TABLE `ps_webservice_account_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_webservice_account`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_webservice_permission */
 DROP TABLE IF EXISTS `ps_webservice_permission`;
@@ -74967,7 +75038,7 @@ CREATE TABLE `ps_webservice_permission` (
   KEY `resource` (`resource`),
   KEY `method` (`method`),
   KEY `id_webservice_account` (`id_webservice_account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_wishlist */
 DROP TABLE IF EXISTS `ps_wishlist`;
@@ -74983,7 +75054,7 @@ CREATE TABLE `ps_wishlist` (
   `date_upd` datetime NOT NULL,
   `default` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`id_wishlist`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `ps_wishlist` VALUES
 ('1','4','1','1','AFCDFFB246276228','My wishlist',NULL,'2022-11-22 11:34:10','2022-11-22 11:34:10','1');
@@ -74997,7 +75068,7 @@ CREATE TABLE `ps_wishlist_product` (
   `quantity` int(10) unsigned NOT NULL,
   `priority` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_wishlist_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_wishlist_product_cart */
 DROP TABLE IF EXISTS `ps_wishlist_product_cart`;
@@ -75006,7 +75077,7 @@ CREATE TABLE `ps_wishlist_product_cart` (
   `id_cart` int(10) unsigned NOT NULL,
   `quantity` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 /* Scheme for table ps_zone */
 DROP TABLE IF EXISTS `ps_zone`;
@@ -75015,7 +75086,7 @@ CREATE TABLE `ps_zone` (
   `name` varchar(64) NOT NULL,
   `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_zone` VALUES
 ('1','Europe','1'),
@@ -75033,7 +75104,7 @@ CREATE TABLE `ps_zone_shop` (
   `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_zone`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_zone_shop` VALUES
 ('1','1'),
