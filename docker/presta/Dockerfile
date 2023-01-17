@@ -1,4 +1,4 @@
-FROM alpine:3.5 as intermediate
+FROM php:7.4-alpine as intermediate
 
 RUN apk update
 RUN apk add git
@@ -22,6 +22,13 @@ RUN rm -rf install/
 COPY --from=intermediate /prestashop/ssl/000-default.conf /ssl/000-default.conf
 COPY --from=intermediate /prestashop/ssl.sh .
 
+RUN apt-get update
+RUN apt-get -y install memcached libmemcached-dev zlib1g-dev
+RUN pecl install memcached
+RUN echo extension=memcached.so >> /usr/local/etc/php/php.ini
+RUN /etc/init.d/apache2 restart
+
 EXPOSE 80
 EXPOSE 443
+
 CMD ["bash", "ssl.sh"]

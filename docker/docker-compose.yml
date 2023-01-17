@@ -10,8 +10,8 @@ services:
       - DATABASE_USER=prestashopuser
       - DATABASE_PASSWORD=test
     ports: 
-      - 80:80
-      - 443:443
+      - 18456:80
+      - 18455:443
   db: 
     image: mojamaria
     environment: 

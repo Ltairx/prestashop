@@ -1,6 +1,7 @@
-/* Backup for localhost/prestashop/
- *  at 1673092623
+/* Backup for localhost:18455/
+ *  at 1673913741
  */
+
 USE prestashop;
 SET NAMES 'utf8mb4';
 SET FOREIGN_KEY_CHECKS = 0;
@@ -9,10 +10,10 @@ SET SESSION sql_mode = '';
 /* Scheme for table ps_access */
 DROP TABLE IF EXISTS `ps_access`;
 CREATE TABLE `ps_access` (
-  `id_profile` int unsigned NOT NULL,
-  `id_authorization_role` int unsigned NOT NULL,
+  `id_profile` int(10) unsigned NOT NULL,
+  `id_authorization_role` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_profile`,`id_authorization_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_access` VALUES
 ('1','1'),
@@ -886,21 +887,21 @@ INSERT INTO `ps_access` VALUES
 /* Scheme for table ps_accessory */
 DROP TABLE IF EXISTS `ps_accessory`;
 CREATE TABLE `ps_accessory` (
-  `id_product_1` int unsigned NOT NULL,
-  `id_product_2` int unsigned NOT NULL,
+  `id_product_1` int(10) unsigned NOT NULL,
+  `id_product_2` int(10) unsigned NOT NULL,
   KEY `accessory_product` (`id_product_1`,`id_product_2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_address */
 DROP TABLE IF EXISTS `ps_address`;
 CREATE TABLE `ps_address` (
-  `id_address` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_country` int unsigned NOT NULL,
-  `id_state` int unsigned DEFAULT NULL,
-  `id_customer` int unsigned NOT NULL DEFAULT '0',
-  `id_manufacturer` int unsigned NOT NULL DEFAULT '0',
-  `id_supplier` int unsigned NOT NULL DEFAULT '0',
-  `id_warehouse` int unsigned NOT NULL DEFAULT '0',
+  `id_address` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_state` int(10) unsigned DEFAULT NULL,
+  `id_customer` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_manufacturer` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_supplier` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_warehouse` int(10) unsigned NOT NULL DEFAULT 0,
   `alias` varchar(32) NOT NULL,
   `company` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -909,15 +910,15 @@ CREATE TABLE `ps_address` (
   `address2` varchar(128) DEFAULT NULL,
   `postcode` varchar(12) DEFAULT NULL,
   `city` varchar(64) NOT NULL,
-  `other` text,
+  `other` text DEFAULT NULL,
   `phone` varchar(32) DEFAULT NULL,
   `phone_mobile` varchar(32) DEFAULT NULL,
   `vat_number` varchar(32) DEFAULT NULL,
   `dni` varchar(16) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '1',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_address`),
   KEY `address_customer` (`id_customer`),
   KEY `id_country` (`id_country`),
@@ -925,7 +926,7 @@ CREATE TABLE `ps_address` (
   KEY `id_manufacturer` (`id_manufacturer`),
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_address` VALUES
 ('1','14','0','1','0','0','0','Anonymous','Anonymous','Anonymous','Anonymous','Anonymous',NULL,'00000','Anonymous',NULL,'0000000000','0000000000','0000','0000','2022-10-25 19:37:55','2022-10-25 19:37:55','1','0'),
@@ -943,14 +944,15 @@ INSERT INTO `ps_address` VALUES
 ('13','14','0','9','0','0','0','Mój adres',NULL,'tyzbys','kidgypo','uyb 90',NULL,'80-557','dvjsnj',NULL,NULL,NULL,NULL,NULL,'2022-12-20 21:12:52','2022-12-20 21:12:52','1','0'),
 ('14','14','0','13','0','0','0','Mój adres',NULL,'xczf','rqlkvgjvg','dtv 29',NULL,'80-961','tdgysrt',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:02:33','2022-12-21 16:02:33','1','0'),
 ('15','14','0','14','0','0','0','Mój adres',NULL,'wgoejshoh','jpyakntym','zlw 84',NULL,'80-234','dhe',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:38:50','2022-12-21 16:38:50','1','0'),
-('16','14','0','16','0','0','0','Mój adres',NULL,'dfh','sfd','fgzd',NULL,'12-123','fes',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:51:44','2022-12-21 16:51:44','1','0');
+('16','14','0','16','0','0','0','Mój adres',NULL,'dfh','sfd','fgzd',NULL,'12-123','fes',NULL,NULL,NULL,NULL,NULL,'2022-12-21 16:51:44','2022-12-21 16:51:44','1','0'),
+('17','14','0','17','0','0','0','Mój adres',NULL,'hfdh','xdf','h',NULL,'90-123','fsd',NULL,NULL,NULL,NULL,NULL,'2023-01-16 18:04:59','2023-01-16 18:04:59','1','0');
 /* Scheme for table ps_address_format */
 DROP TABLE IF EXISTS `ps_address_format`;
 CREATE TABLE `ps_address_format` (
-  `id_country` int unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
   `format` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_address_format` VALUES
 ('1','firstname lastname\ncompany\nvat_number\naddress1\naddress2\npostcode city\nCountry:name\nphone'),
@@ -1198,21 +1200,21 @@ INSERT INTO `ps_address_format` VALUES
 /* Scheme for table ps_admin_filter */
 DROP TABLE IF EXISTS `ps_admin_filter`;
 CREATE TABLE `ps_admin_filter` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `employee` int NOT NULL,
-  `shop` int NOT NULL,
-  `controller` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `action` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filter` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filter_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `employee` int(11) NOT NULL,
+  `shop` int(11) NOT NULL,
+  `controller` varchar(60) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `filter` longtext NOT NULL,
+  `filter_id` varchar(191) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_filter_search_id_idx` (`employee`,`shop`,`controller`,`action`,`filter_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ps_admin_filter` VALUES
 ('1','1','1','','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page_category'),
 ('2','1','1','','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page'),
-('3','1','1','','','{\"orderBy\":\"id_category\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":\"2\"}}','category'),
+('3','1','1','','','{\"orderBy\":\"id_category\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":2}}','category'),
 ('4','1','1','','','{\"limit\":10,\"orderBy\":\"name\",\"sortOrder\":\"asc\",\"filters\":[]}','manufacturer'),
 ('5','1','1','','','{\"limit\":10,\"orderBy\":\"id_address\",\"sortOrder\":\"desc\",\"filters\":[]}','manufacturer_address'),
 ('6','1','1','ProductController','catalogAction','{\"filter_category\":\"\",\"filter_column_id_product\":\"\",\"filter_column_name\":\"\",\"filter_column_reference\":\"\",\"filter_column_name_category\":\"\",\"filter_column_price\":\"\",\"filter_column_sav_quantity\":\"\",\"filter_column_active\":\"\",\"last_offset\":\"0\",\"last_limit\":\"100\",\"last_orderBy\":\"id_product\",\"last_sortOrder\":\"asc\"}',''),
@@ -1236,43 +1238,44 @@ INSERT INTO `ps_admin_filter` VALUES
 ('24','1','1','','','{\"limit\":50,\"orderBy\":\"id_zone\",\"sortOrder\":\"asc\",\"filters\":[]}','zone'),
 ('25','1','1','','','{\"limit\":50,\"orderBy\":\"id_address\",\"sortOrder\":\"asc\",\"filters\":[]}','address'),
 ('26','1','1','','','{\"limit\":50,\"orderBy\":\"id_cart_rule\",\"sortOrder\":\"asc\",\"filters\":[]}','customer_discount'),
-('27','1','1','','','{\"limit\":50,\"orderBy\":\"id_address\",\"sortOrder\":\"asc\",\"filters\":[]}','customer_address');
+('27','1','1','','','{\"limit\":50,\"orderBy\":\"id_address\",\"sortOrder\":\"asc\",\"filters\":[]}','customer_address'),
+('28','1','1','','','{\"limit\":10,\"orderBy\":\"id_log\",\"sortOrder\":\"desc\",\"filters\":[]}','logs');
 /* Scheme for table ps_advice */
 DROP TABLE IF EXISTS `ps_advice`;
 CREATE TABLE `ps_advice` (
-  `id_advice` int NOT NULL AUTO_INCREMENT,
-  `id_ps_advice` int NOT NULL,
-  `id_tab` int NOT NULL,
-  `ids_tab` text,
-  `validated` tinyint unsigned NOT NULL DEFAULT '0',
-  `hide` tinyint(1) NOT NULL DEFAULT '0',
+  `id_advice` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ps_advice` int(11) NOT NULL,
+  `id_tab` int(11) NOT NULL,
+  `ids_tab` text DEFAULT NULL,
+  `validated` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `hide` tinyint(1) NOT NULL DEFAULT 0,
   `location` enum('after','before') NOT NULL,
   `selector` varchar(255) DEFAULT NULL,
-  `start_day` int NOT NULL DEFAULT '0',
-  `stop_day` int NOT NULL DEFAULT '0',
-  `weight` int DEFAULT '1',
+  `start_day` int(11) NOT NULL DEFAULT 0,
+  `stop_day` int(11) NOT NULL DEFAULT 0,
+  `weight` int(11) DEFAULT 1,
   PRIMARY KEY (`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_advice_lang */
 DROP TABLE IF EXISTS `ps_advice_lang`;
 CREATE TABLE `ps_advice_lang` (
-  `id_advice` int NOT NULL,
-  `id_lang` int NOT NULL,
-  `html` text,
+  `id_advice` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
+  `html` text DEFAULT NULL,
   PRIMARY KEY (`id_advice`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_alias */
 DROP TABLE IF EXISTS `ps_alias`;
 CREATE TABLE `ps_alias` (
-  `id_alias` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_alias` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `alias` varchar(191) NOT NULL,
   `search` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_alias`),
   UNIQUE KEY `alias` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_alias` VALUES
 ('1','bloose','blouse','1'),
@@ -1280,31 +1283,31 @@ INSERT INTO `ps_alias` VALUES
 /* Scheme for table ps_attachment */
 DROP TABLE IF EXISTS `ps_attachment`;
 CREATE TABLE `ps_attachment` (
-  `id_attachment` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(40) NOT NULL,
   `file_name` varchar(128) NOT NULL,
-  `file_size` bigint unsigned NOT NULL DEFAULT '0',
+  `file_size` bigint(20) unsigned NOT NULL DEFAULT 0,
   `mime` varchar(128) NOT NULL,
   PRIMARY KEY (`id_attachment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_attachment_lang */
 DROP TABLE IF EXISTS `ps_attachment_lang`;
 CREATE TABLE `ps_attachment_lang` (
-  `id_attachment` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_lang` int unsigned NOT NULL,
+  `id_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) DEFAULT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   PRIMARY KEY (`id_attachment`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_attribute */
 DROP TABLE IF EXISTS `ps_attribute`;
 CREATE TABLE `ps_attribute` (
-  `id_attribute` int NOT NULL AUTO_INCREMENT,
-  `id_attribute_group` int NOT NULL,
-  `color` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `position` int NOT NULL,
+  `id_attribute` int(11) NOT NULL AUTO_INCREMENT,
+  `id_attribute_group` int(11) NOT NULL,
+  `color` varchar(32) NOT NULL,
+  `position` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute`),
   KEY `attribute_group` (`id_attribute_group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1318,10 +1321,10 @@ INSERT INTO `ps_attribute` VALUES
 /* Scheme for table ps_attribute_group */
 DROP TABLE IF EXISTS `ps_attribute_group`;
 CREATE TABLE `ps_attribute_group` (
-  `id_attribute_group` int NOT NULL AUTO_INCREMENT,
+  `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT,
   `is_color_group` tinyint(1) NOT NULL,
-  `group_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `position` int NOT NULL,
+  `group_type` varchar(255) NOT NULL,
+  `position` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute_group`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1330,10 +1333,10 @@ INSERT INTO `ps_attribute_group` VALUES
 /* Scheme for table ps_attribute_group_lang */
 DROP TABLE IF EXISTS `ps_attribute_group_lang`;
 CREATE TABLE `ps_attribute_group_lang` (
-  `id_attribute_group` int NOT NULL,
-  `id_lang` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `public_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_attribute_group` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `public_name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_attribute_group`,`id_lang`),
   KEY `IDX_4653726C67A664FB` (`id_attribute_group`),
   KEY `IDX_4653726CBA299860` (`id_lang`)
@@ -1345,8 +1348,8 @@ INSERT INTO `ps_attribute_group_lang` VALUES
 /* Scheme for table ps_attribute_group_shop */
 DROP TABLE IF EXISTS `ps_attribute_group_shop`;
 CREATE TABLE `ps_attribute_group_shop` (
-  `id_attribute_group` int NOT NULL,
-  `id_shop` int NOT NULL,
+  `id_attribute_group` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute_group`,`id_shop`),
   KEY `IDX_DB30BAAC67A664FB` (`id_attribute_group`),
   KEY `IDX_DB30BAAC274A50A0` (`id_shop`)
@@ -1357,21 +1360,21 @@ INSERT INTO `ps_attribute_group_shop` VALUES
 /* Scheme for table ps_attribute_impact */
 DROP TABLE IF EXISTS `ps_attribute_impact`;
 CREATE TABLE `ps_attribute_impact` (
-  `id_attribute_impact` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `id_attribute` int unsigned NOT NULL,
+  `id_attribute_impact` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_attribute` int(10) unsigned NOT NULL,
   `weight` decimal(20,6) NOT NULL,
   `price` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_attribute_impact`),
   UNIQUE KEY `id_product` (`id_product`,`id_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_attribute_lang */
 DROP TABLE IF EXISTS `ps_attribute_lang`;
 CREATE TABLE `ps_attribute_lang` (
-  `id_attribute` int NOT NULL,
-  `id_lang` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_attribute` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id_attribute`,`id_lang`),
   KEY `IDX_3ABE46A77A4F53DC` (`id_attribute`),
   KEY `IDX_3ABE46A7BA299860` (`id_lang`)
@@ -1391,8 +1394,8 @@ INSERT INTO `ps_attribute_lang` VALUES
 /* Scheme for table ps_attribute_shop */
 DROP TABLE IF EXISTS `ps_attribute_shop`;
 CREATE TABLE `ps_attribute_shop` (
-  `id_attribute` int NOT NULL,
-  `id_shop` int NOT NULL,
+  `id_attribute` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   PRIMARY KEY (`id_attribute`,`id_shop`),
   KEY `IDX_A7DD8E677A4F53DC` (`id_attribute`),
   KEY `IDX_A7DD8E67274A50A0` (`id_shop`)
@@ -1407,11 +1410,11 @@ INSERT INTO `ps_attribute_shop` VALUES
 /* Scheme for table ps_authorization_role */
 DROP TABLE IF EXISTS `ps_authorization_role`;
 CREATE TABLE `ps_authorization_role` (
-  `id_authorization_role` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_authorization_role` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(191) NOT NULL,
   PRIMARY KEY (`id_authorization_role`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_authorization_role` VALUES
 ('837','ROLE_MOD_MODULE_BLOCKREASSURANCE_CREATE'),
@@ -2317,16 +2320,16 @@ INSERT INTO `ps_authorization_role` VALUES
 /* Scheme for table ps_badge */
 DROP TABLE IF EXISTS `ps_badge`;
 CREATE TABLE `ps_badge` (
-  `id_badge` int NOT NULL AUTO_INCREMENT,
-  `id_ps_badge` int NOT NULL,
+  `id_badge` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ps_badge` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
-  `id_group` int NOT NULL,
-  `group_position` int NOT NULL,
-  `scoring` int NOT NULL,
-  `awb` int DEFAULT '0',
-  `validated` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_group` int(11) NOT NULL,
+  `group_position` int(11) NOT NULL,
+  `scoring` int(11) NOT NULL,
+  `awb` int(11) DEFAULT 0,
+  `validated` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_badge`)
-) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_badge` VALUES
 ('1','159','feature','41','1','5','1','0'),
@@ -2567,13 +2570,13 @@ INSERT INTO `ps_badge` VALUES
 /* Scheme for table ps_badge_lang */
 DROP TABLE IF EXISTS `ps_badge_lang`;
 CREATE TABLE `ps_badge_lang` (
-  `id_badge` int NOT NULL,
-  `id_lang` int NOT NULL,
+  `id_badge` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `name` varchar(64) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `group_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_badge`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_badge_lang` VALUES
 ('1','1','Shopgate installed','You have installed the Shopgate module','Partners'),
@@ -3049,44 +3052,44 @@ INSERT INTO `ps_badge_lang` VALUES
 /* Scheme for table ps_blockwishlist_statistics */
 DROP TABLE IF EXISTS `ps_blockwishlist_statistics`;
 CREATE TABLE `ps_blockwishlist_statistics` (
-  `id_statistics` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_cart` int unsigned DEFAULT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
+  `id_statistics` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned DEFAULT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
-  `id_shop` int unsigned DEFAULT '1',
+  `id_shop` int(10) unsigned DEFAULT 1,
   PRIMARY KEY (`id_statistics`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_carrier */
 DROP TABLE IF EXISTS `ps_carrier`;
 CREATE TABLE `ps_carrier` (
-  `id_carrier` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_reference` int unsigned NOT NULL,
-  `id_tax_rules_group` int unsigned DEFAULT '0',
+  `id_carrier` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_reference` int(10) unsigned NOT NULL,
+  `id_tax_rules_group` int(10) unsigned DEFAULT 0,
   `name` varchar(64) NOT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
-  `shipping_handling` tinyint unsigned NOT NULL DEFAULT '1',
-  `range_behavior` tinyint unsigned NOT NULL DEFAULT '0',
-  `is_module` tinyint unsigned NOT NULL DEFAULT '0',
-  `is_free` tinyint unsigned NOT NULL DEFAULT '0',
-  `shipping_external` tinyint unsigned NOT NULL DEFAULT '0',
-  `need_range` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `shipping_handling` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `range_behavior` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `is_module` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `is_free` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `shipping_external` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `need_range` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `external_module_name` varchar(64) DEFAULT NULL,
-  `shipping_method` int NOT NULL DEFAULT '0',
-  `position` int unsigned NOT NULL DEFAULT '0',
-  `max_width` int DEFAULT '0',
-  `max_height` int DEFAULT '0',
-  `max_depth` int DEFAULT '0',
-  `max_weight` decimal(20,6) DEFAULT '0.000000',
-  `grade` int DEFAULT '0',
+  `shipping_method` int(11) NOT NULL DEFAULT 0,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
+  `max_width` int(11) DEFAULT 0,
+  `max_height` int(11) DEFAULT 0,
+  `max_depth` int(11) DEFAULT 0,
+  `max_weight` decimal(20,6) DEFAULT 0.000000,
+  `grade` int(11) DEFAULT 0,
   PRIMARY KEY (`id_carrier`),
   KEY `deleted` (`deleted`,`active`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `reference` (`id_reference`,`deleted`,`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier` VALUES
 ('1','1','0','0',NULL,'1','0','0','0','0','1','0','0',NULL,'0','0','0','0','0','0.000000','0'),
@@ -3105,10 +3108,10 @@ INSERT INTO `ps_carrier` VALUES
 /* Scheme for table ps_carrier_group */
 DROP TABLE IF EXISTS `ps_carrier_group`;
 CREATE TABLE `ps_carrier_group` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier_group` VALUES
 ('1','1'),
@@ -3151,12 +3154,12 @@ INSERT INTO `ps_carrier_group` VALUES
 /* Scheme for table ps_carrier_lang */
 DROP TABLE IF EXISTS `ps_carrier_lang`;
 CREATE TABLE `ps_carrier_lang` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
   `delay` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_lang`,`id_shop`,`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier_lang` VALUES
 ('1','1','1','Pick up in-store'),
@@ -3188,11 +3191,11 @@ INSERT INTO `ps_carrier_lang` VALUES
 /* Scheme for table ps_carrier_shop */
 DROP TABLE IF EXISTS `ps_carrier_shop`;
 CREATE TABLE `ps_carrier_shop` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier_shop` VALUES
 ('1','1'),
@@ -3211,11 +3214,11 @@ INSERT INTO `ps_carrier_shop` VALUES
 /* Scheme for table ps_carrier_tax_rules_group_shop */
 DROP TABLE IF EXISTS `ps_carrier_tax_rules_group_shop`;
 CREATE TABLE `ps_carrier_tax_rules_group_shop` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_tax_rules_group` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_tax_rules_group` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_tax_rules_group`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier_tax_rules_group_shop` VALUES
 ('1','1','1'),
@@ -3234,10 +3237,10 @@ INSERT INTO `ps_carrier_tax_rules_group_shop` VALUES
 /* Scheme for table ps_carrier_zone */
 DROP TABLE IF EXISTS `ps_carrier_zone`;
 CREATE TABLE `ps_carrier_zone` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_zone` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_zone` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_carrier`,`id_zone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_carrier_zone` VALUES
 ('1','1'),
@@ -3264,26 +3267,26 @@ INSERT INTO `ps_carrier_zone` VALUES
 /* Scheme for table ps_cart */
 DROP TABLE IF EXISTS `ps_cart`;
 CREATE TABLE `ps_cart` (
-  `id_cart` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_carrier` int unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_carrier` int(10) unsigned NOT NULL,
   `delivery_option` text NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_address_delivery` int unsigned NOT NULL,
-  `id_address_invoice` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `id_guest` int unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_address_delivery` int(10) unsigned NOT NULL,
+  `id_address_invoice` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_guest` int(10) unsigned NOT NULL,
   `secure_key` varchar(32) NOT NULL DEFAULT '-1',
-  `recyclable` tinyint unsigned NOT NULL DEFAULT '1',
-  `gift` tinyint unsigned NOT NULL DEFAULT '0',
-  `gift_message` text,
-  `mobile_theme` tinyint(1) NOT NULL DEFAULT '0',
-  `allow_seperated_package` tinyint unsigned NOT NULL DEFAULT '0',
+  `recyclable` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `gift` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `gift_message` text DEFAULT NULL,
+  `mobile_theme` tinyint(1) NOT NULL DEFAULT 0,
+  `allow_seperated_package` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `checkout_session_data` mediumtext,
+  `checkout_session_data` mediumtext DEFAULT NULL,
   PRIMARY KEY (`id_cart`),
   KEY `cart_customer` (`id_customer`),
   KEY `id_address_delivery` (`id_address_delivery`),
@@ -3295,7 +3298,7 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cart` VALUES
 ('1','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2022-10-25 19:38:26','2022-10-25 19:38:26',NULL),
@@ -3326,15 +3329,16 @@ INSERT INTO `ps_cart` VALUES
 ('29','1','1','6','{\"14\":\"6,\"}','2','14','14','1','13','48','35f3e91844d426bb1bf89f534fa92e37','0','0',NULL,'0','0','2022-12-21 16:01:25','2022-12-21 16:02:34','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"b6e1949497499076b256fef75ad6ea61a4c8c139\"}'),
 ('30','1','1','6','{\"15\":\"6,\"}','2','15','15','1','14','49','254e79e6f9aa7e2cbcabd38e213ad20d','0','0',NULL,'0','0','2022-12-21 16:37:21','2022-12-21 16:38:51','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"a52d52033025fc5813580bab51a127bc3312457a\"}'),
 ('32','1','1','1','{\"16\":\"1,\"}','2','16','16','1','16','50','cd704be908f57d6425494ebfc4f40a99','0','0',NULL,'0','0','2022-12-21 16:51:12','2022-12-21 16:51:46','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"7ded9d20de1d0c34224e67e67750098ab6342a5f\"}'),
-('33','1','1','13','{\"16\":\"13,\"}','2','16','16','1','16','50','cd704be908f57d6425494ebfc4f40a99','0','0',NULL,'0','0','2022-12-21 17:30:27','2023-01-07 12:54:03','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"5fbab431db302492c4fd8ed2747496be69ebb50b\"}');
+('33','1','1','13','{\"16\":\"13,\"}','2','16','16','1','16','50','cd704be908f57d6425494ebfc4f40a99','0','0',NULL,'0','0','2022-12-21 17:30:27','2023-01-07 12:54:03','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"5fbab431db302492c4fd8ed2747496be69ebb50b\"}'),
+('34','1','1','1','{\"17\":\"1,\"}','2','17','17','1','17','93','702fcecf3afaca7fa9b28c118c59ce4f','0','0',NULL,'0','0','2023-01-16 18:04:09','2023-01-16 18:05:01','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"2b672a56be854bfe82125775d388f631a60bf776\"}');
 /* Scheme for table ps_cart_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_cart_rule`;
 CREATE TABLE `ps_cart_cart_rule` (
-  `id_cart` int unsigned NOT NULL,
-  `id_cart_rule` int unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart`,`id_cart_rule`),
   KEY `id_cart_rule` (`id_cart_rule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cart_cart_rule` VALUES
 ('11','1'),
@@ -3343,18 +3347,18 @@ INSERT INTO `ps_cart_cart_rule` VALUES
 /* Scheme for table ps_cart_product */
 DROP TABLE IF EXISTS `ps_cart_product`;
 CREATE TABLE `ps_cart_product` (
-  `id_cart` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_address_delivery` int unsigned NOT NULL DEFAULT '0',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_product_attribute` int unsigned NOT NULL DEFAULT '0',
-  `id_customization` int unsigned NOT NULL DEFAULT '0',
-  `quantity` int unsigned NOT NULL DEFAULT '0',
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_address_delivery` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_product_attribute` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_customization` int(10) unsigned NOT NULL DEFAULT 0,
+  `quantity` int(10) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_cart`,`id_product`,`id_product_attribute`,`id_customization`,`id_address_delivery`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_cart_order` (`id_cart`,`date_add`,`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cart_product` VALUES
 ('14','852','0','1','0','0','4','2022-12-20 17:14:10'),
@@ -3402,41 +3406,42 @@ INSERT INTO `ps_cart_product` VALUES
 ('30','1761','15','1','449','0','3','2022-12-21 16:38:43'),
 ('32','1421','16','1','385','0','1','2022-12-21 16:51:33'),
 ('33','1421','16','1','385','0','1','2023-01-07 12:53:35'),
-('33','1588','16','1','381','0','1','2022-12-21 17:30:27');
+('33','1588','16','1','381','0','1','2022-12-21 17:30:27'),
+('34','1421','17','1','385','0','1','2023-01-16 18:04:09');
 /* Scheme for table ps_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_rule`;
 CREATE TABLE `ps_cart_rule` (
-  `id_cart_rule` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned NOT NULL DEFAULT '0',
+  `id_cart_rule` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL DEFAULT 0,
   `date_from` datetime NOT NULL,
   `date_to` datetime NOT NULL,
-  `description` text,
-  `quantity` int unsigned NOT NULL DEFAULT '0',
-  `quantity_per_user` int unsigned NOT NULL DEFAULT '0',
-  `priority` int unsigned NOT NULL DEFAULT '1',
-  `partial_use` tinyint unsigned NOT NULL DEFAULT '0',
+  `description` text DEFAULT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT 0,
+  `quantity_per_user` int(10) unsigned NOT NULL DEFAULT 0,
+  `priority` int(10) unsigned NOT NULL DEFAULT 1,
+  `partial_use` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `code` varchar(254) NOT NULL,
-  `minimum_amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `minimum_amount_tax` tinyint(1) NOT NULL DEFAULT '0',
-  `minimum_amount_currency` int unsigned NOT NULL DEFAULT '0',
-  `minimum_amount_shipping` tinyint(1) NOT NULL DEFAULT '0',
-  `country_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `carrier_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `group_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `cart_rule_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `product_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `shop_restriction` tinyint unsigned NOT NULL DEFAULT '0',
-  `free_shipping` tinyint(1) NOT NULL DEFAULT '0',
-  `reduction_percent` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `reduction_amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `reduction_tax` tinyint unsigned NOT NULL DEFAULT '0',
-  `reduction_currency` int unsigned NOT NULL DEFAULT '0',
-  `reduction_product` int NOT NULL DEFAULT '0',
-  `reduction_exclude_special` tinyint unsigned NOT NULL DEFAULT '0',
-  `gift_product` int unsigned NOT NULL DEFAULT '0',
-  `gift_product_attribute` int unsigned NOT NULL DEFAULT '0',
-  `highlight` tinyint unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `minimum_amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `minimum_amount_tax` tinyint(1) NOT NULL DEFAULT 0,
+  `minimum_amount_currency` int(10) unsigned NOT NULL DEFAULT 0,
+  `minimum_amount_shipping` tinyint(1) NOT NULL DEFAULT 0,
+  `country_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `carrier_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `group_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `cart_rule_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `product_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `shop_restriction` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `free_shipping` tinyint(1) NOT NULL DEFAULT 0,
+  `reduction_percent` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `reduction_amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `reduction_tax` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `reduction_currency` int(10) unsigned NOT NULL DEFAULT 0,
+  `reduction_product` int(11) NOT NULL DEFAULT 0,
+  `reduction_exclude_special` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `gift_product` int(10) unsigned NOT NULL DEFAULT 0,
+  `gift_product_attribute` int(10) unsigned NOT NULL DEFAULT 0,
+  `highlight` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_cart_rule`),
@@ -3446,52 +3451,52 @@ CREATE TABLE `ps_cart_rule` (
   KEY `group_restriction_2` (`group_restriction`,`active`,`highlight`,`date_to`),
   KEY `date_from` (`date_from`),
   KEY `date_to` (`date_to`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cart_rule` VALUES
 ('1','0','2022-12-06 12:00:00','2022-12-22 12:00:00','Otrzymaj 15% rabatu przy zakupach powyżej 150zł. Promocje nie łączą się.','100','1','1','1','GET15','150.000000','0','1','0','0','0','0','0','0','0','0','15.00','0.000000','0','1','0','0','0','0','0','1','2022-12-06 12:24:19','2022-12-20 17:02:13');
 /* Scheme for table ps_cart_rule_carrier */
 DROP TABLE IF EXISTS `ps_cart_rule_carrier`;
 CREATE TABLE `ps_cart_rule_carrier` (
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_carrier` int unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_combination */
 DROP TABLE IF EXISTS `ps_cart_rule_combination`;
 CREATE TABLE `ps_cart_rule_combination` (
-  `id_cart_rule_1` int unsigned NOT NULL,
-  `id_cart_rule_2` int unsigned NOT NULL,
+  `id_cart_rule_1` int(10) unsigned NOT NULL,
+  `id_cart_rule_2` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule_1`,`id_cart_rule_2`),
   KEY `id_cart_rule_1` (`id_cart_rule_1`),
   KEY `id_cart_rule_2` (`id_cart_rule_2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_country */
 DROP TABLE IF EXISTS `ps_cart_rule_country`;
 CREATE TABLE `ps_cart_rule_country` (
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_country` int unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_group */
 DROP TABLE IF EXISTS `ps_cart_rule_group`;
 CREATE TABLE `ps_cart_rule_group` (
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_lang */
 DROP TABLE IF EXISTS `ps_cart_rule_lang`;
 CREATE TABLE `ps_cart_rule_lang` (
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(254) NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cart_rule_lang` VALUES
 ('1','1','15% przy zakupach powyżej 150 zł'),
@@ -3499,51 +3504,51 @@ INSERT INTO `ps_cart_rule_lang` VALUES
 /* Scheme for table ps_cart_rule_product_rule */
 DROP TABLE IF EXISTS `ps_cart_rule_product_rule`;
 CREATE TABLE `ps_cart_rule_product_rule` (
-  `id_product_rule` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product_rule_group` int unsigned NOT NULL,
+  `id_product_rule` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product_rule_group` int(10) unsigned NOT NULL,
   `type` enum('products','categories','attributes','manufacturers','suppliers') NOT NULL,
   PRIMARY KEY (`id_product_rule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_product_rule_group */
 DROP TABLE IF EXISTS `ps_cart_rule_product_rule_group`;
 CREATE TABLE `ps_cart_rule_product_rule_group` (
-  `id_product_rule_group` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_cart_rule` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL DEFAULT '1',
+  `id_product_rule_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_product_rule_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_product_rule_value */
 DROP TABLE IF EXISTS `ps_cart_rule_product_rule_value`;
 CREATE TABLE `ps_cart_rule_product_rule_value` (
-  `id_product_rule` int unsigned NOT NULL,
-  `id_item` int unsigned NOT NULL,
+  `id_product_rule` int(10) unsigned NOT NULL,
+  `id_item` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_rule`,`id_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cart_rule_shop */
 DROP TABLE IF EXISTS `ps_cart_rule_shop`;
 CREATE TABLE `ps_cart_rule_shop` (
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cart_rule`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_category */
 DROP TABLE IF EXISTS `ps_category`;
 CREATE TABLE `ps_category` (
-  `id_category` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_parent` int unsigned NOT NULL,
-  `id_shop_default` int unsigned NOT NULL DEFAULT '1',
-  `level_depth` tinyint unsigned NOT NULL DEFAULT '0',
-  `nleft` int unsigned NOT NULL DEFAULT '0',
-  `nright` int unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_parent` int(10) unsigned NOT NULL,
+  `id_shop_default` int(10) unsigned NOT NULL DEFAULT 1,
+  `level_depth` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `nleft` int(10) unsigned NOT NULL DEFAULT 0,
+  `nright` int(10) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
-  `is_root_category` tinyint(1) NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
+  `is_root_category` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_category`),
   KEY `category_parent` (`id_parent`),
   KEY `nleftrightactive` (`nleft`,`nright`,`active`),
@@ -3551,13 +3556,12 @@ CREATE TABLE `ps_category` (
   KEY `nright` (`nright`),
   KEY `activenleft` (`active`,`nleft`),
   KEY `activenright` (`active`,`nright`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_category` VALUES
-('1','0','1','0','1','16','1','2022-10-25 19:36:50','2022-10-25 19:36:50','0','0'),
-('2','1','1','1','2','15','1','2022-10-25 19:36:50','2022-11-19 13:16:41','0','1'),
-('10','2','1','2','3','12','1','2022-11-19 13:23:03','2022-12-07 14:49:11','0','0'),
-('11','2','1','2','13','14','0','2022-11-19 13:25:03','2022-12-07 14:44:42','1','0'),
+('1','0','1','0','1','14','1','2022-10-25 19:36:50','2022-10-25 19:36:50','0','0'),
+('2','1','1','1','2','13','1','2022-10-25 19:36:50','2022-11-19 13:16:41','0','1'),
+('10','2','1','2','3','12','1','2022-11-19 13:23:03','2023-01-17 00:56:56','0','0'),
 ('12','10','1','3','4','5','1','2022-11-19 14:00:46','2022-12-07 15:16:19','0','0'),
 ('46','10','1','3','6','7','1','2022-11-22 12:07:26','2022-11-22 12:07:26','1','0'),
 ('47','10','1','3','8','9','1','2022-11-22 12:17:13','2022-11-22 12:17:13','2','0'),
@@ -3565,12 +3569,12 @@ INSERT INTO `ps_category` VALUES
 /* Scheme for table ps_category_group */
 DROP TABLE IF EXISTS `ps_category_group`;
 CREATE TABLE `ps_category_group` (
-  `id_category` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_category`,`id_group`),
   KEY `id_category` (`id_category`),
   KEY `id_group` (`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_category_group` VALUES
 ('2','1'),
@@ -3579,9 +3583,6 @@ INSERT INTO `ps_category_group` VALUES
 ('10','1'),
 ('10','2'),
 ('10','3'),
-('11','1'),
-('11','2'),
-('11','3'),
 ('12','1'),
 ('12','2'),
 ('12','3'),
@@ -3597,18 +3598,18 @@ INSERT INTO `ps_category_group` VALUES
 /* Scheme for table ps_category_lang */
 DROP TABLE IF EXISTS `ps_category_lang`;
 CREATE TABLE `ps_category_lang` (
-  `id_category` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `link_rewrite` varchar(128) NOT NULL,
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_category`,`id_shop`,`id_lang`),
   KEY `category_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_category_lang` VALUES
 ('1','1','1','Root',NULL,'root',NULL,NULL,NULL),
@@ -3616,9 +3617,7 @@ INSERT INTO `ps_category_lang` VALUES
 ('2','1','1','Home',NULL,'home',NULL,NULL,NULL),
 ('2','1','2','HM.com',NULL,'hmcom',NULL,NULL,NULL),
 ('10','1','1','Ona','<p>english</p>','ona',NULL,NULL,NULL),
-('10','1','2','Ona','<h2><a href=\"http://localhost/prestashop/index.php?id_category=10&amp;controller=category&amp;id_lang=2\"><img src=\"http://localhost/prestashop/img/cms/Zrzut%20ekranu%202022-11-19%20123228.jpg\" alt=\"\" width=\"762\" height=\"508\" /></a></h2>\n<h2 style=\"text-align:center;\">Moda damska</h2>\n<p style=\"text-align:justify;\">Odśwież codzienną garderobę perełkami z naszej kolekcji. Teraz znajdziesz w jednym miejscu wszystko, co najmodniejsze – od codziennej bazy, takiej <br />jak spódnice i topy damskie, po dzianiny i odzież domową. Planujesz jakieś wyjście? Koniecznie zobacz sukienki damskie: mamy fasony mini, midi i <br />maxi na letnie wieczory, a także stylowe dżinsy i spodnie, które świetnie leżą na każdej sylwetce. Gdy czas nagli, wybawieniem będzie dopasowany <br />kolorystycznie komplet, a jeśli akurat zrobiło się chłodniej, zobacz kurtki damskie. Potem uzupełnij look modnymi dodatkami i nie zapomnij rzucić<br />okiem na obuwie damskie z naszej kolekcji. Na polecenie zasługuje też kolekcja Conscious, która jest bardziej przyjazna dla środowiska – powstaje <br />z materiałów pozyskanych w odpowiedzialny sposób, takich jak bawełna organiczna czy poliester z recyklingu.</p>','ona',NULL,NULL,NULL),
-('11','1','1','On',NULL,'on',NULL,NULL,NULL),
-('11','1','2','On','<p>Rozmowa z szefem projektantów z działu męskiego H&amp;M<br />Czy możesz opisać, jak wygląda praca szefa projektantów odzieży męskiej w H&amp;M?<br /><br />Moje zadanie polega głównie na śledzeniu obecnych i nadchodzących trendów w modzie męskiej oraz analizowanie tego, co nasi klienci chcieliby kupować oraz nosić. Odpowiadam za inspirowanie i nadzorowanie naszych projektantów oraz różnych zespołów w dziale mody męskiej. Chcę, aby nasza wizja mody była zawsze wyraźnie widoczna w sklepach H&amp;M i na ulicach. Moja praca polega na umożliwianiu zespołom projektowania i dostarczania do naszych sklepów najlepszej mody męskiej.<br /><br /> <br /><br />Czy podczas planowania zwracasz większą uwagę na to, co się dzieje na rynku, czy na trendy w modzie męskiej?<br /><br />Patrzę na to, co jest dostępne w naszych sklepach oraz u konkurencji, zwracam też uwagę na nowe koncepcje – chcę, abyśmy zawsze byli na bieżąco z aktualnymi i nadchodzącymi trendami. Zwracam też uwagę na to, co noszą mężczyźni na ulicy. Oglądam pokazy i staram się dostrzec nowe trendy oraz kierunki. Najbardziej inspirujące są często jakieś nowe rzeczy. Na przykład może mnie zainspirować sklep, film lub album. Często najbardziej inspiruje mnie połączenie wielkiej kreatywności i opłacalności.<br /><br /> <br /><br />Niewyczerpanym źródłem inspiracji jest ulica. Zwracasz uwagę na to, co noszą mężczyźni?<br /><br />Oczywiście – gdy widzę na ulicy mężczyzn w rzeczach z naszych kolekcji, to wiem, że odnieśliśmy sukces. Jak nosi nasze rzeczy przeciętny mężczyzna i jak się to ma do tego, jak my je prezentujemy? Niesamowicie inspirują mnie ludzie ubierający się w oryginalny, wyrazisty sposób. Często są to zestawienia rzeczy od znanych projektantów, popularnych marek i vintage. Uwielbiam analizować ludzi i staram się lepiej ich zrozumieć. W ogóle lubię analizować i ciągle myślę o naszych potencjalnych klientach oraz o tym, jak chcą nosić modę męską i co sprawia, że wybierają konkretny styl.<br /><br /> <br /><br />Czy przewidujesz trendy w modzie męskiej na nadchodzący rok?<br /><br />Jesteśmy firmą odzieżową, projektujemy więc rzeczy zgodne z najnowszą modą i przedstawiamy je w kampaniach opowiadających różne historie. Podczas pracy z modą musisz przewidywać, co nadejdzie za moment, ale też zwracać uwagę na to, co dzieje się teraz. Nie stawiasz żadnego wyzwania sobie ani klientom, jeśli oferujesz tylko aktualne trendy i zadowala cię robienie czegoś, co według ciebie robi cała branża. Moim zadaniem jest osadzenie dokładnie przeanalizowanych trendów w kontekście H&amp;M i nieustanne proponowanie naszym klientom najnowszej mody.<br /><br /> <br /><br />Jak opisałbyś odzież męską H&amp;M nowemu klientowi?<br /><br />Nasza firma oferuje modę męską najwyższej jakości w świetnych cenach. Ogromną zaletą H&amp;M jest to, że proponujemy różne koncepcje modowe. Dzięki temu mamy coś dla każdego – od bazy po najnowsze trendy. W H&amp;M zawsze znajdziesz coś dla siebie, nawet jeśli w świecie mody czujesz się trochę niepewnie.<br /><br /> <br /><br />Jakie najnowsze trendy w modzie męskiej pojawią się w H&amp;M?<br /><br />Powiedziałbym, że najważniejsze będą następujące tendencje. Współczesne klasyki – klasyczna odzież męska we współczesnym wydaniu, która sprawdza się jako podstawa garderoby. Może to być klasyczny płaszcz lub bomberka, biała koszula, czarny albo granatowy garnitur,sweter w kolorze wielbłądziej wełny, nowy fason bądź kolor dżinsów. Moda na uniform – ten trend coraz bardziej zyskuje na popularności. Uniformy zawsze były modne, ale teraz zainspirowane nimi kolory, detale, materiały i fasony są prawdziwymi hitami. Athleisure – nowocześni mężczyźni nadal będą się inspirować modą sportową i łączyć styl formalny ze sportowym, aby stworzyć wygodny i stylowy look.<br /><br /> <br /><br />Czy zainteresowanie mężczyzn modą zmieniło się jakoś od momentu, kiedy zaczynałeś tę pracę?<br /><br />Zaszła ogromna zmiana. Konkurencja zmieniła zarówno rynek, jak i klientów – mam tu na myśli mężczyzn. Świetna moda jest dużo łatwiej dostępna – zarówno w sklepach, jak i online. Widzę, że mężczyźni o wiele chętniej eksperymentują z modą i traktują ubiór jako sposób na wyrażanie siebie.</p>','on',NULL,NULL,NULL),
+('10','1','2','Ona','<h2></h2>\n<h2 style=\"text-align:center;\"><img src=\"https://localhost:18455/img/cms/Zrzut%20ekranu%202022-11-19%20123228.jpg\" alt=\"\" width=\"1041\" height=\"694\" />Moda damska</h2>\n<p style=\"text-align:justify;\">Odśwież codzienną garderobę perełkami z naszej kolekcji. Teraz znajdziesz w jednym miejscu wszystko, co najmodniejsze – od codziennej bazy, takiej <br />jak spódnice i topy damskie, po dzianiny i odzież domową. Planujesz jakieś wyjście? Koniecznie zobacz sukienki damskie: mamy fasony mini, midi i <br />maxi na letnie wieczory, a także stylowe dżinsy i spodnie, które świetnie leżą na każdej sylwetce. Gdy czas nagli, wybawieniem będzie dopasowany <br />kolorystycznie komplet, a jeśli akurat zrobiło się chłodniej, zobacz kurtki damskie. Potem uzupełnij look modnymi dodatkami i nie zapomnij rzucić<br />okiem na obuwie damskie z naszej kolekcji. Na polecenie zasługuje też kolekcja Conscious, która jest bardziej przyjazna dla środowiska – powstaje <br />z materiałów pozyskanych w odpowiedzialny sposób, takich jak bawełna organiczna czy poliester z recyklingu.</p>','ona',NULL,NULL,NULL),
 ('12','1','1','Ubrania',NULL,'ubrania',NULL,NULL,NULL),
 ('12','1','2','Zobacz wszystko','<p>Ponadczasowe kroje i najnowsze trendy. Odzież damska, buty i torebki na każdą okazję. Odkryj kolekcję H&amp;M i sięgaj po produkty, które najlepiej odzwierciedlą Twój styl. Przygotowaliśmy też rozmaite akcesoria i dodatki oraz ogromny wybór kosmetyków do pielęgnacji i makijażu. Bądź na bieżąco z nowościami.</p>','zobacz-wszystko','Wszystkie produkty | H&M PL',NULL,NULL),
 ('46','1','1','Kurtki i płaszcze',NULL,'kurtki-i-plaszcze',NULL,NULL,NULL),
@@ -3630,13 +3629,13 @@ INSERT INTO `ps_category_lang` VALUES
 /* Scheme for table ps_category_product */
 DROP TABLE IF EXISTS `ps_category_product`;
 CREATE TABLE `ps_category_product` (
-  `id_category` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
+  `id_category` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_category`,`id_product`),
   KEY `id_product` (`id_product`),
   KEY `id_category` (`id_category`,`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_category_product` VALUES
 ('12','612','1'),
@@ -6070,17 +6069,16 @@ INSERT INTO `ps_category_product` VALUES
 /* Scheme for table ps_category_shop */
 DROP TABLE IF EXISTS `ps_category_shop`;
 CREATE TABLE `ps_category_shop` (
-  `id_category` int NOT NULL,
-  `id_shop` int NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
+  `id_category` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_category`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_category_shop` VALUES
 ('1','1','0'),
 ('2','1','0'),
 ('10','1','0'),
-('11','1','1'),
 ('12','1','0'),
 ('46','1','1'),
 ('47','1','2'),
@@ -6088,13 +6086,13 @@ INSERT INTO `ps_category_shop` VALUES
 /* Scheme for table ps_cms */
 DROP TABLE IF EXISTS `ps_cms`;
 CREATE TABLE `ps_cms` (
-  `id_cms` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_cms_category` int unsigned NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `indexation` tinyint unsigned NOT NULL DEFAULT '1',
+  `id_cms` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cms_category` int(10) unsigned NOT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `indexation` tinyint(3) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_cms`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms` VALUES
 ('1','1','0','1','0'),
@@ -6105,34 +6103,34 @@ INSERT INTO `ps_cms` VALUES
 /* Scheme for table ps_cms_category */
 DROP TABLE IF EXISTS `ps_cms_category`;
 CREATE TABLE `ps_cms_category` (
-  `id_cms_category` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_parent` int unsigned NOT NULL,
-  `level_depth` tinyint unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_cms_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_parent` int(10) unsigned NOT NULL,
+  `level_depth` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_cms_category`),
   KEY `category_parent` (`id_parent`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_category` VALUES
 ('1','0','1','1','2022-10-25 19:36:51','2022-10-25 19:36:51','0');
 /* Scheme for table ps_cms_category_lang */
 DROP TABLE IF EXISTS `ps_cms_category_lang`;
 CREATE TABLE `ps_cms_category_lang` (
-  `id_cms_category` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
+  `id_cms_category` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `name` varchar(128) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `link_rewrite` varchar(128) NOT NULL,
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_cms_category`,`id_shop`,`id_lang`),
   KEY `category_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_category_lang` VALUES
 ('1','1','1','Home',NULL,'home',NULL,NULL,NULL),
@@ -6140,28 +6138,28 @@ INSERT INTO `ps_cms_category_lang` VALUES
 /* Scheme for table ps_cms_category_shop */
 DROP TABLE IF EXISTS `ps_cms_category_shop`;
 CREATE TABLE `ps_cms_category_shop` (
-  `id_cms_category` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL,
+  `id_cms_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms_category`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_category_shop` VALUES
 ('1','1');
 /* Scheme for table ps_cms_lang */
 DROP TABLE IF EXISTS `ps_cms_lang`;
 CREATE TABLE `ps_cms_lang` (
-  `id_cms` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
+  `id_cms` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `meta_title` varchar(255) NOT NULL,
   `head_seo_title` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
-  `content` longtext,
+  `content` longtext DEFAULT NULL,
   `link_rewrite` varchar(128) NOT NULL,
   PRIMARY KEY (`id_cms`,`id_shop`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_lang` VALUES
 ('1','1','1','Delivery',NULL,'Our terms and conditions of delivery','conditions, delivery, delay, shipment, pack','<h2>Shipments and returns</h2>\n<h3>Your pack shipment</h3>\n<p>Packages are generally dispatched within 2 days after receipt of payment and are shipped via UPS with tracking and drop-off without signature. If you prefer delivery by UPS Extra with required signature, an additional cost will be applied, so please contact us before choosing this method. Whichever shipment choice you make, we will provide you with a link to track your package online.</p>\n<p>Shipping fees include handling and packing fees as well as postage costs. Handling fees are fixed, whereas transport fees vary according to total weight of the shipment. We advise you to group your items in one order. We cannot group two distinct orders placed separately, and shipping fees will apply to each of them. Your package will be dispatched at your own risk, but special care is taken to protect fragile objects.<br /><br />Boxes are amply sized and your items are well-protected.</p>','delivery'),
@@ -6177,12 +6175,12 @@ INSERT INTO `ps_cms_lang` VALUES
 /* Scheme for table ps_cms_role */
 DROP TABLE IF EXISTS `ps_cms_role`;
 CREATE TABLE `ps_cms_role` (
-  `id_cms_role` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_cms_role` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `id_cms` int unsigned NOT NULL,
+  `id_cms` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms_role`,`id_cms`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_role` VALUES
 ('1','LEGAL_CONDITIONS','3'),
@@ -6190,21 +6188,21 @@ INSERT INTO `ps_cms_role` VALUES
 /* Scheme for table ps_cms_role_lang */
 DROP TABLE IF EXISTS `ps_cms_role_lang`;
 CREATE TABLE `ps_cms_role_lang` (
-  `id_cms_role` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_cms_role` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_cms_role`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_cms_shop */
 DROP TABLE IF EXISTS `ps_cms_shop`;
 CREATE TABLE `ps_cms_shop` (
-  `id_cms` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_cms` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_cms`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_cms_shop` VALUES
 ('1','1'),
@@ -6215,20 +6213,20 @@ INSERT INTO `ps_cms_shop` VALUES
 /* Scheme for table ps_condition */
 DROP TABLE IF EXISTS `ps_condition`;
 CREATE TABLE `ps_condition` (
-  `id_condition` int NOT NULL AUTO_INCREMENT,
-  `id_ps_condition` int NOT NULL,
+  `id_condition` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ps_condition` int(11) NOT NULL,
   `type` enum('configuration','install','sql') NOT NULL,
-  `request` text,
+  `request` text DEFAULT NULL,
   `operator` varchar(32) DEFAULT NULL,
   `value` varchar(64) DEFAULT NULL,
   `result` varchar(64) DEFAULT NULL,
   `calculation_type` enum('hook','time') DEFAULT NULL,
   `calculation_detail` varchar(64) DEFAULT NULL,
-  `validated` tinyint unsigned NOT NULL DEFAULT '0',
+  `validated` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_condition`,`id_ps_condition`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_condition` VALUES
 ('1','1','configuration','PS_REWRITING_SETTINGS','==','1',NULL,'hook','actionAdminMetaControllerUpdate_optionsAfter','0','2022-11-08 13:43:50','2022-11-08 13:43:50'),
@@ -6333,7 +6331,7 @@ INSERT INTO `ps_condition` VALUES
 ('100','112','sql','SELECT COUNT(*) FROM PREFIX_orders o INNER JOIN PREFIX_address a ON a.id_address = o.id_address_delivery\r\nWHERE reference NOT IN (\"XKBKNABJK\", \"OHSATSERP\", \"FFATNOMMJ\", \"UOYEVOLI\", \"KHWLILZLL\") AND a.id_country != \"{config}PS_COUNTRY_DEFAULT{/config}\"','>=','10000','0','hook','actionOrderStatusUpdate','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
 ('101','113','sql','SELECT COUNT(*) FROM PREFIX_orders o INNER JOIN PREFIX_address a ON a.id_address = o.id_address_delivery\r\nWHERE reference NOT IN (\"XKBKNABJK\", \"OHSATSERP\", \"FFATNOMMJ\", \"UOYEVOLI\", \"KHWLILZLL\") AND a.id_country != \"{config}PS_COUNTRY_DEFAULT{/config}\"','>=','1000','0','hook','actionOrderStatusUpdate','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
 ('102','114','sql','SELECT COUNT(*) FROM PREFIX_orders o INNER JOIN PREFIX_address a ON a.id_address = o.id_address_delivery\r\nWHERE reference NOT IN (\"XKBKNABJK\", \"OHSATSERP\", \"FFATNOMMJ\", \"UOYEVOLI\", \"KHWLILZLL\") AND a.id_country != \"{config}PS_COUNTRY_DEFAULT{/config}\"','>=','5000','0','hook','actionOrderStatusUpdate','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
-('103','132','sql','SELECT count(id_configuration) FROM PREFIX_configuration WHERE `name` = \'PS_SHOP_DOMAIN\' AND value IN (\'localhost\', \'localhost\' )','==','1','1','time','1','1','2022-11-08 13:43:52','2022-11-08 13:43:52'),
+('103','132','sql','SELECT count(id_configuration) FROM PREFIX_configuration WHERE `name` = \'PS_SHOP_DOMAIN\' AND value IN (\'localhost:18455\', \'localhost:18455\' )','==','1','1','time','1','1','2022-11-08 13:43:52','2022-11-08 13:43:52'),
 ('104','136','sql','SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%ebay%\"','>=','1','0','hook','actionModuleInstallAfter','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
 ('105','140','sql','SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%moneybookers%\"','>=','1','0','hook','actionModuleInstallAfter','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
 ('106','142','sql','SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypal%\"','>=','1',NULL,'hook','actionModuleInstallAfter','0','2022-11-08 13:43:52','2022-11-08 13:43:52'),
@@ -6479,19 +6477,19 @@ INSERT INTO `ps_condition` VALUES
 /* Scheme for table ps_condition_advice */
 DROP TABLE IF EXISTS `ps_condition_advice`;
 CREATE TABLE `ps_condition_advice` (
-  `id_condition` int NOT NULL,
-  `id_advice` int NOT NULL,
-  `display` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_condition` int(11) NOT NULL,
+  `id_advice` int(11) NOT NULL,
+  `display` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_condition`,`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_condition_badge */
 DROP TABLE IF EXISTS `ps_condition_badge`;
 CREATE TABLE `ps_condition_badge` (
-  `id_condition` int NOT NULL,
-  `id_badge` int NOT NULL,
+  `id_condition` int(11) NOT NULL,
+  `id_badge` int(11) NOT NULL,
   PRIMARY KEY (`id_condition`,`id_badge`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_condition_badge` VALUES
 ('1','125'),
@@ -6734,18 +6732,18 @@ INSERT INTO `ps_condition_badge` VALUES
 /* Scheme for table ps_configuration */
 DROP TABLE IF EXISTS `ps_configuration`;
 CREATE TABLE `ps_configuration` (
-  `id_configuration` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int unsigned DEFAULT NULL,
-  `id_shop` int unsigned DEFAULT NULL,
+  `id_configuration` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(10) unsigned DEFAULT NULL,
+  `id_shop` int(10) unsigned DEFAULT NULL,
   `name` varchar(254) NOT NULL,
-  `value` text,
+  `value` text DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_configuration`),
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_configuration` VALUES
 ('1',NULL,NULL,'PS_LANG_DEFAULT','2','2022-10-25 19:36:46','2022-11-19 14:05:39'),
@@ -6982,8 +6980,8 @@ INSERT INTO `ps_configuration` VALUES
 ('231',NULL,NULL,'HOMESLIDER_PAUSE','7700','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('232',NULL,NULL,'HOMESLIDER_LOOP','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('233',NULL,NULL,'PS_BASE_DISTANCE_UNIT','m','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-('234',NULL,NULL,'PS_SHOP_DOMAIN','localhost','0000-00-00 00:00:00','2022-10-25 19:36:54'),
-('235',NULL,NULL,'PS_SHOP_DOMAIN_SSL','localhost','0000-00-00 00:00:00','2022-10-25 19:36:54'),
+('234',NULL,NULL,'PS_SHOP_DOMAIN','localhost:18455','0000-00-00 00:00:00','2022-10-25 19:36:54'),
+('235',NULL,NULL,'PS_SHOP_DOMAIN_SSL','localhost:18455','0000-00-00 00:00:00','2022-10-25 19:36:54'),
 ('236',NULL,NULL,'PS_SHOP_NAME','h&m','0000-00-00 00:00:00','2022-11-08 16:34:54'),
 ('237',NULL,NULL,'PS_SHOP_EMAIL','nabepresta@outlook.com','0000-00-00 00:00:00','2022-12-21 16:50:26'),
 ('238',NULL,NULL,'PS_MAIL_METHOD','2','0000-00-00 00:00:00','2022-11-22 13:25:44'),
@@ -7263,18 +7261,18 @@ INSERT INTO `ps_configuration` VALUES
 /* Scheme for table ps_configuration_kpi */
 DROP TABLE IF EXISTS `ps_configuration_kpi`;
 CREATE TABLE `ps_configuration_kpi` (
-  `id_configuration_kpi` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int unsigned DEFAULT NULL,
-  `id_shop` int unsigned DEFAULT NULL,
+  `id_configuration_kpi` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(10) unsigned DEFAULT NULL,
+  `id_shop` int(10) unsigned DEFAULT NULL,
   `name` varchar(64) NOT NULL,
-  `value` text,
+  `value` text DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_configuration_kpi`),
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_configuration_kpi` VALUES
 ('1',NULL,NULL,'DASHGOALS_TRAFFIC_01_2022','600','2022-10-25 19:37:02','2022-10-25 19:37:02'),
@@ -7352,12 +7350,12 @@ INSERT INTO `ps_configuration_kpi` VALUES
 /* Scheme for table ps_configuration_kpi_lang */
 DROP TABLE IF EXISTS `ps_configuration_kpi_lang`;
 CREATE TABLE `ps_configuration_kpi_lang` (
-  `id_configuration_kpi` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `value` text,
+  `id_configuration_kpi` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `value` text DEFAULT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_configuration_kpi`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_configuration_kpi_lang` VALUES
 ('41','1','Clothes','2022-11-08 15:24:10'),
@@ -7371,12 +7369,12 @@ INSERT INTO `ps_configuration_kpi_lang` VALUES
 /* Scheme for table ps_configuration_lang */
 DROP TABLE IF EXISTS `ps_configuration_lang`;
 CREATE TABLE `ps_configuration_lang` (
-  `id_configuration` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `value` text,
+  `id_configuration` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `value` text DEFAULT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_configuration`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_configuration_lang` VALUES
 ('38','1','#IN',NULL),
@@ -7406,7 +7404,7 @@ INSERT INTO `ps_configuration_lang` VALUES
 ('316','1','c366d496e4391fe9aee2cd0872df720e.png','2022-11-08 16:18:42'),
 ('316','2','c366d496e4391fe9aee2cd0872df720e.png','2022-11-08 16:18:42'),
 ('317','1',NULL,'2022-10-25 19:37:05'),
-('317','2','http://localhost/prestashop/index.php?id_category=10&controller=category&id_lang=2','2022-12-07 12:47:27'),
+('317','2','https://localhost:18455/index.php?id_category=10&controller=category&id_lang=2','2023-01-16 17:10:56'),
 ('318','1',NULL,'2022-10-25 19:37:05'),
 ('318','2',NULL,'2022-10-25 19:37:05'),
 ('327','1','<p>The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the \"My Account\" page.</p>','2022-12-20 12:10:03'),
@@ -7420,35 +7418,35 @@ INSERT INTO `ps_configuration_lang` VALUES
 /* Scheme for table ps_connections */
 DROP TABLE IF EXISTS `ps_connections`;
 CREATE TABLE `ps_connections` (
-  `id_connections` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_guest` int unsigned NOT NULL,
-  `id_page` int unsigned NOT NULL,
-  `ip_address` bigint DEFAULT NULL,
+  `id_connections` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_guest` int(10) unsigned NOT NULL,
+  `id_page` int(10) unsigned NOT NULL,
+  `ip_address` bigint(20) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `http_referer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_connections`),
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_connections_page */
 DROP TABLE IF EXISTS `ps_connections_page`;
 CREATE TABLE `ps_connections_page` (
-  `id_connections` int unsigned NOT NULL,
-  `id_page` int unsigned NOT NULL,
+  `id_connections` int(10) unsigned NOT NULL,
+  `id_page` int(10) unsigned NOT NULL,
   `time_start` datetime NOT NULL,
   `time_end` datetime DEFAULT NULL,
   PRIMARY KEY (`id_connections`,`id_page`,`time_start`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_connections_source */
 DROP TABLE IF EXISTS `ps_connections_source`;
 CREATE TABLE `ps_connections_source` (
-  `id_connections_source` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_connections` int unsigned NOT NULL,
+  `id_connections_source` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_connections` int(10) unsigned NOT NULL,
   `http_referer` varchar(255) DEFAULT NULL,
   `request_uri` varchar(255) DEFAULT NULL,
   `keywords` varchar(255) DEFAULT NULL,
@@ -7458,17 +7456,17 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_contact */
 DROP TABLE IF EXISTS `ps_contact`;
 CREATE TABLE `ps_contact` (
-  `id_contact` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_contact` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
-  `customer_service` tinyint(1) NOT NULL DEFAULT '0',
-  `position` tinyint unsigned NOT NULL DEFAULT '0',
+  `customer_service` tinyint(1) NOT NULL DEFAULT 0,
+  `position` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_contact` VALUES
 ('1','nabepresta@outlook.com','1','0'),
@@ -7476,12 +7474,12 @@ INSERT INTO `ps_contact` VALUES
 /* Scheme for table ps_contact_lang */
 DROP TABLE IF EXISTS `ps_contact_lang`;
 CREATE TABLE `ps_contact_lang` (
-  `id_contact` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_contact` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   PRIMARY KEY (`id_contact`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_contact_lang` VALUES
 ('1','1','Webmaster','If a technical problem occurs on this website'),
@@ -7491,11 +7489,11 @@ INSERT INTO `ps_contact_lang` VALUES
 /* Scheme for table ps_contact_shop */
 DROP TABLE IF EXISTS `ps_contact_shop`;
 CREATE TABLE `ps_contact_shop` (
-  `id_contact` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_contact` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_contact`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_contact_shop` VALUES
 ('1','1'),
@@ -7503,21 +7501,21 @@ INSERT INTO `ps_contact_shop` VALUES
 /* Scheme for table ps_country */
 DROP TABLE IF EXISTS `ps_country`;
 CREATE TABLE `ps_country` (
-  `id_country` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_zone` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL DEFAULT '0',
+  `id_country` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_zone` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL DEFAULT 0,
   `iso_code` varchar(3) NOT NULL,
-  `call_prefix` int NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `contains_states` tinyint(1) NOT NULL DEFAULT '0',
-  `need_identification_number` tinyint(1) NOT NULL DEFAULT '0',
-  `need_zip_code` tinyint(1) NOT NULL DEFAULT '1',
+  `call_prefix` int(11) NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `contains_states` tinyint(1) NOT NULL DEFAULT 0,
+  `need_identification_number` tinyint(1) NOT NULL DEFAULT 0,
+  `need_zip_code` tinyint(1) NOT NULL DEFAULT 1,
   `zip_code_format` varchar(12) NOT NULL DEFAULT '',
   `display_tax_label` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_country`),
   KEY `country_iso_code` (`iso_code`),
   KEY `country_` (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_country` VALUES
 ('1','1','0','DE','49','0','0','0','1','NNNNN','1'),
@@ -7765,11 +7763,11 @@ INSERT INTO `ps_country` VALUES
 /* Scheme for table ps_country_lang */
 DROP TABLE IF EXISTS `ps_country_lang`;
 CREATE TABLE `ps_country_lang` (
-  `id_country` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_country`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_country_lang` VALUES
 ('1','1','Germany'),
@@ -8259,11 +8257,11 @@ INSERT INTO `ps_country_lang` VALUES
 /* Scheme for table ps_country_shop */
 DROP TABLE IF EXISTS `ps_country_shop`;
 CREATE TABLE `ps_country_shop` (
-  `id_country` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_country`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_country_shop` VALUES
 ('1','1'),
@@ -8511,32 +8509,32 @@ INSERT INTO `ps_country_shop` VALUES
 /* Scheme for table ps_currency */
 DROP TABLE IF EXISTS `ps_currency`;
 CREATE TABLE `ps_currency` (
-  `id_currency` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_currency` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `iso_code` varchar(3) NOT NULL DEFAULT '0',
   `numeric_iso_code` varchar(3) DEFAULT NULL,
-  `precision` int NOT NULL DEFAULT '6',
+  `precision` int(11) NOT NULL DEFAULT 6,
   `conversion_rate` decimal(13,6) NOT NULL,
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '1',
-  `unofficial` tinyint unsigned NOT NULL DEFAULT '0',
-  `modified` tinyint unsigned NOT NULL DEFAULT '0',
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `unofficial` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `modified` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_currency`),
   KEY `currency_iso_code` (`iso_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_currency` VALUES
 ('1','','PLN','985','2','1.000000','0','1','0','0');
 /* Scheme for table ps_currency_lang */
 DROP TABLE IF EXISTS `ps_currency_lang`;
 CREATE TABLE `ps_currency_lang` (
-  `id_currency` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `symbol` varchar(255) NOT NULL,
   `pattern` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_currency`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_currency_lang` VALUES
 ('1','1','Polish Zloty','zł',NULL),
@@ -8544,25 +8542,25 @@ INSERT INTO `ps_currency_lang` VALUES
 /* Scheme for table ps_currency_shop */
 DROP TABLE IF EXISTS `ps_currency_shop`;
 CREATE TABLE `ps_currency_shop` (
-  `id_currency` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   `conversion_rate` decimal(13,6) NOT NULL,
   PRIMARY KEY (`id_currency`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_currency_shop` VALUES
 ('1','1','1.000000');
 /* Scheme for table ps_customer */
 DROP TABLE IF EXISTS `ps_customer`;
 CREATE TABLE `ps_customer` (
-  `id_customer` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_gender` int unsigned NOT NULL,
-  `id_default_group` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned DEFAULT NULL,
-  `id_risk` int unsigned NOT NULL DEFAULT '1',
+  `id_customer` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_gender` int(10) unsigned NOT NULL,
+  `id_default_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned DEFAULT NULL,
+  `id_risk` int(10) unsigned NOT NULL DEFAULT 1,
   `company` varchar(255) DEFAULT NULL,
   `siret` varchar(14) DEFAULT NULL,
   `ape` varchar(5) DEFAULT NULL,
@@ -8570,21 +8568,21 @@ CREATE TABLE `ps_customer` (
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `passwd` varchar(255) NOT NULL,
-  `last_passwd_gen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_passwd_gen` timestamp NOT NULL DEFAULT current_timestamp(),
   `birthday` date DEFAULT NULL,
-  `newsletter` tinyint unsigned NOT NULL DEFAULT '0',
+  `newsletter` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `ip_registration_newsletter` varchar(15) DEFAULT NULL,
   `newsletter_date_add` datetime DEFAULT NULL,
-  `optin` tinyint unsigned NOT NULL DEFAULT '0',
+  `optin` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `website` varchar(128) DEFAULT NULL,
-  `outstanding_allow_amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `show_public_prices` tinyint unsigned NOT NULL DEFAULT '0',
-  `max_payment_days` int unsigned NOT NULL DEFAULT '60',
+  `outstanding_allow_amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `show_public_prices` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `max_payment_days` int(10) unsigned NOT NULL DEFAULT 60,
   `secure_key` varchar(32) NOT NULL DEFAULT '-1',
-  `note` text,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `is_guest` tinyint(1) NOT NULL DEFAULT '0',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `note` text DEFAULT NULL,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `is_guest` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `reset_password_token` varchar(40) DEFAULT NULL,
@@ -8596,7 +8594,7 @@ CREATE TABLE `ps_customer` (
   KEY `id_gender` (`id_gender`),
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_customer` VALUES
 ('1','1','1','1','3','1','0',NULL,NULL,NULL,'Anonymous','Anonymous','anonymous@psgdpr.com','$2y$10$tN9DNwRuPXi3hL3g46tW8uNg.zGjk/2eZcMy.gYYHnZ8fvfjpsTuG','2022-10-25 13:37:54','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','defa8848a31ae1df2f7e26cdb31b257e',NULL,'0','0','0','2022-10-25 19:37:54','2022-10-25 19:37:54',NULL,'0000-00-00 00:00:00'),
@@ -8610,48 +8608,50 @@ INSERT INTO `ps_customer` VALUES
 ('9','1','1','1','3','2','0',NULL,NULL,NULL,'kidgypo','tyzbys','bypwranud@wp.pl','$2y$10$XOlakaQ7VhytAgXhxPC5V.OSm/BleTKMLoKl3L97HKLEyj2Ssu782','2022-12-20 15:12:49','1980-11-13','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','1daa2ea9c64fa585d40792733a4c841d',NULL,'1','0','0','2022-12-20 21:12:49','2022-12-20 21:12:49',NULL,'0000-00-00 00:00:00'),
 ('13','1','1','1','3','2','0',NULL,NULL,NULL,'rqlkvgjvg','xczf','lnvaokn@wp.pl','$2y$10$tb1.GgJXlQHraiUJfpt7rezvL2JPyNYl3OhKzD9.3gGARyL6zaC2S','2022-12-21 10:02:30','1967-12-28','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','35f3e91844d426bb1bf89f534fa92e37',NULL,'1','0','0','2022-12-21 16:02:30','2022-12-21 16:02:30',NULL,'0000-00-00 00:00:00'),
 ('14','1','1','1','3','2','0',NULL,NULL,NULL,'jpyakntym','wgoejshoh','rlul@wp.pl','$2y$10$MlzF9rV48sKO2UR5HtX.NucHk37hzaji/zdl6nequiaxnF.H4iUqW','2022-12-21 10:38:47','1964-10-13','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','254e79e6f9aa7e2cbcabd38e213ad20d',NULL,'1','0','0','2022-12-21 16:38:47','2022-12-21 16:38:47',NULL,'0000-00-00 00:00:00'),
-('16','1','1','1','3','2','0',NULL,NULL,NULL,'sfd','dfh','nabepresta@outlook.com','$2y$10$ky37vPif/kh7XuZy1Alu4ulMpZm0mM3yPuQCGzox/DT0WLnJmfDnm','2022-12-21 10:51:12','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','cd704be908f57d6425494ebfc4f40a99',NULL,'1','0','0','2022-12-21 16:51:12','2022-12-21 16:51:12',NULL,'0000-00-00 00:00:00');
+('16','1','1','1','3','2','0',NULL,NULL,NULL,'sfd','dfh','nabepresta@outlook.com','$2y$10$ky37vPif/kh7XuZy1Alu4ulMpZm0mM3yPuQCGzox/DT0WLnJmfDnm','2022-12-21 10:51:12','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','cd704be908f57d6425494ebfc4f40a99',NULL,'1','0','0','2022-12-21 16:51:12','2022-12-21 16:51:12',NULL,'0000-00-00 00:00:00'),
+('17','1','1','2','2','2','0',NULL,NULL,NULL,'xdf','hfdh','jalapka@wp.pl','$2y$10$vm15G13J9P6KC31cGcCvf.BPWIgymx3llfbfJTWl4E14u3i0PsUP6','2023-01-16 12:04:47','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','702fcecf3afaca7fa9b28c118c59ce4f',NULL,'1','1','0','2023-01-16 18:04:47','2023-01-16 18:04:47',NULL,'0000-00-00 00:00:00');
 /* Scheme for table ps_customer_group */
 DROP TABLE IF EXISTS `ps_customer_group`;
 CREATE TABLE `ps_customer_group` (
-  `id_customer` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_customer`,`id_group`),
   KEY `customer_login` (`id_group`),
   KEY `id_customer` (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_customer_group` VALUES
-('3','2'),
-('6','2'),
 ('1','3'),
 ('2','3'),
+('3','2'),
 ('4','3'),
 ('5','3'),
+('6','2'),
 ('7','3'),
 ('8','3'),
 ('9','3'),
 ('13','3'),
 ('14','3'),
-('16','3');
+('16','3'),
+('17','2');
 /* Scheme for table ps_customer_message */
 DROP TABLE IF EXISTS `ps_customer_message`;
 CREATE TABLE `ps_customer_message` (
-  `id_customer_message` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer_thread` int DEFAULT NULL,
-  `id_employee` int unsigned DEFAULT NULL,
+  `id_customer_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer_thread` int(11) DEFAULT NULL,
+  `id_employee` int(10) unsigned DEFAULT NULL,
   `message` mediumtext NOT NULL,
   `file_name` varchar(18) DEFAULT NULL,
   `ip_address` varchar(16) DEFAULT NULL,
   `user_agent` varchar(128) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `private` tinyint NOT NULL DEFAULT '0',
-  `read` tinyint(1) NOT NULL DEFAULT '0',
+  `private` tinyint(4) NOT NULL DEFAULT 0,
+  `read` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_customer_message`),
   KEY `id_customer_thread` (`id_customer_thread`),
   KEY `id_employee` (`id_employee`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_customer_message` VALUES
 ('1','1','0','wyślijcie szybko!',NULL,NULL,NULL,'2022-12-20 12:13:51','2022-12-20 12:13:51','0','0');
@@ -8660,16 +8660,16 @@ DROP TABLE IF EXISTS `ps_customer_message_sync_imap`;
 CREATE TABLE `ps_customer_message_sync_imap` (
   `md5_header` varbinary(32) NOT NULL,
   KEY `md5_header_index` (`md5_header`(4))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_customer_session */
 DROP TABLE IF EXISTS `ps_customer_session`;
 CREATE TABLE `ps_customer_session` (
-  `id_customer_session` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned DEFAULT NULL,
+  `id_customer_session` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_customer_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_customer_session` VALUES
 ('4','6','d789c7b91aa3a397e0fe60e75973fbc0329e11bc'),
@@ -8684,13 +8684,13 @@ INSERT INTO `ps_customer_session` VALUES
 /* Scheme for table ps_customer_thread */
 DROP TABLE IF EXISTS `ps_customer_thread`;
 CREATE TABLE `ps_customer_thread` (
-  `id_customer_thread` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
-  `id_contact` int unsigned NOT NULL,
-  `id_customer` int unsigned DEFAULT NULL,
-  `id_order` int unsigned DEFAULT NULL,
-  `id_product` int unsigned DEFAULT NULL,
+  `id_customer_thread` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_contact` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `id_order` int(10) unsigned DEFAULT NULL,
+  `id_product` int(10) unsigned DEFAULT NULL,
   `status` enum('open','closed','pending1','pending2') NOT NULL DEFAULT 'open',
   `email` varchar(255) NOT NULL,
   `token` varchar(12) DEFAULT NULL,
@@ -8703,89 +8703,89 @@ CREATE TABLE `ps_customer_thread` (
   KEY `id_customer` (`id_customer`),
   KEY `id_order` (`id_order`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_customer_thread` VALUES
 ('1','1','2','0','7','9','0','open','kevin@gmail.com','rWJF2nr7LrmF','2022-12-20 12:13:51','2022-12-20 12:13:51');
 /* Scheme for table ps_customization */
 DROP TABLE IF EXISTS `ps_customization`;
 CREATE TABLE `ps_customization` (
-  `id_customization` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product_attribute` int unsigned NOT NULL DEFAULT '0',
-  `id_address_delivery` int unsigned NOT NULL DEFAULT '0',
-  `id_cart` int unsigned NOT NULL,
-  `id_product` int NOT NULL,
-  `quantity` int NOT NULL,
-  `quantity_refunded` int NOT NULL DEFAULT '0',
-  `quantity_returned` int NOT NULL DEFAULT '0',
-  `in_cart` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_customization` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product_attribute` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_address_delivery` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `quantity_refunded` int(11) NOT NULL DEFAULT 0,
+  `quantity_returned` int(11) NOT NULL DEFAULT 0,
+  `in_cart` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_customization`,`id_cart`,`id_product`,`id_address_delivery`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_cart_product` (`id_cart`,`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_customization_field */
 DROP TABLE IF EXISTS `ps_customization_field`;
 CREATE TABLE `ps_customization_field` (
-  `id_customization_field` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
+  `id_customization_field` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
   `type` tinyint(1) NOT NULL,
   `required` tinyint(1) NOT NULL,
-  `is_module` tinyint(1) NOT NULL DEFAULT '0',
-  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `is_module` tinyint(1) NOT NULL DEFAULT 0,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_customization_field`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_customization_field_lang */
 DROP TABLE IF EXISTS `ps_customization_field_lang`;
 CREATE TABLE `ps_customization_field_lang` (
-  `id_customization_field` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
+  `id_customization_field` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_customization_field`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_customized_data */
 DROP TABLE IF EXISTS `ps_customized_data`;
 CREATE TABLE `ps_customized_data` (
-  `id_customization` int unsigned NOT NULL,
+  `id_customization` int(10) unsigned NOT NULL,
   `type` tinyint(1) NOT NULL,
-  `index` int NOT NULL,
+  `index` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
-  `id_module` int NOT NULL DEFAULT '0',
-  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `weight` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `id_module` int(11) NOT NULL DEFAULT 0,
+  `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `weight` decimal(20,6) NOT NULL DEFAULT 0.000000,
   PRIMARY KEY (`id_customization`,`type`,`index`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_date_range */
 DROP TABLE IF EXISTS `ps_date_range`;
 CREATE TABLE `ps_date_range` (
-  `id_date_range` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_date_range` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `time_start` datetime NOT NULL,
   `time_end` datetime NOT NULL,
   PRIMARY KEY (`id_date_range`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_delivery */
 DROP TABLE IF EXISTS `ps_delivery`;
 CREATE TABLE `ps_delivery` (
-  `id_delivery` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned DEFAULT NULL,
-  `id_shop_group` int unsigned DEFAULT NULL,
-  `id_carrier` int unsigned NOT NULL,
-  `id_range_price` int unsigned DEFAULT NULL,
-  `id_range_weight` int unsigned DEFAULT NULL,
-  `id_zone` int unsigned NOT NULL,
+  `id_delivery` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned DEFAULT NULL,
+  `id_shop_group` int(10) unsigned DEFAULT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_range_price` int(10) unsigned DEFAULT NULL,
+  `id_range_weight` int(10) unsigned DEFAULT NULL,
+  `id_zone` int(10) unsigned NOT NULL,
   `price` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_delivery`),
   KEY `id_zone` (`id_zone`),
   KEY `id_carrier` (`id_carrier`,`id_zone`),
   KEY `id_range_price` (`id_range_price`),
   KEY `id_range_weight` (`id_range_weight`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_delivery` VALUES
 ('1',NULL,NULL,'2','0','1','1','5.000000'),
@@ -8840,66 +8840,66 @@ INSERT INTO `ps_delivery` VALUES
 /* Scheme for table ps_emailsubscription */
 DROP TABLE IF EXISTS `ps_emailsubscription`;
 CREATE TABLE `ps_emailsubscription` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
   `email` varchar(255) NOT NULL,
   `newsletter_date_add` datetime DEFAULT NULL,
   `ip_registration_newsletter` varchar(15) NOT NULL,
   `http_referer` varchar(255) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `id_lang` int NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `id_lang` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_employee */
 DROP TABLE IF EXISTS `ps_employee`;
 CREATE TABLE `ps_employee` (
-  `id_employee` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_profile` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL DEFAULT '0',
+  `id_employee` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_profile` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL DEFAULT 0,
   `lastname` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `passwd` varchar(255) NOT NULL,
-  `last_passwd_gen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_passwd_gen` timestamp NOT NULL DEFAULT current_timestamp(),
   `stats_date_from` date DEFAULT NULL,
   `stats_date_to` date DEFAULT NULL,
   `stats_compare_from` date DEFAULT NULL,
   `stats_compare_to` date DEFAULT NULL,
-  `stats_compare_option` int unsigned NOT NULL DEFAULT '1',
+  `stats_compare_option` int(10) unsigned NOT NULL DEFAULT 1,
   `preselect_date_range` varchar(32) DEFAULT NULL,
   `bo_color` varchar(32) DEFAULT NULL,
   `bo_theme` varchar(32) DEFAULT NULL,
   `bo_css` varchar(64) DEFAULT NULL,
-  `default_tab` int unsigned NOT NULL DEFAULT '0',
-  `bo_width` int unsigned NOT NULL DEFAULT '0',
-  `bo_menu` tinyint(1) NOT NULL DEFAULT '1',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `optin` tinyint unsigned DEFAULT NULL,
-  `id_last_order` int unsigned NOT NULL DEFAULT '0',
-  `id_last_customer_message` int unsigned NOT NULL DEFAULT '0',
-  `id_last_customer` int unsigned NOT NULL DEFAULT '0',
+  `default_tab` int(10) unsigned NOT NULL DEFAULT 0,
+  `bo_width` int(10) unsigned NOT NULL DEFAULT 0,
+  `bo_menu` tinyint(1) NOT NULL DEFAULT 1,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `optin` tinyint(3) unsigned DEFAULT NULL,
+  `id_last_order` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_last_customer_message` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_last_customer` int(10) unsigned NOT NULL DEFAULT 0,
   `last_connection_date` date DEFAULT NULL,
   `reset_password_token` varchar(40) DEFAULT NULL,
   `reset_password_validity` datetime DEFAULT NULL,
-  `has_enabled_gravatar` tinyint unsigned NOT NULL DEFAULT '0',
+  `has_enabled_gravatar` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_employee`),
   KEY `employee_login` (`email`,`passwd`),
   KEY `id_employee_passwd` (`id_employee`,`passwd`),
   KEY `id_profile` (`id_profile`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_employee` VALUES
-('1','1','1','Elektroniczny','Biznes','nabepresta@outlook.com','$2y$10$R586ch5gze8lbgoi4hLU6uH/xY6JxXw/RlO2wBR8znpnP9yjgnMsS','2022-10-25 13:36:58','2022-09-25','2022-10-25','0000-00-00','0000-00-00','1',NULL,NULL,'default','theme.css','1','0','1','1',NULL,'14','1','15','2023-01-07','7d5bb03561a884abc352f9bfe40ba74612e0f91b','2022-11-20 12:05:17','0');
+('1','1','1','Elektroniczny','Biznes','nabepresta@outlook.com','$2y$10$R586ch5gze8lbgoi4hLU6uH/xY6JxXw/RlO2wBR8znpnP9yjgnMsS','2022-10-25 13:36:58','2022-09-25','2022-10-25','0000-00-00','0000-00-00','1',NULL,NULL,'default','theme.css','1','0','1','1',NULL,'14','1','15','2023-01-17','7d5bb03561a884abc352f9bfe40ba74612e0f91b','2022-11-20 12:05:17','0');
 /* Scheme for table ps_employee_session */
 DROP TABLE IF EXISTS `ps_employee_session`;
 CREATE TABLE `ps_employee_session` (
-  `id_employee_session` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_employee` int unsigned DEFAULT NULL,
+  `id_employee_session` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_employee_session` VALUES
 ('1','1','19fcf2b5a3d61052e66655720c6299db4389e070'),
@@ -8928,39 +8928,41 @@ INSERT INTO `ps_employee_session` VALUES
 ('30','1','9a6081c199fd62f17dad72bb925b6bce43d3cc76'),
 ('31','1','0e4e04008a7cb5fe857784e6c345220b92142cc3'),
 ('32','1','c669418db07bdfe7f09b662d46d35a14a1abd190'),
-('37','1','2c7e5a02e9c34cf0a4f6b159ea00bf5b19b7e752');
+('37','1','2c7e5a02e9c34cf0a4f6b159ea00bf5b19b7e752'),
+('38','1','5f0ffd8214107e34d33a7639d8e9a2e211f2e4da'),
+('40','1','d7f0bd2b2b72de79d8c59239771dfcb7564514aa');
 /* Scheme for table ps_employee_shop */
 DROP TABLE IF EXISTS `ps_employee_shop`;
 CREATE TABLE `ps_employee_shop` (
-  `id_employee` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_employee` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_employee`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_employee_shop` VALUES
 ('1','1');
 /* Scheme for table ps_fb_category_match */
 DROP TABLE IF EXISTS `ps_fb_category_match`;
 CREATE TABLE `ps_fb_category_match` (
-  `id_category` int NOT NULL,
-  `google_category_id` int NOT NULL,
+  `id_category` int(11) NOT NULL,
+  `google_category_id` int(11) NOT NULL,
   `google_category_name` varchar(255) NOT NULL,
-  `google_category_parent_id` int NOT NULL,
+  `google_category_parent_id` int(11) NOT NULL,
   `google_category_parent_name` varchar(255) NOT NULL,
   `is_parent_category` tinyint(1) DEFAULT NULL,
-  `id_shop` int NOT NULL,
+  `id_shop` int(11) NOT NULL,
   PRIMARY KEY (`id_category`,`id_shop`),
   KEY `id_category` (`id_category`,`google_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_feature */
 DROP TABLE IF EXISTS `ps_feature`;
 CREATE TABLE `ps_feature` (
-  `id_feature` int unsigned NOT NULL AUTO_INCREMENT,
-  `position` int unsigned NOT NULL DEFAULT '0',
+  `id_feature` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_feature`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_feature` VALUES
 ('1','0'),
@@ -8968,13 +8970,13 @@ INSERT INTO `ps_feature` VALUES
 /* Scheme for table ps_feature_flag */
 DROP TABLE IF EXISTS `ps_feature_flag`;
 CREATE TABLE `ps_feature_flag` (
-  `id_feature_flag` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `state` tinyint(1) NOT NULL DEFAULT '0',
-  `label_wording` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `label_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description_wording` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `id_feature_flag` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT 0,
+  `label_wording` varchar(191) NOT NULL DEFAULT '',
+  `label_domain` varchar(255) NOT NULL DEFAULT '',
+  `description_wording` varchar(191) NOT NULL DEFAULT '',
+  `description_domain` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_feature_flag`),
   UNIQUE KEY `UNIQ_91700F175E237E06` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -8984,12 +8986,12 @@ INSERT INTO `ps_feature_flag` VALUES
 /* Scheme for table ps_feature_lang */
 DROP TABLE IF EXISTS `ps_feature_lang`;
 CREATE TABLE `ps_feature_lang` (
-  `id_feature` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_feature` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature`,`id_lang`),
   KEY `id_lang` (`id_lang`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_feature_lang` VALUES
 ('1','1','Composition'),
@@ -8999,22 +9001,22 @@ INSERT INTO `ps_feature_lang` VALUES
 /* Scheme for table ps_feature_product */
 DROP TABLE IF EXISTS `ps_feature_product`;
 CREATE TABLE `ps_feature_product` (
-  `id_feature` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_feature_value` int unsigned NOT NULL,
+  `id_feature` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_feature_value` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_feature`,`id_product`,`id_feature_value`),
   KEY `id_feature_value` (`id_feature_value`),
   KEY `id_product` (`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_feature_shop */
 DROP TABLE IF EXISTS `ps_feature_shop`;
 CREATE TABLE `ps_feature_shop` (
-  `id_feature` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_feature` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_feature`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_feature_shop` VALUES
 ('1','1'),
@@ -9022,12 +9024,12 @@ INSERT INTO `ps_feature_shop` VALUES
 /* Scheme for table ps_feature_value */
 DROP TABLE IF EXISTS `ps_feature_value`;
 CREATE TABLE `ps_feature_value` (
-  `id_feature_value` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_feature` int unsigned NOT NULL,
-  `custom` tinyint unsigned DEFAULT NULL,
+  `id_feature_value` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_feature` int(10) unsigned NOT NULL,
+  `custom` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`),
   KEY `feature` (`id_feature`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_feature_value` VALUES
 ('1','1','0'),
@@ -9043,11 +9045,11 @@ INSERT INTO `ps_feature_value` VALUES
 /* Scheme for table ps_feature_value_lang */
 DROP TABLE IF EXISTS `ps_feature_value_lang`;
 CREATE TABLE `ps_feature_value_lang` (
-  `id_feature_value` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_feature_value` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `value` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_feature_value_lang` VALUES
 ('1','1','Polyester'),
@@ -9073,10 +9075,10 @@ INSERT INTO `ps_feature_value_lang` VALUES
 /* Scheme for table ps_gender */
 DROP TABLE IF EXISTS `ps_gender`;
 CREATE TABLE `ps_gender` (
-  `id_gender` int NOT NULL AUTO_INCREMENT,
+  `id_gender` int(11) NOT NULL AUTO_INCREMENT,
   `type` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_gender`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_gender` VALUES
 ('1','0'),
@@ -9084,12 +9086,12 @@ INSERT INTO `ps_gender` VALUES
 /* Scheme for table ps_gender_lang */
 DROP TABLE IF EXISTS `ps_gender_lang`;
 CREATE TABLE `ps_gender_lang` (
-  `id_gender` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_gender` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id_gender`,`id_lang`),
   KEY `id_gender` (`id_gender`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_gender_lang` VALUES
 ('1','1','Mr.'),
@@ -9099,14 +9101,14 @@ INSERT INTO `ps_gender_lang` VALUES
 /* Scheme for table ps_group */
 DROP TABLE IF EXISTS `ps_group`;
 CREATE TABLE `ps_group` (
-  `id_group` int unsigned NOT NULL AUTO_INCREMENT,
-  `reduction` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `price_display_method` tinyint NOT NULL DEFAULT '0',
-  `show_prices` tinyint unsigned NOT NULL DEFAULT '1',
+  `id_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reduction` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `price_display_method` tinyint(4) NOT NULL DEFAULT 0,
+  `show_prices` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_group` VALUES
 ('1','0.00','0','1','2022-10-25 19:36:50','2022-10-25 19:36:50'),
@@ -9115,11 +9117,11 @@ INSERT INTO `ps_group` VALUES
 /* Scheme for table ps_group_lang */
 DROP TABLE IF EXISTS `ps_group_lang`;
 CREATE TABLE `ps_group_lang` (
-  `id_group` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_group`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_group_lang` VALUES
 ('1','1','Visitor'),
@@ -9131,22 +9133,22 @@ INSERT INTO `ps_group_lang` VALUES
 /* Scheme for table ps_group_reduction */
 DROP TABLE IF EXISTS `ps_group_reduction`;
 CREATE TABLE `ps_group_reduction` (
-  `id_group_reduction` mediumint unsigned NOT NULL AUTO_INCREMENT,
-  `id_group` int unsigned NOT NULL,
-  `id_category` int unsigned NOT NULL,
+  `id_group_reduction` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id_group` int(10) unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
   `reduction` decimal(5,4) NOT NULL,
   PRIMARY KEY (`id_group_reduction`),
   UNIQUE KEY `id_group` (`id_group`,`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_group_shop */
 DROP TABLE IF EXISTS `ps_group_shop`;
 CREATE TABLE `ps_group_shop` (
-  `id_group` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_group`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_group_shop` VALUES
 ('1','1'),
@@ -9156,20 +9158,20 @@ INSERT INTO `ps_group_shop` VALUES
 DROP TABLE IF EXISTS `ps_gsitemap_sitemap`;
 CREATE TABLE `ps_gsitemap_sitemap` (
   `link` varchar(255) DEFAULT NULL,
-  `id_shop` int DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `id_shop` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_guest */
 DROP TABLE IF EXISTS `ps_guest`;
 CREATE TABLE `ps_guest` (
-  `id_guest` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_operating_system` int unsigned DEFAULT NULL,
-  `id_web_browser` int unsigned DEFAULT NULL,
-  `id_customer` int unsigned DEFAULT NULL,
-  `javascript` tinyint(1) DEFAULT '0',
-  `screen_resolution_x` smallint unsigned DEFAULT NULL,
-  `screen_resolution_y` smallint unsigned DEFAULT NULL,
-  `screen_color` tinyint unsigned DEFAULT NULL,
+  `id_guest` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_operating_system` int(10) unsigned DEFAULT NULL,
+  `id_web_browser` int(10) unsigned DEFAULT NULL,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `javascript` tinyint(1) DEFAULT 0,
+  `screen_resolution_x` smallint(5) unsigned DEFAULT NULL,
+  `screen_resolution_y` smallint(5) unsigned DEFAULT NULL,
+  `screen_color` tinyint(3) unsigned DEFAULT NULL,
   `sun_java` tinyint(1) DEFAULT NULL,
   `adobe_flash` tinyint(1) DEFAULT NULL,
   `adobe_director` tinyint(1) DEFAULT NULL,
@@ -9177,20 +9179,20 @@ CREATE TABLE `ps_guest` (
   `real_player` tinyint(1) DEFAULT NULL,
   `windows_media` tinyint(1) DEFAULT NULL,
   `accept_language` varchar(8) DEFAULT NULL,
-  `mobile_theme` tinyint(1) NOT NULL DEFAULT '0',
+  `mobile_theme` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_guest`),
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_homeslider */
 DROP TABLE IF EXISTS `ps_homeslider`;
 CREATE TABLE `ps_homeslider` (
-  `id_homeslider_slides` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL,
+  `id_homeslider_slides` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_homeslider_slides`,`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_homeslider` VALUES
 ('1','1'),
@@ -9199,11 +9201,11 @@ INSERT INTO `ps_homeslider` VALUES
 /* Scheme for table ps_homeslider_slides */
 DROP TABLE IF EXISTS `ps_homeslider_slides`;
 CREATE TABLE `ps_homeslider_slides` (
-  `id_homeslider_slides` int unsigned NOT NULL AUTO_INCREMENT,
-  `position` int unsigned NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_homeslider_slides` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_homeslider_slides`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_homeslider_slides` VALUES
 ('1','1','0'),
@@ -9212,15 +9214,15 @@ INSERT INTO `ps_homeslider_slides` VALUES
 /* Scheme for table ps_homeslider_slides_lang */
 DROP TABLE IF EXISTS `ps_homeslider_slides_lang`;
 CREATE TABLE `ps_homeslider_slides_lang` (
-  `id_homeslider_slides` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_homeslider_slides` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `legend` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id_homeslider_slides`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_homeslider_slides_lang` VALUES
 ('1','1','Sample 1','<h3>EXCEPTEUR OCCAECAT</h3>\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit</p>','sample-1','http://www.prestashop.com/?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-EN&utm_content=download','sample-1.jpg'),
@@ -9232,15 +9234,15 @@ INSERT INTO `ps_homeslider_slides_lang` VALUES
 /* Scheme for table ps_hook */
 DROP TABLE IF EXISTS `ps_hook`;
 CREATE TABLE `ps_hook` (
-  `id_hook` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_hook` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text,
-  `active` tinyint unsigned NOT NULL DEFAULT '1',
-  `position` tinyint(1) NOT NULL DEFAULT '1',
+  `description` text DEFAULT NULL,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `position` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_hook`),
   UNIQUE KEY `hook_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=776 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=776 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_hook` VALUES
 ('1','actionValidateOrder','New orders',NULL,'1','1'),
@@ -10021,12 +10023,12 @@ INSERT INTO `ps_hook` VALUES
 /* Scheme for table ps_hook_alias */
 DROP TABLE IF EXISTS `ps_hook_alias`;
 CREATE TABLE `ps_hook_alias` (
-  `id_hook_alias` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_hook_alias` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `alias` varchar(191) NOT NULL,
   `name` varchar(191) NOT NULL,
   PRIMARY KEY (`id_hook_alias`),
   UNIQUE KEY `alias` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_hook_alias` VALUES
 ('1','newOrder','actionValidateOrder'),
@@ -10120,15 +10122,15 @@ INSERT INTO `ps_hook_alias` VALUES
 /* Scheme for table ps_hook_module */
 DROP TABLE IF EXISTS `ps_hook_module`;
 CREATE TABLE `ps_hook_module` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_hook` int unsigned NOT NULL,
-  `position` tinyint unsigned NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_hook` int(10) unsigned NOT NULL,
+  `position` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id_module`,`id_hook`,`id_shop`),
   KEY `id_hook` (`id_hook`),
   KEY `id_module` (`id_module`),
   KEY `position` (`id_shop`,`position`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_hook_module` VALUES
 ('60','1','693','0'),
@@ -10417,28 +10419,28 @@ INSERT INTO `ps_hook_module` VALUES
 /* Scheme for table ps_hook_module_exceptions */
 DROP TABLE IF EXISTS `ps_hook_module_exceptions`;
 CREATE TABLE `ps_hook_module_exceptions` (
-  `id_hook_module_exceptions` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_module` int unsigned NOT NULL,
-  `id_hook` int unsigned NOT NULL,
+  `id_hook_module_exceptions` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_hook` int(10) unsigned NOT NULL,
   `file_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_hook_module_exceptions`),
   KEY `id_module` (`id_module`),
   KEY `id_hook` (`id_hook`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_image */
 DROP TABLE IF EXISTS `ps_image`;
 CREATE TABLE `ps_image` (
-  `id_image` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `position` smallint unsigned NOT NULL DEFAULT '0',
-  `cover` tinyint unsigned DEFAULT NULL,
+  `id_image` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `position` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `cover` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_image`),
   UNIQUE KEY `id_product_cover` (`id_product`,`cover`),
   UNIQUE KEY `idx_product_image` (`id_image`,`id_product`,`cover`),
   KEY `image_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=1919 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1919 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_image` VALUES
 ('1418','1421','1','1'),
@@ -10947,12 +10949,12 @@ INSERT INTO `ps_image` VALUES
 /* Scheme for table ps_image_lang */
 DROP TABLE IF EXISTS `ps_image_lang`;
 CREATE TABLE `ps_image_lang` (
-  `id_image` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_image` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `legend` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_image`,`id_lang`),
   KEY `id_image` (`id_image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_image_lang` VALUES
 ('1418','1',NULL),
@@ -11965,14 +11967,14 @@ INSERT INTO `ps_image_lang` VALUES
 /* Scheme for table ps_image_shop */
 DROP TABLE IF EXISTS `ps_image_shop`;
 CREATE TABLE `ps_image_shop` (
-  `id_product` int unsigned NOT NULL,
-  `id_image` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `cover` tinyint unsigned DEFAULT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_image` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `cover` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_image`,`id_shop`),
   UNIQUE KEY `id_product` (`id_product`,`id_shop`,`cover`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_image_shop` VALUES
 ('1421','1418','1','1'),
@@ -12481,18 +12483,18 @@ INSERT INTO `ps_image_shop` VALUES
 /* Scheme for table ps_image_type */
 DROP TABLE IF EXISTS `ps_image_type`;
 CREATE TABLE `ps_image_type` (
-  `id_image_type` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_image_type` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `width` int unsigned NOT NULL,
-  `height` int unsigned NOT NULL,
-  `products` tinyint(1) NOT NULL DEFAULT '1',
-  `categories` tinyint(1) NOT NULL DEFAULT '1',
-  `manufacturers` tinyint(1) NOT NULL DEFAULT '1',
-  `suppliers` tinyint(1) NOT NULL DEFAULT '1',
-  `stores` tinyint(1) NOT NULL DEFAULT '1',
+  `width` int(10) unsigned NOT NULL,
+  `height` int(10) unsigned NOT NULL,
+  `products` tinyint(1) NOT NULL DEFAULT 1,
+  `categories` tinyint(1) NOT NULL DEFAULT 1,
+  `manufacturers` tinyint(1) NOT NULL DEFAULT 1,
+  `suppliers` tinyint(1) NOT NULL DEFAULT 1,
+  `stores` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_image_type`),
   KEY `image_type_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_image_type` VALUES
 ('1','cart_default','125','125','1','0','0','0','0'),
@@ -12505,58 +12507,58 @@ INSERT INTO `ps_image_type` VALUES
 /* Scheme for table ps_import_match */
 DROP TABLE IF EXISTS `ps_import_match`;
 CREATE TABLE `ps_import_match` (
-  `id_import_match` int NOT NULL AUTO_INCREMENT,
+  `id_import_match` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `match` text NOT NULL,
-  `skip` int NOT NULL,
+  `skip` int(11) NOT NULL,
   PRIMARY KEY (`id_import_match`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_import_match` VALUES
 ('1','c/n/p/i','category|name|price_tex|image','1');
 /* Scheme for table ps_info */
 DROP TABLE IF EXISTS `ps_info`;
 CREATE TABLE `ps_info` (
-  `id_info` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_info` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_info`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_info` VALUES
 ('1');
 /* Scheme for table ps_info_lang */
 DROP TABLE IF EXISTS `ps_info_lang`;
 CREATE TABLE `ps_info_lang` (
-  `id_info` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_info` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id_info`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_info_lang` VALUES
 ('1','1','1','<h2>Custom Text Block</h2>\n<p><strong class=\"dark\">Lorem ipsum dolor sit amet conse ctetu</strong></p>\n<p>Sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>'),
-('1','1','2','<div class=\"AEVS ab-banner ab-noCTABanner __5uyR\"><br class=\"fZ6i KBO5 FCZR __6xS_\" />\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"><span style=\"color:#000000;\"><a href=\"http://localhost/prestashop/index.php?id_category=48&amp;controller=category\" style=\"color:#000000;\">10% rabatu na wszystkie bluzy!</a> </span>       Czas dostawy to 2-3 dni robocze           15% rabatu na całe zakupy z kodem GET15</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\">  </p>\n<h3 class=\"fZ6i KBO5 FCZR __6xS_\">Potrzebujesz więcej czasu na decyzję? Wydłużamy termin zwrotu produktów do 45 dni!</h3>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\">W sklepach i online</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"></p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\"></p>\n</div>');
+('1','1','2','<div class=\"AEVS ab-banner ab-noCTABanner __5uyR\"><br class=\"fZ6i KBO5 FCZR __6xS_\" />\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"><span style=\"color:#000000;\"><a href=\"http://localhost:18455/index.php?id_category=48&amp;controller=category\" style=\"color:#000000;\">10% rabatu na wszystkie bluzy!</a> </span>       Czas dostawy to 2-3 dni robocze           15% rabatu na całe zakupy z kodem GET15</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\">  </p>\n<h3 class=\"fZ6i KBO5 FCZR __6xS_\">Potrzebujesz więcej czasu na decyzję? Wydłużamy termin zwrotu produktów do 45 dni!</h3>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\">W sklepach i online</p>\n<p class=\"cqN_ KBO5\" style=\"text-align:center;\"></p>\n<p class=\"cqN_ KBO5\" style=\"text-align:left;\"></p>\n</div>');
 /* Scheme for table ps_info_shop */
 DROP TABLE IF EXISTS `ps_info_shop`;
 CREATE TABLE `ps_info_shop` (
-  `id_info` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_info` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_info`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_info_shop` VALUES
 ('1','1');
 /* Scheme for table ps_lang */
 DROP TABLE IF EXISTS `ps_lang`;
 CREATE TABLE `ps_lang` (
-  `id_lang` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_lang` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `iso_code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language_code` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locale` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_format_lite` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_format_full` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `iso_code` varchar(2) NOT NULL,
+  `language_code` varchar(5) NOT NULL,
+  `locale` varchar(5) NOT NULL,
+  `date_format_lite` varchar(32) NOT NULL,
+  `date_format_full` varchar(32) NOT NULL,
   `is_rtl` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_lang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -12567,8 +12569,8 @@ INSERT INTO `ps_lang` VALUES
 /* Scheme for table ps_lang_shop */
 DROP TABLE IF EXISTS `ps_lang_shop`;
 CREATE TABLE `ps_lang_shop` (
-  `id_lang` int NOT NULL,
-  `id_shop` int NOT NULL,
+  `id_lang` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   PRIMARY KEY (`id_lang`,`id_shop`),
   KEY `IDX_2F43BFC7BA299860` (`id_lang`),
   KEY `IDX_2F43BFC7274A50A0` (`id_shop`)
@@ -12580,18 +12582,18 @@ INSERT INTO `ps_lang_shop` VALUES
 /* Scheme for table ps_layered_category */
 DROP TABLE IF EXISTS `ps_layered_category`;
 CREATE TABLE `ps_layered_category` (
-  `id_layered_category` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL,
-  `id_category` int unsigned NOT NULL,
-  `id_value` int unsigned DEFAULT '0',
+  `id_layered_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
+  `id_value` int(10) unsigned DEFAULT 0,
   `type` enum('category','id_feature','id_attribute_group','quantity','condition','manufacturer','weight','price') NOT NULL,
-  `position` int unsigned NOT NULL,
-  `filter_type` int unsigned NOT NULL DEFAULT '0',
-  `filter_show_limit` int unsigned NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL,
+  `filter_type` int(10) unsigned NOT NULL DEFAULT 0,
+  `filter_show_limit` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_layered_category`),
   KEY `id_category_shop` (`id_category`,`id_shop`,`type`,`id_value`,`position`),
   KEY `id_category` (`id_category`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_category` VALUES
 ('1','1','2',NULL,'category','1','0','0'),
@@ -12657,13 +12659,13 @@ INSERT INTO `ps_layered_category` VALUES
 /* Scheme for table ps_layered_filter */
 DROP TABLE IF EXISTS `ps_layered_filter`;
 CREATE TABLE `ps_layered_filter` (
-  `id_layered_filter` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_layered_filter` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `filters` longtext,
-  `n_categories` int unsigned NOT NULL,
+  `filters` longtext DEFAULT NULL,
+  `n_categories` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_layered_filter`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_filter` VALUES
 ('1','My template 2022-10-25','a:14:{s:10:\"categories\";a:5:{i:0;i:2;i:2;i:4;i:3;i:5;i:6;i:8;i:7;i:7;}s:9:\"shop_list\";a:1:{i:1;i:1;}s:31:\"layered_selection_subcategories\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:31:\"layered_selection_weight_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_price_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_4\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}','8','2022-10-25 19:38:40');
@@ -12671,33 +12673,28 @@ INSERT INTO `ps_layered_filter` VALUES
 DROP TABLE IF EXISTS `ps_layered_filter_block`;
 CREATE TABLE `ps_layered_filter_block` (
   `hash` char(32) NOT NULL DEFAULT '',
-  `data` text,
+  `data` text DEFAULT NULL,
   PRIMARY KEY (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-INSERT INTO `ps_layered_filter_block` VALUES
-('1a3e5846e482553215414a8d571df79a','a:1:{s:7:\"filters\";a:0:{}}'),
-('1b30c580e31e6e42dd80ef5f117fe62f','a:1:{s:7:\"filters\";a:0:{}}'),
-('ae76b3a9463ba5fda5ca39549aae0250','a:1:{s:7:\"filters\";a:0:{}}'),
-('baded6ea6a994ae5a182f8c0ba15a61e','a:1:{s:7:\"filters\";a:0:{}}');
 /* Scheme for table ps_layered_filter_shop */
 DROP TABLE IF EXISTS `ps_layered_filter_shop`;
 CREATE TABLE `ps_layered_filter_shop` (
-  `id_layered_filter` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_layered_filter` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_layered_filter`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_filter_shop` VALUES
 ('1','1');
 /* Scheme for table ps_layered_indexable_attribute_group */
 DROP TABLE IF EXISTS `ps_layered_indexable_attribute_group`;
 CREATE TABLE `ps_layered_indexable_attribute_group` (
-  `id_attribute_group` int NOT NULL,
-  `indexable` tinyint(1) NOT NULL DEFAULT '0',
+  `id_attribute_group` int(11) NOT NULL,
+  `indexable` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_attribute_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_indexable_attribute_group` VALUES
 ('1','0'),
@@ -12707,30 +12704,30 @@ INSERT INTO `ps_layered_indexable_attribute_group` VALUES
 /* Scheme for table ps_layered_indexable_attribute_group_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_attribute_group_lang_value`;
 CREATE TABLE `ps_layered_indexable_attribute_group_lang_value` (
-  `id_attribute_group` int NOT NULL,
-  `id_lang` int NOT NULL,
+  `id_attribute_group` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_attribute_group`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_layered_indexable_attribute_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_attribute_lang_value`;
 CREATE TABLE `ps_layered_indexable_attribute_lang_value` (
-  `id_attribute` int NOT NULL,
-  `id_lang` int NOT NULL,
+  `id_attribute` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_attribute`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_layered_indexable_feature */
 DROP TABLE IF EXISTS `ps_layered_indexable_feature`;
 CREATE TABLE `ps_layered_indexable_feature` (
-  `id_feature` int NOT NULL,
-  `indexable` tinyint(1) NOT NULL DEFAULT '0',
+  `id_feature` int(11) NOT NULL,
+  `indexable` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_feature`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_indexable_feature` VALUES
 ('1','0'),
@@ -12738,37 +12735,37 @@ INSERT INTO `ps_layered_indexable_feature` VALUES
 /* Scheme for table ps_layered_indexable_feature_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_feature_lang_value`;
 CREATE TABLE `ps_layered_indexable_feature_lang_value` (
-  `id_feature` int NOT NULL,
-  `id_lang` int NOT NULL,
+  `id_feature` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `url_name` varchar(128) NOT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_layered_indexable_feature_value_lang_value */
 DROP TABLE IF EXISTS `ps_layered_indexable_feature_value_lang_value`;
 CREATE TABLE `ps_layered_indexable_feature_value_lang_value` (
-  `id_feature_value` int NOT NULL,
-  `id_lang` int NOT NULL,
+  `id_feature_value` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `url_name` varchar(128) DEFAULT NULL,
   `meta_title` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_feature_value`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_layered_price_index */
 DROP TABLE IF EXISTS `ps_layered_price_index`;
 CREATE TABLE `ps_layered_price_index` (
-  `id_product` int NOT NULL,
-  `id_currency` int NOT NULL,
-  `id_shop` int NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_currency` int(11) NOT NULL,
+  `id_shop` int(11) NOT NULL,
   `price_min` decimal(20,6) NOT NULL,
   `price_max` decimal(20,6) NOT NULL,
-  `id_country` int NOT NULL,
+  `id_country` int(11) NOT NULL,
   PRIMARY KEY (`id_product`,`id_currency`,`id_shop`,`id_country`),
   KEY `id_currency` (`id_currency`),
   KEY `price_min` (`price_min`),
   KEY `price_max` (`price_max`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_price_index` VALUES
 ('1','1','1','149.990000','149.990000','14'),
@@ -14365,18 +14362,18 @@ INSERT INTO `ps_layered_price_index` VALUES
 ('1585','1','1','129.002400','129.002400','14'),
 ('1586','1','1','199.001700','199.001700','14'),
 ('1587','1','1','79.002900','79.002900','14'),
-('1588','1','1','116.102160','129.002400','14'),
-('1589','1','1','116.102160','129.002400','14'),
-('1590','1','1','71.102610','79.002900','14'),
-('1591','1','1','134.101980','149.002200','14'),
-('1592','1','1','116.102160','129.002400','14'),
-('1593','1','1','116.102160','129.002400','14'),
-('1594','1','1','125.102070','139.002300','14'),
-('1595','1','1','80.102520','89.002800','14'),
-('1596','1','1','80.102520','89.002800','14'),
-('1597','1','1','71.102610','79.002900','14'),
-('1598','1','1','71.102610','79.002900','14'),
-('1599','1','1','71.102610','79.002900','14'),
+('1588','1','1','129.002400','129.002400','14'),
+('1589','1','1','129.002400','129.002400','14'),
+('1590','1','1','79.002900','79.002900','14'),
+('1591','1','1','149.002200','149.002200','14'),
+('1592','1','1','129.002400','129.002400','14'),
+('1593','1','1','129.002400','129.002400','14'),
+('1594','1','1','139.002300','139.002300','14'),
+('1595','1','1','89.002800','89.002800','14'),
+('1596','1','1','89.002800','89.002800','14'),
+('1597','1','1','79.002900','79.002900','14'),
+('1598','1','1','79.002900','79.002900','14'),
+('1599','1','1','79.002900','79.002900','14'),
 ('1600','1','1','129.002400','129.002400','14');
 INSERT INTO `ps_layered_price_index` VALUES
 ('1601','1','1','79.002900','79.002900','14'),
@@ -14418,7 +14415,7 @@ INSERT INTO `ps_layered_price_index` VALUES
 ('1637','1','1','59.003100','59.003100','14'),
 ('1638','1','1','79.002900','79.002900','14'),
 ('1639','1','1','149.002200','149.002200','14'),
-('1640','1','1','53.102790','59.003100','14'),
+('1640','1','1','59.003100','59.003100','14'),
 ('1641','1','1','139.002300','139.002300','14'),
 ('1642','1','1','129.002400','129.002400','14'),
 ('1643','1','1','89.002800','89.002800','14'),
@@ -14704,13 +14701,13 @@ INSERT INTO `ps_layered_price_index` VALUES
 /* Scheme for table ps_layered_product_attribute */
 DROP TABLE IF EXISTS `ps_layered_product_attribute`;
 CREATE TABLE `ps_layered_product_attribute` (
-  `id_attribute` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_attribute_group` int unsigned NOT NULL DEFAULT '0',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
+  `id_attribute` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_attribute_group` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_attribute`,`id_product`,`id_shop`),
   UNIQUE KEY `id_attribute_group` (`id_attribute_group`,`id_attribute`,`id_product`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_layered_product_attribute` VALUES
 ('1','1','1','1'),
@@ -15186,12 +15183,12 @@ INSERT INTO `ps_layered_product_attribute` VALUES
 /* Scheme for table ps_link_block */
 DROP TABLE IF EXISTS `ps_link_block`;
 CREATE TABLE `ps_link_block` (
-  `id_link_block` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_hook` int unsigned DEFAULT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
-  `content` text,
+  `id_link_block` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_hook` int(10) unsigned DEFAULT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
+  `content` text DEFAULT NULL,
   PRIMARY KEY (`id_link_block`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_link_block` VALUES
 ('1','41','0','{\"cms\":[false],\"static\":[false],\"product\":[false],\"category\":[false]}'),
@@ -15200,28 +15197,28 @@ INSERT INTO `ps_link_block` VALUES
 /* Scheme for table ps_link_block_lang */
 DROP TABLE IF EXISTS `ps_link_block_lang`;
 CREATE TABLE `ps_link_block_lang` (
-  `id_link_block` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_link_block` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(40) NOT NULL DEFAULT '',
-  `custom_content` text,
+  `custom_content` text DEFAULT NULL,
   PRIMARY KEY (`id_link_block`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_link_block_lang` VALUES
-('1','1','Products','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"On\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Divided\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Niemowle\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Dziecko\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"h&m home\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"sport\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=4&controller=category&id_lang=2\"}]'),
-('1','2','Kupuj','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php?id_category=10&controller=category&id_lang=2\"}]'),
-('2','1','Informacje o firmie','[{\"title\":\"Praca w H&M\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"},{\"title\":\"O Grupie H&M\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"},{\"title\":\"Nasza odpowiedzialno\\u015b\\u0107\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"},{\"title\":\"Dla medi\\u00f3w\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"},{\"title\":\"Relacje inwestorskie\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"},{\"title\":\"Nadz\\u00f3r w\\u0142a\\u015bcicielski\",\"url\":\"http:\\/\\/localhost\\/prestashop\\/index.php\"}]'),
+('1','1','Products','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"On\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Divided\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Niemowle\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"Dziecko\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"h&m home\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"},{\"title\":\"sport\",\"url\":\"http:\\/\\/localhost:18455\\/index.php?id_category=4&controller=category&id_lang=2\"}]'),
+('1','2','Kupuj','[{\"title\":\"Ona\",\"url\":\"http:\\/\\/localhost:18456\\/index.php?id_category=10&controller=category&id_lang=2\"}]'),
+('2','1','Informacje o firmie','[{\"title\":\"Praca w H&M\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"O Grupie H&M\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Nasza odpowiedzialno\\u015b\\u0107\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Dla medi\\u00f3w\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Relacje inwestorskie\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"},{\"title\":\"Nadz\\u00f3r w\\u0142a\\u015bcicielski\",\"url\":\"http:\\/\\/localhost:18455\\/index.php\"}]'),
 ('2','2','Informacje o firmie',NULL),
 ('4','1','Pomoc',NULL),
 ('4','2','Pomoc',NULL);
 /* Scheme for table ps_link_block_shop */
 DROP TABLE IF EXISTS `ps_link_block_shop`;
 CREATE TABLE `ps_link_block_shop` (
-  `id_link_block` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL,
-  `position` int unsigned NOT NULL DEFAULT '0',
+  `id_link_block` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_link_block`,`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_link_block_shop` VALUES
 ('1','1','0'),
@@ -15230,3715 +15227,60 @@ INSERT INTO `ps_link_block_shop` VALUES
 /* Scheme for table ps_linksmenutop */
 DROP TABLE IF EXISTS `ps_linksmenutop`;
 CREATE TABLE `ps_linksmenutop` (
-  `id_linksmenutop` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL,
+  `id_linksmenutop` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL,
   `new_window` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_linksmenutop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_linksmenutop` VALUES
-('1','1','0'),
-('2','1','0'),
-('3','1','0'),
-('4','1','0'),
-('5','1','0'),
-('6','1','0'),
-('7','1','0'),
-('8','1','0'),
-('9','1','0');
+('1','1','0');
 /* Scheme for table ps_linksmenutop_lang */
 DROP TABLE IF EXISTS `ps_linksmenutop_lang`;
 CREATE TABLE `ps_linksmenutop_lang` (
-  `id_linksmenutop` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_linksmenutop` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   `label` varchar(128) NOT NULL,
   `link` varchar(128) NOT NULL,
   KEY `id_linksmenutop` (`id_linksmenutop`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_linksmenutop_lang` VALUES
-('1','1','1','Ona','http://localhost/prestashop/index.php?id_category=10&controller=category'),
-('1','2','1','Ona','http://localhost/prestashop/index.php?id_category=10&controller=category&id_lang=2'),
-('2','1','1','On','http://localhost/prestashop/index.php?id_category=10&controller=category&id_lang=2'),
-('2','2','1','On','http://localhost/prestashop/index.php?id_category=10&controller=category&id_lang=2'),
-('3','1','1','Divided',''),
-('3','2','1','Divided','https://www2.hm.com/pl_pl/divided.html'),
-('4','1','1','Niemowle',''),
-('4','2','1','NIemowle','https://www2.hm.com/pl_pl/niemowlece.html'),
-('5','1','1','Dziecko',''),
-('5','2','1','Dziecko','https://www2.hm.com/pl_pl/dziecko.html'),
-('6','1','1','H&M HOME','https://www2.hm.com/pl_pl/dom.html'),
-('6','2','1','H&M HOME','https://www2.hm.com/pl_pl/dom.html'),
-('7','1','1','beauty',''),
-('7','2','1','Beauty','https://www2.hm.com/pl_pl/beauty.html'),
-('8','1','1','Sport',''),
-('8','2','1','Sport','https://www2.hm.com/pl_pl/sport.html'),
-('9','1','1','Nasza odpowiedzialność',''),
-('9','2','1','Nasza odpowiedzialność','https://www2.hm.com/pl_pl/sustainability-at-hm.html');
+('1','1','1','Ona','http://localhost:18456/index.php?id_category=10&controller=category&id_lang=2'),
+('1','2','1','Ona','http://localhost:18456/index.php?id_category=10&controller=category&id_lang=2');
 /* Scheme for table ps_log */
 DROP TABLE IF EXISTS `ps_log`;
 CREATE TABLE `ps_log` (
-  `id_log` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_log` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `severity` tinyint(1) NOT NULL,
-  `error_code` int DEFAULT NULL,
+  `error_code` int(11) DEFAULT NULL,
   `message` text NOT NULL,
   `object_type` varchar(32) DEFAULT NULL,
-  `object_id` int unsigned DEFAULT NULL,
-  `id_shop` int unsigned DEFAULT NULL,
-  `id_shop_group` int unsigned DEFAULT NULL,
-  `id_lang` int unsigned DEFAULT NULL,
-  `in_all_shops` tinyint unsigned NOT NULL DEFAULT '0',
-  `id_employee` int unsigned DEFAULT NULL,
+  `object_id` int(10) unsigned DEFAULT NULL,
+  `id_shop` int(10) unsigned DEFAULT NULL,
+  `id_shop_group` int(10) unsigned DEFAULT NULL,
+  `id_lang` int(10) unsigned DEFAULT NULL,
+  `in_all_shops` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `id_employee` int(10) unsigned DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=3613 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
-INSERT INTO `ps_log` VALUES
-('1','1','0','Exporting mail with theme modern for language English (English)',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:39','2022-10-25 19:36:39'),
-('2','1','0','Core output folder: /var/www/html/prestashop/mails',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:39','2022-10-25 19:36:39'),
-('3','1','0','Modules output folder: /var/www/html/prestashop/modules/',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:39','2022-10-25 19:36:39'),
-('4','1','0','Generate html template account at /var/www/html/prestashop/mails/en/account.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('5','1','0','Generate txt template account at /var/www/html/prestashop/mails/en/account.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('6','1','0','Generate html template backoffice_order at /var/www/html/prestashop/mails/en/backoffice_order.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('7','1','0','Generate txt template backoffice_order at /var/www/html/prestashop/mails/en/backoffice_order.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('8','1','0','Generate html template bankwire at /var/www/html/prestashop/mails/en/bankwire.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('9','1','0','Generate txt template bankwire at /var/www/html/prestashop/mails/en/bankwire.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('10','1','0','Generate html template cheque at /var/www/html/prestashop/mails/en/cheque.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('11','1','0','Generate txt template cheque at /var/www/html/prestashop/mails/en/cheque.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('12','1','0','Generate html template contact at /var/www/html/prestashop/mails/en/contact.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('13','1','0','Generate txt template contact at /var/www/html/prestashop/mails/en/contact.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:40','2022-10-25 19:36:40'),
-('14','1','0','Generate html template contact_form at /var/www/html/prestashop/mails/en/contact_form.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('15','1','0','Generate txt template contact_form at /var/www/html/prestashop/mails/en/contact_form.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('16','1','0','Generate html template credit_slip at /var/www/html/prestashop/mails/en/credit_slip.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('17','1','0','Generate txt template credit_slip at /var/www/html/prestashop/mails/en/credit_slip.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('18','1','0','Generate html template download_product at /var/www/html/prestashop/mails/en/download_product.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('19','1','0','Generate txt template download_product at /var/www/html/prestashop/mails/en/download_product.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('20','1','0','Generate html template employee_password at /var/www/html/prestashop/mails/en/employee_password.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('21','1','0','Generate txt template employee_password at /var/www/html/prestashop/mails/en/employee_password.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('22','1','0','Generate html template forward_msg at /var/www/html/prestashop/mails/en/forward_msg.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('23','1','0','Generate txt template forward_msg at /var/www/html/prestashop/mails/en/forward_msg.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('24','1','0','Generate html template guest_to_customer at /var/www/html/prestashop/mails/en/guest_to_customer.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('25','1','0','Generate txt template guest_to_customer at /var/www/html/prestashop/mails/en/guest_to_customer.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('26','1','0','Generate html template import at /var/www/html/prestashop/mails/en/import.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('27','1','0','Generate txt template import at /var/www/html/prestashop/mails/en/import.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('28','1','0','Generate html template in_transit at /var/www/html/prestashop/mails/en/in_transit.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('29','1','0','Generate txt template in_transit at /var/www/html/prestashop/mails/en/in_transit.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('30','1','0','Generate html template log_alert at /var/www/html/prestashop/mails/en/log_alert.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('31','1','0','Generate txt template log_alert at /var/www/html/prestashop/mails/en/log_alert.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('32','1','0','Generate html template newsletter at /var/www/html/prestashop/mails/en/newsletter.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('33','1','0','Generate txt template newsletter at /var/www/html/prestashop/mails/en/newsletter.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('34','1','0','Generate html template order_canceled at /var/www/html/prestashop/mails/en/order_canceled.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('35','1','0','Generate txt template order_canceled at /var/www/html/prestashop/mails/en/order_canceled.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('36','1','0','Generate html template order_changed at /var/www/html/prestashop/mails/en/order_changed.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('37','1','0','Generate txt template order_changed at /var/www/html/prestashop/mails/en/order_changed.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('38','1','0','Generate html template order_conf at /var/www/html/prestashop/mails/en/order_conf.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('39','1','0','Generate txt template order_conf at /var/www/html/prestashop/mails/en/order_conf.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('40','1','0','Generate html template order_customer_comment at /var/www/html/prestashop/mails/en/order_customer_comment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('41','1','0','Generate txt template order_customer_comment at /var/www/html/prestashop/mails/en/order_customer_comment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('42','1','0','Generate html template order_merchant_comment at /var/www/html/prestashop/mails/en/order_merchant_comment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('43','1','0','Generate txt template order_merchant_comment at /var/www/html/prestashop/mails/en/order_merchant_comment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('44','1','0','Generate html template order_return_state at /var/www/html/prestashop/mails/en/order_return_state.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('45','1','0','Generate txt template order_return_state at /var/www/html/prestashop/mails/en/order_return_state.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('46','1','0','Generate html template outofstock at /var/www/html/prestashop/mails/en/outofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('47','1','0','Generate txt template outofstock at /var/www/html/prestashop/mails/en/outofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('48','1','0','Generate html template password at /var/www/html/prestashop/mails/en/password.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('49','1','0','Generate txt template password at /var/www/html/prestashop/mails/en/password.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:41','2022-10-25 19:36:41'),
-('50','1','0','Generate html template password_query at /var/www/html/prestashop/mails/en/password_query.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('51','1','0','Generate txt template password_query at /var/www/html/prestashop/mails/en/password_query.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('52','1','0','Generate html template payment at /var/www/html/prestashop/mails/en/payment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('53','1','0','Generate txt template payment at /var/www/html/prestashop/mails/en/payment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('54','1','0','Generate html template payment_error at /var/www/html/prestashop/mails/en/payment_error.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('55','1','0','Generate txt template payment_error at /var/www/html/prestashop/mails/en/payment_error.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('56','1','0','Generate html template preparation at /var/www/html/prestashop/mails/en/preparation.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('57','1','0','Generate txt template preparation at /var/www/html/prestashop/mails/en/preparation.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('58','1','0','Generate html template productoutofstock at /var/www/html/prestashop/mails/en/productoutofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('59','1','0','Generate txt template productoutofstock at /var/www/html/prestashop/mails/en/productoutofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('60','1','0','Generate html template refund at /var/www/html/prestashop/mails/en/refund.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('61','1','0','Generate txt template refund at /var/www/html/prestashop/mails/en/refund.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('62','1','0','Generate html template reply_msg at /var/www/html/prestashop/mails/en/reply_msg.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('63','1','0','Generate txt template reply_msg at /var/www/html/prestashop/mails/en/reply_msg.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('64','1','0','Generate html template shipped at /var/www/html/prestashop/mails/en/shipped.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('65','1','0','Generate txt template shipped at /var/www/html/prestashop/mails/en/shipped.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('66','1','0','Generate html template test at /var/www/html/prestashop/mails/en/test.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('67','1','0','Generate txt template test at /var/www/html/prestashop/mails/en/test.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('68','1','0','Generate html template voucher at /var/www/html/prestashop/mails/en/voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('69','1','0','Generate txt template voucher at /var/www/html/prestashop/mails/en/voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('70','1','0','Generate html template voucher_new at /var/www/html/prestashop/mails/en/voucher_new.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('71','1','0','Generate txt template voucher_new at /var/www/html/prestashop/mails/en/voucher_new.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('72','1','0','Generate html template customer_qty at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/customer_qty.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('73','1','0','Generate txt template customer_qty at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/customer_qty.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('74','1','0','Generate html template new_order at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/new_order.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('75','1','0','Generate txt template new_order at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/new_order.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('76','1','0','Generate html template order_changed at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/order_changed.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('77','1','0','Generate txt template order_changed at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/order_changed.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('78','1','0','Generate html template productcoverage at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/productcoverage.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('79','1','0','Generate txt template productcoverage at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/productcoverage.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('80','1','0','Generate html template productoutofstock at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/productoutofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('81','1','0','Generate txt template productoutofstock at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/productoutofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('82','1','0','Generate html template return_slip at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/return_slip.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('83','1','0','Generate txt template return_slip at /var/www/html/prestashop/modules//ps_emailalerts/mails/en/return_slip.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('84','1','0','Generate html template newsletter_conf at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_conf.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('85','1','0','Generate txt template newsletter_conf at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_conf.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('86','1','0','Generate html template newsletter_verif at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_verif.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('87','1','0','Generate txt template newsletter_verif at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_verif.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('88','1','0','Generate html template newsletter_voucher at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('89','1','0','Generate txt template newsletter_voucher at /var/www/html/prestashop/modules//ps_emailsubscription/mails/en/newsletter_voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('90','1','0','Generate html template followup_1 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_1.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('91','1','0','Generate txt template followup_1 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_1.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:42','2022-10-25 19:36:42'),
-('92','1','0','Generate html template followup_2 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_2.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('93','1','0','Generate txt template followup_2 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_2.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('94','1','0','Generate html template followup_3 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_3.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('95','1','0','Generate txt template followup_3 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_3.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('96','1','0','Generate html template followup_4 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_4.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('97','1','0','Generate txt template followup_4 at /var/www/html/prestashop/modules//ps_reminder/mails/en/followup_4.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('98','1','0','Generate html template referralprogram-congratulations at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-congratulations.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('99','1','0','Generate txt template referralprogram-congratulations at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-congratulations.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('100','1','0','Generate html template referralprogram-invitation at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-invitation.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('101','1','0','Generate txt template referralprogram-invitation at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-invitation.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('102','1','0','Generate html template referralprogram-voucher at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('103','1','0','Generate txt template referralprogram-voucher at /var/www/html/prestashop/modules//referralprogram/mails/en/referralprogram-voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('104','1','0','Generate html template followup_1 at /var/www/html/prestashop/modules//followup/mails/en/followup_1.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('105','1','0','Generate txt template followup_1 at /var/www/html/prestashop/modules//followup/mails/en/followup_1.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('106','1','0','Generate html template followup_2 at /var/www/html/prestashop/modules//followup/mails/en/followup_2.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('107','1','0','Generate txt template followup_2 at /var/www/html/prestashop/modules//followup/mails/en/followup_2.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('108','1','0','Generate html template followup_3 at /var/www/html/prestashop/modules//followup/mails/en/followup_3.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('109','1','0','Generate txt template followup_3 at /var/www/html/prestashop/modules//followup/mails/en/followup_3.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('110','1','0','Generate html template followup_4 at /var/www/html/prestashop/modules//followup/mails/en/followup_4.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('111','1','0','Generate txt template followup_4 at /var/www/html/prestashop/modules//followup/mails/en/followup_4.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:43','2022-10-25 19:36:43'),
-('112','1','0','Exporting mail with theme modern for language Polski (Polish)',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('113','1','0','Core output folder: /var/www/html/prestashop/mails',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('114','1','0','Modules output folder: /var/www/html/prestashop/modules/',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('115','1','0','Generate html template account at /var/www/html/prestashop/mails/pl/account.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('116','1','0','Generate txt template account at /var/www/html/prestashop/mails/pl/account.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('117','1','0','Generate html template backoffice_order at /var/www/html/prestashop/mails/pl/backoffice_order.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('118','1','0','Generate txt template backoffice_order at /var/www/html/prestashop/mails/pl/backoffice_order.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('119','1','0','Generate html template bankwire at /var/www/html/prestashop/mails/pl/bankwire.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('120','1','0','Generate txt template bankwire at /var/www/html/prestashop/mails/pl/bankwire.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('121','1','0','Generate html template cheque at /var/www/html/prestashop/mails/pl/cheque.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('122','1','0','Generate txt template cheque at /var/www/html/prestashop/mails/pl/cheque.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('123','1','0','Generate html template contact at /var/www/html/prestashop/mails/pl/contact.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('124','1','0','Generate txt template contact at /var/www/html/prestashop/mails/pl/contact.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('125','1','0','Generate html template contact_form at /var/www/html/prestashop/mails/pl/contact_form.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('126','1','0','Generate txt template contact_form at /var/www/html/prestashop/mails/pl/contact_form.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('127','1','0','Generate html template credit_slip at /var/www/html/prestashop/mails/pl/credit_slip.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('128','1','0','Generate txt template credit_slip at /var/www/html/prestashop/mails/pl/credit_slip.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('129','1','0','Generate html template download_product at /var/www/html/prestashop/mails/pl/download_product.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('130','1','0','Generate txt template download_product at /var/www/html/prestashop/mails/pl/download_product.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('131','1','0','Generate html template employee_password at /var/www/html/prestashop/mails/pl/employee_password.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('132','1','0','Generate txt template employee_password at /var/www/html/prestashop/mails/pl/employee_password.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('133','1','0','Generate html template forward_msg at /var/www/html/prestashop/mails/pl/forward_msg.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('134','1','0','Generate txt template forward_msg at /var/www/html/prestashop/mails/pl/forward_msg.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('135','1','0','Generate html template guest_to_customer at /var/www/html/prestashop/mails/pl/guest_to_customer.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('136','1','0','Generate txt template guest_to_customer at /var/www/html/prestashop/mails/pl/guest_to_customer.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('137','1','0','Generate html template import at /var/www/html/prestashop/mails/pl/import.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('138','1','0','Generate txt template import at /var/www/html/prestashop/mails/pl/import.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('139','1','0','Generate html template in_transit at /var/www/html/prestashop/mails/pl/in_transit.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('140','1','0','Generate txt template in_transit at /var/www/html/prestashop/mails/pl/in_transit.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('141','1','0','Generate html template log_alert at /var/www/html/prestashop/mails/pl/log_alert.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('142','1','0','Generate txt template log_alert at /var/www/html/prestashop/mails/pl/log_alert.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('143','1','0','Generate html template newsletter at /var/www/html/prestashop/mails/pl/newsletter.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('144','1','0','Generate txt template newsletter at /var/www/html/prestashop/mails/pl/newsletter.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:44','2022-10-25 19:36:44'),
-('145','1','0','Generate html template order_canceled at /var/www/html/prestashop/mails/pl/order_canceled.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('146','1','0','Generate txt template order_canceled at /var/www/html/prestashop/mails/pl/order_canceled.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('147','1','0','Generate html template order_changed at /var/www/html/prestashop/mails/pl/order_changed.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('148','1','0','Generate txt template order_changed at /var/www/html/prestashop/mails/pl/order_changed.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('149','1','0','Generate html template order_conf at /var/www/html/prestashop/mails/pl/order_conf.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('150','1','0','Generate txt template order_conf at /var/www/html/prestashop/mails/pl/order_conf.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('151','1','0','Generate html template order_customer_comment at /var/www/html/prestashop/mails/pl/order_customer_comment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('152','1','0','Generate txt template order_customer_comment at /var/www/html/prestashop/mails/pl/order_customer_comment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('153','1','0','Generate html template order_merchant_comment at /var/www/html/prestashop/mails/pl/order_merchant_comment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('154','1','0','Generate txt template order_merchant_comment at /var/www/html/prestashop/mails/pl/order_merchant_comment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('155','1','0','Generate html template order_return_state at /var/www/html/prestashop/mails/pl/order_return_state.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('156','1','0','Generate txt template order_return_state at /var/www/html/prestashop/mails/pl/order_return_state.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('157','1','0','Generate html template outofstock at /var/www/html/prestashop/mails/pl/outofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('158','1','0','Generate txt template outofstock at /var/www/html/prestashop/mails/pl/outofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('159','1','0','Generate html template password at /var/www/html/prestashop/mails/pl/password.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('160','1','0','Generate txt template password at /var/www/html/prestashop/mails/pl/password.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('161','1','0','Generate html template password_query at /var/www/html/prestashop/mails/pl/password_query.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('162','1','0','Generate txt template password_query at /var/www/html/prestashop/mails/pl/password_query.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('163','1','0','Generate html template payment at /var/www/html/prestashop/mails/pl/payment.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('164','1','0','Generate txt template payment at /var/www/html/prestashop/mails/pl/payment.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('165','1','0','Generate html template payment_error at /var/www/html/prestashop/mails/pl/payment_error.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('166','1','0','Generate txt template payment_error at /var/www/html/prestashop/mails/pl/payment_error.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('167','1','0','Generate html template preparation at /var/www/html/prestashop/mails/pl/preparation.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('168','1','0','Generate txt template preparation at /var/www/html/prestashop/mails/pl/preparation.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('169','1','0','Generate html template productoutofstock at /var/www/html/prestashop/mails/pl/productoutofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('170','1','0','Generate txt template productoutofstock at /var/www/html/prestashop/mails/pl/productoutofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('171','1','0','Generate html template refund at /var/www/html/prestashop/mails/pl/refund.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('172','1','0','Generate txt template refund at /var/www/html/prestashop/mails/pl/refund.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('173','1','0','Generate html template reply_msg at /var/www/html/prestashop/mails/pl/reply_msg.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('174','1','0','Generate txt template reply_msg at /var/www/html/prestashop/mails/pl/reply_msg.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('175','1','0','Generate html template shipped at /var/www/html/prestashop/mails/pl/shipped.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('176','1','0','Generate txt template shipped at /var/www/html/prestashop/mails/pl/shipped.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('177','1','0','Generate html template test at /var/www/html/prestashop/mails/pl/test.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('178','1','0','Generate txt template test at /var/www/html/prestashop/mails/pl/test.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('179','1','0','Generate html template voucher at /var/www/html/prestashop/mails/pl/voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('180','1','0','Generate txt template voucher at /var/www/html/prestashop/mails/pl/voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('181','1','0','Generate html template voucher_new at /var/www/html/prestashop/mails/pl/voucher_new.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('182','1','0','Generate txt template voucher_new at /var/www/html/prestashop/mails/pl/voucher_new.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('183','1','0','Generate html template customer_qty at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/customer_qty.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('184','1','0','Generate txt template customer_qty at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/customer_qty.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:45','2022-10-25 19:36:45'),
-('185','1','0','Generate html template new_order at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/new_order.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('186','1','0','Generate txt template new_order at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/new_order.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('187','1','0','Generate html template order_changed at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/order_changed.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('188','1','0','Generate txt template order_changed at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/order_changed.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('189','1','0','Generate html template productcoverage at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/productcoverage.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('190','1','0','Generate txt template productcoverage at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/productcoverage.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('191','1','0','Generate html template productoutofstock at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/productoutofstock.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('192','1','0','Generate txt template productoutofstock at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/productoutofstock.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('193','1','0','Generate html template return_slip at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/return_slip.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('194','1','0','Generate txt template return_slip at /var/www/html/prestashop/modules//ps_emailalerts/mails/pl/return_slip.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('195','1','0','Generate html template newsletter_conf at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_conf.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('196','1','0','Generate txt template newsletter_conf at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_conf.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('197','1','0','Generate html template newsletter_verif at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_verif.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('198','1','0','Generate txt template newsletter_verif at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_verif.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('199','1','0','Generate html template newsletter_voucher at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('200','1','0','Generate txt template newsletter_voucher at /var/www/html/prestashop/modules//ps_emailsubscription/mails/pl/newsletter_voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46');
-INSERT INTO `ps_log` VALUES
-('201','1','0','Generate html template followup_1 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_1.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('202','1','0','Generate txt template followup_1 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_1.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('203','1','0','Generate html template followup_2 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_2.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('204','1','0','Generate txt template followup_2 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_2.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('205','1','0','Generate html template followup_3 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_3.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('206','1','0','Generate txt template followup_3 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_3.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('207','1','0','Generate html template followup_4 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_4.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('208','1','0','Generate txt template followup_4 at /var/www/html/prestashop/modules//ps_reminder/mails/pl/followup_4.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('209','1','0','Generate html template referralprogram-congratulations at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-congratulations.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('210','1','0','Generate txt template referralprogram-congratulations at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-congratulations.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('211','1','0','Generate html template referralprogram-invitation at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-invitation.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('212','1','0','Generate txt template referralprogram-invitation at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-invitation.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('213','1','0','Generate html template referralprogram-voucher at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-voucher.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('214','1','0','Generate txt template referralprogram-voucher at /var/www/html/prestashop/modules//referralprogram/mails/pl/referralprogram-voucher.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('215','1','0','Generate html template followup_1 at /var/www/html/prestashop/modules//followup/mails/pl/followup_1.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('216','1','0','Generate txt template followup_1 at /var/www/html/prestashop/modules//followup/mails/pl/followup_1.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('217','1','0','Generate html template followup_2 at /var/www/html/prestashop/modules//followup/mails/pl/followup_2.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('218','1','0','Generate txt template followup_2 at /var/www/html/prestashop/modules//followup/mails/pl/followup_2.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('219','1','0','Generate html template followup_3 at /var/www/html/prestashop/modules//followup/mails/pl/followup_3.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('220','1','0','Generate txt template followup_3 at /var/www/html/prestashop/modules//followup/mails/pl/followup_3.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('221','1','0','Generate html template followup_4 at /var/www/html/prestashop/modules//followup/mails/pl/followup_4.html',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('222','1','0','Generate txt template followup_4 at /var/www/html/prestashop/modules//followup/mails/pl/followup_4.txt',NULL,'0',NULL,NULL,'0','0','0','2022-10-25 19:36:46','2022-10-25 19:36:46'),
-('223','1','0','Protect vendor folder in module blockwishlist',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:01','2022-10-25 19:37:01'),
-('224','1','0','Module blockwishlist has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:01','2022-10-25 19:37:01'),
-('225','1','0','Protect vendor folder in module contactform',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:01','2022-10-25 19:37:01'),
-('226','1','0','Module contactform has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:01','2022-10-25 19:37:01'),
-('227','1','0','Protect vendor folder in module dashactivity',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:02','2022-10-25 19:37:02'),
-('228','1','0','Module dashactivity has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:02','2022-10-25 19:37:02'),
-('229','1','0','Protect vendor folder in module dashtrends',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:02','2022-10-25 19:37:02'),
-('230','1','0','Module dashtrends has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:02','2022-10-25 19:37:02'),
-('231','1','0','Protect vendor folder in module dashgoals',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('232','1','0','Module dashgoals has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('233','1','0','Protect vendor folder in module dashproducts',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('234','1','0','Module dashproducts has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('235','1','0','Protect vendor folder in module graphnvd3',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('236','1','0','Module graphnvd3 has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('237','1','0','Protect vendor folder in module gridhtml',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('238','1','0','Module gridhtml has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:03','2022-10-25 19:37:03'),
-('239','1','0','Protect vendor folder in module gsitemap',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:04','2022-10-25 19:37:04'),
-('240','1','0','Module gsitemap has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:04','2022-10-25 19:37:04'),
-('241','1','0','Protect vendor folder in module pagesnotfound',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:04','2022-10-25 19:37:04'),
-('242','1','0','Module pagesnotfound has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:04','2022-10-25 19:37:04'),
-('243','1','0','Protect vendor folder in module productcomments',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:05','2022-10-25 19:37:05'),
-('244','1','0','Module productcomments has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:05','2022-10-25 19:37:05'),
-('245','1','0','Protect vendor folder in module ps_banner',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:05','2022-10-25 19:37:05'),
-('246','1','0','Module ps_banner has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('247','1','0','Protect vendor folder in module ps_categorytree',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('248','1','0','Module ps_categorytree has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('249','1','0','Protect vendor folder in module ps_checkpayment',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('250','1','0','Module ps_checkpayment has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('251','1','0','Protect vendor folder in module ps_contactinfo',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('252','1','0','Module ps_contactinfo has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:06','2022-10-25 19:37:06'),
-('253','1','0','Protect vendor folder in module ps_crossselling',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('254','1','0','Module ps_crossselling has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('255','1','0','Protect vendor folder in module ps_currencyselector',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('256','1','0','Module ps_currencyselector has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('257','1','0','Protect vendor folder in module ps_customeraccountlinks',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('258','1','0','Module ps_customeraccountlinks has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('259','1','0','Protect vendor folder in module ps_customersignin',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('260','1','0','Module ps_customersignin has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:07','2022-10-25 19:37:07'),
-('261','1','0','Protect vendor folder in module ps_customtext',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('262','1','0','Module ps_customtext has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('263','1','0','Protect vendor folder in module ps_dataprivacy',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('264','1','0','Module ps_dataprivacy has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('265','1','0','Protect vendor folder in module ps_emailsubscription',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('266','1','0','Module ps_emailsubscription has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:08','2022-10-25 19:37:08'),
-('267','1','0','Protect vendor folder in module ps_facetedsearch',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('268','1','0','Module ps_facetedsearch has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('269','1','0','Protect vendor folder in module ps_faviconnotificationbo',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('270','1','0','Module ps_faviconnotificationbo has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('271','1','0','Protect vendor folder in module ps_featuredproducts',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('272','1','0','Module ps_featuredproducts has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:11','2022-10-25 19:37:11'),
-('273','1','0','Protect vendor folder in module ps_imageslider',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:12','2022-10-25 19:37:12'),
-('274','1','0','Module ps_imageslider has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:12','2022-10-25 19:37:12'),
-('275','1','0','Protect vendor folder in module ps_languageselector',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:12','2022-10-25 19:37:12'),
-('276','1','0','Module ps_languageselector has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:12','2022-10-25 19:37:12'),
-('277','1','0','Protect vendor folder in module ps_linklist',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:13','2022-10-25 19:37:13'),
-('278','1','0','Module ps_linklist has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:13','2022-10-25 19:37:13'),
-('279','1','0','Protect vendor folder in module ps_mainmenu',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('280','1','0','Module ps_mainmenu has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('281','1','0','Protect vendor folder in module ps_searchbar',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('282','1','0','Module ps_searchbar has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('283','1','0','Protect vendor folder in module ps_sharebuttons',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('284','1','0','Module ps_sharebuttons has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('285','1','0','Protect vendor folder in module ps_shoppingcart',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('286','1','0','Module ps_shoppingcart has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:14','2022-10-25 19:37:14'),
-('287','1','0','Protect vendor folder in module ps_socialfollow',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:15','2022-10-25 19:37:15'),
-('288','1','0','Module ps_socialfollow has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:15','2022-10-25 19:37:15'),
-('289','1','0','Protect vendor folder in module ps_themecusto',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:15','2022-10-25 19:37:15'),
-('290','1','0','Module ps_themecusto has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:15','2022-10-25 19:37:15'),
-('291','1','0','Protect vendor folder in module ps_wirepayment',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('292','1','0','Module ps_wirepayment has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('293','1','0','Protect vendor folder in module statsbestcategories',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('294','1','0','Module statsbestcategories has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('295','1','0','Protect vendor folder in module statsbestcustomers',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('296','1','0','Module statsbestcustomers has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('297','1','0','Protect vendor folder in module statsbestproducts',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('298','1','0','Module statsbestproducts has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('299','1','0','Protect vendor folder in module statsbestsuppliers',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('300','1','0','Module statsbestsuppliers has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:16','2022-10-25 19:37:16'),
-('301','1','0','Protect vendor folder in module statsbestvouchers',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('302','1','0','Module statsbestvouchers has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('303','1','0','Protect vendor folder in module statscarrier',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('304','1','0','Module statscarrier has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('305','1','0','Protect vendor folder in module statscatalog',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('306','1','0','Module statscatalog has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('307','1','0','Protect vendor folder in module statscheckup',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('308','1','0','Module statscheckup has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('309','1','0','Protect vendor folder in module statsdata',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('310','1','0','Module statsdata has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:17','2022-10-25 19:37:17'),
-('311','1','0','Protect vendor folder in module statsforecast',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('312','1','0','Module statsforecast has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('313','1','0','Protect vendor folder in module statsnewsletter',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('314','1','0','Module statsnewsletter has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('315','1','0','Protect vendor folder in module statspersonalinfos',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('316','1','0','Module statspersonalinfos has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('317','1','0','Protect vendor folder in module statsproduct',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('318','1','0','Module statsproduct has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('319','1','0','Protect vendor folder in module statsregistrations',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('320','1','0','Module statsregistrations has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('321','1','0','Protect vendor folder in module statssales',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:18','2022-10-25 19:37:18'),
-('322','1','0','Module statssales has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('323','1','0','Protect vendor folder in module statssearch',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('324','1','0','Module statssearch has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('325','1','0','Protect vendor folder in module statsstock',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('326','1','0','Module statsstock has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('327','1','0','Protect vendor folder in module welcome',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('328','1','0','Module welcome has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:19','2022-10-25 19:37:19'),
-('329','1','0','Protect vendor folder in module gamification',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:53','2022-10-25 19:37:53'),
-('330','1','0','Protect vendor folder in module psaddonsconnect',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:53','2022-10-25 19:37:53'),
-('331','1','0','Protect vendor folder in module psgdpr',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:55','2022-10-25 19:37:55'),
-('332','1','0','Protect vendor folder in module ps_mbo',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:55','2022-10-25 19:37:55'),
-('333','1','0','Protect vendor folder in module ps_buybuttonlite',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:56','2022-10-25 19:37:56'),
-('334','1','0','Protect vendor folder in module ps_checkout',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:58','2022-10-25 19:37:58'),
-('335','1','0','Protect vendor folder in module ps_metrics',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:37:59','2022-10-25 19:37:59'),
-('336','1','0','Protect vendor folder in module ps_facebook',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:00','2022-10-25 19:38:00'),
-('337','1','0','Protect vendor folder in module psxmarketingwithgoogle',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:02','2022-10-25 19:38:02'),
-('338','1','0','Protect vendor folder in module blockreassurance',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:13','2022-10-25 19:38:13'),
-('339','1','0','Module blockreassurance has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:13','2022-10-25 19:38:13'),
-('340','1','0','Protect vendor folder in module ps_facetedsearch',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:41','2022-10-25 19:38:41'),
-('341','1','0','Module ps_facetedsearch has no vendor folder',NULL,'0','1',NULL,'1','0','1','2022-10-25 19:38:41','2022-10-25 19:38:41'),
-('342','1','0','Back office connection from localhost',NULL,'0',NULL,NULL,'1','1','1','2022-10-25 20:31:06','2022-10-25 20:31:06'),
-('343','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-10-25 20:31:08','2022-10-25 20:31:08'),
-('344','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-10-26 09:13:08','2022-10-26 09:13:08'),
-('345','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-10-26 09:13:08','2022-10-26 09:13:08'),
-('346','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','6','1',NULL,'2','0','0','2022-10-26 09:13:08','2022-10-26 09:13:08'),
-('347','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-11-08 13:43:57','2022-11-08 13:43:57'),
-('348','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-11-08 13:55:23','2022-11-08 13:55:23'),
-('349','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0',NULL,NULL,'1','1','0','2022-11-19 12:05:17','2022-11-19 12:05:17'),
-('350','1','0','Back office connection from localhost',NULL,'0',NULL,NULL,'1','1','1','2022-11-19 12:54:15','2022-11-19 12:54:15'),
-('351','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:57:04','2022-11-19 12:57:04'),
-('352','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:57:05','2022-11-19 12:57:05'),
-('353','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:57:37','2022-11-19 12:57:37'),
-('354','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:57:58','2022-11-19 12:57:58'),
-('355','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:58:30','2022-11-19 12:58:30'),
-('356','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 12:58:31','2022-11-19 12:58:31'),
-('357','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:29:01','2022-11-19 13:29:01'),
-('358','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:29:01','2022-11-19 13:29:01'),
-('359','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:48:42','2022-11-19 13:48:42'),
-('360','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:48:43','2022-11-19 13:48:43'),
-('361','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:53:51','2022-11-19 13:53:51'),
-('362','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:57:13','2022-11-19 13:57:13'),
-('363','1','0','Product modification','Product','19','1',NULL,'1','0','1','2022-11-19 13:58:27','2022-11-19 13:58:27'),
-('364','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:03:24','2022-11-19 14:03:24'),
-('365','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:03:24','2022-11-19 14:03:24'),
-('366','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:03:39','2022-11-19 14:03:39'),
-('367','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:03:40','2022-11-19 14:03:40'),
-('368','1','0','Categories import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:44','2022-11-19 13:59:44'),
-('369','1','0','Categories import (from 5 to 20)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:44','2022-11-19 13:59:44'),
-('370','1','0','Categories import (from 25 to 80)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:44','2022-11-19 13:59:44'),
-('371','1','0','Categories import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:45','2022-11-19 13:59:45'),
-('372','1','0','Categories import (from 5 to 19)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:48','2022-11-19 13:59:48'),
-('373','1','0','Categories import (from 24 to 28)',NULL,'0','1',NULL,'1','0','1','2022-11-19 13:59:50','2022-11-19 13:59:50'),
-('374','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:35','2022-11-19 14:04:35'),
-('375','1','0','Products import (from 5 to 20)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:35','2022-11-19 14:04:35'),
-('376','1','0','Products import (from 25 to 80)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:35','2022-11-19 14:04:35'),
-('377','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:36','2022-11-19 14:04:36'),
-('378','1','0','Products import (from 5 to 15)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:40','2022-11-19 14:04:40'),
-('379','1','0','Products import (from 20 to 19)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:44','2022-11-19 14:04:44'),
-('380','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:04:44','2022-11-19 14:04:44'),
-('381','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:21','2022-11-19 14:09:21'),
-('382','1','0','Products import (from 5 to 20)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:21','2022-11-19 14:09:21'),
-('383','1','0','Products import (from 25 to 80)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:21','2022-11-19 14:09:21'),
-('384','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:25','2022-11-19 14:09:25'),
-('385','1','0','Products import (from 5 to 7)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:29','2022-11-19 14:09:29'),
-('386','1','0','Products import (from 12 to 7)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:33','2022-11-19 14:09:33'),
-('387','1','0','Products import (from 19 to 7)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:38','2022-11-19 14:09:38'),
-('388','1','0','Products import (from 26 to 7)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:42','2022-11-19 14:09:42'),
-('389','1','0','Products import (from 33 to 7)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:44','2022-11-19 14:09:44'),
-('390','1','0','Products import (from 0 to 5)',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:09:44','2022-11-19 14:09:44'),
-('391','1','0','Product deleted: (19).','Product','19','1',NULL,'1','0','1','2022-11-19 14:11:59','2022-11-19 14:11:59'),
-('392','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:41','2022-11-19 14:24:41'),
-('393','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:41','2022-11-19 14:24:41'),
-('394','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:41','2022-11-19 14:24:41'),
-('395','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:49','2022-11-19 14:24:49'),
-('396','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:52','2022-11-19 14:24:52'),
-('397','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:24:56','2022-11-19 14:24:56'),
-('398','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:25:00','2022-11-19 14:25:00'),
-('399','1','0','Products import (from 24 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:25:06','2022-11-19 14:25:06'),
-('400','1','0','Products import (from 32 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:25:07','2022-11-19 14:25:07');
-INSERT INTO `ps_log` VALUES
-('401','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:25:08','2022-11-19 14:25:08'),
-('402','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:29','2022-11-19 14:27:29'),
-('403','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:29','2022-11-19 14:27:29'),
-('404','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:29','2022-11-19 14:27:29'),
-('405','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:36','2022-11-19 14:27:36'),
-('406','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:40','2022-11-19 14:27:40'),
-('407','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:44','2022-11-19 14:27:44'),
-('408','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:49','2022-11-19 14:27:49'),
-('409','1','0','Products import (from 24 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:53','2022-11-19 14:27:53'),
-('410','1','0','Products import (from 31 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:56','2022-11-19 14:27:56'),
-('411','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:27:56','2022-11-19 14:27:56'),
-('412','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:46','2022-11-19 14:30:46'),
-('413','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:46','2022-11-19 14:30:46'),
-('414','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:46','2022-11-19 14:30:46'),
-('415','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:51','2022-11-19 14:30:51'),
-('416','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:52','2022-11-19 14:30:52'),
-('417','1','0','Products import (from 10 to 18) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:57','2022-11-19 14:30:57'),
-('418','1','0','Products import (from 28 to 18) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:59','2022-11-19 14:30:59'),
-('419','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:30:59','2022-11-19 14:30:59'),
-('420','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:32:57','2022-11-19 14:32:57'),
-('421','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:32:57','2022-11-19 14:32:57'),
-('422','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:32:57','2022-11-19 14:32:57'),
-('423','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:07','2022-11-19 14:33:07'),
-('424','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:13','2022-11-19 14:33:13'),
-('425','1','0','Products import (from 10 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:17','2022-11-19 14:33:17'),
-('426','1','0','Products import (from 15 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:23','2022-11-19 14:33:23'),
-('427','1','0','Products import (from 20 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:27','2022-11-19 14:33:27'),
-('428','1','0','Products import (from 25 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:32','2022-11-19 14:33:32'),
-('429','1','0','Products import (from 30 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:37','2022-11-19 14:33:37'),
-('430','1','0','Products import (from 35 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:38','2022-11-19 14:33:38'),
-('431','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:33:38','2022-11-19 14:33:38'),
-('432','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:42:27','2022-11-19 14:42:27'),
-('433','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:42:27','2022-11-19 14:42:27'),
-('434','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:42:27','2022-11-19 14:42:27'),
-('435','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:42:37','2022-11-19 14:42:37'),
-('436','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:42:37','2022-11-19 14:42:37'),
-('437','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:03','2022-11-19 14:43:03'),
-('438','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:03','2022-11-19 14:43:03'),
-('439','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:03','2022-11-19 14:43:03'),
-('440','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:12','2022-11-19 14:43:12'),
-('441','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:19','2022-11-19 14:43:19'),
-('442','1','0','Products import (from 10 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:25','2022-11-19 14:43:25'),
-('443','1','0','Products import (from 15 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:31','2022-11-19 14:43:31'),
-('444','1','0','Products import (from 20 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:38','2022-11-19 14:43:38'),
-('445','1','0','Products import (from 25 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:44','2022-11-19 14:43:44'),
-('446','1','0','Products import (from 30 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:50','2022-11-19 14:43:50'),
-('447','1','0','Products import (from 35 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:50','2022-11-19 14:43:50'),
-('448','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:43:50','2022-11-19 14:43:50'),
-('449','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:07','2022-11-19 14:45:07'),
-('450','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:07','2022-11-19 14:45:07'),
-('451','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:07','2022-11-19 14:45:07'),
-('452','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:16','2022-11-19 14:45:16'),
-('453','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:21','2022-11-19 14:45:21'),
-('454','1','0','Products import (from 10 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:26','2022-11-19 14:45:26'),
-('455','1','0','Products import (from 15 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:31','2022-11-19 14:45:31'),
-('456','1','0','Products import (from 20 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:36','2022-11-19 14:45:36'),
-('457','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:56','2022-11-19 14:45:56'),
-('458','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:56','2022-11-19 14:45:56'),
-('459','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:45:56','2022-11-19 14:45:56'),
-('460','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:04','2022-11-19 14:46:04'),
-('461','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:08','2022-11-19 14:46:08'),
-('462','1','0','Products import (from 10 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:11','2022-11-19 14:46:11'),
-('463','1','0','Products import (from 16 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:16','2022-11-19 14:46:16'),
-('464','1','0','Products import (from 23 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:20','2022-11-19 14:46:20'),
-('465','1','0','Products import (from 30 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:24','2022-11-19 14:46:24'),
-('466','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:46:24','2022-11-19 14:46:24'),
-('467','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:43','2022-11-19 14:47:43'),
-('468','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:43','2022-11-19 14:47:43'),
-('469','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:43','2022-11-19 14:47:43'),
-('470','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:51','2022-11-19 14:47:51'),
-('471','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:55','2022-11-19 14:47:55'),
-('472','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:47:59','2022-11-19 14:47:59'),
-('473','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:48:04','2022-11-19 14:48:04'),
-('474','1','0','Products import (from 24 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:48:08','2022-11-19 14:48:08'),
-('475','1','0','Products import (from 31 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:48:11','2022-11-19 14:48:11'),
-('476','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:48:11','2022-11-19 14:48:11'),
-('477','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:13','2022-11-19 14:52:13'),
-('478','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:13','2022-11-19 14:52:13'),
-('479','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:13','2022-11-19 14:52:13'),
-('480','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:20','2022-11-19 14:52:20'),
-('481','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:24','2022-11-19 14:52:24'),
-('482','1','0','Products import (from 10 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:29','2022-11-19 14:52:29'),
-('483','1','0','Products import (from 16 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:34','2022-11-19 14:52:34'),
-('484','1','0','Products import (from 22 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:37','2022-11-19 14:52:37'),
-('485','1','0','Products import (from 27 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:42','2022-11-19 14:52:42'),
-('486','1','0','Products import (from 34 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:43','2022-11-19 14:52:43'),
-('487','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:52:43','2022-11-19 14:52:43'),
-('488','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:04','2022-11-19 14:55:04'),
-('489','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:04','2022-11-19 14:55:04'),
-('490','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:04','2022-11-19 14:55:04'),
-('491','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:11','2022-11-19 14:55:11'),
-('492','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:15','2022-11-19 14:55:15'),
-('493','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:19','2022-11-19 14:55:19'),
-('494','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:24','2022-11-19 14:55:24'),
-('495','1','0','Products import (from 24 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:29','2022-11-19 14:55:29'),
-('496','1','0','Products import (from 31 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:32','2022-11-19 14:55:32'),
-('497','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-19 14:55:32','2022-11-19 14:55:32'),
-('498','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-11-22 10:57:07','2022-11-22 10:57:07'),
-('499','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-11-22 11:32:28','2022-11-22 11:32:28'),
-('500','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:36:16','2022-11-22 11:36:16'),
-('501','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-11-22 11:37:22','2022-11-22 11:37:22'),
-('502','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:38:17','2022-11-22 11:38:17'),
-('503','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:38:18','2022-11-22 11:38:18'),
-('504','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:38:41','2022-11-22 11:38:41'),
-('505','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:46:06','2022-11-22 11:46:06'),
-('506','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:46:07','2022-11-22 11:46:07'),
-('507','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:46:37','2022-11-22 11:46:37'),
-('508','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-11-22 11:47:37','2022-11-22 11:47:37'),
-('509','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-11-22 11:47:37','2022-11-22 11:47:37'),
-('510','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','7','1',NULL,'2','0','0','2022-11-22 11:47:37','2022-11-22 11:47:37'),
-('511','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:50:08','2022-11-22 11:50:08'),
-('512','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:50:08','2022-11-22 11:50:08'),
-('513','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:51:32','2022-11-22 11:51:32'),
-('514','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:53:11','2022-11-22 11:53:11'),
-('515','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-11-22 11:53:53','2022-11-22 11:53:53'),
-('516','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-11-22 11:54:01','2022-11-22 11:54:01'),
-('517','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-11-22 11:54:05','2022-11-22 11:54:05'),
-('518','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:50','2022-11-22 11:56:50'),
-('519','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:59:26','2022-11-22 11:59:26'),
-('520','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:59:26','2022-11-22 11:59:26'),
-('521','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 12:14:32','2022-11-22 12:14:32'),
-('522','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 12:14:32','2022-11-22 12:14:32'),
-('523','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 12:26:02','2022-11-22 12:26:02'),
-('524','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-11-22 12:26:40','2022-11-22 12:26:40'),
-('525','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:29','2022-11-22 11:52:29'),
-('526','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:29','2022-11-22 11:52:29'),
-('527','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:29','2022-11-22 11:52:29'),
-('528','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:36','2022-11-22 11:52:36'),
-('529','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:40','2022-11-22 11:52:40'),
-('530','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:46','2022-11-22 11:52:46'),
-('531','1','0','Products import (from 17 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:51','2022-11-22 11:52:51'),
-('532','1','0','Products import (from 23 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:52:57','2022-11-22 11:52:57'),
-('533','1','0','Products import (from 28 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:53:01','2022-11-22 11:53:01'),
-('534','1','0','Products import (from 33 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:53:02','2022-11-22 11:53:02'),
-('535','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:53:02','2022-11-22 11:53:02'),
-('536','1','0','Products deleted: (1).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:39','2022-11-22 11:56:39'),
-('537','1','0','Products deleted: (2).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:40','2022-11-22 11:56:40'),
-('538','1','0','Products deleted: (3).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:40','2022-11-22 11:56:40'),
-('539','1','0','Products deleted: (4).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:40','2022-11-22 11:56:40'),
-('540','1','0','Products deleted: (5).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:41','2022-11-22 11:56:41'),
-('541','1','0','Products deleted: (6).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:41','2022-11-22 11:56:41'),
-('542','1','0','Products deleted: (7).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:41','2022-11-22 11:56:41'),
-('543','1','0','Products deleted: (8).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:42','2022-11-22 11:56:42'),
-('544','1','0','Products deleted: (9).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:42','2022-11-22 11:56:42'),
-('545','1','0','Products deleted: (10).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:42','2022-11-22 11:56:42'),
-('546','1','0','Products deleted: (11).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:43','2022-11-22 11:56:43'),
-('547','1','0','Products deleted: (12).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:43','2022-11-22 11:56:43'),
-('548','1','0','Products deleted: (13).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:43','2022-11-22 11:56:43'),
-('549','1','0','Products deleted: (14).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:43','2022-11-22 11:56:43'),
-('550','1','0','Products deleted: (15).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:44','2022-11-22 11:56:44'),
-('551','1','0','Products deleted: (16).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:44','2022-11-22 11:56:44'),
-('552','1','0','Products deleted: (17).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:44','2022-11-22 11:56:44'),
-('553','1','0','Products deleted: (18).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:45','2022-11-22 11:56:45'),
-('554','1','0','Products deleted: (19).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:45','2022-11-22 11:56:45'),
-('555','1','0','Products deleted: (20).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:56:45','2022-11-22 11:56:45'),
-('556','1','0','Products deleted: (21).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:02','2022-11-22 11:57:02'),
-('557','1','0','Products deleted: (22).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:02','2022-11-22 11:57:02'),
-('558','1','0','Products deleted: (23).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:03','2022-11-22 11:57:03'),
-('559','1','0','Products deleted: (24).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:03','2022-11-22 11:57:03'),
-('560','1','0','Products deleted: (25).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:03','2022-11-22 11:57:03'),
-('561','1','0','Products deleted: (26).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:03','2022-11-22 11:57:03'),
-('562','1','0','Products deleted: (27).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:04','2022-11-22 11:57:04'),
-('563','1','0','Products deleted: (28).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:04','2022-11-22 11:57:04'),
-('564','1','0','Products deleted: (29).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:04','2022-11-22 11:57:04'),
-('565','1','0','Products deleted: (30).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:04','2022-11-22 11:57:04'),
-('566','1','0','Products deleted: (31).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:04','2022-11-22 11:57:04'),
-('567','1','0','Products deleted: (32).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:05','2022-11-22 11:57:05'),
-('568','1','0','Products deleted: (33).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:05','2022-11-22 11:57:05'),
-('569','1','0','Products deleted: (34).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:05','2022-11-22 11:57:05'),
-('570','1','0','Products deleted: (35).',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:05','2022-11-22 11:57:05'),
-('571','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:48','2022-11-22 11:57:48'),
-('572','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:48','2022-11-22 11:57:48'),
-('573','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:48','2022-11-22 11:57:48'),
-('574','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:56','2022-11-22 11:57:56'),
-('575','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:57:59','2022-11-22 11:57:59'),
-('576','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:58:04','2022-11-22 11:58:04'),
-('577','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:58:09','2022-11-22 11:58:09'),
-('578','1','0','Products import (from 24 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:58:14','2022-11-22 11:58:14'),
-('579','1','0','Products import (from 31 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:58:16','2022-11-22 11:58:16'),
-('580','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 11:58:16','2022-11-22 11:58:16'),
-('581','1','0','Protect vendor folder in module paypal',NULL,'0','1',NULL,'1','0','1','2022-11-22 12:05:28','2022-11-22 12:05:28'),
-('582','1','0','Protect vendor folder in module ps_cashondelivery',NULL,'0','1',NULL,'1','0','1','2022-11-22 12:08:24','2022-11-22 12:08:24'),
-('583','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-11-22 12:35:49','2022-11-22 12:35:49'),
-('584','1','0','Group addition','Group','4','1',NULL,'1','0','1','2022-11-22 12:37:52','2022-11-22 12:37:52'),
-('585','1','0','Group deletion','Group','4','1',NULL,'1','0','1','2022-11-22 12:41:04','2022-11-22 12:41:04'),
-('586','3','0','Swift Error: Expected response code 220 but got an empty response',NULL,'0','1',NULL,'2','0','0','2022-11-22 12:47:10','2022-11-22 12:47:10'),
-('587','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','10','1',NULL,'2','0','0','2022-11-22 12:47:10','2022-11-22 12:47:10'),
-('588','1','0','OrderState addition','OrderState','21',NULL,NULL,'1','1','1','2022-11-22 13:00:25','2022-11-22 13:00:25'),
-('589','1','0','OrderState modification','OrderState','21',NULL,NULL,'1','1','1','2022-11-22 13:01:00','2022-11-22 13:01:00'),
-('590','1','0','Protect vendor folder in module ps_emailalerts',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:04:42','2022-11-22 13:04:42'),
-('591','3','0','No result was found for query although at least one row was expected.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:10:01','2022-11-22 13:10:01'),
-('592','3','0','No result was found for query although at least one row was expected.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:10:01','2022-11-22 13:10:01'),
-('593','3','0','You must specify as many arguments (%d, %s ...) as the original string.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:10:01','2022-11-22 13:10:01'),
-('594','3','0','No result was found for query although at least one row was expected.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:10:01','2022-11-22 13:10:01'),
-('595','3','0','No result was found for query although at least one row was expected.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:10:01','2022-11-22 13:10:01'),
-('596','3','0','No result was found for query although at least one row was expected.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:11:11','2022-11-22 13:11:11'),
-('597','3','0','Data from PrestaShop Addons is invalid, and cannot fallback on cache.',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:11:49','2022-11-22 13:11:49'),
-('598','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-11-22 13:41:49','2022-11-22 13:41:49'),
-('599','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-11-22 13:41:55','2022-11-22 13:41:55'),
-('600','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:08:22','2022-11-22 14:08:22');
-INSERT INTO `ps_log` VALUES
-('601','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:06','2022-11-22 14:17:06'),
-('602','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:06','2022-11-22 14:17:06'),
-('603','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:06','2022-11-22 14:17:06'),
-('604','1','0','Products import (from 105 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:06','2022-11-22 14:17:06'),
-('605','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:14','2022-11-22 14:17:14'),
-('606','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:17','2022-11-22 14:17:17'),
-('607','1','0','Products import (from 10 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:22','2022-11-22 14:17:22'),
-('608','1','0','Products import (from 17 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:27','2022-11-22 14:17:27'),
-('609','1','0','Products import (from 24 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:32','2022-11-22 14:17:32'),
-('610','1','0','Products import (from 31 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:37','2022-11-22 14:17:37'),
-('611','1','0','Products import (from 38 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:41','2022-11-22 14:17:41'),
-('612','1','0','Products import (from 44 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:47','2022-11-22 14:17:47'),
-('613','1','0','Products import (from 50 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:53','2022-11-22 14:17:53'),
-('614','1','0','Products import (from 55 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:17:59','2022-11-22 14:17:59'),
-('615','1','0','Products import (from 60 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:06','2022-11-22 14:18:06'),
-('616','1','0','Products import (from 65 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:11','2022-11-22 14:18:11'),
-('617','1','0','Products import (from 70 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:15','2022-11-22 14:18:15'),
-('618','1','0','Products import (from 75 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:22','2022-11-22 14:18:22'),
-('619','1','0','Products import (from 81 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:28','2022-11-22 14:18:28'),
-('620','1','0','Products import (from 86 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:32','2022-11-22 14:18:32'),
-('621','1','0','Products import (from 91 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:36','2022-11-22 14:18:36'),
-('622','1','0','Products import (from 96 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:40','2022-11-22 14:18:40'),
-('623','1','0','Products import (from 102 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:45','2022-11-22 14:18:45'),
-('624','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-11-22 14:18:45','2022-11-22 14:18:45'),
-('625','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-11-24 08:38:00','2022-11-24 08:38:00'),
-('626','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-01 18:52:08','2022-12-01 18:52:08'),
-('627','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-01 18:52:15','2022-12-01 18:52:15'),
-('628','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-06 11:43:38','2022-12-06 11:43:38'),
-('629','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:43:46','2022-12-06 11:43:46'),
-('630','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:47:58','2022-12-06 11:47:58'),
-('631','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:47:58','2022-12-06 11:47:58'),
-('632','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:47:59','2022-12-06 11:47:59'),
-('633','1','0','Products import (from 105 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:47:59','2022-12-06 11:47:59'),
-('634','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:05','2022-12-06 11:48:05'),
-('635','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:08','2022-12-06 11:48:08'),
-('636','1','0','Products import (from 10 to 9) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:13','2022-12-06 11:48:13'),
-('637','1','0','Products import (from 19 to 9) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:18','2022-12-06 11:48:18'),
-('638','1','0','Products import (from 28 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:23','2022-12-06 11:48:23'),
-('639','1','0','Products import (from 36 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:28','2022-12-06 11:48:28'),
-('640','1','0','Products import (from 44 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:33','2022-12-06 11:48:33'),
-('641','1','0','Products import (from 52 to 7) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:37','2022-12-06 11:48:37'),
-('642','1','0','Products import (from 59 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:42','2022-12-06 11:48:42'),
-('643','1','0','Products import (from 67 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:46','2022-12-06 11:48:46'),
-('644','1','0','Products import (from 75 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:51','2022-12-06 11:48:51'),
-('645','1','0','Products import (from 83 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:48:56','2022-12-06 11:48:56'),
-('646','1','0','Products import (from 91 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:49:00','2022-12-06 11:49:00'),
-('647','1','0','Products import (from 99 to 8) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:49:05','2022-12-06 11:49:05'),
-('648','1','0','Products import (from 107 to 9) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:49:05','2022-12-06 11:49:05'),
-('649','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:49:05','2022-12-06 11:49:05'),
-('650','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials z33-20020a0565120c2100b004aa427febe5sm2440984lfu.64 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials z33-20020a0565120c2100b004aa427febe5sm2440984lfu.64 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials z33-20020a0565120c2100b004aa427febe5sm2440984lfu.64 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'1','0','1','2022-12-06 11:49:07','2022-12-06 11:49:07'),
-('651','1','0','SpecificPriceRule addition','SpecificPriceRule','1',NULL,NULL,'1','1','1','2022-12-06 12:11:46','2022-12-06 12:11:46'),
-('652','1','0','SpecificPriceRule addition','SpecificPriceRule','2',NULL,NULL,'1','1','1','2022-12-06 12:13:49','2022-12-06 12:13:49'),
-('653','1','0','SpecificPriceRule deletion','SpecificPriceRule','2',NULL,NULL,'1','1','1','2022-12-06 12:19:57','2022-12-06 12:19:57'),
-('654','1','0','CartRule addition','CartRule','1','1',NULL,'1','0','1','2022-12-06 12:24:20','2022-12-06 12:24:20'),
-('655','1','0','CartRule modification','CartRule','1','1',NULL,'1','0','1','2022-12-06 12:27:58','2022-12-06 12:27:58'),
-('656','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:29','2022-12-06 12:55:29'),
-('657','1','0','Products import (from 5 to 20) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:29','2022-12-06 12:55:29'),
-('658','1','0','Products import (from 25 to 80) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:30','2022-12-06 12:55:30'),
-('659','1','0','Products import (from 105 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:30','2022-12-06 12:55:30'),
-('660','1','0','Products import (from 205 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:31','2022-12-06 12:55:31'),
-('661','1','0','Products import (from 305 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:31','2022-12-06 12:55:31'),
-('662','1','0','Products import (from 405 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:32','2022-12-06 12:55:32'),
-('663','1','0','Products import (from 505 to 100) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:32','2022-12-06 12:55:32'),
-('664','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:39','2022-12-06 12:55:39'),
-('665','1','0','Products import (from 5 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:43','2022-12-06 12:55:43'),
-('666','1','0','Products import (from 10 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:47','2022-12-06 12:55:47'),
-('667','1','0','Products import (from 15 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:51','2022-12-06 12:55:51'),
-('668','1','0','Products import (from 20 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:55:56','2022-12-06 12:55:56'),
-('669','1','0','Products import (from 25 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:00','2022-12-06 12:56:00'),
-('670','1','0','Products import (from 30 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:04','2022-12-06 12:56:04'),
-('671','1','0','Products import (from 35 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:09','2022-12-06 12:56:09'),
-('672','1','0','Products import (from 40 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:13','2022-12-06 12:56:13'),
-('673','1','0','Products import (from 45 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:18','2022-12-06 12:56:18'),
-('674','1','0','Products import (from 50 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:23','2022-12-06 12:56:23'),
-('675','1','0','Products import (from 55 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:27','2022-12-06 12:56:27'),
-('676','1','0','Products import (from 60 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:32','2022-12-06 12:56:32'),
-('677','1','0','Products import (from 65 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:36','2022-12-06 12:56:36'),
-('678','1','0','Products import (from 70 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:40','2022-12-06 12:56:40'),
-('679','1','0','Products import (from 75 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:45','2022-12-06 12:56:45'),
-('680','1','0','Products import (from 81 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:50','2022-12-06 12:56:50'),
-('681','1','0','Products import (from 86 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:55','2022-12-06 12:56:55'),
-('682','1','0','Products import (from 91 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:56:59','2022-12-06 12:56:59'),
-('683','1','0','Products import (from 96 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:08','2022-12-06 12:57:08'),
-('684','1','0','Products import (from 101 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:12','2022-12-06 12:57:12'),
-('685','1','0','Products import (from 106 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:17','2022-12-06 12:57:17'),
-('686','1','0','Products import (from 111 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:21','2022-12-06 12:57:21'),
-('687','1','0','Products import (from 116 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:25','2022-12-06 12:57:25'),
-('688','1','0','Products import (from 121 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:30','2022-12-06 12:57:30'),
-('689','1','0','Products import (from 126 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:34','2022-12-06 12:57:34'),
-('690','1','0','Products import (from 131 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:39','2022-12-06 12:57:39'),
-('691','1','0','Products import (from 136 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:44','2022-12-06 12:57:44'),
-('692','1','0','Products import (from 142 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:48','2022-12-06 12:57:48'),
-('693','1','0','Products import (from 147 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:57:57','2022-12-06 12:57:57'),
-('694','1','0','Products import (from 152 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:02','2022-12-06 12:58:02'),
-('695','1','0','Products import (from 157 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:06','2022-12-06 12:58:06'),
-('696','1','0','Products import (from 162 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:11','2022-12-06 12:58:11'),
-('697','1','0','Products import (from 167 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:16','2022-12-06 12:58:16'),
-('698','1','0','Products import (from 172 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:21','2022-12-06 12:58:21'),
-('699','1','0','Products import (from 177 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:25','2022-12-06 12:58:25'),
-('700','1','0','Products import (from 182 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:30','2022-12-06 12:58:30'),
-('701','1','0','Products import (from 187 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:35','2022-12-06 12:58:35'),
-('702','1','0','Products import (from 192 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:39','2022-12-06 12:58:39'),
-('703','1','0','Products import (from 197 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:44','2022-12-06 12:58:44'),
-('704','1','0','Products import (from 202 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:48','2022-12-06 12:58:48'),
-('705','1','0','Products import (from 207 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:53','2022-12-06 12:58:53'),
-('706','1','0','Products import (from 212 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:58:58','2022-12-06 12:58:58'),
-('707','1','0','Products import (from 217 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:02','2022-12-06 12:59:02'),
-('708','1','0','Products import (from 222 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:06','2022-12-06 12:59:06'),
-('709','1','0','Products import (from 227 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:11','2022-12-06 12:59:11'),
-('710','1','0','Products import (from 232 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:15','2022-12-06 12:59:15'),
-('711','1','0','Products import (from 237 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:20','2022-12-06 12:59:20'),
-('712','1','0','Products import (from 242 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:24','2022-12-06 12:59:24'),
-('713','1','0','Products import (from 247 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:29','2022-12-06 12:59:29'),
-('714','1','0','Products import (from 252 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:33','2022-12-06 12:59:33'),
-('715','1','0','Products import (from 257 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:38','2022-12-06 12:59:38'),
-('716','1','0','Products import (from 262 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:43','2022-12-06 12:59:43'),
-('717','1','0','Products import (from 267 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:48','2022-12-06 12:59:48'),
-('718','1','0','Products import (from 272 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:53','2022-12-06 12:59:53'),
-('719','1','0','Products import (from 277 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 12:59:57','2022-12-06 12:59:57'),
-('720','1','0','Products import (from 282 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:01','2022-12-06 13:00:01'),
-('721','1','0','Products import (from 287 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:06','2022-12-06 13:00:06'),
-('722','1','0','Products import (from 292 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:10','2022-12-06 13:00:10'),
-('723','1','0','Products import (from 297 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:15','2022-12-06 13:00:15'),
-('724','1','0','Products import (from 302 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:19','2022-12-06 13:00:19'),
-('725','1','0','Products import (from 307 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:25','2022-12-06 13:00:25'),
-('726','1','0','Products import (from 312 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:30','2022-12-06 13:00:30'),
-('727','1','0','Products import (from 317 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:35','2022-12-06 13:00:35'),
-('728','1','0','Products import (from 322 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:40','2022-12-06 13:00:40'),
-('729','1','0','Products import (from 327 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:44','2022-12-06 13:00:44'),
-('730','1','0','Products import (from 332 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:50','2022-12-06 13:00:50'),
-('731','1','0','Products import (from 337 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:54','2022-12-06 13:00:54'),
-('732','1','0','Products import (from 342 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:00:58','2022-12-06 13:00:58'),
-('733','1','0','Products import (from 347 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:03','2022-12-06 13:01:03'),
-('734','1','0','Products import (from 352 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:07','2022-12-06 13:01:07'),
-('735','1','0','Products import (from 357 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:11','2022-12-06 13:01:11'),
-('736','1','0','Products import (from 362 to 6) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:16','2022-12-06 13:01:16'),
-('737','1','0','Products import (from 368 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:20','2022-12-06 13:01:20'),
-('738','1','0','Products import (from 373 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:25','2022-12-06 13:01:25'),
-('739','1','0','Products import (from 378 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:29','2022-12-06 13:01:29'),
-('740','1','0','Products import (from 383 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:34','2022-12-06 13:01:34'),
-('741','1','0','Products import (from 388 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:38','2022-12-06 13:01:38'),
-('742','1','0','Products import (from 393 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:44','2022-12-06 13:01:44'),
-('743','1','0','Products import (from 398 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:48','2022-12-06 13:01:48'),
-('744','1','0','Products import (from 403 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:53','2022-12-06 13:01:53'),
-('745','1','0','Products import (from 408 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:01:58','2022-12-06 13:01:58'),
-('746','1','0','Products import (from 413 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:02','2022-12-06 13:02:02'),
-('747','1','0','Products import (from 418 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:07','2022-12-06 13:02:07'),
-('748','1','0','Products import (from 423 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:11','2022-12-06 13:02:11'),
-('749','1','0','Products import (from 428 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:16','2022-12-06 13:02:16'),
-('750','1','0','Products import (from 433 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:22','2022-12-06 13:02:22'),
-('751','1','0','Products import (from 438 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:26','2022-12-06 13:02:26'),
-('752','1','0','Products import (from 443 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:31','2022-12-06 13:02:31'),
-('753','1','0','Products import (from 448 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:36','2022-12-06 13:02:36'),
-('754','1','0','Products import (from 453 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:40','2022-12-06 13:02:40'),
-('755','1','0','Products import (from 458 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:46','2022-12-06 13:02:46'),
-('756','1','0','Products import (from 463 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:51','2022-12-06 13:02:51'),
-('757','1','0','Products import (from 468 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:02:55','2022-12-06 13:02:55'),
-('758','1','0','Products import (from 473 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:00','2022-12-06 13:03:00'),
-('759','1','0','Products import (from 478 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:05','2022-12-06 13:03:05'),
-('760','1','0','Products import (from 483 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:09','2022-12-06 13:03:09'),
-('761','1','0','Products import (from 488 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:14','2022-12-06 13:03:14'),
-('762','1','0','Products import (from 493 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:18','2022-12-06 13:03:18'),
-('763','1','0','Products import (from 498 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:23','2022-12-06 13:03:23'),
-('764','1','0','Products import (from 503 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:29','2022-12-06 13:03:29'),
-('765','1','0','Products import (from 508 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:29','2022-12-06 13:03:29'),
-('766','1','0','Products import (from 0 to 5) with truncate',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:29','2022-12-06 13:03:29'),
-('767','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i19-20020a2e8653000000b00279ece03c45sm877097ljj.64 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i19-20020a2e8653000000b00279ece03c45sm877097ljj.64 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i19-20020a2e8653000000b00279ece03c45sm877097ljj.64 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:03:31','2022-12-06 13:03:31'),
-('768','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-06 13:12:55','2022-12-06 13:12:55'),
-('769','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:30:11','2022-12-06 13:30:11'),
-('770','1','0','Attribute addition','Attribute','26','1',NULL,'1','0','1','2022-12-06 13:31:41','2022-12-06 13:31:41'),
-('771','1','0','Attribute modification','Attribute','26','1',NULL,'1','0','1','2022-12-06 13:32:02','2022-12-06 13:32:02'),
-('772','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:34:18','2022-12-06 13:34:18'),
-('773','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:37:57','2022-12-06 13:37:57'),
-('774','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:38:02','2022-12-06 13:38:02'),
-('775','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:38:21','2022-12-06 13:38:21'),
-('776','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:38:36','2022-12-06 13:38:36'),
-('777','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:38:37','2022-12-06 13:38:37'),
-('778','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:38:52','2022-12-06 13:38:52'),
-('779','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:39:09','2022-12-06 13:39:09'),
-('780','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:39:19','2022-12-06 13:39:19'),
-('781','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-06 13:39:29','2022-12-06 13:39:29'),
-('782','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-06 13:41:54','2022-12-06 13:41:54'),
-('783','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-06 13:43:05','2022-12-06 13:43:05'),
-('784','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-06 13:43:12','2022-12-06 13:43:12'),
-('785','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-06 13:43:34','2022-12-06 13:43:34'),
-('786','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-06 13:43:40','2022-12-06 13:43:40'),
-('787','1','0','Product deleted: (510).','Product','510','1',NULL,'1','0','1','2022-12-06 13:43:51','2022-12-06 13:43:51'),
-('788','1','0','Product modification','Product','3','1',NULL,'1','0','1','2022-12-06 13:45:02','2022-12-06 13:45:02'),
-('789','1','0','Product modification','Product','3','1',NULL,'1','0','1','2022-12-06 13:45:29','2022-12-06 13:45:29'),
-('790','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-06 13:46:09','2022-12-06 13:46:09'),
-('791','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-06 13:46:28','2022-12-06 13:46:28'),
-('792','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-06 13:46:34','2022-12-06 13:46:34'),
-('793','1','0','Product modification','Product','5','1',NULL,'1','0','1','2022-12-06 13:48:39','2022-12-06 13:48:39'),
-('794','1','0','Product modification','Product','5','1',NULL,'1','0','1','2022-12-06 13:48:54','2022-12-06 13:48:54'),
-('795','1','0','Product modification','Product','5','1',NULL,'1','0','1','2022-12-06 13:48:57','2022-12-06 13:48:57'),
-('796','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-06 13:49:43','2022-12-06 13:49:43'),
-('797','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-06 13:50:01','2022-12-06 13:50:01'),
-('798','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-06 13:50:08','2022-12-06 13:50:08'),
-('799','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-06 13:50:13','2022-12-06 13:50:13'),
-('800','1','0','Product modification','Product','7','1',NULL,'1','0','1','2022-12-06 13:50:32','2022-12-06 13:50:32');
-INSERT INTO `ps_log` VALUES
-('801','1','0','Product modification','Product','7','1',NULL,'1','0','1','2022-12-06 13:50:52','2022-12-06 13:50:52'),
-('802','1','0','Product modification','Product','7','1',NULL,'1','0','1','2022-12-06 13:50:56','2022-12-06 13:50:56'),
-('803','1','0','Product modification','Product','8','1',NULL,'1','0','1','2022-12-06 13:52:52','2022-12-06 13:52:52'),
-('804','1','0','Product modification','Product','8','1',NULL,'1','0','1','2022-12-06 13:53:10','2022-12-06 13:53:10'),
-('805','1','0','Product modification','Product','8','1',NULL,'1','0','1','2022-12-06 13:53:13','2022-12-06 13:53:13'),
-('806','1','0','Product modification','Product','9','1',NULL,'1','0','1','2022-12-06 13:55:43','2022-12-06 13:55:43'),
-('807','1','0','Product modification','Product','9','1',NULL,'1','0','1','2022-12-06 13:56:37','2022-12-06 13:56:37'),
-('808','1','0','Product modification','Product','9','1',NULL,'1','0','1','2022-12-06 13:56:41','2022-12-06 13:56:41'),
-('809','1','0','Product modification','Product','10','1',NULL,'1','0','1','2022-12-06 13:56:57','2022-12-06 13:56:57'),
-('810','1','0','Product modification','Product','10','1',NULL,'1','0','1','2022-12-06 13:57:11','2022-12-06 13:57:11'),
-('811','1','0','Product modification','Product','10','1',NULL,'1','0','1','2022-12-06 13:57:22','2022-12-06 13:57:22'),
-('812','1','0','Product modification','Product','10','1',NULL,'1','0','1','2022-12-06 13:57:25','2022-12-06 13:57:25'),
-('813','1','0','Product modification','Product','173','1',NULL,'1','0','1','2022-12-06 13:58:30','2022-12-06 13:58:30'),
-('814','1','0','Product modification','Product','173','1',NULL,'1','0','1','2022-12-06 13:58:45','2022-12-06 13:58:45'),
-('815','1','0','Product modification','Product','171','1',NULL,'1','0','1','2022-12-06 13:59:07','2022-12-06 13:59:07'),
-('816','1','0','Product modification','Product','171','1',NULL,'1','0','1','2022-12-06 13:59:18','2022-12-06 13:59:18'),
-('817','1','0','Product modification','Product','172','1',NULL,'1','0','1','2022-12-06 13:59:36','2022-12-06 13:59:36'),
-('818','1','0','Product modification','Product','172','1',NULL,'1','0','1','2022-12-06 13:59:50','2022-12-06 13:59:50'),
-('819','1','0','Product modification','Product','170','1',NULL,'1','0','1','2022-12-06 14:00:23','2022-12-06 14:00:23'),
-('820','1','0','Product modification','Product','170','1',NULL,'1','0','1','2022-12-06 14:00:38','2022-12-06 14:00:38'),
-('821','1','0','Product modification','Product','174','1',NULL,'1','0','1','2022-12-06 14:01:05','2022-12-06 14:01:05'),
-('822','1','0','Product modification','Product','174','1',NULL,'1','0','1','2022-12-06 14:01:19','2022-12-06 14:01:19'),
-('823','1','0','Product modification','Product','176','1',NULL,'1','0','1','2022-12-06 14:01:49','2022-12-06 14:01:49'),
-('824','1','0','Product modification','Product','176','1',NULL,'1','0','1','2022-12-06 14:02:03','2022-12-06 14:02:03'),
-('825','1','0','Product modification','Product','177','1',NULL,'1','0','1','2022-12-06 14:02:27','2022-12-06 14:02:27'),
-('826','1','0','Product modification','Product','177','1',NULL,'1','0','1','2022-12-06 14:02:40','2022-12-06 14:02:40'),
-('827','1','0','Product modification','Product','178','1',NULL,'1','0','1','2022-12-06 14:03:00','2022-12-06 14:03:00'),
-('828','1','0','Product modification','Product','178','1',NULL,'1','0','1','2022-12-06 14:03:13','2022-12-06 14:03:13'),
-('829','1','0','Product modification','Product','179','1',NULL,'1','0','1','2022-12-06 14:03:35','2022-12-06 14:03:35'),
-('830','1','0','Product modification','Product','179','1',NULL,'1','0','1','2022-12-06 14:03:46','2022-12-06 14:03:46'),
-('831','1','0','Product modification','Product','180','1',NULL,'1','0','1','2022-12-06 14:04:03','2022-12-06 14:04:03'),
-('832','1','0','Product modification','Product','180','1',NULL,'1','0','1','2022-12-06 14:04:19','2022-12-06 14:04:19'),
-('833','1','0','Product modification','Product','180','1',NULL,'1','0','1','2022-12-06 14:04:27','2022-12-06 14:04:27'),
-('834','1','0','Product modification','Product','181','1',NULL,'1','0','1','2022-12-06 14:04:47','2022-12-06 14:04:47'),
-('835','1','0','Product modification','Product','181','1',NULL,'1','0','1','2022-12-06 14:04:59','2022-12-06 14:04:59'),
-('836','1','0','Product modification','Product','181','1',NULL,'1','0','1','2022-12-06 14:05:07','2022-12-06 14:05:07'),
-('837','1','0','Product deleted: (511).','Product','511','1',NULL,'1','0','1','2022-12-06 14:05:12','2022-12-06 14:05:12'),
-('838','1','0','Product modification','Product','11','1',NULL,'1','0','1','2022-12-06 14:05:28','2022-12-06 14:05:28'),
-('839','1','0','Product modification','Product','11','1',NULL,'1','0','1','2022-12-06 14:05:42','2022-12-06 14:05:42'),
-('840','1','0','Product modification','Product','11','1',NULL,'1','0','1','2022-12-06 14:05:50','2022-12-06 14:05:50'),
-('841','1','0','Product modification','Product','12','1',NULL,'1','0','1','2022-12-06 14:06:26','2022-12-06 14:06:26'),
-('842','1','0','Product modification','Product','12','1',NULL,'1','0','1','2022-12-06 14:06:37','2022-12-06 14:06:37'),
-('843','1','0','Product modification','Product','12','1',NULL,'1','0','1','2022-12-06 14:08:49','2022-12-06 14:08:49'),
-('844','1','0','Product modification','Product','175','1',NULL,'1','0','1','2022-12-06 14:09:10','2022-12-06 14:09:10'),
-('845','1','0','Product modification','Product','175','1',NULL,'1','0','1','2022-12-06 14:09:20','2022-12-06 14:09:20'),
-('846','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-07 11:48:33','2022-12-07 11:48:33'),
-('847','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-07 11:48:39','2022-12-07 11:48:39'),
-('848','1','0','Store modification','Store','1','1',NULL,'1','0','1','2022-12-07 13:23:06','2022-12-07 13:23:06'),
-('849','1','0','Store deletion','Store','1','1',NULL,'1','0','1','2022-12-07 13:23:33','2022-12-07 13:23:33'),
-('850','1','0','Store deletion','Store','2','1',NULL,'1','0','1','2022-12-07 13:23:41','2022-12-07 13:23:41'),
-('851','1','0','Store deletion','Store','3','1',NULL,'1','0','1','2022-12-07 13:23:47','2022-12-07 13:23:47'),
-('852','1','0','Store deletion','Store','4','1',NULL,'1','0','1','2022-12-07 13:23:55','2022-12-07 13:23:55'),
-('853','1','0','Store deletion','Store','5','1',NULL,'1','0','1','2022-12-07 13:24:03','2022-12-07 13:24:03'),
-('854','1','0','Store addition','Store','6','1',NULL,'1','0','1','2022-12-07 13:25:12','2022-12-07 13:25:12'),
-('855','1','0','Store addition','Store','7','1',NULL,'1','0','1','2022-12-07 13:27:40','2022-12-07 13:27:40'),
-('856','1','0','Store modification','Store','6','1',NULL,'1','0','1','2022-12-07 13:31:08','2022-12-07 13:31:08'),
-('857','1','0','Store modification','Store','6','1',NULL,'1','0','1','2022-12-07 13:31:47','2022-12-07 13:31:47'),
-('858','1','0','Store modification','Store','7','1',NULL,'1','0','1','2022-12-07 13:32:30','2022-12-07 13:32:30'),
-('859','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-07 14:48:28','2022-12-07 14:48:28'),
-('860','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-07 14:48:39','2022-12-07 14:48:39'),
-('861','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-16 12:37:55','2022-12-16 12:37:55'),
-('862','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-16 12:38:04','2022-12-16 12:38:04'),
-('863','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-16 12:58:17','2022-12-16 12:58:17'),
-('864','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:01:03','2022-12-16 14:01:03'),
-('865','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:01:08','2022-12-16 14:01:08'),
-('866','1','0','Product modification','Product','3','1',NULL,'1','0','1','2022-12-16 14:02:25','2022-12-16 14:02:25'),
-('867','1','0','Product modification','Product','3','1',NULL,'1','0','1','2022-12-16 14:02:30','2022-12-16 14:02:30'),
-('868','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-16 14:03:17','2022-12-16 14:03:17'),
-('869','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-16 14:03:19','2022-12-16 14:03:19'),
-('870','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:04:09','2022-12-16 14:04:09'),
-('871','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:04:17','2022-12-16 14:04:17'),
-('872','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:04:52','2022-12-16 14:04:52'),
-('873','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:04:54','2022-12-16 14:04:54'),
-('874','1','0','Product modification','Product','2','1',NULL,'1','0','1','2022-12-16 14:05:47','2022-12-16 14:05:47'),
-('875','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-16 14:07:07','2022-12-16 14:07:07'),
-('876','1','0','Product modification','Product','4','1',NULL,'1','0','1','2022-12-16 14:07:09','2022-12-16 14:07:09'),
-('877','1','0','Product modification','Product','5','1',NULL,'1','0','1','2022-12-16 14:08:08','2022-12-16 14:08:08'),
-('878','1','0','Product modification','Product','5','1',NULL,'1','0','1','2022-12-16 14:08:10','2022-12-16 14:08:10'),
-('879','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-16 14:08:32','2022-12-16 14:08:32'),
-('880','1','0','Product modification','Product','6','1',NULL,'1','0','1','2022-12-16 14:08:34','2022-12-16 14:08:34'),
-('881','1','0','Product modification','Product','173','1',NULL,'1','0','1','2022-12-16 14:09:34','2022-12-16 14:09:34'),
-('882','1','0','Product modification','Product','173','1',NULL,'1','0','1','2022-12-16 14:09:35','2022-12-16 14:09:35'),
-('883','1','0','Product modification','Product','170','1',NULL,'1','0','1','2022-12-16 14:09:56','2022-12-16 14:09:56'),
-('884','1','0','Product modification','Product','170','1',NULL,'1','0','1','2022-12-16 14:09:57','2022-12-16 14:09:57'),
-('885','1','0','Product modification','Product','171','1',NULL,'1','0','1','2022-12-16 14:10:16','2022-12-16 14:10:16'),
-('886','1','0','Product modification','Product','171','1',NULL,'1','0','1','2022-12-16 14:10:18','2022-12-16 14:10:18'),
-('887','1','0','Product modification','Product','172','1',NULL,'1','0','1','2022-12-16 14:10:36','2022-12-16 14:10:36'),
-('888','1','0','Product modification','Product','172','1',NULL,'1','0','1','2022-12-16 14:10:38','2022-12-16 14:10:38'),
-('889','1','0','Product modification','Product','340','1',NULL,'1','0','1','2022-12-16 14:11:19','2022-12-16 14:11:19'),
-('890','1','0','Product modification','Product','340','1',NULL,'1','0','1','2022-12-16 14:11:20','2022-12-16 14:11:20'),
-('891','1','0','Product modification','Product','341','1',NULL,'1','0','1','2022-12-16 14:11:38','2022-12-16 14:11:38'),
-('892','1','0','Product modification','Product','341','1',NULL,'1','0','1','2022-12-16 14:11:39','2022-12-16 14:11:39'),
-('893','1','0','Product modification','Product','342','1',NULL,'1','0','1','2022-12-16 14:11:54','2022-12-16 14:11:54'),
-('894','1','0','Product modification','Product','342','1',NULL,'1','0','1','2022-12-16 14:11:55','2022-12-16 14:11:55'),
-('895','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-16 14:20:39','2022-12-16 14:20:39'),
-('896','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-16 14:22:21','2022-12-16 14:22:21'),
-('897','1','0','Product modification','Product','1','1',NULL,'1','0','1','2022-12-16 14:23:47','2022-12-16 14:23:47'),
-('898','1','0','Product deleted: (509).','Product','509','1',NULL,'1','0','1','2022-12-16 14:23:59','2022-12-16 14:23:59'),
-('899','1','0','Product modification','Product','20','1',NULL,'1','0','1','2022-12-16 14:24:31','2022-12-16 14:24:31'),
-('900','1','0','Product modification','Product','20','1',NULL,'1','0','1','2022-12-16 14:25:25','2022-12-16 14:25:25'),
-('901','1','0','Product modification','Product','169','1',NULL,'1','0','1','2022-12-16 14:25:52','2022-12-16 14:25:52'),
-('902','1','0','Product modification','Product','169','1',NULL,'1','0','1','2022-12-16 14:26:28','2022-12-16 14:26:28'),
-('903','1','0','Product modification','Product','131','1',NULL,'1','0','1','2022-12-16 14:27:10','2022-12-16 14:27:10'),
-('904','1','0','Product modification','Product','131','1',NULL,'1','0','1','2022-12-16 14:27:14','2022-12-16 14:27:14'),
-('905','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 11:15:13','2022-12-20 11:15:13'),
-('906','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 11:15:27','2022-12-20 11:15:27'),
-('907','1','0','Store modification','Store','6','1',NULL,'1','0','1','2022-12-20 11:40:59','2022-12-20 11:40:59'),
-('908','1','0','Store modification','Store','7','1',NULL,'1','0','1','2022-12-20 11:41:19','2022-12-20 11:41:19'),
-('909','1','0','Gender modification','Gender','1','1',NULL,'1','0','1','2022-12-20 12:00:27','2022-12-20 12:00:27'),
-('910','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials x11-20020a056512078b00b004b590b0c084sm1419643lfr.3 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials x11-20020a056512078b00b004b590b0c084sm1419643lfr.3 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials x11-20020a056512078b00b004b590b0c084sm1419643lfr.3 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2022-12-20 12:11:31','2022-12-20 12:11:31'),
-('911','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h21-20020a05651c125500b002778a76a3c3sm989782ljh.112 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h21-20020a05651c125500b002778a76a3c3sm989782ljh.112 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials h21-20020a05651c125500b002778a76a3c3sm989782ljh.112 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2022-12-20 12:13:52','2022-12-20 12:13:52'),
-('912','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials e15-20020a05651c038f00b0027d75b38fd6sm995211ljp.43 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials e15-20020a05651c038f00b0027d75b38fd6sm995211ljp.43 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials e15-20020a05651c038f00b0027d75b38fd6sm995211ljp.43 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2022-12-20 12:13:53','2022-12-20 12:13:53'),
-('913','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','11','1',NULL,'2','0','0','2022-12-20 12:13:53','2022-12-20 12:13:53'),
-('914','3','0','Swift Error: Failed to authenticate on SMTP server with username \\\"prestanabe@gmail.com\\\" using 3 possible authenticators. Authenticator LOGIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i25-20020a2ea379000000b0026e0434eb1esm977884ljn.67 - gsmtp\\r\\n\\\". Authenticator PLAIN returned Expected response code 235 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i25-20020a2ea379000000b0026e0434eb1esm977884ljn.67 - gsmtp\\r\\n\\\". Authenticator XOAUTH2 returned Expected response code 250 but got code \\\"535\\\", with message \\\"535-5.7.8 Username and Password not accepted. Learn more at\\r\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i25-20020a2ea379000000b0026e0434eb1esm977884ljn.67 - gsmtp\\r\\n\\\".',NULL,'0','1',NULL,'2','0','0','2022-12-20 13:28:42','2022-12-20 13:28:42'),
-('915','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','12','1',NULL,'2','0','0','2022-12-20 13:28:42','2022-12-20 13:28:42'),
-('916','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 14:03:57','2022-12-20 14:03:57'),
-('917','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:03:59','2022-12-20 14:03:59'),
-('918','1','0','Products deleted: (14).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:10:46','2022-12-20 14:10:46'),
-('919','1','0','Products deleted: (15).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:10:54','2022-12-20 14:10:54'),
-('920','1','0','Products deleted: (16).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:01','2022-12-20 14:11:01'),
-('921','1','0','Products deleted: (20).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:08','2022-12-20 14:11:08'),
-('922','1','0','Products deleted: (24).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:15','2022-12-20 14:11:15'),
-('923','1','0','Products deleted: (28).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:22','2022-12-20 14:11:22'),
-('924','1','0','Products deleted: (30).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:29','2022-12-20 14:11:29'),
-('925','1','0','Products deleted: (33).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:36','2022-12-20 14:11:36'),
-('926','1','0','Products deleted: (88).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:41','2022-12-20 14:11:41'),
-('927','1','0','Products deleted: (95).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:47','2022-12-20 14:11:47'),
-('928','1','0','Products deleted: (100).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:52','2022-12-20 14:11:52'),
-('929','1','0','Products deleted: (131).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:11:56','2022-12-20 14:11:56'),
-('930','1','0','Products deleted: (169).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:12:00','2022-12-20 14:12:00'),
-('931','1','0','Products deleted: (1).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:20','2022-12-20 14:13:20'),
-('932','1','0','Products deleted: (2).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:22','2022-12-20 14:13:22'),
-('933','1','0','Products deleted: (3).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:24','2022-12-20 14:13:24'),
-('934','1','0','Products deleted: (4).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:32','2022-12-20 14:13:32'),
-('935','1','0','Products deleted: (5).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:39','2022-12-20 14:13:39'),
-('936','1','0','Products deleted: (6).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:47','2022-12-20 14:13:47'),
-('937','1','0','Products deleted: (7).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:13:54','2022-12-20 14:13:54'),
-('938','1','0','Products deleted: (8).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:02','2022-12-20 14:14:02'),
-('939','1','0','Products deleted: (9).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:09','2022-12-20 14:14:09'),
-('940','1','0','Products deleted: (10).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:16','2022-12-20 14:14:16'),
-('941','1','0','Products deleted: (11).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:24','2022-12-20 14:14:24'),
-('942','1','0','Products deleted: (12).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:35','2022-12-20 14:14:35'),
-('943','1','0','Products deleted: (13).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:42','2022-12-20 14:14:42'),
-('944','1','0','Products deleted: (17).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:49','2022-12-20 14:14:49'),
-('945','1','0','Products deleted: (18).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:14:56','2022-12-20 14:14:56'),
-('946','1','0','Products deleted: (19).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:03','2022-12-20 14:15:03'),
-('947','1','0','Products deleted: (21).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:10','2022-12-20 14:15:10'),
-('948','1','0','Products deleted: (22).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:17','2022-12-20 14:15:17'),
-('949','1','0','Products deleted: (23).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:24','2022-12-20 14:15:24'),
-('950','1','0','Products deleted: (25).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:30','2022-12-20 14:15:30'),
-('951','1','0','Products deleted: (26).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:44','2022-12-20 14:15:44'),
-('952','1','0','Products deleted: (27).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:52','2022-12-20 14:15:52'),
-('953','1','0','Products deleted: (29).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:15:59','2022-12-20 14:15:59'),
-('954','1','0','Products deleted: (31).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:05','2022-12-20 14:16:05'),
-('955','1','0','Products deleted: (32).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:12','2022-12-20 14:16:12'),
-('956','1','0','Products deleted: (34).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:19','2022-12-20 14:16:19'),
-('957','1','0','Products deleted: (35).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:26','2022-12-20 14:16:26'),
-('958','1','0','Products deleted: (36).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:32','2022-12-20 14:16:32'),
-('959','1','0','Products deleted: (37).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:39','2022-12-20 14:16:39'),
-('960','1','0','Products deleted: (38).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:45','2022-12-20 14:16:45'),
-('961','1','0','Products deleted: (39).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:52','2022-12-20 14:16:52'),
-('962','1','0','Products deleted: (40).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:16:59','2022-12-20 14:16:59'),
-('963','1','0','Products deleted: (41).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:06','2022-12-20 14:17:06'),
-('964','1','0','Products deleted: (42).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:12','2022-12-20 14:17:12'),
-('965','1','0','Products deleted: (43).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:19','2022-12-20 14:17:19'),
-('966','1','0','Products deleted: (44).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:25','2022-12-20 14:17:25'),
-('967','1','0','Products deleted: (45).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:32','2022-12-20 14:17:32'),
-('968','1','0','Products deleted: (46).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:38','2022-12-20 14:17:38'),
-('969','1','0','Products deleted: (47).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:45','2022-12-20 14:17:45'),
-('970','1','0','Products deleted: (48).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:17:54','2022-12-20 14:17:54'),
-('971','1','0','Products deleted: (49).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:19:35','2022-12-20 14:19:35'),
-('972','1','0','Products deleted: (50).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:19:42','2022-12-20 14:19:42'),
-('973','1','0','Products deleted: (51).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:19:48','2022-12-20 14:19:48'),
-('974','1','0','Products deleted: (52).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:19:55','2022-12-20 14:19:55'),
-('975','1','0','Products deleted: (53).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:01','2022-12-20 14:20:01'),
-('976','1','0','Products deleted: (54).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:07','2022-12-20 14:20:07'),
-('977','1','0','Products deleted: (55).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:14','2022-12-20 14:20:14'),
-('978','1','0','Products deleted: (56).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:20','2022-12-20 14:20:20'),
-('979','1','0','Products deleted: (57).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:26','2022-12-20 14:20:26'),
-('980','1','0','Products deleted: (58).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:32','2022-12-20 14:20:32'),
-('981','1','0','Products deleted: (59).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:38','2022-12-20 14:20:38'),
-('982','1','0','Products deleted: (60).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:45','2022-12-20 14:20:45'),
-('983','1','0','Products deleted: (61).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:51','2022-12-20 14:20:51'),
-('984','1','0','Products deleted: (62).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:20:57','2022-12-20 14:20:57'),
-('985','1','0','Products deleted: (63).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:03','2022-12-20 14:21:03'),
-('986','1','0','Products deleted: (64).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:09','2022-12-20 14:21:09'),
-('987','1','0','Products deleted: (65).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:15','2022-12-20 14:21:15'),
-('988','1','0','Products deleted: (66).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:21','2022-12-20 14:21:21'),
-('989','1','0','Products deleted: (67).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:27','2022-12-20 14:21:27'),
-('990','1','0','Products deleted: (68).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:34','2022-12-20 14:21:34'),
-('991','1','0','Products deleted: (69).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:48','2022-12-20 14:21:48'),
-('992','1','0','Products deleted: (70).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:21:54','2022-12-20 14:21:54'),
-('993','1','0','Products deleted: (71).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:01','2022-12-20 14:22:01'),
-('994','1','0','Products deleted: (72).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:07','2022-12-20 14:22:07'),
-('995','1','0','Products deleted: (73).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:13','2022-12-20 14:22:13'),
-('996','1','0','Products deleted: (74).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:19','2022-12-20 14:22:19'),
-('997','1','0','Products deleted: (75).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:25','2022-12-20 14:22:25'),
-('998','1','0','Products deleted: (76).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:31','2022-12-20 14:22:31'),
-('999','1','0','Products deleted: (77).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:37','2022-12-20 14:22:37'),
-('1000','1','0','Products deleted: (78).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:43','2022-12-20 14:22:43');
-INSERT INTO `ps_log` VALUES
-('1001','1','0','Products deleted: (79).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:22:52','2022-12-20 14:22:52'),
-('1002','1','0','Products deleted: (80).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:01','2022-12-20 14:23:01'),
-('1003','1','0','Products deleted: (81).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:09','2022-12-20 14:23:09'),
-('1004','1','0','Products deleted: (82).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:17','2022-12-20 14:23:17'),
-('1005','1','0','Products deleted: (83).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:27','2022-12-20 14:23:27'),
-('1006','1','0','Products deleted: (84).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:33','2022-12-20 14:23:33'),
-('1007','1','0','Products deleted: (85).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:38','2022-12-20 14:23:38'),
-('1008','1','0','Products deleted: (86).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:44','2022-12-20 14:23:44'),
-('1009','1','0','Products deleted: (87).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:49','2022-12-20 14:23:49'),
-('1010','1','0','Products deleted: (89).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:23:55','2022-12-20 14:23:55'),
-('1011','1','0','Products deleted: (90).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:16','2022-12-20 14:29:16'),
-('1012','1','0','Products deleted: (91).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:22','2022-12-20 14:29:22'),
-('1013','1','0','Products deleted: (92).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:28','2022-12-20 14:29:28'),
-('1014','1','0','Products deleted: (93).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:33','2022-12-20 14:29:33'),
-('1015','1','0','Products deleted: (94).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:38','2022-12-20 14:29:38'),
-('1016','1','0','Products deleted: (96).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:43','2022-12-20 14:29:43'),
-('1017','1','0','Products deleted: (97).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:48','2022-12-20 14:29:48'),
-('1018','1','0','Products deleted: (98).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:53','2022-12-20 14:29:53'),
-('1019','1','0','Products deleted: (99).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:29:58','2022-12-20 14:29:58'),
-('1020','1','0','Products deleted: (101).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:03','2022-12-20 14:30:03'),
-('1021','1','0','Products deleted: (102).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:08','2022-12-20 14:30:08'),
-('1022','1','0','Products deleted: (103).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:13','2022-12-20 14:30:13'),
-('1023','1','0','Products deleted: (104).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:17','2022-12-20 14:30:17'),
-('1024','1','0','Products deleted: (105).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:23','2022-12-20 14:30:23'),
-('1025','1','0','Products deleted: (106).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:28','2022-12-20 14:30:28'),
-('1026','1','0','Products deleted: (107).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:33','2022-12-20 14:30:33'),
-('1027','1','0','Products deleted: (108).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:37','2022-12-20 14:30:37'),
-('1028','1','0','Products deleted: (109).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:42','2022-12-20 14:30:42'),
-('1029','1','0','Products deleted: (110).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:47','2022-12-20 14:30:47'),
-('1030','1','0','Products deleted: (111).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:30:52','2022-12-20 14:30:52'),
-('1031','1','0','Products deleted: (112).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:39:44','2022-12-20 14:39:44'),
-('1032','1','0','Products deleted: (113).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:39:49','2022-12-20 14:39:49'),
-('1033','1','0','Products deleted: (114).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:39:54','2022-12-20 14:39:54'),
-('1034','1','0','Products deleted: (115).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:39:58','2022-12-20 14:39:58'),
-('1035','1','0','Products deleted: (116).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:03','2022-12-20 14:40:03'),
-('1036','1','0','Products deleted: (117).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:08','2022-12-20 14:40:08'),
-('1037','1','0','Products deleted: (118).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:12','2022-12-20 14:40:12'),
-('1038','1','0','Products deleted: (119).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:17','2022-12-20 14:40:17'),
-('1039','1','0','Products deleted: (120).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:22','2022-12-20 14:40:22'),
-('1040','1','0','Products deleted: (121).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:26','2022-12-20 14:40:26'),
-('1041','1','0','Products deleted: (122).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:31','2022-12-20 14:40:31'),
-('1042','1','0','Products deleted: (123).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:35','2022-12-20 14:40:35'),
-('1043','1','0','Products deleted: (124).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:40','2022-12-20 14:40:40'),
-('1044','1','0','Products deleted: (125).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:44','2022-12-20 14:40:44'),
-('1045','1','0','Products deleted: (126).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:49','2022-12-20 14:40:49'),
-('1046','1','0','Products deleted: (127).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:53','2022-12-20 14:40:53'),
-('1047','1','0','Products deleted: (128).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:40:57','2022-12-20 14:40:57'),
-('1048','1','0','Products deleted: (129).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:02','2022-12-20 14:41:02'),
-('1049','1','0','Products deleted: (130).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:06','2022-12-20 14:41:06'),
-('1050','1','0','Products deleted: (132).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:10','2022-12-20 14:41:10'),
-('1051','1','0','Products deleted: (133).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:44','2022-12-20 14:41:44'),
-('1052','1','0','Products deleted: (134).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:49','2022-12-20 14:41:49'),
-('1053','1','0','Products deleted: (135).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:53','2022-12-20 14:41:53'),
-('1054','1','0','Products deleted: (136).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:41:57','2022-12-20 14:41:57'),
-('1055','1','0','Products deleted: (137).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:02','2022-12-20 14:42:02'),
-('1056','1','0','Products deleted: (138).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:06','2022-12-20 14:42:06'),
-('1057','1','0','Products deleted: (139).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:10','2022-12-20 14:42:10'),
-('1058','1','0','Products deleted: (140).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:14','2022-12-20 14:42:14'),
-('1059','1','0','Products deleted: (141).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:18','2022-12-20 14:42:18'),
-('1060','1','0','Products deleted: (142).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:22','2022-12-20 14:42:22'),
-('1061','1','0','Products deleted: (143).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:26','2022-12-20 14:42:26'),
-('1062','1','0','Products deleted: (144).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:30','2022-12-20 14:42:30'),
-('1063','1','0','Products deleted: (145).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:34','2022-12-20 14:42:34'),
-('1064','1','0','Products deleted: (146).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:38','2022-12-20 14:42:38'),
-('1065','1','0','Products deleted: (147).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:42','2022-12-20 14:42:42'),
-('1066','1','0','Products deleted: (148).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:47','2022-12-20 14:42:47'),
-('1067','1','0','Products deleted: (149).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:51','2022-12-20 14:42:51'),
-('1068','1','0','Products deleted: (150).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:55','2022-12-20 14:42:55'),
-('1069','1','0','Products deleted: (151).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:42:59','2022-12-20 14:42:59'),
-('1070','1','0','Products deleted: (152).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:03','2022-12-20 14:43:03'),
-('1071','1','0','Products deleted: (153).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:07','2022-12-20 14:43:07'),
-('1072','1','0','Products deleted: (154).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:11','2022-12-20 14:43:11'),
-('1073','1','0','Products deleted: (155).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:15','2022-12-20 14:43:15'),
-('1074','1','0','Products deleted: (156).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:19','2022-12-20 14:43:19'),
-('1075','1','0','Products deleted: (157).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:22','2022-12-20 14:43:22'),
-('1076','1','0','Products deleted: (158).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:26','2022-12-20 14:43:26'),
-('1077','1','0','Products deleted: (159).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:30','2022-12-20 14:43:30'),
-('1078','1','0','Products deleted: (160).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:34','2022-12-20 14:43:34'),
-('1079','1','0','Products deleted: (161).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:38','2022-12-20 14:43:38'),
-('1080','1','0','Products deleted: (162).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:42','2022-12-20 14:43:42'),
-('1081','1','0','Products deleted: (163).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:45','2022-12-20 14:43:45'),
-('1082','1','0','Products deleted: (164).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:49','2022-12-20 14:43:49'),
-('1083','1','0','Products deleted: (165).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:53','2022-12-20 14:43:53'),
-('1084','1','0','Products deleted: (166).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:43:57','2022-12-20 14:43:57'),
-('1085','1','0','Products deleted: (167).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:01','2022-12-20 14:44:01'),
-('1086','1','0','Products deleted: (168).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:05','2022-12-20 14:44:05'),
-('1087','1','0','Products deleted: (170).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:11','2022-12-20 14:44:11'),
-('1088','1','0','Products deleted: (171).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:17','2022-12-20 14:44:17'),
-('1089','1','0','Products deleted: (172).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:23','2022-12-20 14:44:23'),
-('1090','1','0','Products deleted: (173).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:29','2022-12-20 14:44:29'),
-('1091','1','0','Products deleted: (174).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:34','2022-12-20 14:44:34'),
-('1092','1','0','Products deleted: (175).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:40','2022-12-20 14:44:40'),
-('1093','1','0','Products deleted: (176).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:45','2022-12-20 14:44:45'),
-('1094','1','0','Products deleted: (177).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:51','2022-12-20 14:44:51'),
-('1095','1','0','Products deleted: (178).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:44:57','2022-12-20 14:44:57'),
-('1096','1','0','Products deleted: (179).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:02','2022-12-20 14:45:02'),
-('1097','1','0','Products deleted: (180).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:12','2022-12-20 14:45:12'),
-('1098','1','0','Products deleted: (181).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:18','2022-12-20 14:45:18'),
-('1099','1','0','Products deleted: (182).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:23','2022-12-20 14:45:23'),
-('1100','1','0','Products deleted: (183).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:28','2022-12-20 14:45:28'),
-('1101','1','0','Products deleted: (184).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:33','2022-12-20 14:45:33'),
-('1102','1','0','Products deleted: (185).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:43','2022-12-20 14:45:43'),
-('1103','1','0','Products deleted: (186).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:48','2022-12-20 14:45:48'),
-('1104','1','0','Products deleted: (187).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:54','2022-12-20 14:45:54'),
-('1105','1','0','Products deleted: (188).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:45:59','2022-12-20 14:45:59'),
-('1106','1','0','Products deleted: (189).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:04','2022-12-20 14:46:04'),
-('1107','1','0','Products deleted: (190).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:13','2022-12-20 14:46:13'),
-('1108','1','0','Products deleted: (191).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:18','2022-12-20 14:46:18'),
-('1109','1','0','Products deleted: (192).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:23','2022-12-20 14:46:23'),
-('1110','1','0','Products deleted: (193).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:28','2022-12-20 14:46:28'),
-('1111','1','0','Products deleted: (194).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:33','2022-12-20 14:46:33'),
-('1112','1','0','Products deleted: (195).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:43','2022-12-20 14:46:43'),
-('1113','1','0','Products deleted: (196).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:48','2022-12-20 14:46:48'),
-('1114','1','0','Products deleted: (197).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:53','2022-12-20 14:46:53'),
-('1115','1','0','Products deleted: (198).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:46:58','2022-12-20 14:46:58'),
-('1116','1','0','Products deleted: (199).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:03','2022-12-20 14:47:03'),
-('1117','1','0','Products deleted: (200).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:08','2022-12-20 14:47:08'),
-('1118','1','0','Products deleted: (201).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:17','2022-12-20 14:47:17'),
-('1119','1','0','Products deleted: (202).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:22','2022-12-20 14:47:22'),
-('1120','1','0','Products deleted: (203).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:26','2022-12-20 14:47:26'),
-('1121','1','0','Products deleted: (204).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:31','2022-12-20 14:47:31'),
-('1122','1','0','Products deleted: (205).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:36','2022-12-20 14:47:36'),
-('1123','1','0','Products deleted: (206).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:45','2022-12-20 14:47:45'),
-('1124','1','0','Products deleted: (207).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:50','2022-12-20 14:47:50'),
-('1125','1','0','Products deleted: (208).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:55','2022-12-20 14:47:55'),
-('1126','1','0','Products deleted: (209).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:47:59','2022-12-20 14:47:59'),
-('1127','1','0','Products deleted: (210).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:04','2022-12-20 14:48:04'),
-('1128','1','0','Products deleted: (211).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:08','2022-12-20 14:48:08'),
-('1129','1','0','Products deleted: (212).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:17','2022-12-20 14:48:17'),
-('1130','1','0','Products deleted: (213).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:22','2022-12-20 14:48:22'),
-('1131','1','0','Products deleted: (214).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:26','2022-12-20 14:48:26'),
-('1132','1','0','Products deleted: (215).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:31','2022-12-20 14:48:31'),
-('1133','1','0','Products deleted: (216).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:36','2022-12-20 14:48:36'),
-('1134','1','0','Products deleted: (217).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:40','2022-12-20 14:48:40'),
-('1135','1','0','Products deleted: (218).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:49','2022-12-20 14:48:49'),
-('1136','1','0','Products deleted: (219).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:53','2022-12-20 14:48:53'),
-('1137','1','0','Products deleted: (220).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:48:58','2022-12-20 14:48:58'),
-('1138','1','0','Products deleted: (221).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:02','2022-12-20 14:49:02'),
-('1139','1','0','Products deleted: (222).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:07','2022-12-20 14:49:07'),
-('1140','1','0','Products deleted: (223).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:11','2022-12-20 14:49:11'),
-('1141','1','0','Products deleted: (224).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:20','2022-12-20 14:49:20'),
-('1142','1','0','Products deleted: (225).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:25','2022-12-20 14:49:25'),
-('1143','1','0','Products deleted: (226).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:29','2022-12-20 14:49:29'),
-('1144','1','0','Products deleted: (227).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:33','2022-12-20 14:49:33'),
-('1145','1','0','Products deleted: (228).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:38','2022-12-20 14:49:38'),
-('1146','1','0','Products deleted: (229).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:42','2022-12-20 14:49:42'),
-('1147','1','0','Products deleted: (230).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:50','2022-12-20 14:49:50'),
-('1148','1','0','Products deleted: (231).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:55','2022-12-20 14:49:55'),
-('1149','1','0','Products deleted: (232).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:49:59','2022-12-20 14:49:59'),
-('1150','1','0','Products deleted: (233).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:03','2022-12-20 14:50:03'),
-('1151','1','0','Products deleted: (234).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:18','2022-12-20 14:50:18'),
-('1152','1','0','Products deleted: (235).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:22','2022-12-20 14:50:22'),
-('1153','1','0','Products deleted: (236).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:26','2022-12-20 14:50:26'),
-('1154','1','0','Products deleted: (237).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:31','2022-12-20 14:50:31'),
-('1155','1','0','Products deleted: (238).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:35','2022-12-20 14:50:35'),
-('1156','1','0','Products deleted: (239).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:39','2022-12-20 14:50:39'),
-('1157','1','0','Products deleted: (240).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:43','2022-12-20 14:50:43'),
-('1158','1','0','Products deleted: (241).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:47','2022-12-20 14:50:47'),
-('1159','1','0','Products deleted: (242).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:51','2022-12-20 14:50:51'),
-('1160','1','0','Products deleted: (243).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:50:55','2022-12-20 14:50:55'),
-('1161','1','0','Products deleted: (244).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:02','2022-12-20 14:51:02'),
-('1162','1','0','Products deleted: (245).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:06','2022-12-20 14:51:06'),
-('1163','1','0','Products deleted: (246).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:10','2022-12-20 14:51:10'),
-('1164','1','0','Products deleted: (247).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:14','2022-12-20 14:51:14'),
-('1165','1','0','Products deleted: (248).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:17','2022-12-20 14:51:17'),
-('1166','1','0','Products deleted: (249).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:21','2022-12-20 14:51:21'),
-('1167','1','0','Products deleted: (250).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:25','2022-12-20 14:51:25'),
-('1168','1','0','Products deleted: (251).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:29','2022-12-20 14:51:29'),
-('1169','1','0','Products deleted: (252).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:37','2022-12-20 14:51:37'),
-('1170','1','0','Products deleted: (253).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:41','2022-12-20 14:51:41'),
-('1171','1','0','Products deleted: (254).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:45','2022-12-20 14:51:45'),
-('1172','1','0','Products deleted: (255).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:48','2022-12-20 14:51:48'),
-('1173','1','0','Products deleted: (256).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:52','2022-12-20 14:51:52'),
-('1174','1','0','Products deleted: (257).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:56','2022-12-20 14:51:56'),
-('1175','1','0','Products deleted: (258).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:51:59','2022-12-20 14:51:59'),
-('1176','1','0','Products deleted: (259).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:03','2022-12-20 14:52:03'),
-('1177','1','0','Products deleted: (260).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:11','2022-12-20 14:52:11'),
-('1178','1','0','Products deleted: (261).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:15','2022-12-20 14:52:15'),
-('1179','1','0','Products deleted: (262).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:18','2022-12-20 14:52:18'),
-('1180','1','0','Products deleted: (263).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:21','2022-12-20 14:52:21'),
-('1181','1','0','Products deleted: (264).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:24','2022-12-20 14:52:24'),
-('1182','1','0','Products deleted: (265).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:27','2022-12-20 14:52:27'),
-('1183','1','0','Products deleted: (266).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:30','2022-12-20 14:52:30'),
-('1184','1','0','Products deleted: (267).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:33','2022-12-20 14:52:33'),
-('1185','1','0','Products deleted: (268).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:36','2022-12-20 14:52:36'),
-('1186','1','0','Products deleted: (269).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:39','2022-12-20 14:52:39'),
-('1187','1','0','Products deleted: (270).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:46','2022-12-20 14:52:46'),
-('1188','1','0','Products deleted: (271).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:49','2022-12-20 14:52:49'),
-('1189','1','0','Products deleted: (272).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:52','2022-12-20 14:52:52'),
-('1190','1','0','Products deleted: (273).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:55','2022-12-20 14:52:55'),
-('1191','1','0','Products deleted: (274).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:52:58','2022-12-20 14:52:58'),
-('1192','1','0','Products deleted: (275).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:01','2022-12-20 14:53:01'),
-('1193','1','0','Products deleted: (276).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:04','2022-12-20 14:53:04'),
-('1194','1','0','Products deleted: (277).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:07','2022-12-20 14:53:07'),
-('1195','1','0','Products deleted: (278).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:10','2022-12-20 14:53:10'),
-('1196','1','0','Products deleted: (279).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:13','2022-12-20 14:53:13'),
-('1197','1','0','Products deleted: (280).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:16','2022-12-20 14:53:16'),
-('1198','1','0','Products deleted: (281).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:23','2022-12-20 14:53:23'),
-('1199','1','0','Products deleted: (282).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:26','2022-12-20 14:53:26'),
-('1200','1','0','Products deleted: (283).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:29','2022-12-20 14:53:29');
-INSERT INTO `ps_log` VALUES
-('1201','1','0','Products deleted: (284).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:32','2022-12-20 14:53:32'),
-('1202','1','0','Products deleted: (285).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:35','2022-12-20 14:53:35'),
-('1203','1','0','Products deleted: (286).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:38','2022-12-20 14:53:38'),
-('1204','1','0','Products deleted: (287).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:41','2022-12-20 14:53:41'),
-('1205','1','0','Products deleted: (288).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:44','2022-12-20 14:53:44'),
-('1206','1','0','Products deleted: (289).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:47','2022-12-20 14:53:47'),
-('1207','1','0','Products deleted: (290).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:50','2022-12-20 14:53:50'),
-('1208','1','0','Products deleted: (291).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:53','2022-12-20 14:53:53'),
-('1209','1','0','Products deleted: (292).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:56','2022-12-20 14:53:56'),
-('1210','1','0','Products deleted: (293).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:53:59','2022-12-20 14:53:59'),
-('1211','1','0','Products deleted: (294).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:02','2022-12-20 14:54:02'),
-('1212','1','0','Products deleted: (295).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:09','2022-12-20 14:54:09'),
-('1213','1','0','Products deleted: (296).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:12','2022-12-20 14:54:12'),
-('1214','1','0','Products deleted: (297).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:14','2022-12-20 14:54:14'),
-('1215','1','0','Products deleted: (298).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:17','2022-12-20 14:54:17'),
-('1216','1','0','Products deleted: (299).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:20','2022-12-20 14:54:20'),
-('1217','1','0','Products deleted: (300).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:22','2022-12-20 14:54:22'),
-('1218','1','0','Products deleted: (301).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:25','2022-12-20 14:54:25'),
-('1219','1','0','Products deleted: (302).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:27','2022-12-20 14:54:27'),
-('1220','1','0','Products deleted: (303).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:30','2022-12-20 14:54:30'),
-('1221','1','0','Products deleted: (304).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:32','2022-12-20 14:54:32'),
-('1222','1','0','Products deleted: (305).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:34','2022-12-20 14:54:34'),
-('1223','1','0','Products deleted: (306).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:37','2022-12-20 14:54:37'),
-('1224','1','0','Products deleted: (307).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:44','2022-12-20 14:54:44'),
-('1225','1','0','Products deleted: (308).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:46','2022-12-20 14:54:46'),
-('1226','1','0','Products deleted: (309).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:48','2022-12-20 14:54:48'),
-('1227','1','0','Products deleted: (310).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:51','2022-12-20 14:54:51'),
-('1228','1','0','Products deleted: (311).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:53','2022-12-20 14:54:53'),
-('1229','1','0','Products deleted: (312).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:56','2022-12-20 14:54:56'),
-('1230','1','0','Products deleted: (313).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:54:58','2022-12-20 14:54:58'),
-('1231','1','0','Products deleted: (314).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:00','2022-12-20 14:55:00'),
-('1232','1','0','Products deleted: (315).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:03','2022-12-20 14:55:03'),
-('1233','1','0','Products deleted: (316).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:05','2022-12-20 14:55:05'),
-('1234','1','0','Products deleted: (317).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:07','2022-12-20 14:55:07'),
-('1235','1','0','Products deleted: (318).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:09','2022-12-20 14:55:09'),
-('1236','1','0','Products deleted: (319).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:16','2022-12-20 14:55:16'),
-('1237','1','0','Products deleted: (320).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:19','2022-12-20 14:55:19'),
-('1238','1','0','Products deleted: (321).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:21','2022-12-20 14:55:21'),
-('1239','1','0','Products deleted: (322).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:23','2022-12-20 14:55:23'),
-('1240','1','0','Products deleted: (323).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:25','2022-12-20 14:55:25'),
-('1241','1','0','Products deleted: (324).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:27','2022-12-20 14:55:27'),
-('1242','1','0','Products deleted: (325).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:30','2022-12-20 14:55:30'),
-('1243','1','0','Products deleted: (326).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:32','2022-12-20 14:55:32'),
-('1244','1','0','Products deleted: (327).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:34','2022-12-20 14:55:34'),
-('1245','1','0','Products deleted: (328).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:36','2022-12-20 14:55:36'),
-('1246','1','0','Products deleted: (329).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:38','2022-12-20 14:55:38'),
-('1247','1','0','Products deleted: (330).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:41','2022-12-20 14:55:41'),
-('1248','1','0','Products deleted: (331).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:49','2022-12-20 14:55:49'),
-('1249','1','0','Products deleted: (332).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:51','2022-12-20 14:55:51'),
-('1250','1','0','Products deleted: (333).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:55:53','2022-12-20 14:55:53'),
-('1251','1','0','Products deleted: (334).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:20','2022-12-20 14:56:20'),
-('1252','1','0','Products deleted: (335).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:22','2022-12-20 14:56:22'),
-('1253','1','0','Products deleted: (336).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:24','2022-12-20 14:56:24'),
-('1254','1','0','Products deleted: (337).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:26','2022-12-20 14:56:26'),
-('1255','1','0','Products deleted: (338).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:28','2022-12-20 14:56:28'),
-('1256','1','0','Products deleted: (339).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:30','2022-12-20 14:56:30'),
-('1257','1','0','Products deleted: (340).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:34','2022-12-20 14:56:34'),
-('1258','1','0','Products deleted: (341).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:38','2022-12-20 14:56:38'),
-('1259','1','0','Products deleted: (342).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:42','2022-12-20 14:56:42'),
-('1260','1','0','Products deleted: (343).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:45','2022-12-20 14:56:45'),
-('1261','1','0','Products deleted: (344).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:49','2022-12-20 14:56:49'),
-('1262','1','0','Products deleted: (345).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:53','2022-12-20 14:56:53'),
-('1263','1','0','Products deleted: (346).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:56:57','2022-12-20 14:56:57'),
-('1264','1','0','Products deleted: (347).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:00','2022-12-20 14:57:00'),
-('1265','1','0','Products deleted: (348).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:04','2022-12-20 14:57:04'),
-('1266','1','0','Products deleted: (349).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:07','2022-12-20 14:57:07'),
-('1267','1','0','Products deleted: (350).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:11','2022-12-20 14:57:11'),
-('1268','1','0','Products deleted: (351).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:14','2022-12-20 14:57:14'),
-('1269','1','0','Products deleted: (352).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:18','2022-12-20 14:57:18'),
-('1270','1','0','Products deleted: (353).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:21','2022-12-20 14:57:21'),
-('1271','1','0','Products deleted: (354).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:25','2022-12-20 14:57:25'),
-('1272','1','0','Products deleted: (355).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:28','2022-12-20 14:57:28'),
-('1273','1','0','Products deleted: (356).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:32','2022-12-20 14:57:32'),
-('1274','1','0','Products deleted: (357).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:35','2022-12-20 14:57:35'),
-('1275','1','0','Products deleted: (358).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:38','2022-12-20 14:57:38'),
-('1276','1','0','Products deleted: (359).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:42','2022-12-20 14:57:42'),
-('1277','1','0','Products deleted: (360).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:46','2022-12-20 14:57:46'),
-('1278','1','0','Products deleted: (361).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:50','2022-12-20 14:57:50'),
-('1279','1','0','Products deleted: (362).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:53','2022-12-20 14:57:53'),
-('1280','1','0','Products deleted: (363).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:56','2022-12-20 14:57:56'),
-('1281','1','0','Products deleted: (364).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:57:59','2022-12-20 14:57:59'),
-('1282','1','0','Products deleted: (365).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:02','2022-12-20 14:58:02'),
-('1283','1','0','Products deleted: (366).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:06','2022-12-20 14:58:06'),
-('1284','1','0','Products deleted: (367).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:09','2022-12-20 14:58:09'),
-('1285','1','0','Products deleted: (368).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:12','2022-12-20 14:58:12'),
-('1286','1','0','Products deleted: (369).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:15','2022-12-20 14:58:15'),
-('1287','1','0','Products deleted: (370).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:18','2022-12-20 14:58:18'),
-('1288','1','0','Products deleted: (371).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:21','2022-12-20 14:58:21'),
-('1289','1','0','Products deleted: (372).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:25','2022-12-20 14:58:25'),
-('1290','1','0','Products deleted: (373).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:28','2022-12-20 14:58:28'),
-('1291','1','0','Products deleted: (374).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:31','2022-12-20 14:58:31'),
-('1292','1','0','Products deleted: (375).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:34','2022-12-20 14:58:34'),
-('1293','1','0','Products deleted: (376).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:37','2022-12-20 14:58:37'),
-('1294','1','0','Products deleted: (377).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:39','2022-12-20 14:58:39'),
-('1295','1','0','Products deleted: (378).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:42','2022-12-20 14:58:42'),
-('1296','1','0','Products deleted: (379).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:45','2022-12-20 14:58:45'),
-('1297','1','0','Products deleted: (380).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:48','2022-12-20 14:58:48'),
-('1298','1','0','Products deleted: (381).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:51','2022-12-20 14:58:51'),
-('1299','1','0','Products deleted: (382).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:54','2022-12-20 14:58:54'),
-('1300','1','0','Products deleted: (383).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:56','2022-12-20 14:58:56'),
-('1301','1','0','Products deleted: (384).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:58:59','2022-12-20 14:58:59'),
-('1302','1','0','Products deleted: (385).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:02','2022-12-20 14:59:02'),
-('1303','1','0','Products deleted: (386).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:05','2022-12-20 14:59:05'),
-('1304','1','0','Products deleted: (387).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:07','2022-12-20 14:59:07'),
-('1305','1','0','Products deleted: (388).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:10','2022-12-20 14:59:10'),
-('1306','1','0','Products deleted: (389).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:13','2022-12-20 14:59:13'),
-('1307','1','0','Products deleted: (390).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:16','2022-12-20 14:59:16'),
-('1308','1','0','Products deleted: (391).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:19','2022-12-20 14:59:19'),
-('1309','1','0','Products deleted: (392).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:21','2022-12-20 14:59:21'),
-('1310','1','0','Products deleted: (393).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:24','2022-12-20 14:59:24'),
-('1311','1','0','Products deleted: (394).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:26','2022-12-20 14:59:26'),
-('1312','1','0','Products deleted: (395).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:29','2022-12-20 14:59:29'),
-('1313','1','0','Products deleted: (396).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:31','2022-12-20 14:59:31'),
-('1314','1','0','Products deleted: (397).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:34','2022-12-20 14:59:34'),
-('1315','1','0','Products deleted: (398).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:36','2022-12-20 14:59:36'),
-('1316','1','0','Products deleted: (399).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:39','2022-12-20 14:59:39'),
-('1317','1','0','Products deleted: (400).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:41','2022-12-20 14:59:41'),
-('1318','1','0','Products deleted: (401).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:44','2022-12-20 14:59:44'),
-('1319','1','0','Products deleted: (402).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:46','2022-12-20 14:59:46'),
-('1320','1','0','Products deleted: (403).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:48','2022-12-20 14:59:48'),
-('1321','1','0','Products deleted: (404).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:51','2022-12-20 14:59:51'),
-('1322','1','0','Products deleted: (405).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:53','2022-12-20 14:59:53'),
-('1323','1','0','Products deleted: (406).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:56','2022-12-20 14:59:56'),
-('1324','1','0','Products deleted: (407).',NULL,'0','1',NULL,'1','0','1','2022-12-20 14:59:58','2022-12-20 14:59:58'),
-('1325','1','0','Products deleted: (408).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:04','2022-12-20 15:00:04'),
-('1326','1','0','Products deleted: (409).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:07','2022-12-20 15:00:07'),
-('1327','1','0','Products deleted: (410).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:09','2022-12-20 15:00:09'),
-('1328','1','0','Products deleted: (411).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:11','2022-12-20 15:00:11'),
-('1329','1','0','Products deleted: (412).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:14','2022-12-20 15:00:14'),
-('1330','1','0','Products deleted: (413).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:16','2022-12-20 15:00:16'),
-('1331','1','0','Products deleted: (414).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:17','2022-12-20 15:00:17'),
-('1332','1','0','Products deleted: (415).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:20','2022-12-20 15:00:20'),
-('1333','1','0','Products deleted: (416).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:21','2022-12-20 15:00:21'),
-('1334','1','0','Products deleted: (417).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:23','2022-12-20 15:00:23'),
-('1335','1','0','Products deleted: (418).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:26','2022-12-20 15:00:26'),
-('1336','1','0','Products deleted: (419).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:28','2022-12-20 15:00:28'),
-('1337','1','0','Products deleted: (420).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:29','2022-12-20 15:00:29'),
-('1338','1','0','Products deleted: (421).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:31','2022-12-20 15:00:31'),
-('1339','1','0','Products deleted: (422).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:33','2022-12-20 15:00:33'),
-('1340','1','0','Products deleted: (423).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:34','2022-12-20 15:00:34'),
-('1341','1','0','Products deleted: (424).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:41','2022-12-20 15:00:41'),
-('1342','1','0','Products deleted: (425).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:42','2022-12-20 15:00:42'),
-('1343','1','0','Products deleted: (426).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:43','2022-12-20 15:00:43'),
-('1344','1','0','Products deleted: (427).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:44','2022-12-20 15:00:44'),
-('1345','1','0','Products deleted: (428).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:46','2022-12-20 15:00:46'),
-('1346','1','0','Products deleted: (429).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:47','2022-12-20 15:00:47'),
-('1347','1','0','Products deleted: (430).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:48','2022-12-20 15:00:48'),
-('1348','1','0','Products deleted: (431).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:49','2022-12-20 15:00:49'),
-('1349','1','0','Products deleted: (432).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:50','2022-12-20 15:00:50'),
-('1350','1','0','Products deleted: (433).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:00:51','2022-12-20 15:00:51'),
-('1351','1','0','Products deleted: (434).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:04','2022-12-20 15:01:04'),
-('1352','1','0','Products deleted: (435).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:05','2022-12-20 15:01:05'),
-('1353','1','0','Products deleted: (436).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:07','2022-12-20 15:01:07'),
-('1354','1','0','Products deleted: (437).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:07','2022-12-20 15:01:07'),
-('1355','1','0','Products deleted: (438).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:09','2022-12-20 15:01:09'),
-('1356','1','0','Products deleted: (439).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:10','2022-12-20 15:01:10'),
-('1357','1','0','Products deleted: (440).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:10','2022-12-20 15:01:10'),
-('1358','1','0','Products deleted: (441).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:11','2022-12-20 15:01:11'),
-('1359','1','0','Products deleted: (442).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:12','2022-12-20 15:01:12'),
-('1360','1','0','Products deleted: (443).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:13','2022-12-20 15:01:13'),
-('1361','1','0','Products deleted: (444).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:13','2022-12-20 15:01:13'),
-('1362','1','0','Products deleted: (445).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:14','2022-12-20 15:01:14'),
-('1363','1','0','Products deleted: (446).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:15','2022-12-20 15:01:15'),
-('1364','1','0','Products deleted: (447).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:15','2022-12-20 15:01:15'),
-('1365','1','0','Products deleted: (448).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:16','2022-12-20 15:01:16'),
-('1366','1','0','Products deleted: (449).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:17','2022-12-20 15:01:17'),
-('1367','1','0','Products deleted: (450).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:17','2022-12-20 15:01:17'),
-('1368','1','0','Products deleted: (451).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:18','2022-12-20 15:01:18'),
-('1369','1','0','Products deleted: (452).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:19','2022-12-20 15:01:19'),
-('1370','1','0','Products deleted: (453).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:19','2022-12-20 15:01:19'),
-('1371','1','0','Products deleted: (454).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:20','2022-12-20 15:01:20'),
-('1372','1','0','Products deleted: (455).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:20','2022-12-20 15:01:20'),
-('1373','1','0','Products deleted: (456).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:21','2022-12-20 15:01:21'),
-('1374','1','0','Products deleted: (457).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:21','2022-12-20 15:01:21'),
-('1375','1','0','Products deleted: (458).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:22','2022-12-20 15:01:22'),
-('1376','1','0','Products deleted: (459).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:22','2022-12-20 15:01:22'),
-('1377','1','0','Products deleted: (460).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:23','2022-12-20 15:01:23'),
-('1378','1','0','Products deleted: (461).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:23','2022-12-20 15:01:23'),
-('1379','1','0','Products deleted: (462).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:24','2022-12-20 15:01:24'),
-('1380','1','0','Products deleted: (463).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:24','2022-12-20 15:01:24'),
-('1381','1','0','Products deleted: (464).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:25','2022-12-20 15:01:25'),
-('1382','1','0','Products deleted: (465).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:25','2022-12-20 15:01:25'),
-('1383','1','0','Products deleted: (466).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:26','2022-12-20 15:01:26'),
-('1384','1','0','Products deleted: (467).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:26','2022-12-20 15:01:26'),
-('1385','1','0','Products deleted: (468).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:26','2022-12-20 15:01:26'),
-('1386','1','0','Products deleted: (469).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:27','2022-12-20 15:01:27'),
-('1387','1','0','Products deleted: (470).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:27','2022-12-20 15:01:27'),
-('1388','1','0','Products deleted: (471).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:28','2022-12-20 15:01:28'),
-('1389','1','0','Products deleted: (472).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:28','2022-12-20 15:01:28'),
-('1390','1','0','Products deleted: (473).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:28','2022-12-20 15:01:28'),
-('1391','1','0','Products deleted: (474).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:28','2022-12-20 15:01:28'),
-('1392','1','0','Products deleted: (475).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:29','2022-12-20 15:01:29'),
-('1393','1','0','Products deleted: (476).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:29','2022-12-20 15:01:29'),
-('1394','1','0','Products deleted: (477).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:29','2022-12-20 15:01:29'),
-('1395','1','0','Products deleted: (478).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:30','2022-12-20 15:01:30'),
-('1396','1','0','Products deleted: (479).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:30','2022-12-20 15:01:30'),
-('1397','1','0','Products deleted: (480).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:30','2022-12-20 15:01:30'),
-('1398','1','0','Products deleted: (481).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:30','2022-12-20 15:01:30'),
-('1399','1','0','Products deleted: (482).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:31','2022-12-20 15:01:31'),
-('1400','1','0','Products deleted: (483).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:31','2022-12-20 15:01:31');
-INSERT INTO `ps_log` VALUES
-('1401','1','0','Products deleted: (484).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:31','2022-12-20 15:01:31'),
-('1402','1','0','Products deleted: (485).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:31','2022-12-20 15:01:31'),
-('1403','1','0','Products deleted: (486).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:32','2022-12-20 15:01:32'),
-('1404','1','0','Products deleted: (487).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:32','2022-12-20 15:01:32'),
-('1405','1','0','Products deleted: (488).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:32','2022-12-20 15:01:32'),
-('1406','1','0','Products deleted: (489).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:32','2022-12-20 15:01:32'),
-('1407','1','0','Products deleted: (490).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:33','2022-12-20 15:01:33'),
-('1408','1','0','Products deleted: (491).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:33','2022-12-20 15:01:33'),
-('1409','1','0','Products deleted: (492).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:33','2022-12-20 15:01:33'),
-('1410','1','0','Products deleted: (493).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:33','2022-12-20 15:01:33'),
-('1411','1','0','Products deleted: (494).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:34','2022-12-20 15:01:34'),
-('1412','1','0','Products deleted: (495).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:34','2022-12-20 15:01:34'),
-('1413','1','0','Products deleted: (496).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:34','2022-12-20 15:01:34'),
-('1414','1','0','Products deleted: (497).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:34','2022-12-20 15:01:34'),
-('1415','1','0','Products deleted: (498).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:34','2022-12-20 15:01:34'),
-('1416','1','0','Products deleted: (499).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:35','2022-12-20 15:01:35'),
-('1417','1','0','Products deleted: (500).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:35','2022-12-20 15:01:35'),
-('1418','1','0','Products deleted: (501).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:35','2022-12-20 15:01:35'),
-('1419','1','0','Products deleted: (502).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:35','2022-12-20 15:01:35'),
-('1420','1','0','Products deleted: (503).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:35','2022-12-20 15:01:35'),
-('1421','1','0','Products deleted: (504).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:36','2022-12-20 15:01:36'),
-('1422','1','0','Products deleted: (505).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:36','2022-12-20 15:01:36'),
-('1423','1','0','Products deleted: (506).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:36','2022-12-20 15:01:36'),
-('1424','1','0','Products deleted: (507).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:38','2022-12-20 15:01:38'),
-('1425','1','0','Products deleted: (508).',NULL,'0','1',NULL,'1','0','1','2022-12-20 15:01:39','2022-12-20 15:01:39'),
-('1426','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 16:57:00','2022-12-20 16:57:00'),
-('1427','1','0','SpecificPriceRule modification','SpecificPriceRule','1',NULL,NULL,'1','1','1','2022-12-20 16:58:11','2022-12-20 16:58:11'),
-('1428','1','0','CartRule modification','CartRule','1','1',NULL,'1','0','1','2022-12-20 17:02:13','2022-12-20 17:02:13'),
-('1429','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 17:05:38','2022-12-20 17:05:38'),
-('1430','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','17','1',NULL,'2','0','0','2022-12-20 17:22:11','2022-12-20 17:22:11'),
-('1431','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 17:23:18','2022-12-20 17:23:18'),
-('1432','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 17:23:29','2022-12-20 17:23:29'),
-('1433','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 17:23:38','2022-12-20 17:23:38'),
-('1434','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 17:23:43','2022-12-20 17:23:43'),
-('1435','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 17:23:51','2022-12-20 17:23:51'),
-('1436','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 17:24:02','2022-12-20 17:24:02'),
-('1437','1','0','Product modification','Product','517','1',NULL,'1','0','1','2022-12-20 17:24:10','2022-12-20 17:24:10'),
-('1438','1','0','Product modification','Product','518','1',NULL,'1','0','1','2022-12-20 17:24:18','2022-12-20 17:24:18'),
-('1439','1','0','Product modification','Product','519','1',NULL,'1','0','1','2022-12-20 17:24:24','2022-12-20 17:24:24'),
-('1440','1','0','Product modification','Product','520','1',NULL,'1','0','1','2022-12-20 17:24:32','2022-12-20 17:24:32'),
-('1441','1','0','Product modification','Product','521','1',NULL,'1','0','1','2022-12-20 17:24:48','2022-12-20 17:24:48'),
-('1442','1','0','Product modification','Product','522','1',NULL,'1','0','1','2022-12-20 17:24:55','2022-12-20 17:24:55'),
-('1443','1','0','Product modification','Product','523','1',NULL,'1','0','1','2022-12-20 17:25:02','2022-12-20 17:25:02'),
-('1444','1','0','Product modification','Product','524','1',NULL,'1','0','1','2022-12-20 17:25:08','2022-12-20 17:25:08'),
-('1445','1','0','Product modification','Product','525','1',NULL,'1','0','1','2022-12-20 17:25:14','2022-12-20 17:25:14'),
-('1446','1','0','Product modification','Product','526','1',NULL,'1','0','1','2022-12-20 17:25:21','2022-12-20 17:25:21'),
-('1447','1','0','Product modification','Product','527','1',NULL,'1','0','1','2022-12-20 17:25:27','2022-12-20 17:25:27'),
-('1448','1','0','Product modification','Product','528','1',NULL,'1','0','1','2022-12-20 17:25:35','2022-12-20 17:25:35'),
-('1449','1','0','Product modification','Product','529','1',NULL,'1','0','1','2022-12-20 17:26:18','2022-12-20 17:26:18'),
-('1450','1','0','Product modification','Product','530','1',NULL,'1','0','1','2022-12-20 17:26:19','2022-12-20 17:26:19'),
-('1451','1','0','Product modification','Product','531','1',NULL,'1','0','1','2022-12-20 17:26:21','2022-12-20 17:26:21'),
-('1452','1','0','Product modification','Product','532','1',NULL,'1','0','1','2022-12-20 17:26:22','2022-12-20 17:26:22'),
-('1453','1','0','Product modification','Product','533','1',NULL,'1','0','1','2022-12-20 17:26:24','2022-12-20 17:26:24'),
-('1454','1','0','Product modification','Product','534','1',NULL,'1','0','1','2022-12-20 17:26:25','2022-12-20 17:26:25'),
-('1455','1','0','Product modification','Product','535','1',NULL,'1','0','1','2022-12-20 17:26:26','2022-12-20 17:26:26'),
-('1456','1','0','Product modification','Product','536','1',NULL,'1','0','1','2022-12-20 17:26:28','2022-12-20 17:26:28'),
-('1457','1','0','Product modification','Product','537','1',NULL,'1','0','1','2022-12-20 17:26:29','2022-12-20 17:26:29'),
-('1458','1','0','Product modification','Product','538','1',NULL,'1','0','1','2022-12-20 17:26:31','2022-12-20 17:26:31'),
-('1459','1','0','Product modification','Product','539','1',NULL,'1','0','1','2022-12-20 17:26:59','2022-12-20 17:26:59'),
-('1460','1','0','Product modification','Product','540','1',NULL,'1','0','1','2022-12-20 17:27:00','2022-12-20 17:27:00'),
-('1461','1','0','Product modification','Product','541','1',NULL,'1','0','1','2022-12-20 17:27:02','2022-12-20 17:27:02'),
-('1462','1','0','Product modification','Product','542','1',NULL,'1','0','1','2022-12-20 17:27:03','2022-12-20 17:27:03'),
-('1463','1','0','Product modification','Product','543','1',NULL,'1','0','1','2022-12-20 17:27:04','2022-12-20 17:27:04'),
-('1464','1','0','Product modification','Product','544','1',NULL,'1','0','1','2022-12-20 17:27:06','2022-12-20 17:27:06'),
-('1465','1','0','Product modification','Product','545','1',NULL,'1','0','1','2022-12-20 17:27:07','2022-12-20 17:27:07'),
-('1466','1','0','Product modification','Product','546','1',NULL,'1','0','1','2022-12-20 17:27:08','2022-12-20 17:27:08'),
-('1467','1','0','Product modification','Product','547','1',NULL,'1','0','1','2022-12-20 17:27:10','2022-12-20 17:27:10'),
-('1468','1','0','Product modification','Product','548','1',NULL,'1','0','1','2022-12-20 17:27:11','2022-12-20 17:27:11'),
-('1469','1','0','Product modification','Product','549','1',NULL,'1','0','1','2022-12-20 17:27:12','2022-12-20 17:27:12'),
-('1470','1','0','Product modification','Product','550','1',NULL,'1','0','1','2022-12-20 17:27:14','2022-12-20 17:27:14'),
-('1471','1','0','Product modification','Product','551','1',NULL,'1','0','1','2022-12-20 17:27:15','2022-12-20 17:27:15'),
-('1472','1','0','Product modification','Product','552','1',NULL,'1','0','1','2022-12-20 17:27:16','2022-12-20 17:27:16'),
-('1473','1','0','Product modification','Product','553','1',NULL,'1','0','1','2022-12-20 17:27:18','2022-12-20 17:27:18'),
-('1474','1','0','Product modification','Product','554','1',NULL,'1','0','1','2022-12-20 17:27:49','2022-12-20 17:27:49'),
-('1475','1','0','Product modification','Product','555','1',NULL,'1','0','1','2022-12-20 17:27:50','2022-12-20 17:27:50'),
-('1476','1','0','Product modification','Product','556','1',NULL,'1','0','1','2022-12-20 17:27:52','2022-12-20 17:27:52'),
-('1477','1','0','Product modification','Product','557','1',NULL,'1','0','1','2022-12-20 17:27:53','2022-12-20 17:27:53'),
-('1478','1','0','Product modification','Product','558','1',NULL,'1','0','1','2022-12-20 17:27:55','2022-12-20 17:27:55'),
-('1479','1','0','Product modification','Product','559','1',NULL,'1','0','1','2022-12-20 17:27:56','2022-12-20 17:27:56'),
-('1480','1','0','Product modification','Product','560','1',NULL,'1','0','1','2022-12-20 17:27:57','2022-12-20 17:27:57'),
-('1481','1','0','Product modification','Product','561','1',NULL,'1','0','1','2022-12-20 17:27:59','2022-12-20 17:27:59'),
-('1482','1','0','Product modification','Product','562','1',NULL,'1','0','1','2022-12-20 17:28:01','2022-12-20 17:28:01'),
-('1483','1','0','Product modification','Product','563','1',NULL,'1','0','1','2022-12-20 17:28:02','2022-12-20 17:28:02'),
-('1484','1','0','Product modification','Product','564','1',NULL,'1','0','1','2022-12-20 17:28:03','2022-12-20 17:28:03'),
-('1485','1','0','Product modification','Product','565','1',NULL,'1','0','1','2022-12-20 17:28:05','2022-12-20 17:28:05'),
-('1486','1','0','Product modification','Product','566','1',NULL,'1','0','1','2022-12-20 17:28:06','2022-12-20 17:28:06'),
-('1487','1','0','Product modification','Product','567','1',NULL,'1','0','1','2022-12-20 17:28:08','2022-12-20 17:28:08'),
-('1488','1','0','Product modification','Product','568','1',NULL,'1','0','1','2022-12-20 17:28:10','2022-12-20 17:28:10'),
-('1489','1','0','Product modification','Product','569','1',NULL,'1','0','1','2022-12-20 17:28:11','2022-12-20 17:28:11'),
-('1490','1','0','Product modification','Product','570','1',NULL,'1','0','1','2022-12-20 17:28:33','2022-12-20 17:28:33'),
-('1491','1','0','Product modification','Product','571','1',NULL,'1','0','1','2022-12-20 17:28:35','2022-12-20 17:28:35'),
-('1492','1','0','Product modification','Product','572','1',NULL,'1','0','1','2022-12-20 17:28:36','2022-12-20 17:28:36'),
-('1493','1','0','Product modification','Product','573','1',NULL,'1','0','1','2022-12-20 17:28:37','2022-12-20 17:28:37'),
-('1494','1','0','Product modification','Product','574','1',NULL,'1','0','1','2022-12-20 17:28:38','2022-12-20 17:28:38'),
-('1495','1','0','Product modification','Product','575','1',NULL,'1','0','1','2022-12-20 17:28:39','2022-12-20 17:28:39'),
-('1496','1','0','Product modification','Product','576','1',NULL,'1','0','1','2022-12-20 17:28:40','2022-12-20 17:28:40'),
-('1497','1','0','Product modification','Product','577','1',NULL,'1','0','1','2022-12-20 17:28:42','2022-12-20 17:28:42'),
-('1498','1','0','Product modification','Product','578','1',NULL,'1','0','1','2022-12-20 17:28:43','2022-12-20 17:28:43'),
-('1499','1','0','Product modification','Product','579','1',NULL,'1','0','1','2022-12-20 17:28:44','2022-12-20 17:28:44'),
-('1500','1','0','Product modification','Product','580','1',NULL,'1','0','1','2022-12-20 17:28:46','2022-12-20 17:28:46'),
-('1501','1','0','Product modification','Product','581','1',NULL,'1','0','1','2022-12-20 17:28:47','2022-12-20 17:28:47'),
-('1502','1','0','Product modification','Product','582','1',NULL,'1','0','1','2022-12-20 17:28:48','2022-12-20 17:28:48'),
-('1503','1','0','Product modification','Product','583','1',NULL,'1','0','1','2022-12-20 17:28:50','2022-12-20 17:28:50'),
-('1504','1','0','Product modification','Product','584','1',NULL,'1','0','1','2022-12-20 17:29:13','2022-12-20 17:29:13'),
-('1505','1','0','Product modification','Product','585','1',NULL,'1','0','1','2022-12-20 17:29:15','2022-12-20 17:29:15'),
-('1506','1','0','Product modification','Product','586','1',NULL,'1','0','1','2022-12-20 17:29:16','2022-12-20 17:29:16'),
-('1507','1','0','Product modification','Product','587','1',NULL,'1','0','1','2022-12-20 17:29:17','2022-12-20 17:29:17'),
-('1508','1','0','Product modification','Product','588','1',NULL,'1','0','1','2022-12-20 17:29:18','2022-12-20 17:29:18'),
-('1509','1','0','Product modification','Product','589','1',NULL,'1','0','1','2022-12-20 17:29:19','2022-12-20 17:29:19'),
-('1510','1','0','Product modification','Product','590','1',NULL,'1','0','1','2022-12-20 17:29:21','2022-12-20 17:29:21'),
-('1511','1','0','Product modification','Product','591','1',NULL,'1','0','1','2022-12-20 17:29:22','2022-12-20 17:29:22'),
-('1512','1','0','Product modification','Product','592','1',NULL,'1','0','1','2022-12-20 17:29:23','2022-12-20 17:29:23'),
-('1513','1','0','Product modification','Product','593','1',NULL,'1','0','1','2022-12-20 17:29:25','2022-12-20 17:29:25'),
-('1514','1','0','Product modification','Product','594','1',NULL,'1','0','1','2022-12-20 17:29:26','2022-12-20 17:29:26'),
-('1515','1','0','Product modification','Product','595','1',NULL,'1','0','1','2022-12-20 17:29:27','2022-12-20 17:29:27'),
-('1516','1','0','Product modification','Product','596','1',NULL,'1','0','1','2022-12-20 17:29:29','2022-12-20 17:29:29'),
-('1517','1','0','Product modification','Product','597','1',NULL,'1','0','1','2022-12-20 17:29:30','2022-12-20 17:29:30'),
-('1518','1','0','Product modification','Product','598','1',NULL,'1','0','1','2022-12-20 17:29:32','2022-12-20 17:29:32'),
-('1519','1','0','Product modification','Product','599','1',NULL,'1','0','1','2022-12-20 17:29:51','2022-12-20 17:29:51'),
-('1520','1','0','Product modification','Product','600','1',NULL,'1','0','1','2022-12-20 17:29:52','2022-12-20 17:29:52'),
-('1521','1','0','Product modification','Product','601','1',NULL,'1','0','1','2022-12-20 17:29:53','2022-12-20 17:29:53'),
-('1522','1','0','Product modification','Product','602','1',NULL,'1','0','1','2022-12-20 17:29:55','2022-12-20 17:29:55'),
-('1523','1','0','Product modification','Product','603','1',NULL,'1','0','1','2022-12-20 17:29:56','2022-12-20 17:29:56'),
-('1524','1','0','Product modification','Product','604','1',NULL,'1','0','1','2022-12-20 17:29:58','2022-12-20 17:29:58'),
-('1525','1','0','Product modification','Product','605','1',NULL,'1','0','1','2022-12-20 17:29:59','2022-12-20 17:29:59'),
-('1526','1','0','Product modification','Product','606','1',NULL,'1','0','1','2022-12-20 17:30:00','2022-12-20 17:30:00'),
-('1527','1','0','Product modification','Product','607','1',NULL,'1','0','1','2022-12-20 17:30:02','2022-12-20 17:30:02'),
-('1528','1','0','Product modification','Product','608','1',NULL,'1','0','1','2022-12-20 17:30:03','2022-12-20 17:30:03'),
-('1529','1','0','Product modification','Product','609','1',NULL,'1','0','1','2022-12-20 17:30:05','2022-12-20 17:30:05'),
-('1530','1','0','Product modification','Product','610','1',NULL,'1','0','1','2022-12-20 17:30:06','2022-12-20 17:30:06'),
-('1531','1','0','Product modification','Product','611','1',NULL,'1','0','1','2022-12-20 17:30:07','2022-12-20 17:30:07'),
-('1532','1','0','Product modification','Product','612','1',NULL,'1','0','1','2022-12-20 17:31:12','2022-12-20 17:31:12'),
-('1533','1','0','Product modification','Product','613','1',NULL,'1','0','1','2022-12-20 17:31:13','2022-12-20 17:31:13'),
-('1534','1','0','Product modification','Product','614','1',NULL,'1','0','1','2022-12-20 17:31:15','2022-12-20 17:31:15'),
-('1535','1','0','Product modification','Product','615','1',NULL,'1','0','1','2022-12-20 17:31:16','2022-12-20 17:31:16'),
-('1536','1','0','Product modification','Product','616','1',NULL,'1','0','1','2022-12-20 17:31:17','2022-12-20 17:31:17'),
-('1537','1','0','Product modification','Product','617','1',NULL,'1','0','1','2022-12-20 17:31:18','2022-12-20 17:31:18'),
-('1538','1','0','Product modification','Product','618','1',NULL,'1','0','1','2022-12-20 17:31:20','2022-12-20 17:31:20'),
-('1539','1','0','Product modification','Product','619','1',NULL,'1','0','1','2022-12-20 17:31:21','2022-12-20 17:31:21'),
-('1540','1','0','Product modification','Product','620','1',NULL,'1','0','1','2022-12-20 17:31:22','2022-12-20 17:31:22'),
-('1541','1','0','Product modification','Product','621','1',NULL,'1','0','1','2022-12-20 17:31:23','2022-12-20 17:31:23'),
-('1542','1','0','Product modification','Product','622','1',NULL,'1','0','1','2022-12-20 17:31:25','2022-12-20 17:31:25'),
-('1543','1','0','Product modification','Product','623','1',NULL,'1','0','1','2022-12-20 17:31:26','2022-12-20 17:31:26'),
-('1544','1','0','Product modification','Product','624','1',NULL,'1','0','1','2022-12-20 17:31:27','2022-12-20 17:31:27'),
-('1545','1','0','Product modification','Product','625','1',NULL,'1','0','1','2022-12-20 17:31:29','2022-12-20 17:31:29'),
-('1546','1','0','Product modification','Product','626','1',NULL,'1','0','1','2022-12-20 17:31:30','2022-12-20 17:31:30'),
-('1547','1','0','Product modification','Product','627','1',NULL,'1','0','1','2022-12-20 17:31:31','2022-12-20 17:31:31'),
-('1548','1','0','Product modification','Product','628','1',NULL,'1','0','1','2022-12-20 17:31:33','2022-12-20 17:31:33'),
-('1549','1','0','Product modification','Product','629','1',NULL,'1','0','1','2022-12-20 17:31:34','2022-12-20 17:31:34'),
-('1550','1','0','Product modification','Product','630','1',NULL,'1','0','1','2022-12-20 17:31:35','2022-12-20 17:31:35'),
-('1551','1','0','Product modification','Product','631','1',NULL,'1','0','1','2022-12-20 17:32:03','2022-12-20 17:32:03'),
-('1552','1','0','Product modification','Product','632','1',NULL,'1','0','1','2022-12-20 17:32:04','2022-12-20 17:32:04'),
-('1553','1','0','Product modification','Product','633','1',NULL,'1','0','1','2022-12-20 17:32:05','2022-12-20 17:32:05'),
-('1554','1','0','Product modification','Product','634','1',NULL,'1','0','1','2022-12-20 17:32:07','2022-12-20 17:32:07'),
-('1555','1','0','Product modification','Product','635','1',NULL,'1','0','1','2022-12-20 17:32:08','2022-12-20 17:32:08'),
-('1556','1','0','Product modification','Product','636','1',NULL,'1','0','1','2022-12-20 17:32:09','2022-12-20 17:32:09'),
-('1557','1','0','Product modification','Product','637','1',NULL,'1','0','1','2022-12-20 17:32:11','2022-12-20 17:32:11'),
-('1558','1','0','Product modification','Product','638','1',NULL,'1','0','1','2022-12-20 17:32:12','2022-12-20 17:32:12'),
-('1559','1','0','Product modification','Product','639','1',NULL,'1','0','1','2022-12-20 17:32:13','2022-12-20 17:32:13'),
-('1560','1','0','Product modification','Product','640','1',NULL,'1','0','1','2022-12-20 17:32:15','2022-12-20 17:32:15'),
-('1561','1','0','Product modification','Product','641','1',NULL,'1','0','1','2022-12-20 17:32:16','2022-12-20 17:32:16'),
-('1562','1','0','Product modification','Product','642','1',NULL,'1','0','1','2022-12-20 17:32:17','2022-12-20 17:32:17'),
-('1563','1','0','Product modification','Product','643','1',NULL,'1','0','1','2022-12-20 17:32:19','2022-12-20 17:32:19'),
-('1564','1','0','Product modification','Product','644','1',NULL,'1','0','1','2022-12-20 17:32:21','2022-12-20 17:32:21'),
-('1565','1','0','Product modification','Product','645','1',NULL,'1','0','1','2022-12-20 17:32:23','2022-12-20 17:32:23'),
-('1566','1','0','Product modification','Product','646','1',NULL,'1','0','1','2022-12-20 17:32:24','2022-12-20 17:32:24'),
-('1567','1','0','Product modification','Product','647','1',NULL,'1','0','1','2022-12-20 17:32:26','2022-12-20 17:32:26'),
-('1568','1','0','Product modification','Product','648','1',NULL,'1','0','1','2022-12-20 17:32:28','2022-12-20 17:32:28'),
-('1569','1','0','Product modification','Product','649','1',NULL,'1','0','1','2022-12-20 17:32:31','2022-12-20 17:32:31'),
-('1570','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:43:05','2022-12-20 17:43:05'),
-('1571','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:43:36','2022-12-20 17:43:36'),
-('1572','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:43:38','2022-12-20 17:43:38'),
-('1573','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:46:01','2022-12-20 17:46:01'),
-('1574','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:46:02','2022-12-20 17:46:02'),
-('1575','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:47:34','2022-12-20 17:47:34'),
-('1576','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:47:35','2022-12-20 17:47:35'),
-('1577','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:50:01','2022-12-20 17:50:01'),
-('1578','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:50:02','2022-12-20 17:50:02'),
-('1579','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:51:54','2022-12-20 17:51:54'),
-('1580','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:51:55','2022-12-20 17:51:55'),
-('1581','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:52:48','2022-12-20 17:52:48'),
-('1582','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:52:49','2022-12-20 17:52:49'),
-('1583','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:57:44','2022-12-20 17:57:44'),
-('1584','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:57:45','2022-12-20 17:57:45'),
-('1585','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:58:31','2022-12-20 17:58:31'),
-('1586','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:58:33','2022-12-20 17:58:33'),
-('1587','1','0','Product modification','Product','650','1',NULL,'1','0','1','2022-12-20 17:58:44','2022-12-20 17:58:44'),
-('1588','1','0','Product modification','Product','651','1',NULL,'1','0','1','2022-12-20 17:58:50','2022-12-20 17:58:50'),
-('1589','1','0','Product modification','Product','652','1',NULL,'1','0','1','2022-12-20 17:59:05','2022-12-20 17:59:05'),
-('1590','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 17:59:28','2022-12-20 17:59:28'),
-('1591','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 17:59:29','2022-12-20 17:59:29'),
-('1592','1','0','Product modification','Product','650','1',NULL,'1','0','1','2022-12-20 17:59:40','2022-12-20 17:59:40'),
-('1593','1','0','Product modification','Product','651','1',NULL,'1','0','1','2022-12-20 17:59:51','2022-12-20 17:59:51'),
-('1594','1','0','Product modification','Product','652','1',NULL,'1','0','1','2022-12-20 18:00:02','2022-12-20 18:00:02'),
-('1595','1','0','Product modification','Product','653','1',NULL,'1','0','1','2022-12-20 18:00:12','2022-12-20 18:00:12'),
-('1596','1','0','Product modification','Product','654','1',NULL,'1','0','1','2022-12-20 18:00:23','2022-12-20 18:00:23'),
-('1597','1','0','Product modification','Product','655','1',NULL,'1','0','1','2022-12-20 18:00:34','2022-12-20 18:00:34'),
-('1598','1','0','Product modification','Product','656','1',NULL,'1','0','1','2022-12-20 18:00:44','2022-12-20 18:00:44'),
-('1599','1','0','Product modification','Product','657','1',NULL,'1','0','1','2022-12-20 18:00:55','2022-12-20 18:00:55'),
-('1600','1','0','Product modification','Product','658','1',NULL,'1','0','1','2022-12-20 18:01:05','2022-12-20 18:01:05');
-INSERT INTO `ps_log` VALUES
-('1601','1','0','Product modification','Product','659','1',NULL,'1','0','1','2022-12-20 18:01:16','2022-12-20 18:01:16'),
-('1602','1','0','Product modification','Product','660','1',NULL,'1','0','1','2022-12-20 18:01:27','2022-12-20 18:01:27'),
-('1603','1','0','Product modification','Product','661','1',NULL,'1','0','1','2022-12-20 18:01:37','2022-12-20 18:01:37'),
-('1604','1','0','Product modification','Product','662','1',NULL,'1','0','1','2022-12-20 18:01:48','2022-12-20 18:01:48'),
-('1605','1','0','Product modification','Product','663','1',NULL,'1','0','1','2022-12-20 18:01:58','2022-12-20 18:01:58'),
-('1606','1','0','Product modification','Product','664','1',NULL,'1','0','1','2022-12-20 18:02:09','2022-12-20 18:02:09'),
-('1607','1','0','Product modification','Product','665','1',NULL,'1','0','1','2022-12-20 18:02:19','2022-12-20 18:02:19'),
-('1608','1','0','Product modification','Product','666','1',NULL,'1','0','1','2022-12-20 18:02:30','2022-12-20 18:02:30'),
-('1609','1','0','Product modification','Product','667','1',NULL,'1','0','1','2022-12-20 18:02:41','2022-12-20 18:02:41'),
-('1610','1','0','Product modification','Product','668','1',NULL,'1','0','1','2022-12-20 18:02:51','2022-12-20 18:02:51'),
-('1611','1','0','Product modification','Product','669','1',NULL,'1','0','1','2022-12-20 18:03:02','2022-12-20 18:03:02'),
-('1612','1','0','Product modification','Product','670','1',NULL,'1','0','1','2022-12-20 18:03:12','2022-12-20 18:03:12'),
-('1613','1','0','Product modification','Product','671','1',NULL,'1','0','1','2022-12-20 18:03:23','2022-12-20 18:03:23'),
-('1614','1','0','Product modification','Product','672','1',NULL,'1','0','1','2022-12-20 18:03:33','2022-12-20 18:03:33'),
-('1615','1','0','Product modification','Product','673','1',NULL,'1','0','1','2022-12-20 18:03:44','2022-12-20 18:03:44'),
-('1616','1','0','Product modification','Product','674','1',NULL,'1','0','1','2022-12-20 18:03:54','2022-12-20 18:03:54'),
-('1617','1','0','Product modification','Product','675','1',NULL,'1','0','1','2022-12-20 18:04:05','2022-12-20 18:04:05'),
-('1618','1','0','Product modification','Product','676','1',NULL,'1','0','1','2022-12-20 18:04:16','2022-12-20 18:04:16'),
-('1619','1','0','Product modification','Product','677','1',NULL,'1','0','1','2022-12-20 18:04:26','2022-12-20 18:04:26'),
-('1620','1','0','Product modification','Product','678','1',NULL,'1','0','1','2022-12-20 18:04:37','2022-12-20 18:04:37'),
-('1621','1','0','Product modification','Product','679','1',NULL,'1','0','1','2022-12-20 18:04:47','2022-12-20 18:04:47'),
-('1622','1','0','Product modification','Product','680','1',NULL,'1','0','1','2022-12-20 18:04:58','2022-12-20 18:04:58'),
-('1623','1','0','Product modification','Product','681','1',NULL,'1','0','1','2022-12-20 18:05:09','2022-12-20 18:05:09'),
-('1624','1','0','Product modification','Product','682','1',NULL,'1','0','1','2022-12-20 18:05:21','2022-12-20 18:05:21'),
-('1625','1','0','Product modification','Product','683','1',NULL,'1','0','1','2022-12-20 18:05:31','2022-12-20 18:05:31'),
-('1626','1','0','Product modification','Product','684','1',NULL,'1','0','1','2022-12-20 18:05:42','2022-12-20 18:05:42'),
-('1627','1','0','Product modification','Product','685','1',NULL,'1','0','1','2022-12-20 18:05:53','2022-12-20 18:05:53'),
-('1628','1','0','Product modification','Product','686','1',NULL,'1','0','1','2022-12-20 18:06:04','2022-12-20 18:06:04'),
-('1629','1','0','Product modification','Product','687','1',NULL,'1','0','1','2022-12-20 18:06:15','2022-12-20 18:06:15'),
-('1630','1','0','Product modification','Product','688','1',NULL,'1','0','1','2022-12-20 18:06:26','2022-12-20 18:06:26'),
-('1631','1','0','Product modification','Product','689','1',NULL,'1','0','1','2022-12-20 18:06:37','2022-12-20 18:06:37'),
-('1632','1','0','Product modification','Product','690','1',NULL,'1','0','1','2022-12-20 18:06:48','2022-12-20 18:06:48'),
-('1633','1','0','Product modification','Product','691','1',NULL,'1','0','1','2022-12-20 18:06:59','2022-12-20 18:06:59'),
-('1634','1','0','Product modification','Product','692','1',NULL,'1','0','1','2022-12-20 18:07:09','2022-12-20 18:07:09'),
-('1635','1','0','Product modification','Product','693','1',NULL,'1','0','1','2022-12-20 18:07:20','2022-12-20 18:07:20'),
-('1636','1','0','Product modification','Product','694','1',NULL,'1','0','1','2022-12-20 18:07:31','2022-12-20 18:07:31'),
-('1637','1','0','Product modification','Product','695','1',NULL,'1','0','1','2022-12-20 18:07:42','2022-12-20 18:07:42'),
-('1638','1','0','Product modification','Product','696','1',NULL,'1','0','1','2022-12-20 18:07:53','2022-12-20 18:07:53'),
-('1639','1','0','Product modification','Product','697','1',NULL,'1','0','1','2022-12-20 18:08:04','2022-12-20 18:08:04'),
-('1640','1','0','Product modification','Product','698','1',NULL,'1','0','1','2022-12-20 18:08:15','2022-12-20 18:08:15'),
-('1641','1','0','Product modification','Product','699','1',NULL,'1','0','1','2022-12-20 18:08:26','2022-12-20 18:08:26'),
-('1642','1','0','Product modification','Product','700','1',NULL,'1','0','1','2022-12-20 18:08:36','2022-12-20 18:08:36'),
-('1643','1','0','Product modification','Product','701','1',NULL,'1','0','1','2022-12-20 18:08:47','2022-12-20 18:08:47'),
-('1644','1','0','Product modification','Product','702','1',NULL,'1','0','1','2022-12-20 18:08:58','2022-12-20 18:08:58'),
-('1645','1','0','Product modification','Product','703','1',NULL,'1','0','1','2022-12-20 18:09:09','2022-12-20 18:09:09'),
-('1646','1','0','Product modification','Product','704','1',NULL,'1','0','1','2022-12-20 18:09:20','2022-12-20 18:09:20'),
-('1647','1','0','Product modification','Product','705','1',NULL,'1','0','1','2022-12-20 18:09:31','2022-12-20 18:09:31'),
-('1648','1','0','Product modification','Product','706','1',NULL,'1','0','1','2022-12-20 18:09:42','2022-12-20 18:09:42'),
-('1649','1','0','Product modification','Product','707','1',NULL,'1','0','1','2022-12-20 18:09:53','2022-12-20 18:09:53'),
-('1650','1','0','Product modification','Product','708','1',NULL,'1','0','1','2022-12-20 18:10:03','2022-12-20 18:10:03'),
-('1651','1','0','Product modification','Product','709','1',NULL,'1','0','1','2022-12-20 18:10:14','2022-12-20 18:10:14'),
-('1652','1','0','Product modification','Product','710','1',NULL,'1','0','1','2022-12-20 18:10:25','2022-12-20 18:10:25'),
-('1653','1','0','Product modification','Product','711','1',NULL,'1','0','1','2022-12-20 18:10:36','2022-12-20 18:10:36'),
-('1654','1','0','Product modification','Product','712','1',NULL,'1','0','1','2022-12-20 18:10:47','2022-12-20 18:10:47'),
-('1655','1','0','Product modification','Product','713','1',NULL,'1','0','1','2022-12-20 18:10:58','2022-12-20 18:10:58'),
-('1656','1','0','Product modification','Product','714','1',NULL,'1','0','1','2022-12-20 18:11:09','2022-12-20 18:11:09'),
-('1657','1','0','Product modification','Product','715','1',NULL,'1','0','1','2022-12-20 18:11:20','2022-12-20 18:11:20'),
-('1658','1','0','Product modification','Product','716','1',NULL,'1','0','1','2022-12-20 18:11:30','2022-12-20 18:11:30'),
-('1659','1','0','Product modification','Product','717','1',NULL,'1','0','1','2022-12-20 18:11:41','2022-12-20 18:11:41'),
-('1660','1','0','Product modification','Product','718','1',NULL,'1','0','1','2022-12-20 18:11:52','2022-12-20 18:11:52'),
-('1661','1','0','Product modification','Product','719','1',NULL,'1','0','1','2022-12-20 18:12:03','2022-12-20 18:12:03'),
-('1662','1','0','Product modification','Product','720','1',NULL,'1','0','1','2022-12-20 18:12:14','2022-12-20 18:12:14'),
-('1663','1','0','Product modification','Product','721','1',NULL,'1','0','1','2022-12-20 18:12:25','2022-12-20 18:12:25'),
-('1664','1','0','Product modification','Product','722','1',NULL,'1','0','1','2022-12-20 18:12:36','2022-12-20 18:12:36'),
-('1665','1','0','Product modification','Product','723','1',NULL,'1','0','1','2022-12-20 18:12:47','2022-12-20 18:12:47'),
-('1666','1','0','Product modification','Product','724','1',NULL,'1','0','1','2022-12-20 18:12:57','2022-12-20 18:12:57'),
-('1667','1','0','Product modification','Product','725','1',NULL,'1','0','1','2022-12-20 18:13:08','2022-12-20 18:13:08'),
-('1668','1','0','Product modification','Product','726','1',NULL,'1','0','1','2022-12-20 18:13:19','2022-12-20 18:13:19'),
-('1669','1','0','Product modification','Product','727','1',NULL,'1','0','1','2022-12-20 18:13:30','2022-12-20 18:13:30'),
-('1670','1','0','Product modification','Product','728','1',NULL,'1','0','1','2022-12-20 18:13:41','2022-12-20 18:13:41'),
-('1671','1','0','Product modification','Product','729','1',NULL,'1','0','1','2022-12-20 18:13:52','2022-12-20 18:13:52'),
-('1672','1','0','Product modification','Product','730','1',NULL,'1','0','1','2022-12-20 18:14:03','2022-12-20 18:14:03'),
-('1673','1','0','Product modification','Product','731','1',NULL,'1','0','1','2022-12-20 18:14:14','2022-12-20 18:14:14'),
-('1674','1','0','Product modification','Product','732','1',NULL,'1','0','1','2022-12-20 18:14:24','2022-12-20 18:14:24'),
-('1675','1','0','Product modification','Product','733','1',NULL,'1','0','1','2022-12-20 18:14:35','2022-12-20 18:14:35'),
-('1676','1','0','Product modification','Product','734','1',NULL,'1','0','1','2022-12-20 18:14:46','2022-12-20 18:14:46'),
-('1677','1','0','Product modification','Product','735','1',NULL,'1','0','1','2022-12-20 18:14:57','2022-12-20 18:14:57'),
-('1678','1','0','Product modification','Product','736','1',NULL,'1','0','1','2022-12-20 18:15:08','2022-12-20 18:15:08'),
-('1679','1','0','Product modification','Product','737','1',NULL,'1','0','1','2022-12-20 18:15:19','2022-12-20 18:15:19'),
-('1680','1','0','Product modification','Product','738','1',NULL,'1','0','1','2022-12-20 18:15:30','2022-12-20 18:15:30'),
-('1681','1','0','Product modification','Product','739','1',NULL,'1','0','1','2022-12-20 18:15:41','2022-12-20 18:15:41'),
-('1682','1','0','Product modification','Product','740','1',NULL,'1','0','1','2022-12-20 18:15:51','2022-12-20 18:15:51'),
-('1683','1','0','Product modification','Product','741','1',NULL,'1','0','1','2022-12-20 18:16:02','2022-12-20 18:16:02'),
-('1684','1','0','Product modification','Product','742','1',NULL,'1','0','1','2022-12-20 18:16:13','2022-12-20 18:16:13'),
-('1685','1','0','Product modification','Product','743','1',NULL,'1','0','1','2022-12-20 18:16:24','2022-12-20 18:16:24'),
-('1686','1','0','Product modification','Product','744','1',NULL,'1','0','1','2022-12-20 18:16:35','2022-12-20 18:16:35'),
-('1687','1','0','Product modification','Product','745','1',NULL,'1','0','1','2022-12-20 18:16:46','2022-12-20 18:16:46'),
-('1688','1','0','Product modification','Product','746','1',NULL,'1','0','1','2022-12-20 18:16:57','2022-12-20 18:16:57'),
-('1689','1','0','Product modification','Product','747','1',NULL,'1','0','1','2022-12-20 18:17:08','2022-12-20 18:17:08'),
-('1690','1','0','Product modification','Product','748','1',NULL,'1','0','1','2022-12-20 18:17:19','2022-12-20 18:17:19'),
-('1691','1','0','Product modification','Product','749','1',NULL,'1','0','1','2022-12-20 18:17:29','2022-12-20 18:17:29'),
-('1692','1','0','Product modification','Product','750','1',NULL,'1','0','1','2022-12-20 18:17:40','2022-12-20 18:17:40'),
-('1693','1','0','Product modification','Product','751','1',NULL,'1','0','1','2022-12-20 18:17:51','2022-12-20 18:17:51'),
-('1694','1','0','Product modification','Product','752','1',NULL,'1','0','1','2022-12-20 18:18:02','2022-12-20 18:18:02'),
-('1695','1','0','Product modification','Product','753','1',NULL,'1','0','1','2022-12-20 18:18:13','2022-12-20 18:18:13'),
-('1696','1','0','Product modification','Product','754','1',NULL,'1','0','1','2022-12-20 18:18:24','2022-12-20 18:18:24'),
-('1697','1','0','Product modification','Product','755','1',NULL,'1','0','1','2022-12-20 18:18:35','2022-12-20 18:18:35'),
-('1698','1','0','Product modification','Product','756','1',NULL,'1','0','1','2022-12-20 18:18:45','2022-12-20 18:18:45'),
-('1699','1','0','Product modification','Product','757','1',NULL,'1','0','1','2022-12-20 18:18:56','2022-12-20 18:18:56'),
-('1700','1','0','Product modification','Product','758','1',NULL,'1','0','1','2022-12-20 18:19:07','2022-12-20 18:19:07'),
-('1701','1','0','Product modification','Product','759','1',NULL,'1','0','1','2022-12-20 18:19:18','2022-12-20 18:19:18'),
-('1702','1','0','Product modification','Product','760','1',NULL,'1','0','1','2022-12-20 18:19:29','2022-12-20 18:19:29'),
-('1703','1','0','Product modification','Product','761','1',NULL,'1','0','1','2022-12-20 18:19:40','2022-12-20 18:19:40'),
-('1704','1','0','Product modification','Product','762','1',NULL,'1','0','1','2022-12-20 18:19:51','2022-12-20 18:19:51'),
-('1705','1','0','Product modification','Product','763','1',NULL,'1','0','1','2022-12-20 18:20:02','2022-12-20 18:20:02'),
-('1706','1','0','Product modification','Product','764','1',NULL,'1','0','1','2022-12-20 18:20:13','2022-12-20 18:20:13'),
-('1707','1','0','Product modification','Product','765','1',NULL,'1','0','1','2022-12-20 18:20:23','2022-12-20 18:20:23'),
-('1708','1','0','Product modification','Product','766','1',NULL,'1','0','1','2022-12-20 18:20:34','2022-12-20 18:20:34'),
-('1709','1','0','Product modification','Product','767','1',NULL,'1','0','1','2022-12-20 18:20:45','2022-12-20 18:20:45'),
-('1710','1','0','Product modification','Product','768','1',NULL,'1','0','1','2022-12-20 18:20:56','2022-12-20 18:20:56'),
-('1711','1','0','Product modification','Product','769','1',NULL,'1','0','1','2022-12-20 18:21:07','2022-12-20 18:21:07'),
-('1712','1','0','Product modification','Product','770','1',NULL,'1','0','1','2022-12-20 18:21:18','2022-12-20 18:21:18'),
-('1713','1','0','Product modification','Product','771','1',NULL,'1','0','1','2022-12-20 18:21:29','2022-12-20 18:21:29'),
-('1714','1','0','Product modification','Product','772','1',NULL,'1','0','1','2022-12-20 18:21:40','2022-12-20 18:21:40'),
-('1715','1','0','Product modification','Product','773','1',NULL,'1','0','1','2022-12-20 18:21:50','2022-12-20 18:21:50'),
-('1716','1','0','Product modification','Product','774','1',NULL,'1','0','1','2022-12-20 18:22:01','2022-12-20 18:22:01'),
-('1717','1','0','Product modification','Product','775','1',NULL,'1','0','1','2022-12-20 18:22:12','2022-12-20 18:22:12'),
-('1718','1','0','Product modification','Product','776','1',NULL,'1','0','1','2022-12-20 18:22:23','2022-12-20 18:22:23'),
-('1719','1','0','Product modification','Product','777','1',NULL,'1','0','1','2022-12-20 18:22:34','2022-12-20 18:22:34'),
-('1720','1','0','Product modification','Product','778','1',NULL,'1','0','1','2022-12-20 18:22:45','2022-12-20 18:22:45'),
-('1721','1','0','Product modification','Product','779','1',NULL,'1','0','1','2022-12-20 18:22:56','2022-12-20 18:22:56'),
-('1722','1','0','Product modification','Product','780','1',NULL,'1','0','1','2022-12-20 18:23:07','2022-12-20 18:23:07'),
-('1723','1','0','Product modification','Product','781','1',NULL,'1','0','1','2022-12-20 18:23:17','2022-12-20 18:23:17'),
-('1724','1','0','Product modification','Product','782','1',NULL,'1','0','1','2022-12-20 18:23:28','2022-12-20 18:23:28'),
-('1725','1','0','Product modification','Product','783','1',NULL,'1','0','1','2022-12-20 18:23:39','2022-12-20 18:23:39'),
-('1726','1','0','Product modification','Product','784','1',NULL,'1','0','1','2022-12-20 18:23:50','2022-12-20 18:23:50'),
-('1727','1','0','Product modification','Product','785','1',NULL,'1','0','1','2022-12-20 18:24:01','2022-12-20 18:24:01'),
-('1728','1','0','Product modification','Product','786','1',NULL,'1','0','1','2022-12-20 18:24:12','2022-12-20 18:24:12'),
-('1729','1','0','Product modification','Product','787','1',NULL,'1','0','1','2022-12-20 18:24:23','2022-12-20 18:24:23'),
-('1730','1','0','Product modification','Product','788','1',NULL,'1','0','1','2022-12-20 18:24:34','2022-12-20 18:24:34'),
-('1731','1','0','Product modification','Product','789','1',NULL,'1','0','1','2022-12-20 18:24:45','2022-12-20 18:24:45'),
-('1732','1','0','Product modification','Product','790','1',NULL,'1','0','1','2022-12-20 18:24:56','2022-12-20 18:24:56'),
-('1733','1','0','Product modification','Product','791','1',NULL,'1','0','1','2022-12-20 18:25:07','2022-12-20 18:25:07'),
-('1734','1','0','Product modification','Product','792','1',NULL,'1','0','1','2022-12-20 18:25:18','2022-12-20 18:25:18'),
-('1735','1','0','Product modification','Product','793','1',NULL,'1','0','1','2022-12-20 18:25:28','2022-12-20 18:25:28'),
-('1736','1','0','Product modification','Product','794','1',NULL,'1','0','1','2022-12-20 18:25:39','2022-12-20 18:25:39'),
-('1737','1','0','Product modification','Product','795','1',NULL,'1','0','1','2022-12-20 18:25:50','2022-12-20 18:25:50'),
-('1738','1','0','Product modification','Product','796','1',NULL,'1','0','1','2022-12-20 18:26:01','2022-12-20 18:26:01'),
-('1739','1','0','Product modification','Product','797','1',NULL,'1','0','1','2022-12-20 18:26:12','2022-12-20 18:26:12'),
-('1740','1','0','Product modification','Product','798','1',NULL,'1','0','1','2022-12-20 18:26:23','2022-12-20 18:26:23'),
-('1741','1','0','Product modification','Product','799','1',NULL,'1','0','1','2022-12-20 18:26:34','2022-12-20 18:26:34'),
-('1742','1','0','Product modification','Product','800','1',NULL,'1','0','1','2022-12-20 18:26:45','2022-12-20 18:26:45'),
-('1743','1','0','Product modification','Product','801','1',NULL,'1','0','1','2022-12-20 18:26:55','2022-12-20 18:26:55'),
-('1744','1','0','Product modification','Product','802','1',NULL,'1','0','1','2022-12-20 18:27:06','2022-12-20 18:27:06'),
-('1745','1','0','Product modification','Product','803','1',NULL,'1','0','1','2022-12-20 18:27:17','2022-12-20 18:27:17'),
-('1746','1','0','Product modification','Product','804','1',NULL,'1','0','1','2022-12-20 18:27:28','2022-12-20 18:27:28'),
-('1747','1','0','Product modification','Product','805','1',NULL,'1','0','1','2022-12-20 18:27:39','2022-12-20 18:27:39'),
-('1748','1','0','Product modification','Product','806','1',NULL,'1','0','1','2022-12-20 18:27:50','2022-12-20 18:27:50'),
-('1749','1','0','Product modification','Product','807','1',NULL,'1','0','1','2022-12-20 18:28:01','2022-12-20 18:28:01'),
-('1750','1','0','Product modification','Product','808','1',NULL,'1','0','1','2022-12-20 18:28:12','2022-12-20 18:28:12'),
-('1751','1','0','Product modification','Product','809','1',NULL,'1','0','1','2022-12-20 18:28:22','2022-12-20 18:28:22'),
-('1752','1','0','Product modification','Product','810','1',NULL,'1','0','1','2022-12-20 18:28:33','2022-12-20 18:28:33'),
-('1753','1','0','Product modification','Product','811','1',NULL,'1','0','1','2022-12-20 18:28:44','2022-12-20 18:28:44'),
-('1754','1','0','Product modification','Product','812','1',NULL,'1','0','1','2022-12-20 18:28:55','2022-12-20 18:28:55'),
-('1755','1','0','Product modification','Product','813','1',NULL,'1','0','1','2022-12-20 18:29:06','2022-12-20 18:29:06'),
-('1756','1','0','Product modification','Product','814','1',NULL,'1','0','1','2022-12-20 18:29:17','2022-12-20 18:29:17'),
-('1757','1','0','Product modification','Product','815','1',NULL,'1','0','1','2022-12-20 18:29:28','2022-12-20 18:29:28'),
-('1758','1','0','Product modification','Product','816','1',NULL,'1','0','1','2022-12-20 18:29:38','2022-12-20 18:29:38'),
-('1759','1','0','Product modification','Product','817','1',NULL,'1','0','1','2022-12-20 18:29:49','2022-12-20 18:29:49'),
-('1760','1','0','Product modification','Product','818','1',NULL,'1','0','1','2022-12-20 18:30:00','2022-12-20 18:30:00'),
-('1761','1','0','Product modification','Product','819','1',NULL,'1','0','1','2022-12-20 18:30:11','2022-12-20 18:30:11'),
-('1762','1','0','Product modification','Product','820','1',NULL,'1','0','1','2022-12-20 18:30:22','2022-12-20 18:30:22'),
-('1763','1','0','Product modification','Product','821','1',NULL,'1','0','1','2022-12-20 18:30:33','2022-12-20 18:30:33'),
-('1764','1','0','Product modification','Product','822','1',NULL,'1','0','1','2022-12-20 18:30:44','2022-12-20 18:30:44'),
-('1765','1','0','Product modification','Product','823','1',NULL,'1','0','1','2022-12-20 18:30:55','2022-12-20 18:30:55'),
-('1766','1','0','Product modification','Product','824','1',NULL,'1','0','1','2022-12-20 18:31:05','2022-12-20 18:31:05'),
-('1767','1','0','Product modification','Product','825','1',NULL,'1','0','1','2022-12-20 18:31:16','2022-12-20 18:31:16'),
-('1768','1','0','Product modification','Product','826','1',NULL,'1','0','1','2022-12-20 18:31:27','2022-12-20 18:31:27'),
-('1769','1','0','Product modification','Product','827','1',NULL,'1','0','1','2022-12-20 18:31:38','2022-12-20 18:31:38'),
-('1770','1','0','Product modification','Product','828','1',NULL,'1','0','1','2022-12-20 18:31:49','2022-12-20 18:31:49'),
-('1771','1','0','Product modification','Product','829','1',NULL,'1','0','1','2022-12-20 18:32:00','2022-12-20 18:32:00'),
-('1772','1','0','Product modification','Product','830','1',NULL,'1','0','1','2022-12-20 18:32:11','2022-12-20 18:32:11'),
-('1773','1','0','Product modification','Product','831','1',NULL,'1','0','1','2022-12-20 18:32:22','2022-12-20 18:32:22'),
-('1774','1','0','Product modification','Product','832','1',NULL,'1','0','1','2022-12-20 18:32:33','2022-12-20 18:32:33'),
-('1775','1','0','Product modification','Product','833','1',NULL,'1','0','1','2022-12-20 18:32:43','2022-12-20 18:32:43'),
-('1776','1','0','Product modification','Product','834','1',NULL,'1','0','1','2022-12-20 18:32:54','2022-12-20 18:32:54'),
-('1777','1','0','Product modification','Product','835','1',NULL,'1','0','1','2022-12-20 18:33:05','2022-12-20 18:33:05'),
-('1778','1','0','Product modification','Product','836','1',NULL,'1','0','1','2022-12-20 18:33:16','2022-12-20 18:33:16'),
-('1779','1','0','Product modification','Product','837','1',NULL,'1','0','1','2022-12-20 18:33:27','2022-12-20 18:33:27'),
-('1780','1','0','Product modification','Product','838','1',NULL,'1','0','1','2022-12-20 18:33:38','2022-12-20 18:33:38'),
-('1781','1','0','Product modification','Product','839','1',NULL,'1','0','1','2022-12-20 18:33:49','2022-12-20 18:33:49'),
-('1782','1','0','Product modification','Product','840','1',NULL,'1','0','1','2022-12-20 18:34:00','2022-12-20 18:34:00'),
-('1783','1','0','Product modification','Product','841','1',NULL,'1','0','1','2022-12-20 18:34:10','2022-12-20 18:34:10'),
-('1784','1','0','Product modification','Product','842','1',NULL,'1','0','1','2022-12-20 18:34:21','2022-12-20 18:34:21'),
-('1785','1','0','Product modification','Product','843','1',NULL,'1','0','1','2022-12-20 18:34:32','2022-12-20 18:34:32'),
-('1786','1','0','Product modification','Product','844','1',NULL,'1','0','1','2022-12-20 18:34:43','2022-12-20 18:34:43'),
-('1787','1','0','Product modification','Product','845','1',NULL,'1','0','1','2022-12-20 18:34:54','2022-12-20 18:34:54'),
-('1788','1','0','Product modification','Product','846','1',NULL,'1','0','1','2022-12-20 18:35:05','2022-12-20 18:35:05'),
-('1789','1','0','Product modification','Product','847','1',NULL,'1','0','1','2022-12-20 18:35:16','2022-12-20 18:35:16'),
-('1790','1','0','Product modification','Product','848','1',NULL,'1','0','1','2022-12-20 18:35:27','2022-12-20 18:35:27'),
-('1791','1','0','Product modification','Product','849','1',NULL,'1','0','1','2022-12-20 18:35:37','2022-12-20 18:35:37'),
-('1792','1','0','Product modification','Product','850','1',NULL,'1','0','1','2022-12-20 18:35:48','2022-12-20 18:35:48'),
-('1793','1','0','Product modification','Product','851','1',NULL,'1','0','1','2022-12-20 18:35:59','2022-12-20 18:35:59'),
-('1794','1','0','Product modification','Product','852','1',NULL,'1','0','1','2022-12-20 18:36:10','2022-12-20 18:36:10'),
-('1795','1','0','Product modification','Product','853','1',NULL,'1','0','1','2022-12-20 18:36:21','2022-12-20 18:36:21'),
-('1796','1','0','Product modification','Product','854','1',NULL,'1','0','1','2022-12-20 18:36:32','2022-12-20 18:36:32'),
-('1797','1','0','Product modification','Product','855','1',NULL,'1','0','1','2022-12-20 18:36:43','2022-12-20 18:36:43'),
-('1798','1','0','Product modification','Product','856','1',NULL,'1','0','1','2022-12-20 18:36:54','2022-12-20 18:36:54'),
-('1799','1','0','Product modification','Product','857','1',NULL,'1','0','1','2022-12-20 18:37:04','2022-12-20 18:37:04'),
-('1800','1','0','Product modification','Product','858','1',NULL,'1','0','1','2022-12-20 18:37:15','2022-12-20 18:37:15');
-INSERT INTO `ps_log` VALUES
-('1801','1','0','Product modification','Product','859','1',NULL,'1','0','1','2022-12-20 18:37:26','2022-12-20 18:37:26'),
-('1802','1','0','Product modification','Product','860','1',NULL,'1','0','1','2022-12-20 18:37:37','2022-12-20 18:37:37'),
-('1803','1','0','Product modification','Product','861','1',NULL,'1','0','1','2022-12-20 18:37:48','2022-12-20 18:37:48'),
-('1804','1','0','Product modification','Product','862','1',NULL,'1','0','1','2022-12-20 18:37:59','2022-12-20 18:37:59'),
-('1805','1','0','Product modification','Product','863','1',NULL,'1','0','1','2022-12-20 18:38:10','2022-12-20 18:38:10'),
-('1806','1','0','Product modification','Product','864','1',NULL,'1','0','1','2022-12-20 18:38:21','2022-12-20 18:38:21'),
-('1807','1','0','Product modification','Product','865','1',NULL,'1','0','1','2022-12-20 18:38:32','2022-12-20 18:38:32'),
-('1808','1','0','Product modification','Product','866','1',NULL,'1','0','1','2022-12-20 18:38:42','2022-12-20 18:38:42'),
-('1809','1','0','Product modification','Product','867','1',NULL,'1','0','1','2022-12-20 18:38:53','2022-12-20 18:38:53'),
-('1810','1','0','Product modification','Product','868','1',NULL,'1','0','1','2022-12-20 18:39:04','2022-12-20 18:39:04'),
-('1811','1','0','Product modification','Product','869','1',NULL,'1','0','1','2022-12-20 18:39:15','2022-12-20 18:39:15'),
-('1812','1','0','Product modification','Product','870','1',NULL,'1','0','1','2022-12-20 18:39:26','2022-12-20 18:39:26'),
-('1813','1','0','Product modification','Product','871','1',NULL,'1','0','1','2022-12-20 18:39:37','2022-12-20 18:39:37'),
-('1814','1','0','Product modification','Product','872','1',NULL,'1','0','1','2022-12-20 18:39:48','2022-12-20 18:39:48'),
-('1815','1','0','Product modification','Product','873','1',NULL,'1','0','1','2022-12-20 18:39:58','2022-12-20 18:39:58'),
-('1816','1','0','Product modification','Product','874','1',NULL,'1','0','1','2022-12-20 18:40:09','2022-12-20 18:40:09'),
-('1817','1','0','Product modification','Product','875','1',NULL,'1','0','1','2022-12-20 18:40:20','2022-12-20 18:40:20'),
-('1818','1','0','Product modification','Product','876','1',NULL,'1','0','1','2022-12-20 18:40:31','2022-12-20 18:40:31'),
-('1819','1','0','Product modification','Product','877','1',NULL,'1','0','1','2022-12-20 18:40:42','2022-12-20 18:40:42'),
-('1820','1','0','Product modification','Product','878','1',NULL,'1','0','1','2022-12-20 18:40:53','2022-12-20 18:40:53'),
-('1821','1','0','Product modification','Product','879','1',NULL,'1','0','1','2022-12-20 18:41:04','2022-12-20 18:41:04'),
-('1822','1','0','Product modification','Product','880','1',NULL,'1','0','1','2022-12-20 18:41:15','2022-12-20 18:41:15'),
-('1823','1','0','Product modification','Product','881','1',NULL,'1','0','1','2022-12-20 18:41:25','2022-12-20 18:41:25'),
-('1824','1','0','Product modification','Product','882','1',NULL,'1','0','1','2022-12-20 18:41:36','2022-12-20 18:41:36'),
-('1825','1','0','Product modification','Product','883','1',NULL,'1','0','1','2022-12-20 18:41:47','2022-12-20 18:41:47'),
-('1826','1','0','Product modification','Product','884','1',NULL,'1','0','1','2022-12-20 18:41:58','2022-12-20 18:41:58'),
-('1827','1','0','Product modification','Product','885','1',NULL,'1','0','1','2022-12-20 18:42:09','2022-12-20 18:42:09'),
-('1828','1','0','Product modification','Product','886','1',NULL,'1','0','1','2022-12-20 18:42:20','2022-12-20 18:42:20'),
-('1829','1','0','Product modification','Product','887','1',NULL,'1','0','1','2022-12-20 18:42:31','2022-12-20 18:42:31'),
-('1830','1','0','Product modification','Product','888','1',NULL,'1','0','1','2022-12-20 18:42:42','2022-12-20 18:42:42'),
-('1831','1','0','Product modification','Product','889','1',NULL,'1','0','1','2022-12-20 18:42:52','2022-12-20 18:42:52'),
-('1832','1','0','Product modification','Product','890','1',NULL,'1','0','1','2022-12-20 18:43:03','2022-12-20 18:43:03'),
-('1833','1','0','Product modification','Product','891','1',NULL,'1','0','1','2022-12-20 18:43:14','2022-12-20 18:43:14'),
-('1834','1','0','Product modification','Product','892','1',NULL,'1','0','1','2022-12-20 18:43:25','2022-12-20 18:43:25'),
-('1835','1','0','Product modification','Product','893','1',NULL,'1','0','1','2022-12-20 18:43:36','2022-12-20 18:43:36'),
-('1836','1','0','Product modification','Product','894','1',NULL,'1','0','1','2022-12-20 18:43:47','2022-12-20 18:43:47'),
-('1837','1','0','Product modification','Product','895','1',NULL,'1','0','1','2022-12-20 18:43:58','2022-12-20 18:43:58'),
-('1838','1','0','Product modification','Product','896','1',NULL,'1','0','1','2022-12-20 18:44:09','2022-12-20 18:44:09'),
-('1839','1','0','Product modification','Product','897','1',NULL,'1','0','1','2022-12-20 18:44:19','2022-12-20 18:44:19'),
-('1840','1','0','Product modification','Product','898','1',NULL,'1','0','1','2022-12-20 18:44:30','2022-12-20 18:44:30'),
-('1841','1','0','Product modification','Product','899','1',NULL,'1','0','1','2022-12-20 18:44:41','2022-12-20 18:44:41'),
-('1842','1','0','Product modification','Product','900','1',NULL,'1','0','1','2022-12-20 18:44:52','2022-12-20 18:44:52'),
-('1843','1','0','Product modification','Product','901','1',NULL,'1','0','1','2022-12-20 18:45:03','2022-12-20 18:45:03'),
-('1844','1','0','Product modification','Product','902','1',NULL,'1','0','1','2022-12-20 18:45:14','2022-12-20 18:45:14'),
-('1845','1','0','Product modification','Product','903','1',NULL,'1','0','1','2022-12-20 18:45:25','2022-12-20 18:45:25'),
-('1846','1','0','Product modification','Product','904','1',NULL,'1','0','1','2022-12-20 18:45:35','2022-12-20 18:45:35'),
-('1847','1','0','Product modification','Product','905','1',NULL,'1','0','1','2022-12-20 18:45:46','2022-12-20 18:45:46'),
-('1848','1','0','Product modification','Product','906','1',NULL,'1','0','1','2022-12-20 18:45:57','2022-12-20 18:45:57'),
-('1849','1','0','Product modification','Product','907','1',NULL,'1','0','1','2022-12-20 18:46:08','2022-12-20 18:46:08'),
-('1850','1','0','Product modification','Product','908','1',NULL,'1','0','1','2022-12-20 18:46:19','2022-12-20 18:46:19'),
-('1851','1','0','Product modification','Product','909','1',NULL,'1','0','1','2022-12-20 18:46:30','2022-12-20 18:46:30'),
-('1852','1','0','Product modification','Product','910','1',NULL,'1','0','1','2022-12-20 18:46:41','2022-12-20 18:46:41'),
-('1853','1','0','Product modification','Product','911','1',NULL,'1','0','1','2022-12-20 18:46:52','2022-12-20 18:46:52'),
-('1854','1','0','Product modification','Product','912','1',NULL,'1','0','1','2022-12-20 18:47:02','2022-12-20 18:47:02'),
-('1855','1','0','Product modification','Product','913','1',NULL,'1','0','1','2022-12-20 18:47:13','2022-12-20 18:47:13'),
-('1856','1','0','Product modification','Product','914','1',NULL,'1','0','1','2022-12-20 18:47:24','2022-12-20 18:47:24'),
-('1857','1','0','Product modification','Product','915','1',NULL,'1','0','1','2022-12-20 18:47:35','2022-12-20 18:47:35'),
-('1858','1','0','Product modification','Product','916','1',NULL,'1','0','1','2022-12-20 18:47:46','2022-12-20 18:47:46'),
-('1859','1','0','Product modification','Product','917','1',NULL,'1','0','1','2022-12-20 18:47:57','2022-12-20 18:47:57'),
-('1860','1','0','Product modification','Product','918','1',NULL,'1','0','1','2022-12-20 18:48:08','2022-12-20 18:48:08'),
-('1861','1','0','Product modification','Product','919','1',NULL,'1','0','1','2022-12-20 18:48:19','2022-12-20 18:48:19'),
-('1862','1','0','Product modification','Product','920','1',NULL,'1','0','1','2022-12-20 18:48:29','2022-12-20 18:48:29'),
-('1863','1','0','Product modification','Product','921','1',NULL,'1','0','1','2022-12-20 18:48:40','2022-12-20 18:48:40'),
-('1864','1','0','Product modification','Product','922','1',NULL,'1','0','1','2022-12-20 18:48:51','2022-12-20 18:48:51'),
-('1865','1','0','Product modification','Product','923','1',NULL,'1','0','1','2022-12-20 18:49:02','2022-12-20 18:49:02'),
-('1866','1','0','Product modification','Product','924','1',NULL,'1','0','1','2022-12-20 18:49:13','2022-12-20 18:49:13'),
-('1867','1','0','Product modification','Product','925','1',NULL,'1','0','1','2022-12-20 18:49:24','2022-12-20 18:49:24'),
-('1868','1','0','Product modification','Product','926','1',NULL,'1','0','1','2022-12-20 18:49:35','2022-12-20 18:49:35'),
-('1869','1','0','Product modification','Product','927','1',NULL,'1','0','1','2022-12-20 18:49:46','2022-12-20 18:49:46'),
-('1870','1','0','Product modification','Product','928','1',NULL,'1','0','1','2022-12-20 18:49:57','2022-12-20 18:49:57'),
-('1871','1','0','Product modification','Product','929','1',NULL,'1','0','1','2022-12-20 18:50:07','2022-12-20 18:50:07'),
-('1872','1','0','Product modification','Product','930','1',NULL,'1','0','1','2022-12-20 18:50:18','2022-12-20 18:50:18'),
-('1873','1','0','Product modification','Product','931','1',NULL,'1','0','1','2022-12-20 18:50:29','2022-12-20 18:50:29'),
-('1874','1','0','Product modification','Product','932','1',NULL,'1','0','1','2022-12-20 18:50:40','2022-12-20 18:50:40'),
-('1875','1','0','Product modification','Product','933','1',NULL,'1','0','1','2022-12-20 18:50:51','2022-12-20 18:50:51'),
-('1876','1','0','Product modification','Product','934','1',NULL,'1','0','1','2022-12-20 18:51:02','2022-12-20 18:51:02'),
-('1877','1','0','Product modification','Product','935','1',NULL,'1','0','1','2022-12-20 18:51:13','2022-12-20 18:51:13'),
-('1878','1','0','Product modification','Product','936','1',NULL,'1','0','1','2022-12-20 18:51:24','2022-12-20 18:51:24'),
-('1879','1','0','Product modification','Product','937','1',NULL,'1','0','1','2022-12-20 18:51:35','2022-12-20 18:51:35'),
-('1880','1','0','Product modification','Product','938','1',NULL,'1','0','1','2022-12-20 18:51:46','2022-12-20 18:51:46'),
-('1881','1','0','Product modification','Product','939','1',NULL,'1','0','1','2022-12-20 18:51:57','2022-12-20 18:51:57'),
-('1882','1','0','Product modification','Product','940','1',NULL,'1','0','1','2022-12-20 18:52:08','2022-12-20 18:52:08'),
-('1883','1','0','Product modification','Product','941','1',NULL,'1','0','1','2022-12-20 18:52:19','2022-12-20 18:52:19'),
-('1884','1','0','Product modification','Product','942','1',NULL,'1','0','1','2022-12-20 18:52:29','2022-12-20 18:52:29'),
-('1885','1','0','Product modification','Product','943','1',NULL,'1','0','1','2022-12-20 18:52:40','2022-12-20 18:52:40'),
-('1886','1','0','Product modification','Product','944','1',NULL,'1','0','1','2022-12-20 18:52:51','2022-12-20 18:52:51'),
-('1887','1','0','Product modification','Product','945','1',NULL,'1','0','1','2022-12-20 18:53:02','2022-12-20 18:53:02'),
-('1888','1','0','Product modification','Product','946','1',NULL,'1','0','1','2022-12-20 18:53:13','2022-12-20 18:53:13'),
-('1889','1','0','Product modification','Product','947','1',NULL,'1','0','1','2022-12-20 18:53:24','2022-12-20 18:53:24'),
-('1890','1','0','Product modification','Product','948','1',NULL,'1','0','1','2022-12-20 18:53:35','2022-12-20 18:53:35'),
-('1891','1','0','Product modification','Product','949','1',NULL,'1','0','1','2022-12-20 18:53:45','2022-12-20 18:53:45'),
-('1892','1','0','Product modification','Product','950','1',NULL,'1','0','1','2022-12-20 18:53:56','2022-12-20 18:53:56'),
-('1893','1','0','Product modification','Product','951','1',NULL,'1','0','1','2022-12-20 18:54:07','2022-12-20 18:54:07'),
-('1894','1','0','Product modification','Product','952','1',NULL,'1','0','1','2022-12-20 18:54:18','2022-12-20 18:54:18'),
-('1895','1','0','Product modification','Product','953','1',NULL,'1','0','1','2022-12-20 18:54:29','2022-12-20 18:54:29'),
-('1896','1','0','Product modification','Product','954','1',NULL,'1','0','1','2022-12-20 18:54:40','2022-12-20 18:54:40'),
-('1897','1','0','Product modification','Product','955','1',NULL,'1','0','1','2022-12-20 18:54:51','2022-12-20 18:54:51'),
-('1898','1','0','Product modification','Product','956','1',NULL,'1','0','1','2022-12-20 18:55:02','2022-12-20 18:55:02'),
-('1899','1','0','Product modification','Product','957','1',NULL,'1','0','1','2022-12-20 18:55:12','2022-12-20 18:55:12'),
-('1900','1','0','Product modification','Product','958','1',NULL,'1','0','1','2022-12-20 18:55:23','2022-12-20 18:55:23'),
-('1901','1','0','Product modification','Product','959','1',NULL,'1','0','1','2022-12-20 18:55:34','2022-12-20 18:55:34'),
-('1902','1','0','Product modification','Product','960','1',NULL,'1','0','1','2022-12-20 18:55:45','2022-12-20 18:55:45'),
-('1903','1','0','Product modification','Product','961','1',NULL,'1','0','1','2022-12-20 18:55:56','2022-12-20 18:55:56'),
-('1904','1','0','Product modification','Product','962','1',NULL,'1','0','1','2022-12-20 18:56:07','2022-12-20 18:56:07'),
-('1905','1','0','Product modification','Product','963','1',NULL,'1','0','1','2022-12-20 18:56:18','2022-12-20 18:56:18'),
-('1906','1','0','Product modification','Product','964','1',NULL,'1','0','1','2022-12-20 18:56:29','2022-12-20 18:56:29'),
-('1907','1','0','Product modification','Product','965','1',NULL,'1','0','1','2022-12-20 18:56:39','2022-12-20 18:56:39'),
-('1908','1','0','Product modification','Product','966','1',NULL,'1','0','1','2022-12-20 18:56:50','2022-12-20 18:56:50'),
-('1909','1','0','Product modification','Product','967','1',NULL,'1','0','1','2022-12-20 18:57:01','2022-12-20 18:57:01'),
-('1910','1','0','Product modification','Product','968','1',NULL,'1','0','1','2022-12-20 18:57:12','2022-12-20 18:57:12'),
-('1911','1','0','Product modification','Product','969','1',NULL,'1','0','1','2022-12-20 18:57:23','2022-12-20 18:57:23'),
-('1912','1','0','Product modification','Product','970','1',NULL,'1','0','1','2022-12-20 18:57:34','2022-12-20 18:57:34'),
-('1913','1','0','Product modification','Product','971','1',NULL,'1','0','1','2022-12-20 18:57:45','2022-12-20 18:57:45'),
-('1914','1','0','Product modification','Product','972','1',NULL,'1','0','1','2022-12-20 18:57:56','2022-12-20 18:57:56'),
-('1915','1','0','Product modification','Product','973','1',NULL,'1','0','1','2022-12-20 18:58:06','2022-12-20 18:58:06'),
-('1916','1','0','Product modification','Product','974','1',NULL,'1','0','1','2022-12-20 18:58:17','2022-12-20 18:58:17'),
-('1917','1','0','Product modification','Product','975','1',NULL,'1','0','1','2022-12-20 18:58:28','2022-12-20 18:58:28'),
-('1918','1','0','Product modification','Product','976','1',NULL,'1','0','1','2022-12-20 18:58:39','2022-12-20 18:58:39'),
-('1919','1','0','Product modification','Product','977','1',NULL,'1','0','1','2022-12-20 18:58:50','2022-12-20 18:58:50'),
-('1920','1','0','Product modification','Product','978','1',NULL,'1','0','1','2022-12-20 18:59:01','2022-12-20 18:59:01'),
-('1921','1','0','Product modification','Product','979','1',NULL,'1','0','1','2022-12-20 18:59:12','2022-12-20 18:59:12'),
-('1922','1','0','Product modification','Product','980','1',NULL,'1','0','1','2022-12-20 18:59:22','2022-12-20 18:59:22'),
-('1923','1','0','Product modification','Product','981','1',NULL,'1','0','1','2022-12-20 18:59:33','2022-12-20 18:59:33'),
-('1924','1','0','Product modification','Product','982','1',NULL,'1','0','1','2022-12-20 18:59:44','2022-12-20 18:59:44'),
-('1925','1','0','Product modification','Product','983','1',NULL,'1','0','1','2022-12-20 18:59:55','2022-12-20 18:59:55'),
-('1926','1','0','Product modification','Product','984','1',NULL,'1','0','1','2022-12-20 19:00:06','2022-12-20 19:00:06'),
-('1927','1','0','Product modification','Product','985','1',NULL,'1','0','1','2022-12-20 19:00:17','2022-12-20 19:00:17'),
-('1928','1','0','Product modification','Product','986','1',NULL,'1','0','1','2022-12-20 19:00:28','2022-12-20 19:00:28'),
-('1929','1','0','Product modification','Product','987','1',NULL,'1','0','1','2022-12-20 19:00:39','2022-12-20 19:00:39'),
-('1930','1','0','Product modification','Product','988','1',NULL,'1','0','1','2022-12-20 19:00:49','2022-12-20 19:00:49'),
-('1931','1','0','Product modification','Product','989','1',NULL,'1','0','1','2022-12-20 19:01:00','2022-12-20 19:01:00'),
-('1932','1','0','Product modification','Product','990','1',NULL,'1','0','1','2022-12-20 19:01:11','2022-12-20 19:01:11'),
-('1933','1','0','Product modification','Product','991','1',NULL,'1','0','1','2022-12-20 19:01:22','2022-12-20 19:01:22'),
-('1934','1','0','Product modification','Product','992','1',NULL,'1','0','1','2022-12-20 19:01:33','2022-12-20 19:01:33'),
-('1935','1','0','Product modification','Product','993','1',NULL,'1','0','1','2022-12-20 19:01:44','2022-12-20 19:01:44'),
-('1936','1','0','Product modification','Product','994','1',NULL,'1','0','1','2022-12-20 19:01:55','2022-12-20 19:01:55'),
-('1937','1','0','Product modification','Product','995','1',NULL,'1','0','1','2022-12-20 19:02:06','2022-12-20 19:02:06'),
-('1938','1','0','Product modification','Product','996','1',NULL,'1','0','1','2022-12-20 19:02:17','2022-12-20 19:02:17'),
-('1939','1','0','Product modification','Product','997','1',NULL,'1','0','1','2022-12-20 19:02:28','2022-12-20 19:02:28'),
-('1940','1','0','Product modification','Product','998','1',NULL,'1','0','1','2022-12-20 19:02:38','2022-12-20 19:02:38'),
-('1941','1','0','Product modification','Product','999','1',NULL,'1','0','1','2022-12-20 19:02:49','2022-12-20 19:02:49'),
-('1942','1','0','Product modification','Product','1000','1',NULL,'1','0','1','2022-12-20 19:03:00','2022-12-20 19:03:00'),
-('1943','1','0','Product modification','Product','1001','1',NULL,'1','0','1','2022-12-20 19:03:11','2022-12-20 19:03:11'),
-('1944','1','0','Product modification','Product','1002','1',NULL,'1','0','1','2022-12-20 19:03:22','2022-12-20 19:03:22'),
-('1945','1','0','Product modification','Product','1003','1',NULL,'1','0','1','2022-12-20 19:03:33','2022-12-20 19:03:33'),
-('1946','1','0','Product modification','Product','1004','1',NULL,'1','0','1','2022-12-20 19:03:44','2022-12-20 19:03:44'),
-('1947','1','0','Product modification','Product','1005','1',NULL,'1','0','1','2022-12-20 19:03:54','2022-12-20 19:03:54'),
-('1948','1','0','Product modification','Product','1006','1',NULL,'1','0','1','2022-12-20 19:04:05','2022-12-20 19:04:05'),
-('1949','1','0','Product modification','Product','1007','1',NULL,'1','0','1','2022-12-20 19:04:16','2022-12-20 19:04:16'),
-('1950','1','0','Product modification','Product','1008','1',NULL,'1','0','1','2022-12-20 19:04:27','2022-12-20 19:04:27'),
-('1951','1','0','Product modification','Product','1009','1',NULL,'1','0','1','2022-12-20 19:04:38','2022-12-20 19:04:38'),
-('1952','1','0','Product modification','Product','1010','1',NULL,'1','0','1','2022-12-20 19:04:49','2022-12-20 19:04:49'),
-('1953','1','0','Product modification','Product','1011','1',NULL,'1','0','1','2022-12-20 19:05:00','2022-12-20 19:05:00'),
-('1954','1','0','Product modification','Product','1012','1',NULL,'1','0','1','2022-12-20 19:05:11','2022-12-20 19:05:11'),
-('1955','1','0','Product modification','Product','1013','1',NULL,'1','0','1','2022-12-20 19:05:22','2022-12-20 19:05:22'),
-('1956','1','0','Product modification','Product','1014','1',NULL,'1','0','1','2022-12-20 19:05:32','2022-12-20 19:05:32'),
-('1957','1','0','Product modification','Product','1015','1',NULL,'1','0','1','2022-12-20 19:05:43','2022-12-20 19:05:43'),
-('1958','1','0','Product modification','Product','1016','1',NULL,'1','0','1','2022-12-20 19:05:54','2022-12-20 19:05:54'),
-('1959','1','0','Product modification','Product','1017','1',NULL,'1','0','1','2022-12-20 19:06:05','2022-12-20 19:06:05'),
-('1960','1','0','Product modification','Product','1018','1',NULL,'1','0','1','2022-12-20 19:06:16','2022-12-20 19:06:16'),
-('1961','1','0','Product modification','Product','1019','1',NULL,'1','0','1','2022-12-20 19:06:27','2022-12-20 19:06:27'),
-('1962','1','0','Product modification','Product','1020','1',NULL,'1','0','1','2022-12-20 19:06:38','2022-12-20 19:06:38'),
-('1963','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:08:52','2022-12-20 19:08:52'),
-('1964','1','0','Product modification','Product','550','1',NULL,'1','0','1','2022-12-20 19:09:30','2022-12-20 19:09:30'),
-('1965','1','0','Product modification','Product','544','1',NULL,'1','0','1','2022-12-20 19:09:44','2022-12-20 19:09:44'),
-('1966','1','0','Product modification','Product','553','1',NULL,'1','0','1','2022-12-20 19:10:55','2022-12-20 19:10:55'),
-('1967','1','0','Product modification','Product','557','1',NULL,'1','0','1','2022-12-20 19:11:01','2022-12-20 19:11:01'),
-('1968','1','0','Product modification','Product','571','1',NULL,'1','0','1','2022-12-20 19:11:11','2022-12-20 19:11:11'),
-('1969','1','0','Product modification','Product','1007','1',NULL,'1','0','1','2022-12-20 19:12:29','2022-12-20 19:12:29'),
-('1970','1','0','Product modification','Product','998','1',NULL,'1','0','1','2022-12-20 19:12:34','2022-12-20 19:12:34'),
-('1971','1','0','Product modification','Product','993','1',NULL,'1','0','1','2022-12-20 19:12:38','2022-12-20 19:12:38'),
-('1972','1','0','Product modification','Product','983','1',NULL,'1','0','1','2022-12-20 19:12:44','2022-12-20 19:12:44'),
-('1973','1','0','Product modification','Product','981','1',NULL,'1','0','1','2022-12-20 19:12:49','2022-12-20 19:12:49'),
-('1974','1','0','Product modification','Product','972','1',NULL,'1','0','1','2022-12-20 19:12:54','2022-12-20 19:12:54'),
-('1975','1','0','Product modification','Product','970','1',NULL,'1','0','1','2022-12-20 19:13:09','2022-12-20 19:13:09'),
-('1976','1','0','Product modification','Product','963','1',NULL,'1','0','1','2022-12-20 19:13:17','2022-12-20 19:13:17'),
-('1977','1','0','Product modification','Product','948','1',NULL,'1','0','1','2022-12-20 19:13:21','2022-12-20 19:13:21'),
-('1978','1','0','Product modification','Product','904','1',NULL,'1','0','1','2022-12-20 19:13:26','2022-12-20 19:13:26'),
-('1979','1','0','Product modification','Product','884','1',NULL,'1','0','1','2022-12-20 19:13:31','2022-12-20 19:13:31'),
-('1980','1','0','Product modification','Product','863','1',NULL,'1','0','1','2022-12-20 19:13:36','2022-12-20 19:13:36'),
-('1981','1','0','Product modification','Product','849','1',NULL,'1','0','1','2022-12-20 19:13:59','2022-12-20 19:13:59'),
-('1982','1','0','Product modification','Product','845','1',NULL,'1','0','1','2022-12-20 19:14:04','2022-12-20 19:14:04'),
-('1983','1','0','Product modification','Product','838','1',NULL,'1','0','1','2022-12-20 19:14:09','2022-12-20 19:14:09'),
-('1984','1','0','Product modification','Product','834','1',NULL,'1','0','1','2022-12-20 19:14:14','2022-12-20 19:14:14'),
-('1985','1','0','Product modification','Product','830','1',NULL,'1','0','1','2022-12-20 19:14:19','2022-12-20 19:14:19'),
-('1986','1','0','Product modification','Product','829','1',NULL,'1','0','1','2022-12-20 19:14:25','2022-12-20 19:14:25'),
-('1987','1','0','Product modification','Product','826','1',NULL,'1','0','1','2022-12-20 19:14:31','2022-12-20 19:14:31'),
-('1988','1','0','Product modification','Product','823','1',NULL,'1','0','1','2022-12-20 19:14:36','2022-12-20 19:14:36'),
-('1989','1','0','Product modification','Product','800','1',NULL,'1','0','1','2022-12-20 19:14:40','2022-12-20 19:14:40'),
-('1990','1','0','Product modification','Product','794','1',NULL,'1','0','1','2022-12-20 19:14:46','2022-12-20 19:14:46'),
-('1991','1','0','Product modification','Product','787','1',NULL,'1','0','1','2022-12-20 19:14:51','2022-12-20 19:14:51'),
-('1992','1','0','Product modification','Product','773','1',NULL,'1','0','1','2022-12-20 19:14:55','2022-12-20 19:14:55'),
-('1993','1','0','Product modification','Product','734','1',NULL,'1','0','1','2022-12-20 19:15:00','2022-12-20 19:15:00'),
-('1994','1','0','Product modification','Product','636','1',NULL,'1','0','1','2022-12-20 19:15:17','2022-12-20 19:15:17'),
-('1995','1','0','Product modification','Product','656','1',NULL,'1','0','1','2022-12-20 19:15:22','2022-12-20 19:15:22'),
-('1996','1','0','Product modification','Product','658','1',NULL,'1','0','1','2022-12-20 19:15:27','2022-12-20 19:15:27'),
-('1997','1','0','Product modification','Product','678','1',NULL,'1','0','1','2022-12-20 19:15:32','2022-12-20 19:15:32'),
-('1998','1','0','Product modification','Product','699','1',NULL,'1','0','1','2022-12-20 19:15:37','2022-12-20 19:15:37'),
-('1999','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:36:34','2022-12-20 19:36:34'),
-('2000','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:36:36','2022-12-20 19:36:36');
-INSERT INTO `ps_log` VALUES
-('2001','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:37:43','2022-12-20 19:37:43'),
-('2002','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:37:45','2022-12-20 19:37:45'),
-('2003','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:39:25','2022-12-20 19:39:25'),
-('2004','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:39:26','2022-12-20 19:39:26'),
-('2005','1','0','Product modification','Product','650','1',NULL,'1','0','1','2022-12-20 19:39:37','2022-12-20 19:39:37'),
-('2006','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:44:17','2022-12-20 19:44:17'),
-('2007','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:44:19','2022-12-20 19:44:19'),
-('2008','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 19:44:33','2022-12-20 19:44:33'),
-('2009','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:49:21','2022-12-20 19:49:21'),
-('2010','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:49:24','2022-12-20 19:49:24'),
-('2011','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 19:49:39','2022-12-20 19:49:39'),
-('2012','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:51:37','2022-12-20 19:51:37'),
-('2013','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:51:38','2022-12-20 19:51:38'),
-('2014','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 19:54:05','2022-12-20 19:54:05'),
-('2015','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 19:54:06','2022-12-20 19:54:06'),
-('2016','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 19:54:28','2022-12-20 19:54:28'),
-('2017','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 19:54:38','2022-12-20 19:54:38'),
-('2018','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 19:54:52','2022-12-20 19:54:52'),
-('2019','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 19:55:00','2022-12-20 19:55:00'),
-('2020','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 19:55:10','2022-12-20 19:55:10'),
-('2021','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 19:55:52','2022-12-20 19:55:52'),
-('2022','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 19:56:12','2022-12-20 19:56:12'),
-('2023','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 20:09:59','2022-12-20 20:09:59'),
-('2024','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 20:10:01','2022-12-20 20:10:01'),
-('2025','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 20:10:15','2022-12-20 20:10:15'),
-('2026','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 20:10:40','2022-12-20 20:10:40'),
-('2027','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 20:10:49','2022-12-20 20:10:49'),
-('2028','1','0','Product modification','Product','513','1',NULL,'1','0','1','2022-12-20 20:10:50','2022-12-20 20:10:50'),
-('2029','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 20:11:40','2022-12-20 20:11:40'),
-('2030','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 20:11:47','2022-12-20 20:11:47'),
-('2031','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 20:11:49','2022-12-20 20:11:49'),
-('2032','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 20:11:57','2022-12-20 20:11:57'),
-('2033','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 20:12:04','2022-12-20 20:12:04'),
-('2034','1','0','Product modification','Product','514','1',NULL,'1','0','1','2022-12-20 20:12:05','2022-12-20 20:12:05'),
-('2035','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 20:12:16','2022-12-20 20:12:16'),
-('2036','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 20:12:23','2022-12-20 20:12:23'),
-('2037','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 20:12:24','2022-12-20 20:12:24'),
-('2038','1','0','Product modification','Product','515','1',NULL,'1','0','1','2022-12-20 20:12:37','2022-12-20 20:12:37'),
-('2039','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 20:12:47','2022-12-20 20:12:47'),
-('2040','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 20:12:54','2022-12-20 20:12:54'),
-('2041','1','0','Product modification','Product','516','1',NULL,'1','0','1','2022-12-20 20:12:55','2022-12-20 20:12:55'),
-('2042','1','0','Product modification','Product','517','1',NULL,'1','0','1','2022-12-20 20:13:13','2022-12-20 20:13:13'),
-('2043','1','0','Product modification','Product','517','1',NULL,'1','0','1','2022-12-20 20:13:18','2022-12-20 20:13:18'),
-('2044','1','0','Product modification','Product','517','1',NULL,'1','0','1','2022-12-20 20:13:20','2022-12-20 20:13:20'),
-('2045','1','0','Product modification','Product','518','1',NULL,'1','0','1','2022-12-20 20:14:08','2022-12-20 20:14:08'),
-('2046','1','0','Product modification','Product','518','1',NULL,'1','0','1','2022-12-20 20:14:13','2022-12-20 20:14:13'),
-('2047','1','0','Product modification','Product','518','1',NULL,'1','0','1','2022-12-20 20:14:14','2022-12-20 20:14:14'),
-('2048','1','0','Product modification','Product','519','1',NULL,'1','0','1','2022-12-20 20:14:23','2022-12-20 20:14:23'),
-('2049','1','0','Product modification','Product','519','1',NULL,'1','0','1','2022-12-20 20:14:30','2022-12-20 20:14:30'),
-('2050','1','0','Product modification','Product','519','1',NULL,'1','0','1','2022-12-20 20:14:31','2022-12-20 20:14:31'),
-('2051','1','0','Product modification','Product','520','1',NULL,'1','0','1','2022-12-20 20:14:41','2022-12-20 20:14:41'),
-('2052','1','0','Product modification','Product','520','1',NULL,'1','0','1','2022-12-20 20:14:47','2022-12-20 20:14:47'),
-('2053','1','0','Product modification','Product','520','1',NULL,'1','0','1','2022-12-20 20:14:48','2022-12-20 20:14:48'),
-('2054','1','0','Product modification','Product','521','1',NULL,'1','0','1','2022-12-20 20:14:59','2022-12-20 20:14:59'),
-('2055','1','0','Product modification','Product','521','1',NULL,'1','0','1','2022-12-20 20:15:04','2022-12-20 20:15:04'),
-('2056','1','0','Product modification','Product','521','1',NULL,'1','0','1','2022-12-20 20:15:05','2022-12-20 20:15:05'),
-('2057','1','0','Product modification','Product','522','1',NULL,'1','0','1','2022-12-20 20:15:36','2022-12-20 20:15:36'),
-('2058','1','0','Product modification','Product','522','1',NULL,'1','0','1','2022-12-20 20:15:47','2022-12-20 20:15:47'),
-('2059','1','0','Product modification','Product','522','1',NULL,'1','0','1','2022-12-20 20:15:48','2022-12-20 20:15:48'),
-('2060','1','0','Product modification','Product','523','1',NULL,'1','0','1','2022-12-20 20:15:55','2022-12-20 20:15:55'),
-('2061','1','0','Product modification','Product','523','1',NULL,'1','0','1','2022-12-20 20:16:00','2022-12-20 20:16:00'),
-('2062','1','0','Product modification','Product','523','1',NULL,'1','0','1','2022-12-20 20:16:02','2022-12-20 20:16:02'),
-('2063','1','0','Product modification','Product','524','1',NULL,'1','0','1','2022-12-20 20:16:10','2022-12-20 20:16:10'),
-('2064','1','0','Product modification','Product','524','1',NULL,'1','0','1','2022-12-20 20:16:17','2022-12-20 20:16:17'),
-('2065','1','0','Product modification','Product','524','1',NULL,'1','0','1','2022-12-20 20:16:18','2022-12-20 20:16:18'),
-('2066','1','0','Product modification','Product','525','1',NULL,'1','0','1','2022-12-20 20:16:27','2022-12-20 20:16:27'),
-('2067','1','0','Product modification','Product','525','1',NULL,'1','0','1','2022-12-20 20:16:32','2022-12-20 20:16:32'),
-('2068','1','0','Product modification','Product','525','1',NULL,'1','0','1','2022-12-20 20:16:34','2022-12-20 20:16:34'),
-('2069','1','0','Product modification','Product','682','1',NULL,'1','0','1','2022-12-20 20:17:49','2022-12-20 20:17:49'),
-('2070','1','0','Product modification','Product','682','1',NULL,'1','0','1','2022-12-20 20:17:55','2022-12-20 20:17:55'),
-('2071','1','0','Product modification','Product','682','1',NULL,'1','0','1','2022-12-20 20:17:56','2022-12-20 20:17:56'),
-('2072','1','0','Product modification','Product','683','1',NULL,'1','0','1','2022-12-20 20:18:04','2022-12-20 20:18:04'),
-('2073','1','0','Product modification','Product','683','1',NULL,'1','0','1','2022-12-20 20:18:09','2022-12-20 20:18:09'),
-('2074','1','0','Product modification','Product','683','1',NULL,'1','0','1','2022-12-20 20:18:10','2022-12-20 20:18:10'),
-('2075','1','0','Product modification','Product','684','1',NULL,'1','0','1','2022-12-20 20:18:19','2022-12-20 20:18:19'),
-('2076','1','0','Product modification','Product','684','1',NULL,'1','0','1','2022-12-20 20:18:27','2022-12-20 20:18:27'),
-('2077','1','0','Product modification','Product','684','1',NULL,'1','0','1','2022-12-20 20:18:28','2022-12-20 20:18:28'),
-('2078','1','0','Product modification','Product','685','1',NULL,'1','0','1','2022-12-20 20:18:37','2022-12-20 20:18:37'),
-('2079','1','0','Product modification','Product','685','1',NULL,'1','0','1','2022-12-20 20:18:43','2022-12-20 20:18:43'),
-('2080','1','0','Product modification','Product','685','1',NULL,'1','0','1','2022-12-20 20:18:45','2022-12-20 20:18:45'),
-('2081','1','0','Product modification','Product','686','1',NULL,'1','0','1','2022-12-20 20:18:52','2022-12-20 20:18:52'),
-('2082','1','0','Product modification','Product','686','1',NULL,'1','0','1','2022-12-20 20:18:57','2022-12-20 20:18:57'),
-('2083','1','0','Product modification','Product','686','1',NULL,'1','0','1','2022-12-20 20:18:59','2022-12-20 20:18:59'),
-('2084','1','0','Product modification','Product','687','1',NULL,'1','0','1','2022-12-20 20:19:07','2022-12-20 20:19:07'),
-('2085','1','0','Product modification','Product','687','1',NULL,'1','0','1','2022-12-20 20:19:11','2022-12-20 20:19:11'),
-('2086','1','0','Product modification','Product','687','1',NULL,'1','0','1','2022-12-20 20:19:13','2022-12-20 20:19:13'),
-('2087','1','0','Product modification','Product','688','1',NULL,'1','0','1','2022-12-20 20:19:22','2022-12-20 20:19:22'),
-('2088','1','0','Product modification','Product','688','1',NULL,'1','0','1','2022-12-20 20:19:28','2022-12-20 20:19:28'),
-('2089','1','0','Product modification','Product','688','1',NULL,'1','0','1','2022-12-20 20:19:29','2022-12-20 20:19:29'),
-('2090','1','0','Product modification','Product','689','1',NULL,'1','0','1','2022-12-20 20:19:36','2022-12-20 20:19:36'),
-('2091','1','0','Product modification','Product','689','1',NULL,'1','0','1','2022-12-20 20:19:41','2022-12-20 20:19:41'),
-('2092','1','0','Product modification','Product','689','1',NULL,'1','0','1','2022-12-20 20:19:43','2022-12-20 20:19:43'),
-('2093','1','0','Product modification','Product','690','1',NULL,'1','0','1','2022-12-20 20:19:50','2022-12-20 20:19:50'),
-('2094','1','0','Product modification','Product','690','1',NULL,'1','0','1','2022-12-20 20:19:55','2022-12-20 20:19:55'),
-('2095','1','0','Product modification','Product','690','1',NULL,'1','0','1','2022-12-20 20:19:56','2022-12-20 20:19:56'),
-('2096','1','0','Product modification','Product','691','1',NULL,'1','0','1','2022-12-20 20:20:03','2022-12-20 20:20:03'),
-('2097','1','0','Product modification','Product','691','1',NULL,'1','0','1','2022-12-20 20:20:08','2022-12-20 20:20:08'),
-('2098','1','0','Product modification','Product','691','1',NULL,'1','0','1','2022-12-20 20:20:09','2022-12-20 20:20:09'),
-('2099','1','0','Product modification','Product','692','1',NULL,'1','0','1','2022-12-20 20:20:17','2022-12-20 20:20:17'),
-('2100','1','0','Product modification','Product','692','1',NULL,'1','0','1','2022-12-20 20:20:22','2022-12-20 20:20:22'),
-('2101','1','0','Product modification','Product','692','1',NULL,'1','0','1','2022-12-20 20:20:23','2022-12-20 20:20:23'),
-('2102','1','0','Product modification','Product','693','1',NULL,'1','0','1','2022-12-20 20:20:30','2022-12-20 20:20:30'),
-('2103','1','0','Product modification','Product','693','1',NULL,'1','0','1','2022-12-20 20:20:39','2022-12-20 20:20:39'),
-('2104','1','0','Product modification','Product','693','1',NULL,'1','0','1','2022-12-20 20:20:40','2022-12-20 20:20:40'),
-('2105','1','0','Product modification','Product','852','1',NULL,'1','0','1','2022-12-20 20:21:20','2022-12-20 20:21:20'),
-('2106','1','0','Product modification','Product','852','1',NULL,'1','0','1','2022-12-20 20:21:28','2022-12-20 20:21:28'),
-('2107','1','0','Product modification','Product','852','1',NULL,'1','0','1','2022-12-20 20:21:29','2022-12-20 20:21:29'),
-('2108','1','0','Product modification','Product','853','1',NULL,'1','0','1','2022-12-20 20:21:37','2022-12-20 20:21:37'),
-('2109','1','0','Product modification','Product','853','1',NULL,'1','0','1','2022-12-20 20:21:43','2022-12-20 20:21:43'),
-('2110','1','0','Product modification','Product','853','1',NULL,'1','0','1','2022-12-20 20:21:44','2022-12-20 20:21:44'),
-('2111','1','0','Product modification','Product','854','1',NULL,'1','0','1','2022-12-20 20:21:52','2022-12-20 20:21:52'),
-('2112','1','0','Product modification','Product','854','1',NULL,'1','0','1','2022-12-20 20:21:57','2022-12-20 20:21:57'),
-('2113','1','0','Product modification','Product','854','1',NULL,'1','0','1','2022-12-20 20:21:59','2022-12-20 20:21:59'),
-('2114','1','0','Product modification','Product','855','1',NULL,'1','0','1','2022-12-20 20:22:07','2022-12-20 20:22:07'),
-('2115','1','0','Product modification','Product','855','1',NULL,'1','0','1','2022-12-20 20:22:11','2022-12-20 20:22:11'),
-('2116','1','0','Product modification','Product','855','1',NULL,'1','0','1','2022-12-20 20:22:12','2022-12-20 20:22:12'),
-('2117','1','0','Product modification','Product','856','1',NULL,'1','0','1','2022-12-20 20:22:20','2022-12-20 20:22:20'),
-('2118','1','0','Product modification','Product','856','1',NULL,'1','0','1','2022-12-20 20:22:25','2022-12-20 20:22:25'),
-('2119','1','0','Product modification','Product','856','1',NULL,'1','0','1','2022-12-20 20:22:26','2022-12-20 20:22:26'),
-('2120','1','0','Product modification','Product','857','1',NULL,'1','0','1','2022-12-20 20:22:33','2022-12-20 20:22:33'),
-('2121','1','0','Product modification','Product','857','1',NULL,'1','0','1','2022-12-20 20:22:45','2022-12-20 20:22:45'),
-('2122','1','0','Product modification','Product','857','1',NULL,'1','0','1','2022-12-20 20:22:46','2022-12-20 20:22:46'),
-('2123','1','0','Product modification','Product','858','1',NULL,'1','0','1','2022-12-20 20:22:53','2022-12-20 20:22:53'),
-('2124','1','0','Product modification','Product','858','1',NULL,'1','0','1','2022-12-20 20:22:58','2022-12-20 20:22:58'),
-('2125','1','0','Product modification','Product','858','1',NULL,'1','0','1','2022-12-20 20:22:59','2022-12-20 20:22:59'),
-('2126','1','0','Product modification','Product','859','1',NULL,'1','0','1','2022-12-20 20:23:05','2022-12-20 20:23:05'),
-('2127','1','0','Product modification','Product','859','1',NULL,'1','0','1','2022-12-20 20:23:10','2022-12-20 20:23:10'),
-('2128','1','0','Product modification','Product','859','1',NULL,'1','0','1','2022-12-20 20:23:11','2022-12-20 20:23:11'),
-('2129','1','0','Product modification','Product','860','1',NULL,'1','0','1','2022-12-20 20:23:17','2022-12-20 20:23:17'),
-('2130','1','0','Product modification','Product','860','1',NULL,'1','0','1','2022-12-20 20:23:21','2022-12-20 20:23:21'),
-('2131','1','0','Product modification','Product','860','1',NULL,'1','0','1','2022-12-20 20:23:22','2022-12-20 20:23:22'),
-('2132','1','0','Product modification','Product','861','1',NULL,'1','0','1','2022-12-20 20:23:30','2022-12-20 20:23:30'),
-('2133','1','0','Product modification','Product','861','1',NULL,'1','0','1','2022-12-20 20:23:35','2022-12-20 20:23:35'),
-('2134','1','0','Product modification','Product','861','1',NULL,'1','0','1','2022-12-20 20:23:37','2022-12-20 20:23:37'),
-('2135','1','0','Product modification','Product','862','1',NULL,'1','0','1','2022-12-20 20:23:43','2022-12-20 20:23:43'),
-('2136','1','0','Product modification','Product','862','1',NULL,'1','0','1','2022-12-20 20:23:48','2022-12-20 20:23:48'),
-('2137','1','0','Product modification','Product','862','1',NULL,'1','0','1','2022-12-20 20:23:50','2022-12-20 20:23:50'),
-('2138','1','0','Product modification','Product','863','1',NULL,'1','0','1','2022-12-20 20:23:57','2022-12-20 20:23:57'),
-('2139','1','0','Product modification','Product','863','1',NULL,'1','0','1','2022-12-20 20:24:02','2022-12-20 20:24:02'),
-('2140','1','0','Product modification','Product','863','1',NULL,'1','0','1','2022-12-20 20:24:03','2022-12-20 20:24:03'),
-('2141','1','0','Product modification','Product','512','1',NULL,'1','0','1','2022-12-20 20:30:11','2022-12-20 20:30:11'),
-('2142','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=DBAP193MB0970.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2022-12-20 21:12:51','2022-12-20 21:12:51'),
-('2143','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=DBAP193MB0970.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2022-12-20 21:12:57','2022-12-20 21:12:57'),
-('2144','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','21','1',NULL,'2','0','0','2022-12-20 21:12:57','2022-12-20 21:12:57'),
-('2145','1','0','Products deleted: (512).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:03:59','2022-12-20 22:03:59'),
-('2146','1','0','Products deleted: (513).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:07','2022-12-20 22:04:07'),
-('2147','1','0','Products deleted: (514).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:15','2022-12-20 22:04:15'),
-('2148','1','0','Products deleted: (515).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:22','2022-12-20 22:04:22'),
-('2149','1','0','Products deleted: (516).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:30','2022-12-20 22:04:30'),
-('2150','1','0','Products deleted: (517).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:38','2022-12-20 22:04:38'),
-('2151','1','0','Products deleted: (518).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:45','2022-12-20 22:04:45'),
-('2152','1','0','Products deleted: (519).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:04:52','2022-12-20 22:04:52'),
-('2153','1','0','Products deleted: (520).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:00','2022-12-20 22:05:00'),
-('2154','1','0','Products deleted: (521).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:07','2022-12-20 22:05:07'),
-('2155','1','0','Products deleted: (522).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:14','2022-12-20 22:05:14'),
-('2156','1','0','Products deleted: (523).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:21','2022-12-20 22:05:21'),
-('2157','1','0','Products deleted: (524).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:29','2022-12-20 22:05:29'),
-('2158','1','0','Products deleted: (525).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:36','2022-12-20 22:05:36'),
-('2159','1','0','Products deleted: (526).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:43','2022-12-20 22:05:43'),
-('2160','1','0','Products deleted: (527).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:50','2022-12-20 22:05:50'),
-('2161','1','0','Products deleted: (528).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:05:57','2022-12-20 22:05:57'),
-('2162','1','0','Products deleted: (529).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:04','2022-12-20 22:06:04'),
-('2163','1','0','Products deleted: (530).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:11','2022-12-20 22:06:11'),
-('2164','1','0','Products deleted: (531).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:18','2022-12-20 22:06:18'),
-('2165','1','0','Products deleted: (532).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:25','2022-12-20 22:06:25'),
-('2166','1','0','Products deleted: (533).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:32','2022-12-20 22:06:32'),
-('2167','1','0','Products deleted: (534).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:39','2022-12-20 22:06:39'),
-('2168','1','0','Products deleted: (535).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:46','2022-12-20 22:06:46'),
-('2169','1','0','Products deleted: (536).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:06:53','2022-12-20 22:06:53'),
-('2170','1','0','Products deleted: (537).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:00','2022-12-20 22:07:00'),
-('2171','1','0','Products deleted: (538).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:07','2022-12-20 22:07:07'),
-('2172','1','0','Products deleted: (539).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:14','2022-12-20 22:07:14'),
-('2173','1','0','Products deleted: (540).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:21','2022-12-20 22:07:21'),
-('2174','1','0','Products deleted: (541).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:28','2022-12-20 22:07:28'),
-('2175','1','0','Products deleted: (542).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:35','2022-12-20 22:07:35'),
-('2176','1','0','Products deleted: (543).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:42','2022-12-20 22:07:42'),
-('2177','1','0','Products deleted: (544).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:49','2022-12-20 22:07:49'),
-('2178','1','0','Products deleted: (545).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:07:55','2022-12-20 22:07:55'),
-('2179','1','0','Products deleted: (546).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:02','2022-12-20 22:08:02'),
-('2180','1','0','Products deleted: (547).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:08','2022-12-20 22:08:08'),
-('2181','1','0','Products deleted: (548).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:15','2022-12-20 22:08:15'),
-('2182','1','0','Products deleted: (549).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:22','2022-12-20 22:08:22'),
-('2183','1','0','Products deleted: (550).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:28','2022-12-20 22:08:28'),
-('2184','1','0','Products deleted: (551).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:35','2022-12-20 22:08:35'),
-('2185','1','0','Products deleted: (552).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:42','2022-12-20 22:08:42'),
-('2186','1','0','Products deleted: (553).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:49','2022-12-20 22:08:49'),
-('2187','1','0','Products deleted: (554).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:08:55','2022-12-20 22:08:55'),
-('2188','1','0','Products deleted: (555).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:02','2022-12-20 22:09:02'),
-('2189','1','0','Products deleted: (556).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:08','2022-12-20 22:09:08'),
-('2190','1','0','Products deleted: (557).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:16','2022-12-20 22:09:16'),
-('2191','1','0','Products deleted: (558).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:22','2022-12-20 22:09:22'),
-('2192','1','0','Products deleted: (559).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:29','2022-12-20 22:09:29'),
-('2193','1','0','Products deleted: (560).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:36','2022-12-20 22:09:36'),
-('2194','1','0','Products deleted: (561).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:42','2022-12-20 22:09:42'),
-('2195','1','0','Products deleted: (562).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:48','2022-12-20 22:09:48'),
-('2196','1','0','Products deleted: (563).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:09:55','2022-12-20 22:09:55'),
-('2197','1','0','Products deleted: (564).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:01','2022-12-20 22:10:01'),
-('2198','1','0','Products deleted: (565).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:07','2022-12-20 22:10:07'),
-('2199','1','0','Products deleted: (566).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:13','2022-12-20 22:10:13'),
-('2200','1','0','Products deleted: (567).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:19','2022-12-20 22:10:19');
-INSERT INTO `ps_log` VALUES
-('2201','1','0','Products deleted: (568).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:25','2022-12-20 22:10:25'),
-('2202','1','0','Products deleted: (569).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:31','2022-12-20 22:10:31'),
-('2203','1','0','Products deleted: (570).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:38','2022-12-20 22:10:38'),
-('2204','1','0','Products deleted: (571).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:44','2022-12-20 22:10:44'),
-('2205','1','0','Products deleted: (572).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:50','2022-12-20 22:10:50'),
-('2206','1','0','Products deleted: (573).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:10:56','2022-12-20 22:10:56'),
-('2207','1','0','Products deleted: (574).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:02','2022-12-20 22:11:02'),
-('2208','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:02','2022-12-20 22:11:02'),
-('2209','1','0','Products deleted: (575).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:09','2022-12-20 22:11:09'),
-('2210','1','0','Products deleted: (576).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:15','2022-12-20 22:11:15'),
-('2211','1','0','Products deleted: (577).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:21','2022-12-20 22:11:21'),
-('2212','1','0','Products deleted: (578).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:27','2022-12-20 22:11:27'),
-('2213','1','0','Products deleted: (579).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:34','2022-12-20 22:11:34'),
-('2214','1','0','Products deleted: (580).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:40','2022-12-20 22:11:40'),
-('2215','1','0','Products deleted: (581).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:46','2022-12-20 22:11:46'),
-('2216','1','0','Products deleted: (582).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:52','2022-12-20 22:11:52'),
-('2217','1','0','Products deleted: (583).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:11:58','2022-12-20 22:11:58'),
-('2218','1','0','Products deleted: (584).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:04','2022-12-20 22:12:04'),
-('2219','1','0','Products deleted: (585).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:09','2022-12-20 22:12:09'),
-('2220','1','0','Products deleted: (586).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:15','2022-12-20 22:12:15'),
-('2221','1','0','Products deleted: (587).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:31','2022-12-20 22:12:31'),
-('2222','1','0','Products deleted: (588).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:37','2022-12-20 22:12:37'),
-('2223','1','0','Products deleted: (589).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:42','2022-12-20 22:12:42'),
-('2224','1','0','Products deleted: (590).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:48','2022-12-20 22:12:48'),
-('2225','1','0','Products deleted: (591).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:54','2022-12-20 22:12:54'),
-('2226','1','0','Products deleted: (592).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:12:59','2022-12-20 22:12:59'),
-('2227','1','0','Products deleted: (593).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:05','2022-12-20 22:13:05'),
-('2228','1','0','Products deleted: (594).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:11','2022-12-20 22:13:11'),
-('2229','1','0','Products deleted: (595).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:16','2022-12-20 22:13:16'),
-('2230','1','0','Products deleted: (596).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:26','2022-12-20 22:13:26'),
-('2231','1','0','Products deleted: (597).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:31','2022-12-20 22:13:31'),
-('2232','1','0','Products deleted: (598).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:37','2022-12-20 22:13:37'),
-('2233','1','0','Products deleted: (599).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:49','2022-12-20 22:13:49'),
-('2234','1','0','Products deleted: (600).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:13:55','2022-12-20 22:13:55'),
-('2235','1','0','Products deleted: (601).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:00','2022-12-20 22:14:00'),
-('2236','1','0','Products deleted: (602).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:06','2022-12-20 22:14:06'),
-('2237','1','0','Products deleted: (603).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:11','2022-12-20 22:14:11'),
-('2238','1','0','Products deleted: (604).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:21','2022-12-20 22:14:21'),
-('2239','1','0','Products deleted: (605).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:26','2022-12-20 22:14:26'),
-('2240','1','0','Products deleted: (606).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:38','2022-12-20 22:14:38'),
-('2241','1','0','Products deleted: (607).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:43','2022-12-20 22:14:43'),
-('2242','1','0','Products deleted: (608).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:49','2022-12-20 22:14:49'),
-('2243','1','0','Products deleted: (609).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:14:54','2022-12-20 22:14:54'),
-('2244','1','0','Products deleted: (610).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:15:04','2022-12-20 22:15:04'),
-('2245','1','0','Products deleted: (611).',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:15:11','2022-12-20 22:15:11'),
-('2246','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-20 22:30:20','2022-12-20 22:30:20'),
-('2247','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-20 22:30:21','2022-12-20 22:30:21'),
-('2248','1','0','Product modification','Product','812','1',NULL,'1','0','1','2022-12-20 22:30:35','2022-12-20 22:30:35'),
-('2249','1','0','Product modification','Product','612','1',NULL,'1','0','1','2022-12-20 22:36:20','2022-12-20 22:36:20'),
-('2250','1','0','Product modification','Product','612','1',NULL,'1','0','1','2022-12-20 22:36:24','2022-12-20 22:36:24'),
-('2251','1','0','Product modification','Product','612','1',NULL,'1','0','1','2022-12-20 22:36:25','2022-12-20 22:36:25'),
-('2252','1','0','Product modification','Product','612','1',NULL,'1','0','1','2022-12-20 22:36:55','2022-12-20 22:36:55'),
-('2253','1','0','Product modification','Product','613','1',NULL,'1','0','1','2022-12-20 22:37:21','2022-12-20 22:37:21'),
-('2254','1','0','Product modification','Product','613','1',NULL,'1','0','1','2022-12-20 22:37:25','2022-12-20 22:37:25'),
-('2255','1','0','Product modification','Product','613','1',NULL,'1','0','1','2022-12-20 22:37:27','2022-12-20 22:37:27'),
-('2256','1','0','Product modification','Product','614','1',NULL,'1','0','1','2022-12-20 22:38:15','2022-12-20 22:38:15'),
-('2257','1','0','Product modification','Product','614','1',NULL,'1','0','1','2022-12-20 22:38:20','2022-12-20 22:38:20'),
-('2258','1','0','Product modification','Product','614','1',NULL,'1','0','1','2022-12-20 22:38:21','2022-12-20 22:38:21'),
-('2259','1','0','Product modification','Product','615','1',NULL,'1','0','1','2022-12-20 22:38:53','2022-12-20 22:38:53'),
-('2260','1','0','Product modification','Product','615','1',NULL,'1','0','1','2022-12-20 22:38:59','2022-12-20 22:38:59'),
-('2261','1','0','Product modification','Product','615','1',NULL,'1','0','1','2022-12-20 22:39:00','2022-12-20 22:39:00'),
-('2262','1','0','Product modification','Product','616','1',NULL,'1','0','1','2022-12-20 22:39:12','2022-12-20 22:39:12'),
-('2263','1','0','Product modification','Product','616','1',NULL,'1','0','1','2022-12-20 22:39:16','2022-12-20 22:39:16'),
-('2264','1','0','Product modification','Product','616','1',NULL,'1','0','1','2022-12-20 22:39:17','2022-12-20 22:39:17'),
-('2265','1','0','Product modification','Product','617','1',NULL,'1','0','1','2022-12-20 22:39:28','2022-12-20 22:39:28'),
-('2266','1','0','Product modification','Product','617','1',NULL,'1','0','1','2022-12-20 22:39:32','2022-12-20 22:39:32'),
-('2267','1','0','Product modification','Product','617','1',NULL,'1','0','1','2022-12-20 22:39:34','2022-12-20 22:39:34'),
-('2268','1','0','Product modification','Product','618','1',NULL,'1','0','1','2022-12-20 22:39:48','2022-12-20 22:39:48'),
-('2269','1','0','Product modification','Product','618','1',NULL,'1','0','1','2022-12-20 22:39:52','2022-12-20 22:39:52'),
-('2270','1','0','Product modification','Product','618','1',NULL,'1','0','1','2022-12-20 22:39:55','2022-12-20 22:39:55'),
-('2271','1','0','Product modification','Product','618','1',NULL,'1','0','1','2022-12-20 22:39:57','2022-12-20 22:39:57'),
-('2272','1','0','Product modification','Product','619','1',NULL,'1','0','1','2022-12-20 22:40:09','2022-12-20 22:40:09'),
-('2273','1','0','Product modification','Product','619','1',NULL,'1','0','1','2022-12-20 22:40:13','2022-12-20 22:40:13'),
-('2274','1','0','Product modification','Product','619','1',NULL,'1','0','1','2022-12-20 22:40:14','2022-12-20 22:40:14'),
-('2275','1','0','Product modification','Product','620','1',NULL,'1','0','1','2022-12-20 22:40:25','2022-12-20 22:40:25'),
-('2276','1','0','Product modification','Product','620','1',NULL,'1','0','1','2022-12-20 22:40:29','2022-12-20 22:40:29'),
-('2277','1','0','Product modification','Product','620','1',NULL,'1','0','1','2022-12-20 22:40:30','2022-12-20 22:40:30'),
-('2278','1','0','Product modification','Product','621','1',NULL,'1','0','1','2022-12-20 22:40:41','2022-12-20 22:40:41'),
-('2279','1','0','Product modification','Product','621','1',NULL,'1','0','1','2022-12-20 22:40:45','2022-12-20 22:40:45'),
-('2280','1','0','Product modification','Product','621','1',NULL,'1','0','1','2022-12-20 22:40:46','2022-12-20 22:40:46'),
-('2281','1','0','Product modification','Product','622','1',NULL,'1','0','1','2022-12-20 22:40:58','2022-12-20 22:40:58'),
-('2282','1','0','Product modification','Product','622','1',NULL,'1','0','1','2022-12-20 22:41:02','2022-12-20 22:41:02'),
-('2283','1','0','Product modification','Product','622','1',NULL,'1','0','1','2022-12-20 22:41:03','2022-12-20 22:41:03'),
-('2284','1','0','Product modification','Product','623','1',NULL,'1','0','1','2022-12-20 22:41:14','2022-12-20 22:41:14'),
-('2285','1','0','Product modification','Product','623','1',NULL,'1','0','1','2022-12-20 22:41:20','2022-12-20 22:41:20'),
-('2286','1','0','Product modification','Product','623','1',NULL,'1','0','1','2022-12-20 22:41:21','2022-12-20 22:41:21'),
-('2287','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:42','2022-12-20 23:24:42'),
-('2288','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:42','2022-12-20 23:24:42'),
-('2289','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:43','2022-12-20 23:24:43'),
-('2290','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:43','2022-12-20 23:24:43'),
-('2291','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:44','2022-12-20 23:24:44'),
-('2292','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:44','2022-12-20 23:24:44'),
-('2293','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:44','2022-12-20 23:24:44'),
-('2294','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:44','2022-12-20 23:24:44'),
-('2295','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:45','2022-12-20 23:24:45'),
-('2296','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:45','2022-12-20 23:24:45'),
-('2297','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:45','2022-12-20 23:24:45'),
-('2298','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:45','2022-12-20 23:24:45'),
-('2299','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2300','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2301','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2302','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2303','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2304','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2305','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:46','2022-12-20 23:24:46'),
-('2306','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2307','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2308','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2309','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2310','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2311','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2312','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:47','2022-12-20 23:24:47'),
-('2313','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2314','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2315','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2316','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2317','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2318','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2319','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2320','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:48','2022-12-20 23:24:48'),
-('2321','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2322','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2323','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2324','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2325','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2326','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2327','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2328','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:49','2022-12-20 23:24:49'),
-('2329','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2330','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2331','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2332','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2333','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2334','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2335','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2336','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:50','2022-12-20 23:24:50'),
-('2337','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2338','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2339','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2340','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2341','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2342','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2343','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:51','2022-12-20 23:24:51'),
-('2344','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2345','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2346','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2347','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2348','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2349','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2350','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:52','2022-12-20 23:24:52'),
-('2351','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2352','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2353','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2354','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2355','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2356','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:53','2022-12-20 23:24:53'),
-('2357','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:54','2022-12-20 23:24:54'),
-('2358','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:54','2022-12-20 23:24:54'),
-('2359','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:54','2022-12-20 23:24:54'),
-('2360','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:54','2022-12-20 23:24:54'),
-('2361','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:55','2022-12-20 23:24:55'),
-('2362','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:55','2022-12-20 23:24:55'),
-('2363','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:55','2022-12-20 23:24:55'),
-('2364','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:56','2022-12-20 23:24:56'),
-('2365','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:56','2022-12-20 23:24:56'),
-('2366','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:56','2022-12-20 23:24:56'),
-('2367','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:57','2022-12-20 23:24:57'),
-('2368','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:57','2022-12-20 23:24:57'),
-('2369','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:57','2022-12-20 23:24:57'),
-('2370','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:57','2022-12-20 23:24:57'),
-('2371','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:57','2022-12-20 23:24:57'),
-('2372','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2373','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2374','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2375','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2376','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2377','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:58','2022-12-20 23:24:58'),
-('2378','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2379','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2380','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2381','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2382','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2383','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2384','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:24:59','2022-12-20 23:24:59'),
-('2385','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2386','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2387','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2388','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2389','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2390','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:00','2022-12-20 23:25:00'),
-('2391','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2392','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2393','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2394','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2395','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2396','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2397','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:01','2022-12-20 23:25:01'),
-('2398','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2399','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2400','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02');
-INSERT INTO `ps_log` VALUES
-('2401','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2402','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2403','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2404','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:02','2022-12-20 23:25:02'),
-('2405','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2406','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2407','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2408','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2409','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2410','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2411','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:03','2022-12-20 23:25:03'),
-('2412','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2413','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2414','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2415','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2416','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2417','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:04','2022-12-20 23:25:04'),
-('2418','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2419','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2420','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2421','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2422','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2423','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2424','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:05','2022-12-20 23:25:05'),
-('2425','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2426','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2427','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2428','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2429','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2430','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:06','2022-12-20 23:25:06'),
-('2431','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2432','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2433','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2434','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2435','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2436','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2437','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:07','2022-12-20 23:25:07'),
-('2438','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2439','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2440','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2441','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2442','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2443','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2444','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:08','2022-12-20 23:25:08'),
-('2445','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2446','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2447','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2448','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2449','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2450','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:09','2022-12-20 23:25:09'),
-('2451','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2452','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2453','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2454','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2455','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2456','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2457','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:10','2022-12-20 23:25:10'),
-('2458','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2459','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2460','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2461','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2462','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2463','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2464','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:11','2022-12-20 23:25:11'),
-('2465','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2466','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2467','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2468','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2469','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2470','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2471','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:12','2022-12-20 23:25:12'),
-('2472','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2473','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2474','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2475','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2476','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2477','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:13','2022-12-20 23:25:13'),
-('2478','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2479','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2480','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2481','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2482','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2483','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2484','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:14','2022-12-20 23:25:14'),
-('2485','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2486','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2487','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2488','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2489','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2490','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2491','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2492','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:15','2022-12-20 23:25:15'),
-('2493','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2494','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2495','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2496','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2497','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2498','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:16','2022-12-20 23:25:16'),
-('2499','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2500','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2501','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2502','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2503','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2504','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2505','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:17','2022-12-20 23:25:17'),
-('2506','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2507','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2508','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2509','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2510','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2511','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2512','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:18','2022-12-20 23:25:18'),
-('2513','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2514','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2515','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2516','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2517','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2518','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2519','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2520','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:19','2022-12-20 23:25:19'),
-('2521','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2522','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2523','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2524','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2525','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2526','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:20','2022-12-20 23:25:20'),
-('2527','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:21','2022-12-20 23:25:21'),
-('2528','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:21','2022-12-20 23:25:21'),
-('2529','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:21','2022-12-20 23:25:21'),
-('2530','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:22','2022-12-20 23:25:22'),
-('2531','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:22','2022-12-20 23:25:22'),
-('2532','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:22','2022-12-20 23:25:22'),
-('2533','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:23','2022-12-20 23:25:23'),
-('2534','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:23','2022-12-20 23:25:23'),
-('2535','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:23','2022-12-20 23:25:23'),
-('2536','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:23','2022-12-20 23:25:23'),
-('2537','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:24','2022-12-20 23:25:24'),
-('2538','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:24','2022-12-20 23:25:24'),
-('2539','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:24','2022-12-20 23:25:24'),
-('2540','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:24','2022-12-20 23:25:24'),
-('2541','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:24','2022-12-20 23:25:24'),
-('2542','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2543','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2544','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2545','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2546','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2547','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2548','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2549','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:25','2022-12-20 23:25:25'),
-('2550','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2551','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2552','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2553','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2554','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2555','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2556','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:26','2022-12-20 23:25:26'),
-('2557','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2558','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2559','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2560','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2561','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2562','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2563','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2564','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:27','2022-12-20 23:25:27'),
-('2565','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2566','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2567','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2568','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2569','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2570','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2571','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:28','2022-12-20 23:25:28'),
-('2572','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2573','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2574','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2575','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2576','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2577','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2578','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:29','2022-12-20 23:25:29'),
-('2579','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2580','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2581','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2582','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2583','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2584','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2585','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:30','2022-12-20 23:25:30'),
-('2586','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:25:31','2022-12-20 23:25:31'),
-('2587','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:05','2022-12-20 23:26:05'),
-('2588','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2589','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2590','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2591','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2592','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2593','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2594','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:06','2022-12-20 23:26:06'),
-('2595','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2596','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2597','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2598','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2599','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2600','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07');
-INSERT INTO `ps_log` VALUES
-('2601','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2602','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:07','2022-12-20 23:26:07'),
-('2603','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2604','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2605','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2606','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2607','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2608','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2609','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:08','2022-12-20 23:26:08'),
-('2610','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2611','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2612','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2613','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2614','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2615','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2616','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:09','2022-12-20 23:26:09'),
-('2617','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2618','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2619','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2620','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2621','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2622','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2623','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:10','2022-12-20 23:26:10'),
-('2624','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2625','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2626','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2627','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2628','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2629','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:11','2022-12-20 23:26:11'),
-('2630','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2631','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2632','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2633','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2634','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2635','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2636','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2637','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:12','2022-12-20 23:26:12'),
-('2638','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2639','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2640','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2641','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2642','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2643','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2644','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:13','2022-12-20 23:26:13'),
-('2645','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2646','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2647','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2648','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2649','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2650','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2651','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2652','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:14','2022-12-20 23:26:14'),
-('2653','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2654','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2655','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2656','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2657','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2658','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2659','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:15','2022-12-20 23:26:15'),
-('2660','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2661','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2662','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2663','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2664','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2665','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2666','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2667','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:16','2022-12-20 23:26:16'),
-('2668','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2669','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2670','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2671','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2672','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2673','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2674','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:17','2022-12-20 23:26:17'),
-('2675','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2676','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2677','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2678','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2679','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2680','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2681','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:18','2022-12-20 23:26:18'),
-('2682','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:19','2022-12-20 23:26:19'),
-('2683','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:19','2022-12-20 23:26:19'),
-('2684','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:19','2022-12-20 23:26:19'),
-('2685','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:19','2022-12-20 23:26:19'),
-('2686','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:19','2022-12-20 23:26:19'),
-('2687','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2688','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2689','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2690','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2691','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2692','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:36','2022-12-20 23:26:36'),
-('2693','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:37','2022-12-20 23:26:37'),
-('2694','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:37','2022-12-20 23:26:37'),
-('2695','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:26:37','2022-12-20 23:26:37'),
-('2696','1','0','Products deleted: (1021).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:24','2022-12-20 23:27:24'),
-('2697','1','0','Products deleted: (1022).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:29','2022-12-20 23:27:29'),
-('2698','1','0','Products deleted: (1023).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:33','2022-12-20 23:27:33'),
-('2699','1','0','Products deleted: (1024).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:38','2022-12-20 23:27:38'),
-('2700','1','0','Products deleted: (1025).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:42','2022-12-20 23:27:42'),
-('2701','1','0','Products deleted: (1026).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:46','2022-12-20 23:27:46'),
-('2702','1','0','Products deleted: (1027).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:51','2022-12-20 23:27:51'),
-('2703','1','0','Products deleted: (1028).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:55','2022-12-20 23:27:55'),
-('2704','1','0','Products deleted: (1029).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:27:59','2022-12-20 23:27:59'),
-('2705','1','0','Products deleted: (1030).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:04','2022-12-20 23:28:04'),
-('2706','1','0','Products deleted: (1031).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:08','2022-12-20 23:28:08'),
-('2707','1','0','Products deleted: (1032).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:12','2022-12-20 23:28:12'),
-('2708','1','0','Products deleted: (1033).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:16','2022-12-20 23:28:16'),
-('2709','1','0','Products deleted: (1034).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:21','2022-12-20 23:28:21'),
-('2710','1','0','Products deleted: (1035).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:25','2022-12-20 23:28:25'),
-('2711','1','0','Products deleted: (1036).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:29','2022-12-20 23:28:29'),
-('2712','1','0','Products deleted: (1037).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:33','2022-12-20 23:28:33'),
-('2713','1','0','Products deleted: (1038).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:37','2022-12-20 23:28:37'),
-('2714','1','0','Products deleted: (1039).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:41','2022-12-20 23:28:41'),
-('2715','1','0','Products deleted: (1040).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:45','2022-12-20 23:28:45'),
-('2716','1','0','Products deleted: (1041).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:49','2022-12-20 23:28:49'),
-('2717','1','0','Products deleted: (1042).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:53','2022-12-20 23:28:53'),
-('2718','1','0','Products deleted: (1043).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:28:57','2022-12-20 23:28:57'),
-('2719','1','0','Products deleted: (1044).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:01','2022-12-20 23:29:01'),
-('2720','1','0','Products deleted: (1045).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:05','2022-12-20 23:29:05'),
-('2721','1','0','Products deleted: (1046).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:09','2022-12-20 23:29:09'),
-('2722','1','0','Products deleted: (1047).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:13','2022-12-20 23:29:13'),
-('2723','1','0','Products deleted: (1048).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:17','2022-12-20 23:29:17'),
-('2724','1','0','Products deleted: (1049).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:21','2022-12-20 23:29:21'),
-('2725','1','0','Products deleted: (1050).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:25','2022-12-20 23:29:25'),
-('2726','1','0','Products deleted: (1051).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:29','2022-12-20 23:29:29'),
-('2727','1','0','Products deleted: (1052).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:32','2022-12-20 23:29:32'),
-('2728','1','0','Products deleted: (1053).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:36','2022-12-20 23:29:36'),
-('2729','1','0','Products deleted: (1054).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:40','2022-12-20 23:29:40'),
-('2730','1','0','Products deleted: (1055).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:44','2022-12-20 23:29:44'),
-('2731','1','0','Products deleted: (1056).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:47','2022-12-20 23:29:47'),
-('2732','1','0','Products deleted: (1057).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:51','2022-12-20 23:29:51'),
-('2733','1','0','Products deleted: (1058).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:55','2022-12-20 23:29:55'),
-('2734','1','0','Products deleted: (1059).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:29:59','2022-12-20 23:29:59'),
-('2735','1','0','Products deleted: (1060).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:02','2022-12-20 23:30:02'),
-('2736','1','0','Products deleted: (1061).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:06','2022-12-20 23:30:06'),
-('2737','1','0','Products deleted: (1062).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:10','2022-12-20 23:30:10'),
-('2738','1','0','Products deleted: (1063).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:13','2022-12-20 23:30:13'),
-('2739','1','0','Products deleted: (1064).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:17','2022-12-20 23:30:17'),
-('2740','1','0','Products deleted: (1065).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:20','2022-12-20 23:30:20'),
-('2741','1','0','Products deleted: (1066).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:24','2022-12-20 23:30:24'),
-('2742','1','0','Products deleted: (1067).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:27','2022-12-20 23:30:27'),
-('2743','1','0','Products deleted: (1068).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:31','2022-12-20 23:30:31'),
-('2744','1','0','Products deleted: (1069).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:34','2022-12-20 23:30:34'),
-('2745','1','0','Products deleted: (1070).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:38','2022-12-20 23:30:38'),
-('2746','1','0','Products deleted: (1071).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:41','2022-12-20 23:30:41'),
-('2747','1','0','Products deleted: (1072).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:44','2022-12-20 23:30:44'),
-('2748','1','0','Products deleted: (1073).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:48','2022-12-20 23:30:48'),
-('2749','1','0','Products deleted: (1074).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:51','2022-12-20 23:30:51'),
-('2750','1','0','Products deleted: (1075).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:54','2022-12-20 23:30:54'),
-('2751','1','0','Products deleted: (1076).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:30:58','2022-12-20 23:30:58'),
-('2752','1','0','Products deleted: (1077).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:01','2022-12-20 23:31:01'),
-('2753','1','0','Products deleted: (1078).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:04','2022-12-20 23:31:04'),
-('2754','1','0','Products deleted: (1079).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:07','2022-12-20 23:31:07'),
-('2755','1','0','Products deleted: (1080).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:11','2022-12-20 23:31:11'),
-('2756','1','0','Products deleted: (1081).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:14','2022-12-20 23:31:14'),
-('2757','1','0','Products deleted: (1082).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:17','2022-12-20 23:31:17'),
-('2758','1','0','Products deleted: (1083).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:20','2022-12-20 23:31:20'),
-('2759','1','0','Products deleted: (1084).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:23','2022-12-20 23:31:23'),
-('2760','1','0','Products deleted: (1085).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:26','2022-12-20 23:31:26'),
-('2761','1','0','Products deleted: (1086).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:29','2022-12-20 23:31:29'),
-('2762','1','0','Products deleted: (1087).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:32','2022-12-20 23:31:32'),
-('2763','1','0','Products deleted: (1088).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:35','2022-12-20 23:31:35'),
-('2764','1','0','Products deleted: (1089).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:39','2022-12-20 23:31:39'),
-('2765','1','0','Products deleted: (1090).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:42','2022-12-20 23:31:42'),
-('2766','1','0','Products deleted: (1091).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:44','2022-12-20 23:31:44'),
-('2767','1','0','Products deleted: (1092).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:48','2022-12-20 23:31:48'),
-('2768','1','0','Products deleted: (1093).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:51','2022-12-20 23:31:51'),
-('2769','1','0','Products deleted: (1094).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:53','2022-12-20 23:31:53'),
-('2770','1','0','Products deleted: (1095).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:56','2022-12-20 23:31:56'),
-('2771','1','0','Products deleted: (1096).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:31:59','2022-12-20 23:31:59'),
-('2772','1','0','Products deleted: (1097).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:02','2022-12-20 23:32:02'),
-('2773','1','0','Products deleted: (1098).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:05','2022-12-20 23:32:05'),
-('2774','1','0','Products deleted: (1099).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:08','2022-12-20 23:32:08'),
-('2775','1','0','Products deleted: (1100).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:10','2022-12-20 23:32:10'),
-('2776','1','0','Products deleted: (1101).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:13','2022-12-20 23:32:13'),
-('2777','1','0','Products deleted: (1102).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:16','2022-12-20 23:32:16'),
-('2778','1','0','Products deleted: (1103).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:18','2022-12-20 23:32:18'),
-('2779','1','0','Products deleted: (1104).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:21','2022-12-20 23:32:21'),
-('2780','1','0','Products deleted: (1105).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:24','2022-12-20 23:32:24'),
-('2781','1','0','Products deleted: (1106).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:26','2022-12-20 23:32:26'),
-('2782','1','0','Products deleted: (1107).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:29','2022-12-20 23:32:29'),
-('2783','1','0','Products deleted: (1108).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:31','2022-12-20 23:32:31'),
-('2784','1','0','Products deleted: (1109).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:34','2022-12-20 23:32:34'),
-('2785','1','0','Products deleted: (1110).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:37','2022-12-20 23:32:37'),
-('2786','1','0','Products deleted: (1111).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:39','2022-12-20 23:32:39'),
-('2787','1','0','Products deleted: (1112).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:41','2022-12-20 23:32:41'),
-('2788','1','0','Products deleted: (1113).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:44','2022-12-20 23:32:44'),
-('2789','1','0','Products deleted: (1114).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:46','2022-12-20 23:32:46'),
-('2790','1','0','Products deleted: (1115).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:49','2022-12-20 23:32:49'),
-('2791','1','0','Products deleted: (1116).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:51','2022-12-20 23:32:51'),
-('2792','1','0','Products deleted: (1117).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:54','2022-12-20 23:32:54'),
-('2793','1','0','Products deleted: (1118).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:56','2022-12-20 23:32:56'),
-('2794','1','0','Products deleted: (1119).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:32:58','2022-12-20 23:32:58'),
-('2795','1','0','Products deleted: (1120).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:33:00','2022-12-20 23:33:00'),
-('2796','1','0','Products deleted: (1221).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:18','2022-12-20 23:38:18'),
-('2797','1','0','Products deleted: (1222).',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:19','2022-12-20 23:38:19'),
-('2798','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2799','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2800','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20');
-INSERT INTO `ps_log` VALUES
-('2801','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2802','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2803','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2804','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:20','2022-12-20 23:38:20'),
-('2805','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2806','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2807','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2808','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2809','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2810','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2811','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:21','2022-12-20 23:38:21'),
-('2812','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2813','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2814','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2815','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2816','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2817','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2818','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:22','2022-12-20 23:38:22'),
-('2819','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2820','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2821','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2822','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2823','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2824','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2825','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:23','2022-12-20 23:38:23'),
-('2826','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2827','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2828','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2829','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2830','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2831','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2832','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:24','2022-12-20 23:38:24'),
-('2833','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2834','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2835','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2836','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2837','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2838','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2839','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:25','2022-12-20 23:38:25'),
-('2840','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2841','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2842','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2843','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2844','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2845','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:26','2022-12-20 23:38:26'),
-('2846','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2847','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2848','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2849','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2850','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2851','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2852','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:27','2022-12-20 23:38:27'),
-('2853','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2854','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2855','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2856','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2857','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2858','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2859','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:28','2022-12-20 23:38:28'),
-('2860','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2861','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2862','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2863','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2864','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2865','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2866','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:29','2022-12-20 23:38:29'),
-('2867','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2868','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2869','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2870','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2871','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2872','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2873','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:30','2022-12-20 23:38:30'),
-('2874','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2875','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2876','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2877','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2878','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2879','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2880','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:31','2022-12-20 23:38:31'),
-('2881','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2882','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2883','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2884','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2885','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2886','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:32','2022-12-20 23:38:32'),
-('2887','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2888','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2889','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2890','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2891','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2892','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2893','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2894','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:33','2022-12-20 23:38:33'),
-('2895','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:38:34','2022-12-20 23:38:34'),
-('2896','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2897','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2898','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2899','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2900','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2901','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:51','2022-12-20 23:47:51'),
-('2902','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2903','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2904','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2905','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2906','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2907','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2908','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:52','2022-12-20 23:47:52'),
-('2909','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2910','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2911','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2912','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2913','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2914','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2915','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:53','2022-12-20 23:47:53'),
-('2916','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2917','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2918','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2919','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2920','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2921','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2922','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:54','2022-12-20 23:47:54'),
-('2923','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2924','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2925','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2926','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2927','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2928','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2929','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2930','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:55','2022-12-20 23:47:55'),
-('2931','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2932','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2933','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2934','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2935','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2936','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2937','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2938','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:56','2022-12-20 23:47:56'),
-('2939','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2940','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2941','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2942','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2943','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2944','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2945','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:57','2022-12-20 23:47:57'),
-('2946','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2947','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2948','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2949','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2950','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2951','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2952','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2953','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:58','2022-12-20 23:47:58'),
-('2954','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2955','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2956','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2957','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2958','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2959','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2960','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:47:59','2022-12-20 23:47:59'),
-('2961','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2962','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2963','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2964','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2965','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2966','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2967','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:00','2022-12-20 23:48:00'),
-('2968','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2969','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2970','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2971','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2972','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2973','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2974','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:01','2022-12-20 23:48:01'),
-('2975','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2976','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2977','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2978','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2979','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2980','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2981','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:02','2022-12-20 23:48:02'),
-('2982','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:03','2022-12-20 23:48:03'),
-('2983','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:03','2022-12-20 23:48:03'),
-('2984','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:03','2022-12-20 23:48:03'),
-('2985','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:03','2022-12-20 23:48:03'),
-('2986','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:03','2022-12-20 23:48:03'),
-('2987','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2988','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2989','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2990','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2991','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2992','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:04','2022-12-20 23:48:04'),
-('2993','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:05','2022-12-20 23:48:05'),
-('2994','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:05','2022-12-20 23:48:05'),
-('2995','2','0','Cannot delete many requested products.',NULL,'0','1',NULL,'1','0','1','2022-12-20 23:48:05','2022-12-20 23:48:05'),
-('2996','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-21 00:11:42','2022-12-21 00:11:42'),
-('2997','3','302','There was an error with the request. Code: 302',NULL,'0','1',NULL,'1','0','1','2022-12-21 00:11:44','2022-12-21 00:11:44'),
-('2998','1','0','Product modification','Product','1421','1',NULL,'1','0','1','2022-12-21 00:11:51','2022-12-21 00:11:51'),
-('2999','1','0','Product modification','Product','1421','1',NULL,'1','0','1','2022-12-21 00:21:57','2022-12-21 00:21:57'),
-('3000','1','0','Product modification','Product','1422','1',NULL,'1','0','1','2022-12-21 00:22:00','2022-12-21 00:22:00');
-INSERT INTO `ps_log` VALUES
-('3001','1','0','Product modification','Product','1423','1',NULL,'1','0','1','2022-12-21 00:22:01','2022-12-21 00:22:01'),
-('3002','1','0','Product modification','Product','1424','1',NULL,'1','0','1','2022-12-21 00:22:01','2022-12-21 00:22:01'),
-('3003','1','0','Product modification','Product','1425','1',NULL,'1','0','1','2022-12-21 00:22:02','2022-12-21 00:22:02'),
-('3004','1','0','Product modification','Product','1426','1',NULL,'1','0','1','2022-12-21 00:22:03','2022-12-21 00:22:03'),
-('3005','1','0','Product modification','Product','1427','1',NULL,'1','0','1','2022-12-21 00:22:04','2022-12-21 00:22:04'),
-('3006','1','0','Product modification','Product','1428','1',NULL,'1','0','1','2022-12-21 00:22:05','2022-12-21 00:22:05'),
-('3007','1','0','Product modification','Product','1429','1',NULL,'1','0','1','2022-12-21 00:22:06','2022-12-21 00:22:06'),
-('3008','1','0','Product modification','Product','1430','1',NULL,'1','0','1','2022-12-21 00:22:07','2022-12-21 00:22:07'),
-('3009','1','0','Product modification','Product','1431','1',NULL,'1','0','1','2022-12-21 00:22:08','2022-12-21 00:22:08'),
-('3010','1','0','Product modification','Product','1432','1',NULL,'1','0','1','2022-12-21 00:22:09','2022-12-21 00:22:09'),
-('3011','1','0','Product modification','Product','1433','1',NULL,'1','0','1','2022-12-21 00:22:10','2022-12-21 00:22:10'),
-('3012','1','0','Product modification','Product','1434','1',NULL,'1','0','1','2022-12-21 00:22:11','2022-12-21 00:22:11'),
-('3013','1','0','Product modification','Product','1435','1',NULL,'1','0','1','2022-12-21 00:22:12','2022-12-21 00:22:12'),
-('3014','1','0','Product modification','Product','1436','1',NULL,'1','0','1','2022-12-21 00:22:13','2022-12-21 00:22:13'),
-('3015','1','0','Product modification','Product','1437','1',NULL,'1','0','1','2022-12-21 00:22:14','2022-12-21 00:22:14'),
-('3016','1','0','Product modification','Product','1921','1',NULL,'1','0','1','2022-12-21 00:22:54','2022-12-21 00:22:54'),
-('3017','1','0','Product modification','Product','1920','1',NULL,'1','0','1','2022-12-21 00:22:56','2022-12-21 00:22:56'),
-('3018','1','0','Product modification','Product','1919','1',NULL,'1','0','1','2022-12-21 00:22:57','2022-12-21 00:22:57'),
-('3019','1','0','Product modification','Product','1918','1',NULL,'1','0','1','2022-12-21 00:22:58','2022-12-21 00:22:58'),
-('3020','1','0','Product modification','Product','1917','1',NULL,'1','0','1','2022-12-21 00:22:59','2022-12-21 00:22:59'),
-('3021','1','0','Product modification','Product','1916','1',NULL,'1','0','1','2022-12-21 00:23:01','2022-12-21 00:23:01'),
-('3022','1','0','Product modification','Product','1915','1',NULL,'1','0','1','2022-12-21 00:23:02','2022-12-21 00:23:02'),
-('3023','1','0','Product modification','Product','1914','1',NULL,'1','0','1','2022-12-21 00:23:03','2022-12-21 00:23:03'),
-('3024','1','0','Product modification','Product','1913','1',NULL,'1','0','1','2022-12-21 00:23:04','2022-12-21 00:23:04'),
-('3025','1','0','Product modification','Product','1912','1',NULL,'1','0','1','2022-12-21 00:23:06','2022-12-21 00:23:06'),
-('3026','1','0','Product modification','Product','1911','1',NULL,'1','0','1','2022-12-21 00:23:07','2022-12-21 00:23:07'),
-('3027','1','0','Product modification','Product','1909','1',NULL,'1','0','1','2022-12-21 00:23:08','2022-12-21 00:23:08'),
-('3028','1','0','Product modification','Product','1910','1',NULL,'1','0','1','2022-12-21 00:23:16','2022-12-21 00:23:16'),
-('3029','1','0','Product modification','Product','1908','1',NULL,'1','0','1','2022-12-21 00:23:54','2022-12-21 00:23:54'),
-('3030','1','0','Product modification','Product','1907','1',NULL,'1','0','1','2022-12-21 00:23:55','2022-12-21 00:23:55'),
-('3031','1','0','Product modification','Product','1906','1',NULL,'1','0','1','2022-12-21 00:23:56','2022-12-21 00:23:56'),
-('3032','1','0','Product modification','Product','1905','1',NULL,'1','0','1','2022-12-21 00:23:58','2022-12-21 00:23:58'),
-('3033','1','0','Product modification','Product','1904','1',NULL,'1','0','1','2022-12-21 00:23:59','2022-12-21 00:23:59'),
-('3034','1','0','Product modification','Product','1903','1',NULL,'1','0','1','2022-12-21 00:24:00','2022-12-21 00:24:00'),
-('3035','1','0','Product modification','Product','1902','1',NULL,'1','0','1','2022-12-21 00:24:01','2022-12-21 00:24:01'),
-('3036','1','0','Product modification','Product','1900','1',NULL,'1','0','1','2022-12-21 00:24:02','2022-12-21 00:24:02'),
-('3037','1','0','Product modification','Product','1899','1',NULL,'1','0','1','2022-12-21 00:24:03','2022-12-21 00:24:03'),
-('3038','1','0','Product modification','Product','1898','1',NULL,'1','0','1','2022-12-21 00:24:04','2022-12-21 00:24:04'),
-('3039','1','0','Product modification','Product','1897','1',NULL,'1','0','1','2022-12-21 00:24:06','2022-12-21 00:24:06'),
-('3040','1','0','Product modification','Product','1901','1',NULL,'1','0','1','2022-12-21 00:24:14','2022-12-21 00:24:14'),
-('3041','1','0','Product modification','Product','1896','1',NULL,'1','0','1','2022-12-21 00:24:19','2022-12-21 00:24:19'),
-('3042','1','0','Product modification','Product','1895','1',NULL,'1','0','1','2022-12-21 00:24:39','2022-12-21 00:24:39'),
-('3043','1','0','Product modification','Product','1894','1',NULL,'1','0','1','2022-12-21 00:24:40','2022-12-21 00:24:40'),
-('3044','1','0','Product modification','Product','1893','1',NULL,'1','0','1','2022-12-21 00:24:42','2022-12-21 00:24:42'),
-('3045','1','0','Product modification','Product','1892','1',NULL,'1','0','1','2022-12-21 00:24:43','2022-12-21 00:24:43'),
-('3046','1','0','Product modification','Product','1891','1',NULL,'1','0','1','2022-12-21 00:24:44','2022-12-21 00:24:44'),
-('3047','1','0','Product modification','Product','1890','1',NULL,'1','0','1','2022-12-21 00:24:45','2022-12-21 00:24:45'),
-('3048','1','0','Product modification','Product','1889','1',NULL,'1','0','1','2022-12-21 00:24:46','2022-12-21 00:24:46'),
-('3049','1','0','Product modification','Product','1888','1',NULL,'1','0','1','2022-12-21 00:24:48','2022-12-21 00:24:48'),
-('3050','1','0','Product modification','Product','1887','1',NULL,'1','0','1','2022-12-21 00:24:49','2022-12-21 00:24:49'),
-('3051','1','0','Product modification','Product','1885','1',NULL,'1','0','1','2022-12-21 00:24:50','2022-12-21 00:24:50'),
-('3052','1','0','Product modification','Product','1883','1',NULL,'1','0','1','2022-12-21 00:24:52','2022-12-21 00:24:52'),
-('3053','1','0','Product modification','Product','1884','1',NULL,'1','0','1','2022-12-21 00:25:01','2022-12-21 00:25:01'),
-('3054','1','0','Product modification','Product','1886','1',NULL,'1','0','1','2022-12-21 00:25:05','2022-12-21 00:25:05'),
-('3055','1','0','Product modification','Product','1882','1',NULL,'1','0','1','2022-12-21 00:25:22','2022-12-21 00:25:22'),
-('3056','1','0','Product modification','Product','1881','1',NULL,'1','0','1','2022-12-21 00:25:24','2022-12-21 00:25:24'),
-('3057','1','0','Product modification','Product','1880','1',NULL,'1','0','1','2022-12-21 00:25:25','2022-12-21 00:25:25'),
-('3058','1','0','Product modification','Product','1879','1',NULL,'1','0','1','2022-12-21 00:25:26','2022-12-21 00:25:26'),
-('3059','1','0','Product modification','Product','1878','1',NULL,'1','0','1','2022-12-21 00:25:27','2022-12-21 00:25:27'),
-('3060','1','0','Product modification','Product','1877','1',NULL,'1','0','1','2022-12-21 00:25:28','2022-12-21 00:25:28'),
-('3061','1','0','Product modification','Product','1876','1',NULL,'1','0','1','2022-12-21 00:25:29','2022-12-21 00:25:29'),
-('3062','1','0','Product modification','Product','1874','1',NULL,'1','0','1','2022-12-21 00:25:30','2022-12-21 00:25:30'),
-('3063','1','0','Product modification','Product','1872','1',NULL,'1','0','1','2022-12-21 00:25:31','2022-12-21 00:25:31'),
-('3064','1','0','Product modification','Product','1871','1',NULL,'1','0','1','2022-12-21 00:25:33','2022-12-21 00:25:33'),
-('3065','1','0','Product modification','Product','1870','1',NULL,'1','0','1','2022-12-21 00:25:34','2022-12-21 00:25:34'),
-('3066','1','0','Product modification','Product','1869','1',NULL,'1','0','1','2022-12-21 00:25:35','2022-12-21 00:25:35'),
-('3067','1','0','Product modification','Product','1875','1',NULL,'1','0','1','2022-12-21 00:25:45','2022-12-21 00:25:45'),
-('3068','1','0','Product modification','Product','1873','1',NULL,'1','0','1','2022-12-21 00:25:50','2022-12-21 00:25:50'),
-('3069','1','0','Product modification','Product','1868','1',NULL,'1','0','1','2022-12-21 00:26:07','2022-12-21 00:26:07'),
-('3070','1','0','Product modification','Product','1867','1',NULL,'1','0','1','2022-12-21 00:26:08','2022-12-21 00:26:08'),
-('3071','1','0','Product modification','Product','1865','1',NULL,'1','0','1','2022-12-21 00:26:09','2022-12-21 00:26:09'),
-('3072','1','0','Product modification','Product','1864','1',NULL,'1','0','1','2022-12-21 00:26:10','2022-12-21 00:26:10'),
-('3073','1','0','Product modification','Product','1863','1',NULL,'1','0','1','2022-12-21 00:26:12','2022-12-21 00:26:12'),
-('3074','1','0','Product modification','Product','1862','1',NULL,'1','0','1','2022-12-21 00:26:13','2022-12-21 00:26:13'),
-('3075','1','0','Product modification','Product','1861','1',NULL,'1','0','1','2022-12-21 00:26:14','2022-12-21 00:26:14'),
-('3076','1','0','Product modification','Product','1860','1',NULL,'1','0','1','2022-12-21 00:26:15','2022-12-21 00:26:15'),
-('3077','1','0','Product modification','Product','1859','1',NULL,'1','0','1','2022-12-21 00:26:16','2022-12-21 00:26:16'),
-('3078','1','0','Product modification','Product','1858','1',NULL,'1','0','1','2022-12-21 00:26:17','2022-12-21 00:26:17'),
-('3079','1','0','Product modification','Product','1857','1',NULL,'1','0','1','2022-12-21 00:26:19','2022-12-21 00:26:19'),
-('3080','1','0','Product modification','Product','1856','1',NULL,'1','0','1','2022-12-21 00:26:20','2022-12-21 00:26:20'),
-('3081','1','0','Product modification','Product','1866','1',NULL,'1','0','1','2022-12-21 00:26:27','2022-12-21 00:26:27'),
-('3082','1','0','Product modification','Product','1855','1',NULL,'1','0','1','2022-12-21 00:26:44','2022-12-21 00:26:44'),
-('3083','1','0','Product modification','Product','1854','1',NULL,'1','0','1','2022-12-21 00:26:45','2022-12-21 00:26:45'),
-('3084','1','0','Product modification','Product','1853','1',NULL,'1','0','1','2022-12-21 00:26:46','2022-12-21 00:26:46'),
-('3085','1','0','Product modification','Product','1851','1',NULL,'1','0','1','2022-12-21 00:26:47','2022-12-21 00:26:47'),
-('3086','1','0','Product modification','Product','1850','1',NULL,'1','0','1','2022-12-21 00:26:48','2022-12-21 00:26:48'),
-('3087','1','0','Product modification','Product','1849','1',NULL,'1','0','1','2022-12-21 00:26:50','2022-12-21 00:26:50'),
-('3088','1','0','Product modification','Product','1848','1',NULL,'1','0','1','2022-12-21 00:26:51','2022-12-21 00:26:51'),
-('3089','1','0','Product modification','Product','1847','1',NULL,'1','0','1','2022-12-21 00:26:52','2022-12-21 00:26:52'),
-('3090','1','0','Product modification','Product','1846','1',NULL,'1','0','1','2022-12-21 00:26:53','2022-12-21 00:26:53'),
-('3091','1','0','Product modification','Product','1845','1',NULL,'1','0','1','2022-12-21 00:26:54','2022-12-21 00:26:54'),
-('3092','1','0','Product modification','Product','1844','1',NULL,'1','0','1','2022-12-21 00:26:55','2022-12-21 00:26:55'),
-('3093','1','0','Product modification','Product','1843','1',NULL,'1','0','1','2022-12-21 00:26:56','2022-12-21 00:26:56'),
-('3094','1','0','Product modification','Product','1852','1',NULL,'1','0','1','2022-12-21 00:27:05','2022-12-21 00:27:05'),
-('3095','1','0','Product modification','Product','1842','1',NULL,'1','0','1','2022-12-21 00:27:34','2022-12-21 00:27:34'),
-('3096','1','0','Product modification','Product','1841','1',NULL,'1','0','1','2022-12-21 00:27:36','2022-12-21 00:27:36'),
-('3097','1','0','Product modification','Product','1840','1',NULL,'1','0','1','2022-12-21 00:27:37','2022-12-21 00:27:37'),
-('3098','1','0','Product modification','Product','1839','1',NULL,'1','0','1','2022-12-21 00:27:38','2022-12-21 00:27:38'),
-('3099','1','0','Product modification','Product','1838','1',NULL,'1','0','1','2022-12-21 00:27:39','2022-12-21 00:27:39'),
-('3100','1','0','Product modification','Product','1837','1',NULL,'1','0','1','2022-12-21 00:27:40','2022-12-21 00:27:40'),
-('3101','1','0','Product modification','Product','1836','1',NULL,'1','0','1','2022-12-21 00:27:42','2022-12-21 00:27:42'),
-('3102','1','0','Product modification','Product','1835','1',NULL,'1','0','1','2022-12-21 00:27:43','2022-12-21 00:27:43'),
-('3103','1','0','Product modification','Product','1834','1',NULL,'1','0','1','2022-12-21 00:27:44','2022-12-21 00:27:44'),
-('3104','1','0','Product modification','Product','1833','1',NULL,'1','0','1','2022-12-21 00:27:45','2022-12-21 00:27:45'),
-('3105','1','0','Product modification','Product','1832','1',NULL,'1','0','1','2022-12-21 00:27:46','2022-12-21 00:27:46'),
-('3106','1','0','Product modification','Product','1831','1',NULL,'1','0','1','2022-12-21 00:27:47','2022-12-21 00:27:47'),
-('3107','1','0','Product modification','Product','1830','1',NULL,'1','0','1','2022-12-21 00:27:48','2022-12-21 00:27:48'),
-('3108','1','0','Product modification','Product','1829','1',NULL,'1','0','1','2022-12-21 00:27:49','2022-12-21 00:27:49'),
-('3109','1','0','Product modification','Product','1828','1',NULL,'1','0','1','2022-12-21 00:27:50','2022-12-21 00:27:50'),
-('3110','1','0','Product modification','Product','1827','1',NULL,'1','0','1','2022-12-21 00:27:51','2022-12-21 00:27:51'),
-('3111','1','0','Product modification','Product','1826','1',NULL,'1','0','1','2022-12-21 00:27:53','2022-12-21 00:27:53'),
-('3112','1','0','Product modification','Product','1825','1',NULL,'1','0','1','2022-12-21 00:27:54','2022-12-21 00:27:54'),
-('3113','1','0','Product modification','Product','1824','1',NULL,'1','0','1','2022-12-21 00:27:55','2022-12-21 00:27:55'),
-('3114','1','0','Product modification','Product','1823','1',NULL,'1','0','1','2022-12-21 00:27:56','2022-12-21 00:27:56'),
-('3115','1','0','Product modification','Product','1822','1',NULL,'1','0','1','2022-12-21 00:27:59','2022-12-21 00:27:59'),
-('3116','1','0','Product modification','Product','1821','1',NULL,'1','0','1','2022-12-21 00:28:00','2022-12-21 00:28:00'),
-('3117','1','0','Product modification','Product','1721','1',NULL,'1','0','1','2022-12-21 00:28:48','2022-12-21 00:28:48'),
-('3118','1','0','Product modification','Product','1722','1',NULL,'1','0','1','2022-12-21 00:28:49','2022-12-21 00:28:49'),
-('3119','1','0','Product modification','Product','1723','1',NULL,'1','0','1','2022-12-21 00:28:50','2022-12-21 00:28:50'),
-('3120','1','0','Product modification','Product','1724','1',NULL,'1','0','1','2022-12-21 00:28:51','2022-12-21 00:28:51'),
-('3121','1','0','Product modification','Product','1725','1',NULL,'1','0','1','2022-12-21 00:28:52','2022-12-21 00:28:52'),
-('3122','1','0','Product modification','Product','1726','1',NULL,'1','0','1','2022-12-21 00:28:53','2022-12-21 00:28:53'),
-('3123','1','0','Product modification','Product','1727','1',NULL,'1','0','1','2022-12-21 00:28:55','2022-12-21 00:28:55'),
-('3124','1','0','Product modification','Product','1729','1',NULL,'1','0','1','2022-12-21 00:28:56','2022-12-21 00:28:56'),
-('3125','1','0','Product modification','Product','1730','1',NULL,'1','0','1','2022-12-21 00:28:57','2022-12-21 00:28:57'),
-('3126','1','0','Product modification','Product','1732','1',NULL,'1','0','1','2022-12-21 00:28:58','2022-12-21 00:28:58'),
-('3127','1','0','Product modification','Product','1733','1',NULL,'1','0','1','2022-12-21 00:28:59','2022-12-21 00:28:59'),
-('3128','1','0','Product modification','Product','1736','1',NULL,'1','0','1','2022-12-21 00:29:01','2022-12-21 00:29:01'),
-('3129','1','0','Product modification','Product','1737','1',NULL,'1','0','1','2022-12-21 00:29:02','2022-12-21 00:29:02'),
-('3130','1','0','Product modification','Product','1738','1',NULL,'1','0','1','2022-12-21 00:29:03','2022-12-21 00:29:03'),
-('3131','1','0','Product modification','Product','1740','1',NULL,'1','0','1','2022-12-21 00:29:04','2022-12-21 00:29:04'),
-('3132','1','0','Product modification','Product','1741','1',NULL,'1','0','1','2022-12-21 00:29:05','2022-12-21 00:29:05'),
-('3133','1','0','Product modification','Product','1742','1',NULL,'1','0','1','2022-12-21 00:29:06','2022-12-21 00:29:06'),
-('3134','1','0','Product modification','Product','1744','1',NULL,'1','0','1','2022-12-21 00:29:08','2022-12-21 00:29:08'),
-('3135','1','0','Product modification','Product','1745','1',NULL,'1','0','1','2022-12-21 00:29:09','2022-12-21 00:29:09'),
-('3136','1','0','Product modification','Product','1746','1',NULL,'1','0','1','2022-12-21 00:29:10','2022-12-21 00:29:10'),
-('3137','1','0','Product modification','Product','1747','1',NULL,'1','0','1','2022-12-21 00:29:11','2022-12-21 00:29:11'),
-('3138','1','0','Product modification','Product','1748','1',NULL,'1','0','1','2022-12-21 00:29:12','2022-12-21 00:29:12'),
-('3139','1','0','Product modification','Product','1749','1',NULL,'1','0','1','2022-12-21 00:29:13','2022-12-21 00:29:13'),
-('3140','1','0','Product modification','Product','1751','1',NULL,'1','0','1','2022-12-21 00:29:14','2022-12-21 00:29:14'),
-('3141','1','0','Product modification','Product','1752','1',NULL,'1','0','1','2022-12-21 00:29:16','2022-12-21 00:29:16'),
-('3142','1','0','Product modification','Product','1753','1',NULL,'1','0','1','2022-12-21 00:29:17','2022-12-21 00:29:17'),
-('3143','1','0','Product modification','Product','1755','1',NULL,'1','0','1','2022-12-21 00:29:18','2022-12-21 00:29:18'),
-('3144','1','0','Product modification','Product','1756','1',NULL,'1','0','1','2022-12-21 00:29:19','2022-12-21 00:29:19'),
-('3145','1','0','Product modification','Product','1757','1',NULL,'1','0','1','2022-12-21 00:29:20','2022-12-21 00:29:20'),
-('3146','1','0','Product modification','Product','1758','1',NULL,'1','0','1','2022-12-21 00:29:21','2022-12-21 00:29:21'),
-('3147','1','0','Product modification','Product','1759','1',NULL,'1','0','1','2022-12-21 00:29:22','2022-12-21 00:29:22'),
-('3148','1','0','Product modification','Product','1760','1',NULL,'1','0','1','2022-12-21 00:29:24','2022-12-21 00:29:24'),
-('3149','1','0','Product modification','Product','1761','1',NULL,'1','0','1','2022-12-21 00:30:03','2022-12-21 00:30:03'),
-('3150','1','0','Product modification','Product','1762','1',NULL,'1','0','1','2022-12-21 00:30:04','2022-12-21 00:30:04'),
-('3151','1','0','Product modification','Product','1763','1',NULL,'1','0','1','2022-12-21 00:30:05','2022-12-21 00:30:05'),
-('3152','1','0','Product modification','Product','1764','1',NULL,'1','0','1','2022-12-21 00:30:06','2022-12-21 00:30:06'),
-('3153','1','0','Product modification','Product','1765','1',NULL,'1','0','1','2022-12-21 00:30:07','2022-12-21 00:30:07'),
-('3154','1','0','Product modification','Product','1766','1',NULL,'1','0','1','2022-12-21 00:30:08','2022-12-21 00:30:08'),
-('3155','1','0','Product modification','Product','1768','1',NULL,'1','0','1','2022-12-21 00:30:09','2022-12-21 00:30:09'),
-('3156','1','0','Product modification','Product','1769','1',NULL,'1','0','1','2022-12-21 00:30:10','2022-12-21 00:30:10'),
-('3157','1','0','Product modification','Product','1770','1',NULL,'1','0','1','2022-12-21 00:30:11','2022-12-21 00:30:11'),
-('3158','1','0','Product modification','Product','1771','1',NULL,'1','0','1','2022-12-21 00:30:13','2022-12-21 00:30:13'),
-('3159','1','0','Product modification','Product','1772','1',NULL,'1','0','1','2022-12-21 00:30:14','2022-12-21 00:30:14'),
-('3160','1','0','Product modification','Product','1773','1',NULL,'1','0','1','2022-12-21 00:30:14','2022-12-21 00:30:14'),
-('3161','1','0','Product modification','Product','1774','1',NULL,'1','0','1','2022-12-21 00:30:16','2022-12-21 00:30:16'),
-('3162','1','0','Product modification','Product','1775','1',NULL,'1','0','1','2022-12-21 00:30:17','2022-12-21 00:30:17'),
-('3163','1','0','Product modification','Product','1776','1',NULL,'1','0','1','2022-12-21 00:30:18','2022-12-21 00:30:18'),
-('3164','1','0','Product modification','Product','1777','1',NULL,'1','0','1','2022-12-21 00:30:19','2022-12-21 00:30:19'),
-('3165','1','0','Product modification','Product','1778','1',NULL,'1','0','1','2022-12-21 00:30:20','2022-12-21 00:30:20'),
-('3166','1','0','Product modification','Product','1779','1',NULL,'1','0','1','2022-12-21 00:30:21','2022-12-21 00:30:21'),
-('3167','1','0','Product modification','Product','1780','1',NULL,'1','0','1','2022-12-21 00:30:22','2022-12-21 00:30:22'),
-('3168','1','0','Product modification','Product','1781','1',NULL,'1','0','1','2022-12-21 00:30:23','2022-12-21 00:30:23'),
-('3169','1','0','Product modification','Product','1782','1',NULL,'1','0','1','2022-12-21 00:30:24','2022-12-21 00:30:24'),
-('3170','1','0','Product modification','Product','1783','1',NULL,'1','0','1','2022-12-21 00:30:25','2022-12-21 00:30:25'),
-('3171','1','0','Product modification','Product','1784','1',NULL,'1','0','1','2022-12-21 00:30:26','2022-12-21 00:30:26'),
-('3172','1','0','Product modification','Product','1785','1',NULL,'1','0','1','2022-12-21 00:30:27','2022-12-21 00:30:27'),
-('3173','1','0','Product modification','Product','1786','1',NULL,'1','0','1','2022-12-21 00:30:28','2022-12-21 00:30:28'),
-('3174','1','0','Product modification','Product','1787','1',NULL,'1','0','1','2022-12-21 00:30:29','2022-12-21 00:30:29'),
-('3175','1','0','Product modification','Product','1789','1',NULL,'1','0','1','2022-12-21 00:30:31','2022-12-21 00:30:31'),
-('3176','1','0','Product modification','Product','1790','1',NULL,'1','0','1','2022-12-21 00:30:32','2022-12-21 00:30:32'),
-('3177','1','0','Product modification','Product','1791','1',NULL,'1','0','1','2022-12-21 00:30:33','2022-12-21 00:30:33'),
-('3178','1','0','Product modification','Product','1792','1',NULL,'1','0','1','2022-12-21 00:30:34','2022-12-21 00:30:34'),
-('3179','1','0','Product modification','Product','1793','1',NULL,'1','0','1','2022-12-21 00:30:35','2022-12-21 00:30:35'),
-('3180','1','0','Product modification','Product','1794','1',NULL,'1','0','1','2022-12-21 00:30:36','2022-12-21 00:30:36'),
-('3181','1','0','Product modification','Product','1795','1',NULL,'1','0','1','2022-12-21 00:31:09','2022-12-21 00:31:09'),
-('3182','1','0','Product modification','Product','1796','1',NULL,'1','0','1','2022-12-21 00:31:11','2022-12-21 00:31:11'),
-('3183','1','0','Product modification','Product','1797','1',NULL,'1','0','1','2022-12-21 00:31:12','2022-12-21 00:31:12'),
-('3184','1','0','Product modification','Product','1798','1',NULL,'1','0','1','2022-12-21 00:31:13','2022-12-21 00:31:13'),
-('3185','1','0','Product modification','Product','1799','1',NULL,'1','0','1','2022-12-21 00:31:14','2022-12-21 00:31:14'),
-('3186','1','0','Product modification','Product','1800','1',NULL,'1','0','1','2022-12-21 00:31:16','2022-12-21 00:31:16'),
-('3187','1','0','Product modification','Product','1801','1',NULL,'1','0','1','2022-12-21 00:31:17','2022-12-21 00:31:17'),
-('3188','1','0','Product modification','Product','1802','1',NULL,'1','0','1','2022-12-21 00:31:18','2022-12-21 00:31:18'),
-('3189','1','0','Product modification','Product','1803','1',NULL,'1','0','1','2022-12-21 00:31:19','2022-12-21 00:31:19'),
-('3190','1','0','Product modification','Product','1804','1',NULL,'1','0','1','2022-12-21 00:31:20','2022-12-21 00:31:20'),
-('3191','1','0','Product modification','Product','1805','1',NULL,'1','0','1','2022-12-21 00:31:21','2022-12-21 00:31:21'),
-('3192','1','0','Product modification','Product','1806','1',NULL,'1','0','1','2022-12-21 00:31:22','2022-12-21 00:31:22'),
-('3193','1','0','Product modification','Product','1807','1',NULL,'1','0','1','2022-12-21 00:31:23','2022-12-21 00:31:23'),
-('3194','1','0','Product modification','Product','1809','1',NULL,'1','0','1','2022-12-21 00:31:24','2022-12-21 00:31:24'),
-('3195','1','0','Product modification','Product','1810','1',NULL,'1','0','1','2022-12-21 00:31:25','2022-12-21 00:31:25'),
-('3196','1','0','Product modification','Product','1811','1',NULL,'1','0','1','2022-12-21 00:31:26','2022-12-21 00:31:26'),
-('3197','1','0','Product modification','Product','1812','1',NULL,'1','0','1','2022-12-21 00:31:28','2022-12-21 00:31:28'),
-('3198','1','0','Product modification','Product','1813','1',NULL,'1','0','1','2022-12-21 00:31:29','2022-12-21 00:31:29'),
-('3199','1','0','Product modification','Product','1814','1',NULL,'1','0','1','2022-12-21 00:31:30','2022-12-21 00:31:30'),
-('3200','1','0','Product modification','Product','1815','1',NULL,'1','0','1','2022-12-21 00:31:31','2022-12-21 00:31:31');
-INSERT INTO `ps_log` VALUES
-('3201','1','0','Product modification','Product','1816','1',NULL,'1','0','1','2022-12-21 00:31:32','2022-12-21 00:31:32'),
-('3202','1','0','Product modification','Product','1817','1',NULL,'1','0','1','2022-12-21 00:31:33','2022-12-21 00:31:33'),
-('3203','1','0','Product modification','Product','1818','1',NULL,'1','0','1','2022-12-21 00:31:34','2022-12-21 00:31:34'),
-('3204','1','0','Product modification','Product','1819','1',NULL,'1','0','1','2022-12-21 00:31:36','2022-12-21 00:31:36'),
-('3205','1','0','Product modification','Product','1820','1',NULL,'1','0','1','2022-12-21 00:31:37','2022-12-21 00:31:37'),
-('3206','1','0','Product modification','Product','1808','1',NULL,'1','0','1','2022-12-21 00:32:16','2022-12-21 00:32:16'),
-('3207','1','0','Product modification','Product','1788','1',NULL,'1','0','1','2022-12-21 00:32:20','2022-12-21 00:32:20'),
-('3208','1','0','Product modification','Product','1767','1',NULL,'1','0','1','2022-12-21 00:32:25','2022-12-21 00:32:25'),
-('3209','1','0','Product modification','Product','1750','1',NULL,'1','0','1','2022-12-21 00:32:29','2022-12-21 00:32:29'),
-('3210','1','0','Product modification','Product','1743','1',NULL,'1','0','1','2022-12-21 00:32:34','2022-12-21 00:32:34'),
-('3211','1','0','Product modification','Product','1739','1',NULL,'1','0','1','2022-12-21 00:32:39','2022-12-21 00:32:39'),
-('3212','1','0','Product modification','Product','1735','1',NULL,'1','0','1','2022-12-21 00:32:50','2022-12-21 00:32:50'),
-('3213','1','0','Product modification','Product','1734','1',NULL,'1','0','1','2022-12-21 00:32:54','2022-12-21 00:32:54'),
-('3214','1','0','Product modification','Product','1731','1',NULL,'1','0','1','2022-12-21 00:32:59','2022-12-21 00:32:59'),
-('3215','1','0','Product modification','Product','1728','1',NULL,'1','0','1','2022-12-21 00:33:03','2022-12-21 00:33:03'),
-('3216','1','0','Product modification','Product','1621','1',NULL,'1','0','1','2022-12-21 00:34:10','2022-12-21 00:34:10'),
-('3217','1','0','Product modification','Product','1622','1',NULL,'1','0','1','2022-12-21 00:34:12','2022-12-21 00:34:12'),
-('3218','1','0','Product modification','Product','1623','1',NULL,'1','0','1','2022-12-21 00:34:13','2022-12-21 00:34:13'),
-('3219','1','0','Product modification','Product','1624','1',NULL,'1','0','1','2022-12-21 00:34:14','2022-12-21 00:34:14'),
-('3220','1','0','Product modification','Product','1625','1',NULL,'1','0','1','2022-12-21 00:34:15','2022-12-21 00:34:15'),
-('3221','1','0','Product modification','Product','1626','1',NULL,'1','0','1','2022-12-21 00:34:16','2022-12-21 00:34:16'),
-('3222','1','0','Product modification','Product','1627','1',NULL,'1','0','1','2022-12-21 00:34:17','2022-12-21 00:34:17'),
-('3223','1','0','Product modification','Product','1628','1',NULL,'1','0','1','2022-12-21 00:34:18','2022-12-21 00:34:18'),
-('3224','1','0','Product modification','Product','1629','1',NULL,'1','0','1','2022-12-21 00:34:19','2022-12-21 00:34:19'),
-('3225','1','0','Product modification','Product','1630','1',NULL,'1','0','1','2022-12-21 00:34:21','2022-12-21 00:34:21'),
-('3226','1','0','Product modification','Product','1631','1',NULL,'1','0','1','2022-12-21 00:34:22','2022-12-21 00:34:22'),
-('3227','1','0','Product modification','Product','1632','1',NULL,'1','0','1','2022-12-21 00:34:23','2022-12-21 00:34:23'),
-('3228','1','0','Product modification','Product','1633','1',NULL,'1','0','1','2022-12-21 00:34:24','2022-12-21 00:34:24'),
-('3229','1','0','Product modification','Product','1634','1',NULL,'1','0','1','2022-12-21 00:34:25','2022-12-21 00:34:25'),
-('3230','1','0','Product modification','Product','1635','1',NULL,'1','0','1','2022-12-21 00:34:26','2022-12-21 00:34:26'),
-('3231','1','0','Product modification','Product','1636','1',NULL,'1','0','1','2022-12-21 00:34:28','2022-12-21 00:34:28'),
-('3232','1','0','Product modification','Product','1637','1',NULL,'1','0','1','2022-12-21 00:34:29','2022-12-21 00:34:29'),
-('3233','1','0','Product modification','Product','1638','1',NULL,'1','0','1','2022-12-21 00:34:30','2022-12-21 00:34:30'),
-('3234','1','0','Product modification','Product','1639','1',NULL,'1','0','1','2022-12-21 00:34:31','2022-12-21 00:34:31'),
-('3235','1','0','Product modification','Product','1641','1',NULL,'1','0','1','2022-12-21 00:34:32','2022-12-21 00:34:32'),
-('3236','1','0','Product modification','Product','1642','1',NULL,'1','0','1','2022-12-21 00:34:33','2022-12-21 00:34:33'),
-('3237','1','0','Product modification','Product','1643','1',NULL,'1','0','1','2022-12-21 00:34:35','2022-12-21 00:34:35'),
-('3238','1','0','Product modification','Product','1644','1',NULL,'1','0','1','2022-12-21 00:34:36','2022-12-21 00:34:36'),
-('3239','1','0','Product modification','Product','1645','1',NULL,'1','0','1','2022-12-21 00:34:37','2022-12-21 00:34:37'),
-('3240','1','0','Product modification','Product','1646','1',NULL,'1','0','1','2022-12-21 00:34:38','2022-12-21 00:34:38'),
-('3241','1','0','Product modification','Product','1647','1',NULL,'1','0','1','2022-12-21 00:34:39','2022-12-21 00:34:39'),
-('3242','1','0','Product modification','Product','1648','1',NULL,'1','0','1','2022-12-21 00:34:40','2022-12-21 00:34:40'),
-('3243','1','0','Product modification','Product','1649','1',NULL,'1','0','1','2022-12-21 00:34:41','2022-12-21 00:34:41'),
-('3244','1','0','Product modification','Product','1650','1',NULL,'1','0','1','2022-12-21 00:34:42','2022-12-21 00:34:42'),
-('3245','1','0','Product modification','Product','1651','1',NULL,'1','0','1','2022-12-21 00:34:44','2022-12-21 00:34:44'),
-('3246','1','0','Product modification','Product','1652','1',NULL,'1','0','1','2022-12-21 00:34:45','2022-12-21 00:34:45'),
-('3247','1','0','Product modification','Product','1653','1',NULL,'1','0','1','2022-12-21 00:34:46','2022-12-21 00:34:46'),
-('3248','1','0','Product modification','Product','1654','1',NULL,'1','0','1','2022-12-21 00:34:47','2022-12-21 00:34:47'),
-('3249','1','0','Product modification','Product','1655','1',NULL,'1','0','1','2022-12-21 00:34:48','2022-12-21 00:34:48'),
-('3250','1','0','Product modification','Product','1656','1',NULL,'1','0','1','2022-12-21 00:34:49','2022-12-21 00:34:49'),
-('3251','1','0','Product modification','Product','1657','1',NULL,'1','0','1','2022-12-21 00:34:51','2022-12-21 00:34:51'),
-('3252','1','0','Product modification','Product','1658','1',NULL,'1','0','1','2022-12-21 00:34:52','2022-12-21 00:34:52'),
-('3253','1','0','Product modification','Product','1659','1',NULL,'1','0','1','2022-12-21 00:34:53','2022-12-21 00:34:53'),
-('3254','1','0','Product modification','Product','1660','1',NULL,'1','0','1','2022-12-21 00:34:54','2022-12-21 00:34:54'),
-('3255','1','0','Product modification','Product','1661','1',NULL,'1','0','1','2022-12-21 00:34:55','2022-12-21 00:34:55'),
-('3256','1','0','Product modification','Product','1662','1',NULL,'1','0','1','2022-12-21 00:34:57','2022-12-21 00:34:57'),
-('3257','1','0','Product modification','Product','1663','1',NULL,'1','0','1','2022-12-21 00:34:58','2022-12-21 00:34:58'),
-('3258','1','0','Product modification','Product','1664','1',NULL,'1','0','1','2022-12-21 00:34:59','2022-12-21 00:34:59'),
-('3259','1','0','Product modification','Product','1665','1',NULL,'1','0','1','2022-12-21 00:35:00','2022-12-21 00:35:00'),
-('3260','1','0','Product modification','Product','1666','1',NULL,'1','0','1','2022-12-21 00:35:01','2022-12-21 00:35:01'),
-('3261','1','0','Product modification','Product','1667','1',NULL,'1','0','1','2022-12-21 00:35:03','2022-12-21 00:35:03'),
-('3262','1','0','Product modification','Product','1668','1',NULL,'1','0','1','2022-12-21 00:35:04','2022-12-21 00:35:04'),
-('3263','1','0','Product modification','Product','1669','1',NULL,'1','0','1','2022-12-21 00:35:05','2022-12-21 00:35:05'),
-('3264','1','0','Product modification','Product','1670','1',NULL,'1','0','1','2022-12-21 00:35:06','2022-12-21 00:35:06'),
-('3265','1','0','Product modification','Product','1671','1',NULL,'1','0','1','2022-12-21 00:35:08','2022-12-21 00:35:08'),
-('3266','1','0','Product modification','Product','1672','1',NULL,'1','0','1','2022-12-21 00:35:56','2022-12-21 00:35:56'),
-('3267','1','0','Product modification','Product','1673','1',NULL,'1','0','1','2022-12-21 00:35:58','2022-12-21 00:35:58'),
-('3268','1','0','Product modification','Product','1674','1',NULL,'1','0','1','2022-12-21 00:35:59','2022-12-21 00:35:59'),
-('3269','1','0','Product modification','Product','1675','1',NULL,'1','0','1','2022-12-21 00:36:00','2022-12-21 00:36:00'),
-('3270','1','0','Product modification','Product','1676','1',NULL,'1','0','1','2022-12-21 00:36:01','2022-12-21 00:36:01'),
-('3271','1','0','Product modification','Product','1677','1',NULL,'1','0','1','2022-12-21 00:36:02','2022-12-21 00:36:02'),
-('3272','1','0','Product modification','Product','1679','1',NULL,'1','0','1','2022-12-21 00:36:03','2022-12-21 00:36:03'),
-('3273','1','0','Product modification','Product','1680','1',NULL,'1','0','1','2022-12-21 00:36:04','2022-12-21 00:36:04'),
-('3274','1','0','Product modification','Product','1681','1',NULL,'1','0','1','2022-12-21 00:36:06','2022-12-21 00:36:06'),
-('3275','1','0','Product modification','Product','1682','1',NULL,'1','0','1','2022-12-21 00:36:07','2022-12-21 00:36:07'),
-('3276','1','0','Product modification','Product','1683','1',NULL,'1','0','1','2022-12-21 00:36:08','2022-12-21 00:36:08'),
-('3277','1','0','Product modification','Product','1684','1',NULL,'1','0','1','2022-12-21 00:36:09','2022-12-21 00:36:09'),
-('3278','1','0','Product modification','Product','1685','1',NULL,'1','0','1','2022-12-21 00:36:10','2022-12-21 00:36:10'),
-('3279','1','0','Product modification','Product','1686','1',NULL,'1','0','1','2022-12-21 00:36:11','2022-12-21 00:36:11'),
-('3280','1','0','Product modification','Product','1687','1',NULL,'1','0','1','2022-12-21 00:36:13','2022-12-21 00:36:13'),
-('3281','1','0','Product modification','Product','1688','1',NULL,'1','0','1','2022-12-21 00:36:14','2022-12-21 00:36:14'),
-('3282','1','0','Product modification','Product','1689','1',NULL,'1','0','1','2022-12-21 00:36:15','2022-12-21 00:36:15'),
-('3283','1','0','Product modification','Product','1690','1',NULL,'1','0','1','2022-12-21 00:36:16','2022-12-21 00:36:16'),
-('3284','1','0','Product modification','Product','1691','1',NULL,'1','0','1','2022-12-21 00:36:17','2022-12-21 00:36:17'),
-('3285','1','0','Product modification','Product','1693','1',NULL,'1','0','1','2022-12-21 00:36:18','2022-12-21 00:36:18'),
-('3286','1','0','Product modification','Product','1694','1',NULL,'1','0','1','2022-12-21 00:36:20','2022-12-21 00:36:20'),
-('3287','1','0','Product modification','Product','1695','1',NULL,'1','0','1','2022-12-21 00:36:21','2022-12-21 00:36:21'),
-('3288','1','0','Product modification','Product','1696','1',NULL,'1','0','1','2022-12-21 00:36:22','2022-12-21 00:36:22'),
-('3289','1','0','Product modification','Product','1697','1',NULL,'1','0','1','2022-12-21 00:36:23','2022-12-21 00:36:23'),
-('3290','1','0','Product modification','Product','1698','1',NULL,'1','0','1','2022-12-21 00:36:24','2022-12-21 00:36:24'),
-('3291','1','0','Product modification','Product','1700','1',NULL,'1','0','1','2022-12-21 00:36:25','2022-12-21 00:36:25'),
-('3292','1','0','Product modification','Product','1701','1',NULL,'1','0','1','2022-12-21 00:36:27','2022-12-21 00:36:27'),
-('3293','1','0','Product modification','Product','1702','1',NULL,'1','0','1','2022-12-21 00:36:28','2022-12-21 00:36:28'),
-('3294','1','0','Product modification','Product','1703','1',NULL,'1','0','1','2022-12-21 00:36:29','2022-12-21 00:36:29'),
-('3295','1','0','Product modification','Product','1704','1',NULL,'1','0','1','2022-12-21 00:36:30','2022-12-21 00:36:30'),
-('3296','1','0','Product modification','Product','1706','1',NULL,'1','0','1','2022-12-21 00:36:31','2022-12-21 00:36:31'),
-('3297','1','0','Product modification','Product','1707','1',NULL,'1','0','1','2022-12-21 00:36:33','2022-12-21 00:36:33'),
-('3298','1','0','Product modification','Product','1708','1',NULL,'1','0','1','2022-12-21 00:36:34','2022-12-21 00:36:34'),
-('3299','1','0','Product modification','Product','1709','1',NULL,'1','0','1','2022-12-21 00:36:35','2022-12-21 00:36:35'),
-('3300','1','0','Product modification','Product','1710','1',NULL,'1','0','1','2022-12-21 00:36:36','2022-12-21 00:36:36'),
-('3301','1','0','Product modification','Product','1711','1',NULL,'1','0','1','2022-12-21 00:36:38','2022-12-21 00:36:38'),
-('3302','1','0','Product modification','Product','1712','1',NULL,'1','0','1','2022-12-21 00:36:39','2022-12-21 00:36:39'),
-('3303','1','0','Product modification','Product','1713','1',NULL,'1','0','1','2022-12-21 00:36:40','2022-12-21 00:36:40'),
-('3304','1','0','Product modification','Product','1714','1',NULL,'1','0','1','2022-12-21 00:36:41','2022-12-21 00:36:41'),
-('3305','1','0','Product modification','Product','1715','1',NULL,'1','0','1','2022-12-21 00:36:42','2022-12-21 00:36:42'),
-('3306','1','0','Product modification','Product','1716','1',NULL,'1','0','1','2022-12-21 00:36:43','2022-12-21 00:36:43'),
-('3307','1','0','Product modification','Product','1717','1',NULL,'1','0','1','2022-12-21 00:36:45','2022-12-21 00:36:45'),
-('3308','1','0','Product modification','Product','1718','1',NULL,'1','0','1','2022-12-21 00:36:46','2022-12-21 00:36:46'),
-('3309','1','0','Product modification','Product','1719','1',NULL,'1','0','1','2022-12-21 00:36:47','2022-12-21 00:36:47'),
-('3310','1','0','Product modification','Product','1720','1',NULL,'1','0','1','2022-12-21 00:36:48','2022-12-21 00:36:48'),
-('3311','1','0','Product modification','Product','1640','1',NULL,'1','0','1','2022-12-21 00:37:15','2022-12-21 00:37:15'),
-('3312','1','0','Product modification','Product','1705','1',NULL,'1','0','1','2022-12-21 00:37:20','2022-12-21 00:37:20'),
-('3313','1','0','Product modification','Product','1699','1',NULL,'1','0','1','2022-12-21 00:37:24','2022-12-21 00:37:24'),
-('3314','1','0','Product modification','Product','1692','1',NULL,'1','0','1','2022-12-21 00:37:28','2022-12-21 00:37:28'),
-('3315','1','0','Product modification','Product','1678','1',NULL,'1','0','1','2022-12-21 00:37:32','2022-12-21 00:37:32'),
-('3316','1','0','Product modification','Product','1640','1',NULL,'1','0','1','2022-12-21 00:37:35','2022-12-21 00:37:35'),
-('3317','1','0','Product modification','Product','1521','1',NULL,'1','0','1','2022-12-21 00:38:48','2022-12-21 00:38:48'),
-('3318','1','0','Product modification','Product','1522','1',NULL,'1','0','1','2022-12-21 00:38:50','2022-12-21 00:38:50'),
-('3319','1','0','Product modification','Product','1523','1',NULL,'1','0','1','2022-12-21 00:38:51','2022-12-21 00:38:51'),
-('3320','1','0','Product modification','Product','1524','1',NULL,'1','0','1','2022-12-21 00:38:52','2022-12-21 00:38:52'),
-('3321','1','0','Product modification','Product','1525','1',NULL,'1','0','1','2022-12-21 00:38:53','2022-12-21 00:38:53'),
-('3322','1','0','Product modification','Product','1526','1',NULL,'1','0','1','2022-12-21 00:38:55','2022-12-21 00:38:55'),
-('3323','1','0','Product modification','Product','1527','1',NULL,'1','0','1','2022-12-21 00:38:56','2022-12-21 00:38:56'),
-('3324','1','0','Product modification','Product','1528','1',NULL,'1','0','1','2022-12-21 00:38:57','2022-12-21 00:38:57'),
-('3325','1','0','Product modification','Product','1529','1',NULL,'1','0','1','2022-12-21 00:38:58','2022-12-21 00:38:58'),
-('3326','1','0','Product modification','Product','1530','1',NULL,'1','0','1','2022-12-21 00:38:59','2022-12-21 00:38:59'),
-('3327','1','0','Product modification','Product','1531','1',NULL,'1','0','1','2022-12-21 00:39:00','2022-12-21 00:39:00'),
-('3328','1','0','Product modification','Product','1532','1',NULL,'1','0','1','2022-12-21 00:39:01','2022-12-21 00:39:01'),
-('3329','1','0','Product modification','Product','1533','1',NULL,'1','0','1','2022-12-21 00:39:02','2022-12-21 00:39:02'),
-('3330','1','0','Product modification','Product','1534','1',NULL,'1','0','1','2022-12-21 00:39:04','2022-12-21 00:39:04'),
-('3331','1','0','Product modification','Product','1535','1',NULL,'1','0','1','2022-12-21 00:39:05','2022-12-21 00:39:05'),
-('3332','1','0','Product modification','Product','1536','1',NULL,'1','0','1','2022-12-21 00:39:06','2022-12-21 00:39:06'),
-('3333','1','0','Product modification','Product','1537','1',NULL,'1','0','1','2022-12-21 00:39:07','2022-12-21 00:39:07'),
-('3334','1','0','Product modification','Product','1538','1',NULL,'1','0','1','2022-12-21 00:39:08','2022-12-21 00:39:08'),
-('3335','1','0','Product modification','Product','1539','1',NULL,'1','0','1','2022-12-21 00:39:10','2022-12-21 00:39:10'),
-('3336','1','0','Product modification','Product','1540','1',NULL,'1','0','1','2022-12-21 00:39:11','2022-12-21 00:39:11'),
-('3337','1','0','Product modification','Product','1541','1',NULL,'1','0','1','2022-12-21 00:39:12','2022-12-21 00:39:12'),
-('3338','1','0','Product modification','Product','1542','1',NULL,'1','0','1','2022-12-21 00:39:13','2022-12-21 00:39:13'),
-('3339','1','0','Product modification','Product','1544','1',NULL,'1','0','1','2022-12-21 00:39:14','2022-12-21 00:39:14'),
-('3340','1','0','Product modification','Product','1545','1',NULL,'1','0','1','2022-12-21 00:39:16','2022-12-21 00:39:16'),
-('3341','1','0','Product modification','Product','1546','1',NULL,'1','0','1','2022-12-21 00:39:17','2022-12-21 00:39:17'),
-('3342','1','0','Product modification','Product','1547','1',NULL,'1','0','1','2022-12-21 00:39:18','2022-12-21 00:39:18'),
-('3343','1','0','Product modification','Product','1548','1',NULL,'1','0','1','2022-12-21 00:39:19','2022-12-21 00:39:19'),
-('3344','1','0','Product modification','Product','1549','1',NULL,'1','0','1','2022-12-21 00:39:20','2022-12-21 00:39:20'),
-('3345','1','0','Product modification','Product','1550','1',NULL,'1','0','1','2022-12-21 00:39:21','2022-12-21 00:39:21'),
-('3346','1','0','Product modification','Product','1551','1',NULL,'1','0','1','2022-12-21 00:39:22','2022-12-21 00:39:22'),
-('3347','1','0','Product modification','Product','1552','1',NULL,'1','0','1','2022-12-21 00:39:23','2022-12-21 00:39:23'),
-('3348','1','0','Product modification','Product','1553','1',NULL,'1','0','1','2022-12-21 00:39:24','2022-12-21 00:39:24'),
-('3349','1','0','Product modification','Product','1554','1',NULL,'1','0','1','2022-12-21 00:39:25','2022-12-21 00:39:25'),
-('3350','1','0','Product modification','Product','1555','1',NULL,'1','0','1','2022-12-21 00:39:26','2022-12-21 00:39:26'),
-('3351','1','0','Product modification','Product','1556','1',NULL,'1','0','1','2022-12-21 00:39:27','2022-12-21 00:39:27'),
-('3352','1','0','Product modification','Product','1557','1',NULL,'1','0','1','2022-12-21 00:39:29','2022-12-21 00:39:29'),
-('3353','1','0','Product modification','Product','1558','1',NULL,'1','0','1','2022-12-21 00:39:30','2022-12-21 00:39:30'),
-('3354','1','0','Product modification','Product','1559','1',NULL,'1','0','1','2022-12-21 00:39:31','2022-12-21 00:39:31'),
-('3355','1','0','Product modification','Product','1560','1',NULL,'1','0','1','2022-12-21 00:39:32','2022-12-21 00:39:32'),
-('3356','1','0','Product modification','Product','1561','1',NULL,'1','0','1','2022-12-21 00:39:33','2022-12-21 00:39:33'),
-('3357','1','0','Product modification','Product','1562','1',NULL,'1','0','1','2022-12-21 00:39:35','2022-12-21 00:39:35'),
-('3358','1','0','Product modification','Product','1564','1',NULL,'1','0','1','2022-12-21 00:40:16','2022-12-21 00:40:16'),
-('3359','1','0','Product modification','Product','1566','1',NULL,'1','0','1','2022-12-21 00:40:18','2022-12-21 00:40:18'),
-('3360','1','0','Product modification','Product','1567','1',NULL,'1','0','1','2022-12-21 00:40:19','2022-12-21 00:40:19'),
-('3361','1','0','Product modification','Product','1568','1',NULL,'1','0','1','2022-12-21 00:40:20','2022-12-21 00:40:20'),
-('3362','1','0','Product modification','Product','1569','1',NULL,'1','0','1','2022-12-21 00:40:21','2022-12-21 00:40:21'),
-('3363','1','0','Product modification','Product','1570','1',NULL,'1','0','1','2022-12-21 00:40:22','2022-12-21 00:40:22'),
-('3364','1','0','Product modification','Product','1571','1',NULL,'1','0','1','2022-12-21 00:40:23','2022-12-21 00:40:23'),
-('3365','1','0','Product modification','Product','1572','1',NULL,'1','0','1','2022-12-21 00:40:24','2022-12-21 00:40:24'),
-('3366','1','0','Product modification','Product','1573','1',NULL,'1','0','1','2022-12-21 00:40:26','2022-12-21 00:40:26'),
-('3367','1','0','Product modification','Product','1574','1',NULL,'1','0','1','2022-12-21 00:40:27','2022-12-21 00:40:27'),
-('3368','1','0','Product modification','Product','1575','1',NULL,'1','0','1','2022-12-21 00:40:28','2022-12-21 00:40:28'),
-('3369','1','0','Product modification','Product','1576','1',NULL,'1','0','1','2022-12-21 00:40:29','2022-12-21 00:40:29'),
-('3370','1','0','Product modification','Product','1577','1',NULL,'1','0','1','2022-12-21 00:40:30','2022-12-21 00:40:30'),
-('3371','1','0','Product modification','Product','1578','1',NULL,'1','0','1','2022-12-21 00:40:31','2022-12-21 00:40:31'),
-('3372','1','0','Product modification','Product','1579','1',NULL,'1','0','1','2022-12-21 00:40:32','2022-12-21 00:40:32'),
-('3373','1','0','Product modification','Product','1580','1',NULL,'1','0','1','2022-12-21 00:40:33','2022-12-21 00:40:33'),
-('3374','1','0','Product modification','Product','1581','1',NULL,'1','0','1','2022-12-21 00:40:34','2022-12-21 00:40:34'),
-('3375','1','0','Product modification','Product','1582','1',NULL,'1','0','1','2022-12-21 00:40:36','2022-12-21 00:40:36'),
-('3376','1','0','Product modification','Product','1583','1',NULL,'1','0','1','2022-12-21 00:40:37','2022-12-21 00:40:37'),
-('3377','1','0','Product modification','Product','1585','1',NULL,'1','0','1','2022-12-21 00:40:38','2022-12-21 00:40:38'),
-('3378','1','0','Product modification','Product','1586','1',NULL,'1','0','1','2022-12-21 00:40:39','2022-12-21 00:40:39'),
-('3379','1','0','Product modification','Product','1587','1',NULL,'1','0','1','2022-12-21 00:40:40','2022-12-21 00:40:40'),
-('3380','1','0','Product modification','Product','1599','1',NULL,'1','0','1','2022-12-21 00:41:23','2022-12-21 00:41:23'),
-('3381','1','0','Product modification','Product','1599','1',NULL,'1','0','1','2022-12-21 00:41:27','2022-12-21 00:41:27'),
-('3382','1','0','Product modification','Product','1599','1',NULL,'1','0','1','2022-12-21 00:41:29','2022-12-21 00:41:29'),
-('3383','1','0','Product modification','Product','1598','1',NULL,'1','0','1','2022-12-21 00:41:43','2022-12-21 00:41:43'),
-('3384','1','0','Product modification','Product','1598','1',NULL,'1','0','1','2022-12-21 00:41:47','2022-12-21 00:41:47'),
-('3385','1','0','Product modification','Product','1598','1',NULL,'1','0','1','2022-12-21 00:41:48','2022-12-21 00:41:48'),
-('3386','1','0','Product modification','Product','1597','1',NULL,'1','0','1','2022-12-21 00:41:57','2022-12-21 00:41:57'),
-('3387','1','0','Product modification','Product','1597','1',NULL,'1','0','1','2022-12-21 00:42:02','2022-12-21 00:42:02'),
-('3388','1','0','Product modification','Product','1597','1',NULL,'1','0','1','2022-12-21 00:42:03','2022-12-21 00:42:03'),
-('3389','1','0','Product modification','Product','1596','1',NULL,'1','0','1','2022-12-21 00:42:11','2022-12-21 00:42:11'),
-('3390','1','0','Product modification','Product','1596','1',NULL,'1','0','1','2022-12-21 00:42:16','2022-12-21 00:42:16'),
-('3391','1','0','Product modification','Product','1596','1',NULL,'1','0','1','2022-12-21 00:42:17','2022-12-21 00:42:17'),
-('3392','1','0','Product modification','Product','1595','1',NULL,'1','0','1','2022-12-21 00:42:24','2022-12-21 00:42:24'),
-('3393','1','0','Product modification','Product','1595','1',NULL,'1','0','1','2022-12-21 00:42:30','2022-12-21 00:42:30'),
-('3394','1','0','Product modification','Product','1595','1',NULL,'1','0','1','2022-12-21 00:42:31','2022-12-21 00:42:31'),
-('3395','1','0','Product modification','Product','1594','1',NULL,'1','0','1','2022-12-21 00:42:39','2022-12-21 00:42:39'),
-('3396','1','0','Product modification','Product','1594','1',NULL,'1','0','1','2022-12-21 00:42:44','2022-12-21 00:42:44'),
-('3397','1','0','Product modification','Product','1594','1',NULL,'1','0','1','2022-12-21 00:42:45','2022-12-21 00:42:45'),
-('3398','1','0','Product modification','Product','1593','1',NULL,'1','0','1','2022-12-21 00:42:52','2022-12-21 00:42:52'),
-('3399','1','0','Product modification','Product','1593','1',NULL,'1','0','1','2022-12-21 00:42:58','2022-12-21 00:42:58'),
-('3400','1','0','Product modification','Product','1593','1',NULL,'1','0','1','2022-12-21 00:42:59','2022-12-21 00:42:59');
-INSERT INTO `ps_log` VALUES
-('3401','1','0','Product modification','Product','1592','1',NULL,'1','0','1','2022-12-21 00:43:09','2022-12-21 00:43:09'),
-('3402','1','0','Product modification','Product','1592','1',NULL,'1','0','1','2022-12-21 00:43:13','2022-12-21 00:43:13'),
-('3403','1','0','Product modification','Product','1592','1',NULL,'1','0','1','2022-12-21 00:43:16','2022-12-21 00:43:16'),
-('3404','1','0','Product modification','Product','1591','1',NULL,'1','0','1','2022-12-21 00:43:24','2022-12-21 00:43:24'),
-('3405','1','0','Product modification','Product','1591','1',NULL,'1','0','1','2022-12-21 00:43:28','2022-12-21 00:43:28'),
-('3406','1','0','Product modification','Product','1591','1',NULL,'1','0','1','2022-12-21 00:43:29','2022-12-21 00:43:29'),
-('3407','1','0','Product modification','Product','1590','1',NULL,'1','0','1','2022-12-21 00:43:36','2022-12-21 00:43:36'),
-('3408','1','0','Product modification','Product','1590','1',NULL,'1','0','1','2022-12-21 00:43:42','2022-12-21 00:43:42'),
-('3409','1','0','Product modification','Product','1590','1',NULL,'1','0','1','2022-12-21 00:43:43','2022-12-21 00:43:43'),
-('3410','1','0','Product modification','Product','1589','1',NULL,'1','0','1','2022-12-21 00:43:51','2022-12-21 00:43:51'),
-('3411','1','0','Product modification','Product','1589','1',NULL,'1','0','1','2022-12-21 00:43:55','2022-12-21 00:43:55'),
-('3412','1','0','Product modification','Product','1589','1',NULL,'1','0','1','2022-12-21 00:43:56','2022-12-21 00:43:56'),
-('3413','1','0','Product modification','Product','1588','1',NULL,'1','0','1','2022-12-21 00:44:03','2022-12-21 00:44:03'),
-('3414','1','0','Product modification','Product','1588','1',NULL,'1','0','1','2022-12-21 00:44:07','2022-12-21 00:44:07'),
-('3415','1','0','Product modification','Product','1588','1',NULL,'1','0','1','2022-12-21 00:44:09','2022-12-21 00:44:09'),
-('3416','1','0','Product modification','Product','1600','1',NULL,'1','0','1','2022-12-21 00:44:37','2022-12-21 00:44:37'),
-('3417','1','0','Product modification','Product','1601','1',NULL,'1','0','1','2022-12-21 00:44:39','2022-12-21 00:44:39'),
-('3418','1','0','Product modification','Product','1602','1',NULL,'1','0','1','2022-12-21 00:44:40','2022-12-21 00:44:40'),
-('3419','1','0','Product modification','Product','1603','1',NULL,'1','0','1','2022-12-21 00:44:41','2022-12-21 00:44:41'),
-('3420','1','0','Product modification','Product','1604','1',NULL,'1','0','1','2022-12-21 00:44:42','2022-12-21 00:44:42'),
-('3421','1','0','Product modification','Product','1606','1',NULL,'1','0','1','2022-12-21 00:44:43','2022-12-21 00:44:43'),
-('3422','1','0','Product modification','Product','1607','1',NULL,'1','0','1','2022-12-21 00:44:44','2022-12-21 00:44:44'),
-('3423','1','0','Product modification','Product','1608','1',NULL,'1','0','1','2022-12-21 00:44:45','2022-12-21 00:44:45'),
-('3424','1','0','Product modification','Product','1609','1',NULL,'1','0','1','2022-12-21 00:44:46','2022-12-21 00:44:46'),
-('3425','1','0','Product modification','Product','1610','1',NULL,'1','0','1','2022-12-21 00:44:48','2022-12-21 00:44:48'),
-('3426','1','0','Product modification','Product','1611','1',NULL,'1','0','1','2022-12-21 00:44:49','2022-12-21 00:44:49'),
-('3427','1','0','Product modification','Product','1612','1',NULL,'1','0','1','2022-12-21 00:44:50','2022-12-21 00:44:50'),
-('3428','1','0','Product modification','Product','1613','1',NULL,'1','0','1','2022-12-21 00:44:51','2022-12-21 00:44:51'),
-('3429','1','0','Product modification','Product','1614','1',NULL,'1','0','1','2022-12-21 00:44:52','2022-12-21 00:44:52'),
-('3430','1','0','Product modification','Product','1615','1',NULL,'1','0','1','2022-12-21 00:44:53','2022-12-21 00:44:53'),
-('3431','1','0','Product modification','Product','1617','1',NULL,'1','0','1','2022-12-21 00:44:55','2022-12-21 00:44:55'),
-('3432','1','0','Product modification','Product','1618','1',NULL,'1','0','1','2022-12-21 00:44:58','2022-12-21 00:44:58'),
-('3433','1','0','Product modification','Product','1619','1',NULL,'1','0','1','2022-12-21 00:44:59','2022-12-21 00:44:59'),
-('3434','1','0','Product modification','Product','1620','1',NULL,'1','0','1','2022-12-21 00:45:00','2022-12-21 00:45:00'),
-('3435','1','0','Product modification','Product','1616','1',NULL,'1','0','1','2022-12-21 00:45:12','2022-12-21 00:45:12'),
-('3436','1','0','Product modification','Product','1543','1',NULL,'1','0','1','2022-12-21 00:45:41','2022-12-21 00:45:41'),
-('3437','1','0','Product modification','Product','1605','1',NULL,'1','0','1','2022-12-21 00:45:47','2022-12-21 00:45:47'),
-('3438','1','0','Product modification','Product','1584','1',NULL,'1','0','1','2022-12-21 00:45:52','2022-12-21 00:45:52'),
-('3439','1','0','Product modification','Product','1565','1',NULL,'1','0','1','2022-12-21 00:45:55','2022-12-21 00:45:55'),
-('3440','1','0','Product modification','Product','1563','1',NULL,'1','0','1','2022-12-21 00:45:59','2022-12-21 00:45:59'),
-('3441','1','0','Product modification','Product','1433','1',NULL,'1','0','1','2022-12-21 00:47:15','2022-12-21 00:47:15'),
-('3442','1','0','Product modification','Product','1434','1',NULL,'1','0','1','2022-12-21 00:47:16','2022-12-21 00:47:16'),
-('3443','1','0','Product modification','Product','1435','1',NULL,'1','0','1','2022-12-21 00:47:17','2022-12-21 00:47:17'),
-('3444','1','0','Product modification','Product','1436','1',NULL,'1','0','1','2022-12-21 00:47:18','2022-12-21 00:47:18'),
-('3445','1','0','Product modification','Product','1437','1',NULL,'1','0','1','2022-12-21 00:47:19','2022-12-21 00:47:19'),
-('3446','1','0','Product modification','Product','1438','1',NULL,'1','0','1','2022-12-21 00:47:20','2022-12-21 00:47:20'),
-('3447','1','0','Product modification','Product','1439','1',NULL,'1','0','1','2022-12-21 00:47:21','2022-12-21 00:47:21'),
-('3448','1','0','Product modification','Product','1440','1',NULL,'1','0','1','2022-12-21 00:47:22','2022-12-21 00:47:22'),
-('3449','1','0','Product modification','Product','1441','1',NULL,'1','0','1','2022-12-21 00:47:23','2022-12-21 00:47:23'),
-('3450','1','0','Product modification','Product','1442','1',NULL,'1','0','1','2022-12-21 00:47:24','2022-12-21 00:47:24'),
-('3451','1','0','Product modification','Product','1443','1',NULL,'1','0','1','2022-12-21 00:47:25','2022-12-21 00:47:25'),
-('3452','1','0','Product modification','Product','1444','1',NULL,'1','0','1','2022-12-21 00:47:26','2022-12-21 00:47:26'),
-('3453','1','0','Product modification','Product','1445','1',NULL,'1','0','1','2022-12-21 00:47:27','2022-12-21 00:47:27'),
-('3454','1','0','Product modification','Product','1446','1',NULL,'1','0','1','2022-12-21 00:47:28','2022-12-21 00:47:28'),
-('3455','1','0','Product modification','Product','1447','1',NULL,'1','0','1','2022-12-21 00:47:29','2022-12-21 00:47:29'),
-('3456','1','0','Product modification','Product','1448','1',NULL,'1','0','1','2022-12-21 00:47:30','2022-12-21 00:47:30'),
-('3457','1','0','Product modification','Product','1449','1',NULL,'1','0','1','2022-12-21 00:47:31','2022-12-21 00:47:31'),
-('3458','1','0','Product modification','Product','1450','1',NULL,'1','0','1','2022-12-21 00:47:32','2022-12-21 00:47:32'),
-('3459','1','0','Product modification','Product','1451','1',NULL,'1','0','1','2022-12-21 00:47:33','2022-12-21 00:47:33'),
-('3460','1','0','Product modification','Product','1453','1',NULL,'1','0','1','2022-12-21 00:47:34','2022-12-21 00:47:34'),
-('3461','1','0','Product modification','Product','1454','1',NULL,'1','0','1','2022-12-21 00:47:35','2022-12-21 00:47:35'),
-('3462','1','0','Product modification','Product','1455','1',NULL,'1','0','1','2022-12-21 00:47:36','2022-12-21 00:47:36'),
-('3463','1','0','Product modification','Product','1456','1',NULL,'1','0','1','2022-12-21 00:47:37','2022-12-21 00:47:37'),
-('3464','1','0','Product modification','Product','1457','1',NULL,'1','0','1','2022-12-21 00:47:38','2022-12-21 00:47:38'),
-('3465','1','0','Product modification','Product','1459','1',NULL,'1','0','1','2022-12-21 00:47:39','2022-12-21 00:47:39'),
-('3466','1','0','Product modification','Product','1460','1',NULL,'1','0','1','2022-12-21 00:47:40','2022-12-21 00:47:40'),
-('3467','1','0','Product modification','Product','1462','1',NULL,'1','0','1','2022-12-21 00:47:41','2022-12-21 00:47:41'),
-('3468','1','0','Product modification','Product','1463','1',NULL,'1','0','1','2022-12-21 00:47:42','2022-12-21 00:47:42'),
-('3469','1','0','Product modification','Product','1464','1',NULL,'1','0','1','2022-12-21 00:47:44','2022-12-21 00:47:44'),
-('3470','1','0','Product modification','Product','1466','1',NULL,'1','0','1','2022-12-21 00:48:37','2022-12-21 00:48:37'),
-('3471','1','0','Product modification','Product','1467','1',NULL,'1','0','1','2022-12-21 00:48:38','2022-12-21 00:48:38'),
-('3472','1','0','Product modification','Product','1468','1',NULL,'1','0','1','2022-12-21 00:48:39','2022-12-21 00:48:39'),
-('3473','1','0','Product modification','Product','1469','1',NULL,'1','0','1','2022-12-21 00:48:41','2022-12-21 00:48:41'),
-('3474','1','0','Product modification','Product','1470','1',NULL,'1','0','1','2022-12-21 00:48:42','2022-12-21 00:48:42'),
-('3475','1','0','Product modification','Product','1471','1',NULL,'1','0','1','2022-12-21 00:48:43','2022-12-21 00:48:43'),
-('3476','1','0','Product modification','Product','1472','1',NULL,'1','0','1','2022-12-21 00:48:44','2022-12-21 00:48:44'),
-('3477','1','0','Product modification','Product','1473','1',NULL,'1','0','1','2022-12-21 00:48:45','2022-12-21 00:48:45'),
-('3478','1','0','Product modification','Product','1474','1',NULL,'1','0','1','2022-12-21 00:48:46','2022-12-21 00:48:46'),
-('3479','1','0','Product modification','Product','1475','1',NULL,'1','0','1','2022-12-21 00:48:47','2022-12-21 00:48:47'),
-('3480','1','0','Product modification','Product','1476','1',NULL,'1','0','1','2022-12-21 00:48:48','2022-12-21 00:48:48'),
-('3481','1','0','Product modification','Product','1477','1',NULL,'1','0','1','2022-12-21 00:48:49','2022-12-21 00:48:49'),
-('3482','1','0','Product modification','Product','1479','1',NULL,'1','0','1','2022-12-21 00:48:50','2022-12-21 00:48:50'),
-('3483','1','0','Product modification','Product','1480','1',NULL,'1','0','1','2022-12-21 00:48:51','2022-12-21 00:48:51'),
-('3484','1','0','Product modification','Product','1481','1',NULL,'1','0','1','2022-12-21 00:48:52','2022-12-21 00:48:52'),
-('3485','1','0','Product modification','Product','1482','1',NULL,'1','0','1','2022-12-21 00:48:53','2022-12-21 00:48:53'),
-('3486','1','0','Product modification','Product','1483','1',NULL,'1','0','1','2022-12-21 00:48:54','2022-12-21 00:48:54'),
-('3487','1','0','Product modification','Product','1484','1',NULL,'1','0','1','2022-12-21 00:48:55','2022-12-21 00:48:55'),
-('3488','1','0','Product modification','Product','1485','1',NULL,'1','0','1','2022-12-21 00:48:56','2022-12-21 00:48:56'),
-('3489','1','0','Product modification','Product','1486','1',NULL,'1','0','1','2022-12-21 00:48:57','2022-12-21 00:48:57'),
-('3490','1','0','Product modification','Product','1487','1',NULL,'1','0','1','2022-12-21 00:48:58','2022-12-21 00:48:58'),
-('3491','1','0','Product modification','Product','1488','1',NULL,'1','0','1','2022-12-21 00:48:59','2022-12-21 00:48:59'),
-('3492','1','0','Product modification','Product','1489','1',NULL,'1','0','1','2022-12-21 00:49:00','2022-12-21 00:49:00'),
-('3493','1','0','Product modification','Product','1490','1',NULL,'1','0','1','2022-12-21 00:49:01','2022-12-21 00:49:01'),
-('3494','1','0','Product modification','Product','1491','1',NULL,'1','0','1','2022-12-21 00:49:02','2022-12-21 00:49:02'),
-('3495','1','0','Product modification','Product','1492','1',NULL,'1','0','1','2022-12-21 00:49:03','2022-12-21 00:49:03'),
-('3496','1','0','Product modification','Product','1493','1',NULL,'1','0','1','2022-12-21 00:49:04','2022-12-21 00:49:04'),
-('3497','1','0','Product modification','Product','1494','1',NULL,'1','0','1','2022-12-21 00:49:05','2022-12-21 00:49:05'),
-('3498','1','0','Product modification','Product','1495','1',NULL,'1','0','1','2022-12-21 00:49:06','2022-12-21 00:49:06'),
-('3499','1','0','Product modification','Product','1496','1',NULL,'1','0','1','2022-12-21 00:49:07','2022-12-21 00:49:07'),
-('3500','1','0','Product modification','Product','1497','1',NULL,'1','0','1','2022-12-21 00:49:08','2022-12-21 00:49:08'),
-('3501','1','0','Product modification','Product','1498','1',NULL,'1','0','1','2022-12-21 00:49:09','2022-12-21 00:49:09'),
-('3502','1','0','Product modification','Product','1499','1',NULL,'1','0','1','2022-12-21 00:49:10','2022-12-21 00:49:10'),
-('3503','1','0','Product modification','Product','1500','1',NULL,'1','0','1','2022-12-21 00:49:11','2022-12-21 00:49:11'),
-('3504','1','0','Product modification','Product','1501','1',NULL,'1','0','1','2022-12-21 00:49:12','2022-12-21 00:49:12'),
-('3505','1','0','Product modification','Product','1502','1',NULL,'1','0','1','2022-12-21 00:49:13','2022-12-21 00:49:13'),
-('3506','1','0','Product modification','Product','1503','1',NULL,'1','0','1','2022-12-21 00:49:14','2022-12-21 00:49:14'),
-('3507','1','0','Product modification','Product','1504','1',NULL,'1','0','1','2022-12-21 00:49:15','2022-12-21 00:49:15'),
-('3508','1','0','Product modification','Product','1505','1',NULL,'1','0','1','2022-12-21 00:49:16','2022-12-21 00:49:16'),
-('3509','1','0','Product modification','Product','1506','1',NULL,'1','0','1','2022-12-21 00:49:18','2022-12-21 00:49:18'),
-('3510','1','0','Product modification','Product','1507','1',NULL,'1','0','1','2022-12-21 00:49:19','2022-12-21 00:49:19'),
-('3511','1','0','Product modification','Product','1508','1',NULL,'1','0','1','2022-12-21 00:49:20','2022-12-21 00:49:20'),
-('3512','1','0','Product modification','Product','1509','1',NULL,'1','0','1','2022-12-21 00:49:21','2022-12-21 00:49:21'),
-('3513','1','0','Product modification','Product','1510','1',NULL,'1','0','1','2022-12-21 00:49:22','2022-12-21 00:49:22'),
-('3514','1','0','Product modification','Product','1511','1',NULL,'1','0','1','2022-12-21 00:49:23','2022-12-21 00:49:23'),
-('3515','1','0','Product modification','Product','1512','1',NULL,'1','0','1','2022-12-21 00:49:24','2022-12-21 00:49:24'),
-('3516','1','0','Product modification','Product','1513','1',NULL,'1','0','1','2022-12-21 00:49:25','2022-12-21 00:49:25'),
-('3517','1','0','Product modification','Product','1514','1',NULL,'1','0','1','2022-12-21 00:49:26','2022-12-21 00:49:26'),
-('3518','1','0','Product modification','Product','1515','1',NULL,'1','0','1','2022-12-21 00:49:27','2022-12-21 00:49:27'),
-('3519','1','0','Product modification','Product','1516','1',NULL,'1','0','1','2022-12-21 00:49:28','2022-12-21 00:49:28'),
-('3520','1','0','Product modification','Product','1517','1',NULL,'1','0','1','2022-12-21 00:49:29','2022-12-21 00:49:29'),
-('3521','1','0','Product modification','Product','1518','1',NULL,'1','0','1','2022-12-21 00:49:30','2022-12-21 00:49:30'),
-('3522','1','0','Product modification','Product','1519','1',NULL,'1','0','1','2022-12-21 00:49:31','2022-12-21 00:49:31'),
-('3523','1','0','Product modification','Product','1520','1',NULL,'1','0','1','2022-12-21 00:49:32','2022-12-21 00:49:32'),
-('3524','1','0','Product modification','Product','1452','1',NULL,'1','0','1','2022-12-21 00:50:02','2022-12-21 00:50:02'),
-('3525','1','0','Product modification','Product','1478','1',NULL,'1','0','1','2022-12-21 00:50:07','2022-12-21 00:50:07'),
-('3526','1','0','Product modification','Product','1465','1',NULL,'1','0','1','2022-12-21 00:50:11','2022-12-21 00:50:11'),
-('3527','1','0','Product modification','Product','1461','1',NULL,'1','0','1','2022-12-21 00:50:15','2022-12-21 00:50:15'),
-('3528','1','0','Product modification','Product','1458','1',NULL,'1','0','1','2022-12-21 00:50:19','2022-12-21 00:50:19'),
-('3529','1','0','Product modification','Product','1452','1',NULL,'1','0','1','2022-12-21 00:50:23','2022-12-21 00:50:23'),
-('3530','1','0','Product modification','Product','1421','1',NULL,'1','0','1','2022-12-21 00:51:10','2022-12-21 00:51:10'),
-('3531','1','0','Product modification','Product','1421','1',NULL,'1','0','1','2022-12-21 00:51:14','2022-12-21 00:51:14'),
-('3532','1','0','Product modification','Product','1421','1',NULL,'1','0','1','2022-12-21 00:51:15','2022-12-21 00:51:15'),
-('3533','1','0','Product modification','Product','1422','1',NULL,'1','0','1','2022-12-21 00:51:21','2022-12-21 00:51:21'),
-('3534','1','0','Product modification','Product','1422','1',NULL,'1','0','1','2022-12-21 00:51:25','2022-12-21 00:51:25'),
-('3535','1','0','Product modification','Product','1422','1',NULL,'1','0','1','2022-12-21 00:51:27','2022-12-21 00:51:27'),
-('3536','1','0','Product modification','Product','1423','1',NULL,'1','0','1','2022-12-21 00:51:34','2022-12-21 00:51:34'),
-('3537','1','0','Product modification','Product','1423','1',NULL,'1','0','1','2022-12-21 00:51:38','2022-12-21 00:51:38'),
-('3538','1','0','Product modification','Product','1423','1',NULL,'1','0','1','2022-12-21 00:51:39','2022-12-21 00:51:39'),
-('3539','1','0','Product modification','Product','1424','1',NULL,'1','0','1','2022-12-21 00:51:46','2022-12-21 00:51:46'),
-('3540','1','0','Product modification','Product','1424','1',NULL,'1','0','1','2022-12-21 00:51:50','2022-12-21 00:51:50'),
-('3541','1','0','Product modification','Product','1424','1',NULL,'1','0','1','2022-12-21 00:51:51','2022-12-21 00:51:51'),
-('3542','1','0','Product modification','Product','1425','1',NULL,'1','0','1','2022-12-21 00:51:57','2022-12-21 00:51:57'),
-('3543','1','0','Product modification','Product','1425','1',NULL,'1','0','1','2022-12-21 00:52:02','2022-12-21 00:52:02'),
-('3544','1','0','Product modification','Product','1425','1',NULL,'1','0','1','2022-12-21 00:52:03','2022-12-21 00:52:03'),
-('3545','1','0','Product modification','Product','1426','1',NULL,'1','0','1','2022-12-21 00:52:09','2022-12-21 00:52:09'),
-('3546','1','0','Product modification','Product','1426','1',NULL,'1','0','1','2022-12-21 00:52:13','2022-12-21 00:52:13'),
-('3547','1','0','Product modification','Product','1426','1',NULL,'1','0','1','2022-12-21 00:52:14','2022-12-21 00:52:14'),
-('3548','1','0','Product modification','Product','1427','1',NULL,'1','0','1','2022-12-21 00:52:20','2022-12-21 00:52:20'),
-('3549','1','0','Product modification','Product','1427','1',NULL,'1','0','1','2022-12-21 00:52:24','2022-12-21 00:52:24'),
-('3550','1','0','Product modification','Product','1427','1',NULL,'1','0','1','2022-12-21 00:52:26','2022-12-21 00:52:26'),
-('3551','1','0','Product modification','Product','1428','1',NULL,'1','0','1','2022-12-21 00:52:33','2022-12-21 00:52:33'),
-('3552','1','0','Product modification','Product','1428','1',NULL,'1','0','1','2022-12-21 00:52:36','2022-12-21 00:52:36'),
-('3553','1','0','Product modification','Product','1428','1',NULL,'1','0','1','2022-12-21 00:52:37','2022-12-21 00:52:37'),
-('3554','1','0','Product modification','Product','1429','1',NULL,'1','0','1','2022-12-21 00:52:44','2022-12-21 00:52:44'),
-('3555','1','0','Product modification','Product','1429','1',NULL,'1','0','1','2022-12-21 00:52:50','2022-12-21 00:52:50'),
-('3556','1','0','Product modification','Product','1429','1',NULL,'1','0','1','2022-12-21 00:52:51','2022-12-21 00:52:51'),
-('3557','1','0','Product modification','Product','1430','1',NULL,'1','0','1','2022-12-21 00:52:56','2022-12-21 00:52:56'),
-('3558','1','0','Product modification','Product','1430','1',NULL,'1','0','1','2022-12-21 00:53:01','2022-12-21 00:53:01'),
-('3559','1','0','Product modification','Product','1430','1',NULL,'1','0','1','2022-12-21 00:53:02','2022-12-21 00:53:02'),
-('3560','1','0','Product modification','Product','1431','1',NULL,'1','0','1','2022-12-21 00:53:09','2022-12-21 00:53:09'),
-('3561','1','0','Product modification','Product','1431','1',NULL,'1','0','1','2022-12-21 00:53:13','2022-12-21 00:53:13'),
-('3562','1','0','Product modification','Product','1431','1',NULL,'1','0','1','2022-12-21 00:53:14','2022-12-21 00:53:14'),
-('3563','1','0','Product modification','Product','1432','1',NULL,'1','0','1','2022-12-21 00:53:20','2022-12-21 00:53:20'),
-('3564','1','0','Product modification','Product','1432','1',NULL,'1','0','1','2022-12-21 00:53:24','2022-12-21 00:53:24'),
-('3565','1','0','Product modification','Product','1432','1',NULL,'1','0','1','2022-12-21 00:53:25','2022-12-21 00:53:25'),
-('3566','1','0','Product modification','Product','1768','1',NULL,'1','0','1','2022-12-21 00:54:15','2022-12-21 00:54:15'),
-('3567','1','0','Product modification','Product','1768','1',NULL,'1','0','1','2022-12-21 00:54:20','2022-12-21 00:54:20'),
-('3568','1','0','Product modification','Product','1768','1',NULL,'1','0','1','2022-12-21 00:54:21','2022-12-21 00:54:21'),
-('3569','1','0','Product modification','Product','1767','1',NULL,'1','0','1','2022-12-21 00:54:28','2022-12-21 00:54:28'),
-('3570','1','0','Product modification','Product','1767','1',NULL,'1','0','1','2022-12-21 00:54:32','2022-12-21 00:54:32'),
-('3571','1','0','Product modification','Product','1767','1',NULL,'1','0','1','2022-12-21 00:54:33','2022-12-21 00:54:33'),
-('3572','1','0','Product modification','Product','1766','1',NULL,'1','0','1','2022-12-21 00:54:40','2022-12-21 00:54:40'),
-('3573','1','0','Product modification','Product','1766','1',NULL,'1','0','1','2022-12-21 00:54:45','2022-12-21 00:54:45'),
-('3574','1','0','Product modification','Product','1766','1',NULL,'1','0','1','2022-12-21 00:54:46','2022-12-21 00:54:46'),
-('3575','1','0','Product modification','Product','1765','1',NULL,'1','0','1','2022-12-21 00:54:52','2022-12-21 00:54:52'),
-('3576','1','0','Product modification','Product','1765','1',NULL,'1','0','1','2022-12-21 00:54:56','2022-12-21 00:54:56'),
-('3577','1','0','Product modification','Product','1765','1',NULL,'1','0','1','2022-12-21 00:54:57','2022-12-21 00:54:57'),
-('3578','1','0','Product modification','Product','1764','1',NULL,'1','0','1','2022-12-21 00:55:04','2022-12-21 00:55:04'),
-('3579','1','0','Product modification','Product','1764','1',NULL,'1','0','1','2022-12-21 00:55:09','2022-12-21 00:55:09'),
-('3580','1','0','Product modification','Product','1764','1',NULL,'1','0','1','2022-12-21 00:55:10','2022-12-21 00:55:10'),
-('3581','1','0','Product modification','Product','1763','1',NULL,'1','0','1','2022-12-21 00:55:17','2022-12-21 00:55:17'),
-('3582','1','0','Product modification','Product','1763','1',NULL,'1','0','1','2022-12-21 00:55:21','2022-12-21 00:55:21'),
-('3583','1','0','Product modification','Product','1763','1',NULL,'1','0','1','2022-12-21 00:55:23','2022-12-21 00:55:23'),
-('3584','1','0','Product modification','Product','1762','1',NULL,'1','0','1','2022-12-21 00:55:29','2022-12-21 00:55:29'),
-('3585','1','0','Product modification','Product','1762','1',NULL,'1','0','1','2022-12-21 00:55:33','2022-12-21 00:55:33'),
-('3586','1','0','Product modification','Product','1762','1',NULL,'1','0','1','2022-12-21 00:55:35','2022-12-21 00:55:35'),
-('3587','1','0','Product modification','Product','1761','1',NULL,'1','0','1','2022-12-21 00:55:40','2022-12-21 00:55:40'),
-('3588','1','0','Product modification','Product','1761','1',NULL,'1','0','1','2022-12-21 00:55:41','2022-12-21 00:55:41'),
-('3589','1','0','Product modification','Product','1761','1',NULL,'1','0','1','2022-12-21 00:55:46','2022-12-21 00:55:46'),
-('3590','1','0','Product modification','Product','1761','1',NULL,'1','0','1','2022-12-21 00:55:47','2022-12-21 00:55:47'),
-('3591','1','0','Product modification','Product','1760','1',NULL,'1','0','1','2022-12-21 00:55:55','2022-12-21 00:55:55'),
-('3592','1','0','Product modification','Product','1760','1',NULL,'1','0','1','2022-12-21 00:55:59','2022-12-21 00:55:59'),
-('3593','1','0','Product modification','Product','1760','1',NULL,'1','0','1','2022-12-21 00:56:00','2022-12-21 00:56:00'),
-('3594','1','0','Product modification','Product','1759','1',NULL,'1','0','1','2022-12-21 00:56:07','2022-12-21 00:56:07'),
-('3595','1','0','Product modification','Product','1759','1',NULL,'1','0','1','2022-12-21 00:56:12','2022-12-21 00:56:12'),
-('3596','1','0','Product modification','Product','1759','1',NULL,'1','0','1','2022-12-21 00:56:13','2022-12-21 00:56:13'),
-('3597','1','0','Product modification','Product','1758','1',NULL,'1','0','1','2022-12-21 00:56:20','2022-12-21 00:56:20'),
-('3598','1','0','Product modification','Product','1758','1',NULL,'1','0','1','2022-12-21 00:56:24','2022-12-21 00:56:24'),
-('3599','1','0','Product modification','Product','1758','1',NULL,'1','0','1','2022-12-21 00:56:26','2022-12-21 00:56:26'),
-('3600','1','0','Product modification','Product','1757','1',NULL,'1','0','1','2022-12-21 00:56:32','2022-12-21 00:56:32');
-INSERT INTO `ps_log` VALUES
-('3601','1','0','Product modification','Product','1757','1',NULL,'1','0','1','2022-12-21 00:56:36','2022-12-21 00:56:36'),
-('3602','1','0','Product modification','Product','1757','1',NULL,'1','0','1','2022-12-21 00:56:37','2022-12-21 00:56:37'),
-('3603','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-21 01:18:11','2022-12-21 01:18:11'),
-('3604','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-21 01:18:50','2022-12-21 01:18:50'),
-('3605','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-21 15:02:05','2022-12-21 15:02:05'),
-('3606','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','29','1',NULL,'2','0','0','2022-12-21 16:02:38','2022-12-21 16:02:38'),
-('3607','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','30','1',NULL,'2','0','0','2022-12-21 16:38:55','2022-12-21 16:38:55'),
-('3608','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2022-12-21 16:44:04','2022-12-21 16:44:04'),
-('3609','3','0','Swift Error: Expected response code 250 but got code \\\"554\\\", with message \\\"554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=DBAP193MB0859.EURP193.PROD.OUTLOOK.COM]\\r\\n\\\"',NULL,'0','1',NULL,'2','0','0','2022-12-21 16:45:10','2022-12-21 16:45:10'),
-('3610','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','32','1',NULL,'2','0','0','2022-12-21 16:51:51','2022-12-21 16:51:51'),
-('3611','1','0','Połączenie z panelem administracyjnym z localhost',NULL,'0',NULL,NULL,'2','1','1','2023-01-07 12:10:14','2023-01-07 12:10:14'),
-('3612','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','33','1',NULL,'2','0','0','2023-01-07 12:54:19','2023-01-07 12:54:19');
 /* Scheme for table ps_mail */
 DROP TABLE IF EXISTS `ps_mail`;
 CREATE TABLE `ps_mail` (
-  `id_mail` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_mail` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `recipient` varchar(126) NOT NULL,
   `template` varchar(62) NOT NULL,
   `subject` varchar(254) NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `date_add` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_lang` int(10) unsigned NOT NULL,
+  `date_add` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_mail`),
   KEY `recipient` (`recipient`(10))
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_mail` VALUES
 ('1','qgyvjm@wp.pl','account','[h&m] Witaj !','2','2022-12-20 17:22:05'),
@@ -18952,29 +15294,30 @@ INSERT INTO `ps_mail` VALUES
 ('9','rlul@wp.pl','order_conf','[h&m] Potwierdzenie zamówienia','2','2022-12-21 16:38:54'),
 ('10','nabepresta@outlook.com','account','[h&m] Witaj !','2','2022-12-21 16:51:14'),
 ('11','nabepresta@outlook.com','order_conf','[h&m] Potwierdzenie zamówienia','2','2022-12-21 16:51:51'),
-('12','nabepresta@outlook.com','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-07 12:54:19');
+('12','nabepresta@outlook.com','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-07 12:54:19'),
+('13','jalapka@wp.pl','order_conf','[h&m] Potwierdzenie zamówienia','2','2023-01-16 18:05:07');
 /* Scheme for table ps_mailalert_customer_oos */
 DROP TABLE IF EXISTS `ps_mailalert_customer_oos`;
 CREATE TABLE `ps_mailalert_customer_oos` (
-  `id_customer` int unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
   `customer_email` varchar(128) NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_customer`,`customer_email`,`id_product`,`id_product_attribute`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_manufacturer */
 DROP TABLE IF EXISTS `ps_manufacturer`;
 CREATE TABLE `ps_manufacturer` (
-  `id_manufacturer` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_manufacturer` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_manufacturer`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_manufacturer` VALUES
 ('1','Studio Design','2022-10-25 19:38:24','2022-10-25 19:38:24','1'),
@@ -18982,15 +15325,15 @@ INSERT INTO `ps_manufacturer` VALUES
 /* Scheme for table ps_manufacturer_lang */
 DROP TABLE IF EXISTS `ps_manufacturer_lang`;
 CREATE TABLE `ps_manufacturer_lang` (
-  `id_manufacturer` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `description` text,
-  `short_description` text,
+  `id_manufacturer` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `description` text DEFAULT NULL,
+  `short_description` text DEFAULT NULL,
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_manufacturer`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_manufacturer_lang` VALUES
 ('1','1','<p>Studio Design offers a range of items from ready-to-wear collections to contemporary objects. The brand has been presenting new ideas and trends since its creation in 2012.</p>',NULL,NULL,NULL,NULL),
@@ -19000,11 +15343,11 @@ INSERT INTO `ps_manufacturer_lang` VALUES
 /* Scheme for table ps_manufacturer_shop */
 DROP TABLE IF EXISTS `ps_manufacturer_shop`;
 CREATE TABLE `ps_manufacturer_shop` (
-  `id_manufacturer` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_manufacturer` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_manufacturer`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_manufacturer_shop` VALUES
 ('1','1'),
@@ -19012,51 +15355,51 @@ INSERT INTO `ps_manufacturer_shop` VALUES
 /* Scheme for table ps_memcached_servers */
 DROP TABLE IF EXISTS `ps_memcached_servers`;
 CREATE TABLE `ps_memcached_servers` (
-  `id_memcached_server` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_memcached_server` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ip` varchar(254) NOT NULL,
-  `port` int unsigned NOT NULL,
-  `weight` int unsigned NOT NULL,
+  `port` int(10) unsigned NOT NULL,
+  `weight` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_memcached_server`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_message */
 DROP TABLE IF EXISTS `ps_message`;
 CREATE TABLE `ps_message` (
-  `id_message` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_cart` int unsigned DEFAULT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `id_employee` int unsigned DEFAULT NULL,
-  `id_order` int unsigned NOT NULL,
+  `id_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned DEFAULT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_employee` int(10) unsigned DEFAULT NULL,
+  `id_order` int(10) unsigned NOT NULL,
   `message` text NOT NULL,
-  `private` tinyint unsigned NOT NULL DEFAULT '1',
+  `private` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_message`),
   KEY `message_order` (`id_order`),
   KEY `id_cart` (`id_cart`),
   KEY `id_customer` (`id_customer`),
   KEY `id_employee` (`id_employee`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_message` VALUES
 ('1','11','7','0','9','wyślijcie szybko!','0','2022-12-20 12:13:07');
 /* Scheme for table ps_message_readed */
 DROP TABLE IF EXISTS `ps_message_readed`;
 CREATE TABLE `ps_message_readed` (
-  `id_message` int unsigned NOT NULL,
-  `id_employee` int unsigned NOT NULL,
+  `id_message` int(10) unsigned NOT NULL,
+  `id_employee` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_message`,`id_employee`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_meta */
 DROP TABLE IF EXISTS `ps_meta`;
 CREATE TABLE `ps_meta` (
-  `id_meta` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_meta` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `page` varchar(64) NOT NULL,
-  `configurable` tinyint unsigned NOT NULL DEFAULT '1',
+  `configurable` tinyint(3) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_meta`),
   UNIQUE KEY `page` (`page`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_meta` VALUES
 ('1','pagenotfound','1'),
@@ -19106,9 +15449,9 @@ INSERT INTO `ps_meta` VALUES
 /* Scheme for table ps_meta_lang */
 DROP TABLE IF EXISTS `ps_meta_lang`;
 CREATE TABLE `ps_meta_lang` (
-  `id_meta` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
+  `id_meta` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `keywords` varchar(255) DEFAULT NULL,
@@ -19116,7 +15459,7 @@ CREATE TABLE `ps_meta_lang` (
   PRIMARY KEY (`id_meta`,`id_shop`,`id_lang`),
   KEY `id_shop` (`id_shop`),
   KEY `id_lang` (`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_meta_lang` VALUES
 ('1','1','1','404 error','This page cannot be found',NULL,'page-not-found'),
@@ -19194,14 +15537,14 @@ INSERT INTO `ps_meta_lang` VALUES
 /* Scheme for table ps_module */
 DROP TABLE IF EXISTS `ps_module`;
 CREATE TABLE `ps_module` (
-  `id_module` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_module` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `version` varchar(8) NOT NULL,
   PRIMARY KEY (`id_module`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module` VALUES
 ('1','blockwishlist','1','2.1.0'),
@@ -19273,10 +15616,10 @@ INSERT INTO `ps_module` VALUES
 /* Scheme for table ps_module_access */
 DROP TABLE IF EXISTS `ps_module_access`;
 CREATE TABLE `ps_module_access` (
-  `id_profile` int unsigned NOT NULL,
-  `id_authorization_role` int unsigned NOT NULL,
+  `id_profile` int(10) unsigned NOT NULL,
+  `id_authorization_role` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_profile`,`id_authorization_role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_access` VALUES
 ('1','497'),
@@ -19547,11 +15890,11 @@ INSERT INTO `ps_module_access` VALUES
 /* Scheme for table ps_module_carrier */
 DROP TABLE IF EXISTS `ps_module_carrier`;
 CREATE TABLE `ps_module_carrier` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_reference` int NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_reference` int(11) NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_carrier` VALUES
 ('35','1','1'),
@@ -19573,11 +15916,11 @@ INSERT INTO `ps_module_carrier` VALUES
 /* Scheme for table ps_module_country */
 DROP TABLE IF EXISTS `ps_module_country`;
 CREATE TABLE `ps_module_country` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_country` int unsigned NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_country` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_country` VALUES
 ('14','1','14'),
@@ -20029,12 +16372,12 @@ INSERT INTO `ps_module_country` VALUES
 /* Scheme for table ps_module_currency */
 DROP TABLE IF EXISTS `ps_module_currency`;
 CREATE TABLE `ps_module_currency` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_currency` int NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_currency` int(11) NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_currency`),
   KEY `id_module` (`id_module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_currency` VALUES
 ('35','1','1'),
@@ -20044,11 +16387,11 @@ INSERT INTO `ps_module_currency` VALUES
 /* Scheme for table ps_module_group */
 DROP TABLE IF EXISTS `ps_module_group`;
 CREATE TABLE `ps_module_group` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_group` int unsigned NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_group` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_module`,`id_shop`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_group` VALUES
 ('1','1','1'),
@@ -20249,9 +16592,9 @@ INSERT INTO `ps_module_group` VALUES
 /* Scheme for table ps_module_history */
 DROP TABLE IF EXISTS `ps_module_history`;
 CREATE TABLE `ps_module_history` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_employee` int NOT NULL,
-  `id_module` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(11) NOT NULL,
+  `id_module` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -20270,24 +16613,24 @@ INSERT INTO `ps_module_history` VALUES
 /* Scheme for table ps_module_preference */
 DROP TABLE IF EXISTS `ps_module_preference`;
 CREATE TABLE `ps_module_preference` (
-  `id_module_preference` int NOT NULL AUTO_INCREMENT,
-  `id_employee` int NOT NULL,
+  `id_module_preference` int(11) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(11) NOT NULL,
   `module` varchar(191) NOT NULL,
   `interest` tinyint(1) DEFAULT NULL,
   `favorite` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_module_preference`),
   UNIQUE KEY `employee_module` (`id_employee`,`module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_module_shop */
 DROP TABLE IF EXISTS `ps_module_shop`;
 CREATE TABLE `ps_module_shop` (
-  `id_module` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `enable_device` tinyint(1) NOT NULL DEFAULT '7',
+  `id_module` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `enable_device` tinyint(1) NOT NULL DEFAULT 7,
   PRIMARY KEY (`id_module`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_module_shop` VALUES
 ('2','1','7'),
@@ -20357,10 +16700,10 @@ INSERT INTO `ps_module_shop` VALUES
 /* Scheme for table ps_operating_system */
 DROP TABLE IF EXISTS `ps_operating_system`;
 CREATE TABLE `ps_operating_system` (
-  `id_operating_system` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_operating_system` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_operating_system`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_operating_system` VALUES
 ('1','Windows XP'),
@@ -20375,10 +16718,10 @@ INSERT INTO `ps_operating_system` VALUES
 /* Scheme for table ps_order_carrier */
 DROP TABLE IF EXISTS `ps_order_carrier`;
 CREATE TABLE `ps_order_carrier` (
-  `id_order_carrier` int NOT NULL AUTO_INCREMENT,
-  `id_order` int unsigned NOT NULL,
-  `id_carrier` int unsigned NOT NULL,
-  `id_order_invoice` int unsigned DEFAULT NULL,
+  `id_order_carrier` int(11) NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_order_invoice` int(10) unsigned DEFAULT NULL,
   `weight` decimal(20,6) DEFAULT NULL,
   `shipping_cost_tax_excl` decimal(20,6) DEFAULT NULL,
   `shipping_cost_tax_incl` decimal(20,6) DEFAULT NULL,
@@ -20388,7 +16731,7 @@ CREATE TABLE `ps_order_carrier` (
   KEY `id_order` (`id_order`),
   KEY `id_carrier` (`id_carrier`),
   KEY `id_order_invoice` (`id_order_invoice`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_carrier` VALUES
 ('1','1','2','0','0.000000','7.000000','8.400000',NULL,'2022-10-25 19:38:32'),
@@ -20406,50 +16749,51 @@ INSERT INTO `ps_order_carrier` VALUES
 ('13','13','6','0','0.000000','0.000000','0.000000',NULL,'2022-12-21 16:02:36'),
 ('14','14','6','0','0.000000','0.000000','0.000000',NULL,'2022-12-21 16:38:53'),
 ('15','15','1','0','0.000000','0.000000','0.000000',NULL,'2022-12-21 16:51:49'),
-('16','16','13','0','0.000000','1.000000','1.230000',NULL,'2023-01-07 12:54:13');
+('16','16','13','0','0.000000','1.000000','1.230000',NULL,'2023-01-07 12:54:13'),
+('17','17','1','0','0.000000','0.000000','0.000000',NULL,'2023-01-16 18:05:04');
 /* Scheme for table ps_order_cart_rule */
 DROP TABLE IF EXISTS `ps_order_cart_rule`;
 CREATE TABLE `ps_order_cart_rule` (
-  `id_order_cart_rule` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order` int unsigned NOT NULL,
-  `id_cart_rule` int unsigned NOT NULL,
-  `id_order_invoice` int unsigned DEFAULT '0',
+  `id_order_cart_rule` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_cart_rule` int(10) unsigned NOT NULL,
+  `id_order_invoice` int(10) unsigned DEFAULT 0,
   `name` varchar(254) NOT NULL,
-  `value` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `value_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `free_shipping` tinyint(1) NOT NULL DEFAULT '0',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `value` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `value_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `free_shipping` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_cart_rule`),
   KEY `id_order` (`id_order`),
   KEY `id_cart_rule` (`id_cart_rule`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_cart_rule` VALUES
 ('1','9','1','1','15% przy zakupach powyżej 150 zł','32.395500','32.395500','0','0');
 /* Scheme for table ps_order_detail */
 DROP TABLE IF EXISTS `ps_order_detail`;
 CREATE TABLE `ps_order_detail` (
-  `id_order_detail` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order` int unsigned NOT NULL,
-  `id_order_invoice` int DEFAULT NULL,
-  `id_warehouse` int unsigned DEFAULT '0',
-  `id_shop` int unsigned NOT NULL,
-  `product_id` int unsigned NOT NULL,
-  `product_attribute_id` int unsigned DEFAULT NULL,
-  `id_customization` int unsigned DEFAULT '0',
+  `id_order_detail` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_order_invoice` int(11) DEFAULT NULL,
+  `id_warehouse` int(10) unsigned DEFAULT 0,
+  `id_shop` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `product_attribute_id` int(10) unsigned DEFAULT NULL,
+  `id_customization` int(10) unsigned DEFAULT 0,
   `product_name` varchar(255) NOT NULL,
-  `product_quantity` int unsigned NOT NULL DEFAULT '0',
-  `product_quantity_in_stock` int NOT NULL DEFAULT '0',
-  `product_quantity_refunded` int unsigned NOT NULL DEFAULT '0',
-  `product_quantity_return` int unsigned NOT NULL DEFAULT '0',
-  `product_quantity_reinjected` int unsigned NOT NULL DEFAULT '0',
-  `product_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `reduction_percent` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `reduction_amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `reduction_amount_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `reduction_amount_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `group_reduction` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `product_quantity_discount` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_quantity_in_stock` int(11) NOT NULL DEFAULT 0,
+  `product_quantity_refunded` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_quantity_return` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_quantity_reinjected` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `reduction_percent` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `reduction_amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `reduction_amount_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `reduction_amount_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `group_reduction` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `product_quantity_discount` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `product_ean13` varchar(13) DEFAULT NULL,
   `product_isbn` varchar(32) DEFAULT NULL,
   `product_upc` varchar(12) DEFAULT NULL,
@@ -20457,34 +16801,34 @@ CREATE TABLE `ps_order_detail` (
   `product_reference` varchar(64) DEFAULT NULL,
   `product_supplier_reference` varchar(64) DEFAULT NULL,
   `product_weight` decimal(20,6) NOT NULL,
-  `id_tax_rules_group` int unsigned DEFAULT '0',
-  `tax_computation_method` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_tax_rules_group` int(10) unsigned DEFAULT 0,
+  `tax_computation_method` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `tax_name` varchar(16) NOT NULL,
-  `tax_rate` decimal(10,3) NOT NULL DEFAULT '0.000',
-  `ecotax` decimal(17,6) NOT NULL DEFAULT '0.000000',
-  `ecotax_tax_rate` decimal(5,3) NOT NULL DEFAULT '0.000',
-  `discount_quantity_applied` tinyint(1) NOT NULL DEFAULT '0',
+  `tax_rate` decimal(10,3) NOT NULL DEFAULT 0.000,
+  `ecotax` decimal(17,6) NOT NULL DEFAULT 0.000000,
+  `ecotax_tax_rate` decimal(5,3) NOT NULL DEFAULT 0.000,
+  `discount_quantity_applied` tinyint(1) NOT NULL DEFAULT 0,
   `download_hash` varchar(255) DEFAULT NULL,
-  `download_nb` int unsigned DEFAULT '0',
+  `download_nb` int(10) unsigned DEFAULT 0,
   `download_deadline` datetime DEFAULT NULL,
-  `total_price_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_price_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `unit_price_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `unit_price_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_price_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_price_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `purchase_supplier_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `original_product_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `original_wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_refunded_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_refunded_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `total_price_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_price_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `unit_price_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `unit_price_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_price_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_price_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `purchase_supplier_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `original_product_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `original_wholesale_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_refunded_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_refunded_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
   PRIMARY KEY (`id_order_detail`),
   KEY `order_detail_order` (`id_order`),
   KEY `product_id` (`product_id`,`product_attribute_id`),
   KEY `product_attribute_id` (`product_attribute_id`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_order_id_order_detail` (`id_order`,`id_order_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_detail` VALUES
 ('1','1','0','0','1','1','1','0','Hummingbird printed t-shirt - Color : White, Size : S','1','1','0','0','0','23.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_1',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','23.900000','23.900000','23.900000','23.900000','0.000000','0.000000','0.000000','23.900000','0.000000','0.000000','0.000000'),
@@ -20535,17 +16879,18 @@ INSERT INTO `ps_order_detail` VALUES
 ('46','14','0','0','1','1761','449','0','Hooded puffer jacket (Rozmiar: XS)','3','3','0','0','0','186.180000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','687.000000','558.540000','229.001400','186.180000','0.000000','0.000000','0.000000','186.180000','0.000000','0.000000','0.000000'),
 ('47','15','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000'),
 ('48','16','0','0','1','1588','381','0','Bluza oversize z kapturem (Rozmiar: XS)','1','1','0','0','0','104.880000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','129.000000','104.880000','129.002400','104.880000','0.000000','0.000000','0.000000','104.880000','0.000000','0.000000','0.000000'),
-('49','16','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000');
+('49','16','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000'),
+('50','17','0','0','1','1421','385','0','Krepowana sukienka z marszczeniem (Rozmiar: XS)','1','1','0','0','0','113.010000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,NULL,NULL,'0.000000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','139.000000','113.010000','139.002300','113.010000','0.000000','0.000000','0.000000','113.010000','0.000000','0.000000','0.000000');
 /* Scheme for table ps_order_detail_tax */
 DROP TABLE IF EXISTS `ps_order_detail_tax`;
 CREATE TABLE `ps_order_detail_tax` (
-  `id_order_detail` int NOT NULL,
-  `id_tax` int NOT NULL,
-  `unit_amount` decimal(16,6) NOT NULL DEFAULT '0.000000',
-  `total_amount` decimal(16,6) NOT NULL DEFAULT '0.000000',
+  `id_order_detail` int(11) NOT NULL,
+  `id_tax` int(11) NOT NULL,
+  `unit_amount` decimal(16,6) NOT NULL DEFAULT 0.000000,
+  `total_amount` decimal(16,6) NOT NULL DEFAULT 0.000000,
   KEY `id_order_detail` (`id_order_detail`),
   KEY `id_tax` (`id_tax`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_detail_tax` VALUES
 ('8','1','6.605600','6.610000'),
@@ -20584,20 +16929,21 @@ INSERT INTO `ps_order_detail_tax` VALUES
 ('46','1','42.821400','128.460000'),
 ('47','1','25.992300','25.990000'),
 ('49','1','25.992300','25.990000'),
-('48','1','24.122400','24.120000');
+('48','1','24.122400','24.120000'),
+('50','1','25.992300','25.990000');
 /* Scheme for table ps_order_history */
 DROP TABLE IF EXISTS `ps_order_history`;
 CREATE TABLE `ps_order_history` (
-  `id_order_history` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_employee` int unsigned NOT NULL,
-  `id_order` int unsigned NOT NULL,
-  `id_order_state` int unsigned NOT NULL,
+  `id_order_history` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_employee` int(10) unsigned NOT NULL,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_order_state` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_history`),
   KEY `order_history_order` (`id_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_order_state` (`id_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_history` VALUES
 ('1','0','1','1','2022-10-25 19:38:33'),
@@ -20617,32 +16963,33 @@ INSERT INTO `ps_order_history` VALUES
 ('15','0','13','13','2022-12-21 16:02:36'),
 ('16','0','14','13','2022-12-21 16:38:53'),
 ('17','0','15','13','2022-12-21 16:51:49'),
-('18','0','16','13','2023-01-07 12:54:14');
+('18','0','16','13','2023-01-07 12:54:14'),
+('19','0','17','13','2023-01-16 18:05:04');
 /* Scheme for table ps_order_invoice */
 DROP TABLE IF EXISTS `ps_order_invoice`;
 CREATE TABLE `ps_order_invoice` (
-  `id_order_invoice` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order` int NOT NULL,
-  `number` int NOT NULL,
-  `delivery_number` int NOT NULL,
+  `id_order_invoice` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(11) NOT NULL,
+  `number` int(11) NOT NULL,
+  `delivery_number` int(11) NOT NULL,
   `delivery_date` datetime DEFAULT NULL,
-  `total_discount_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_discount_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_products` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_products_wt` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `shipping_tax_computation_method` int unsigned NOT NULL,
-  `total_wrapping_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_wrapping_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `shop_address` text,
-  `note` text,
+  `total_discount_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_discount_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_products` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_products_wt` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `shipping_tax_computation_method` int(10) unsigned NOT NULL,
+  `total_wrapping_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_wrapping_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `shop_address` text DEFAULT NULL,
+  `note` text DEFAULT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_invoice`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_invoice` VALUES
 ('1','9','1','0','0000-00-00 00:00:00','32.400000','32.400000','183.570000','183.570000','215.970000','215.970000','0.000000','0.000000','0','0.000000','0.000000','h&amp;m<br />Poland',NULL,'2022-12-20 12:54:54'),
@@ -20650,23 +16997,23 @@ INSERT INTO `ps_order_invoice` VALUES
 /* Scheme for table ps_order_invoice_payment */
 DROP TABLE IF EXISTS `ps_order_invoice_payment`;
 CREATE TABLE `ps_order_invoice_payment` (
-  `id_order_invoice` int unsigned NOT NULL,
-  `id_order_payment` int unsigned NOT NULL,
-  `id_order` int unsigned NOT NULL,
+  `id_order_invoice` int(10) unsigned NOT NULL,
+  `id_order_payment` int(10) unsigned NOT NULL,
+  `id_order` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_order_invoice`,`id_order_payment`),
   KEY `order_payment` (`id_order_payment`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_invoice_tax */
 DROP TABLE IF EXISTS `ps_order_invoice_tax`;
 CREATE TABLE `ps_order_invoice_tax` (
-  `id_order_invoice` int NOT NULL,
+  `id_order_invoice` int(11) NOT NULL,
   `type` varchar(15) NOT NULL,
-  `id_tax` int NOT NULL,
-  `amount` decimal(10,6) NOT NULL DEFAULT '0.000000',
+  `id_tax` int(11) NOT NULL,
+  `amount` decimal(10,6) NOT NULL DEFAULT 0.000000,
   KEY `id_tax` (`id_tax`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_invoice_tax` VALUES
 ('1','shipping','1','0.000000'),
@@ -20674,22 +17021,22 @@ INSERT INTO `ps_order_invoice_tax` VALUES
 /* Scheme for table ps_order_message */
 DROP TABLE IF EXISTS `ps_order_message`;
 CREATE TABLE `ps_order_message` (
-  `id_order_message` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_order_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_message`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_message` VALUES
 ('1','2022-10-25 19:38:33');
 /* Scheme for table ps_order_message_lang */
 DROP TABLE IF EXISTS `ps_order_message_lang`;
 CREATE TABLE `ps_order_message_lang` (
-  `id_order_message` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_order_message` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id_order_message`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_message_lang` VALUES
 ('1','1','Delay','Hi,\r\n\r\nUnfortunately, an item on your order is currently out of stock. This may cause a slight delay in delivery.\r\nPlease accept our apologies and rest assured that we are working hard to rectify this.\r\n\r\nBest regards,'),
@@ -20697,12 +17044,12 @@ INSERT INTO `ps_order_message_lang` VALUES
 /* Scheme for table ps_order_payment */
 DROP TABLE IF EXISTS `ps_order_payment`;
 CREATE TABLE `ps_order_payment` (
-  `id_order_payment` int NOT NULL AUTO_INCREMENT,
+  `id_order_payment` int(11) NOT NULL AUTO_INCREMENT,
   `order_reference` varchar(9) DEFAULT NULL,
-  `id_currency` int unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
   `amount` decimal(20,6) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
-  `conversion_rate` decimal(13,6) NOT NULL DEFAULT '1.000000',
+  `conversion_rate` decimal(13,6) NOT NULL DEFAULT 1.000000,
   `transaction_id` varchar(254) DEFAULT NULL,
   `card_number` varchar(254) DEFAULT NULL,
   `card_brand` varchar(254) DEFAULT NULL,
@@ -20711,40 +17058,40 @@ CREATE TABLE `ps_order_payment` (
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_order_payment`),
   KEY `order_reference` (`order_reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_return */
 DROP TABLE IF EXISTS `ps_order_return`;
 CREATE TABLE `ps_order_return` (
-  `id_order_return` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned NOT NULL,
-  `id_order` int unsigned NOT NULL,
-  `state` tinyint unsigned NOT NULL DEFAULT '1',
+  `id_order_return` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_order` int(10) unsigned NOT NULL,
+  `state` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `question` text NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_order_return`),
   KEY `order_return_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_return_detail */
 DROP TABLE IF EXISTS `ps_order_return_detail`;
 CREATE TABLE `ps_order_return_detail` (
-  `id_order_return` int unsigned NOT NULL,
-  `id_order_detail` int unsigned NOT NULL,
-  `id_customization` int unsigned NOT NULL DEFAULT '0',
-  `product_quantity` int unsigned NOT NULL DEFAULT '0',
+  `id_order_return` int(10) unsigned NOT NULL,
+  `id_order_detail` int(10) unsigned NOT NULL,
+  `id_customization` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_return`,`id_order_detail`,`id_customization`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_return_state */
 DROP TABLE IF EXISTS `ps_order_return_state`;
 CREATE TABLE `ps_order_return_state` (
-  `id_order_return_state` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_order_return_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_order_return_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_return_state` VALUES
 ('1','#4169E1'),
@@ -20755,11 +17102,11 @@ INSERT INTO `ps_order_return_state` VALUES
 /* Scheme for table ps_order_return_state_lang */
 DROP TABLE IF EXISTS `ps_order_return_state_lang`;
 CREATE TABLE `ps_order_return_state_lang` (
-  `id_order_return_state` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_order_return_state` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_order_return_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_return_state_lang` VALUES
 ('1','1','Waiting for confirmation'),
@@ -20775,32 +17122,32 @@ INSERT INTO `ps_order_return_state_lang` VALUES
 /* Scheme for table ps_order_slip */
 DROP TABLE IF EXISTS `ps_order_slip`;
 CREATE TABLE `ps_order_slip` (
-  `id_order_slip` int unsigned NOT NULL AUTO_INCREMENT,
-  `conversion_rate` decimal(13,6) NOT NULL DEFAULT '1.000000',
-  `id_customer` int unsigned NOT NULL,
-  `id_order` int unsigned NOT NULL,
+  `id_order_slip` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `conversion_rate` decimal(13,6) NOT NULL DEFAULT 1.000000,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_order` int(10) unsigned NOT NULL,
   `total_products_tax_excl` decimal(20,6) DEFAULT NULL,
   `total_products_tax_incl` decimal(20,6) DEFAULT NULL,
   `total_shipping_tax_excl` decimal(20,6) DEFAULT NULL,
   `total_shipping_tax_incl` decimal(20,6) DEFAULT NULL,
-  `shipping_cost` tinyint unsigned NOT NULL DEFAULT '0',
-  `amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `shipping_cost_amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `shipping_cost` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `shipping_cost_amount` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `partial` tinyint(1) NOT NULL,
-  `order_slip_type` tinyint unsigned NOT NULL DEFAULT '0',
+  `order_slip_type` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_order_slip`),
   KEY `order_slip_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_slip_detail */
 DROP TABLE IF EXISTS `ps_order_slip_detail`;
 CREATE TABLE `ps_order_slip_detail` (
-  `id_order_slip` int unsigned NOT NULL,
-  `id_order_detail` int unsigned NOT NULL,
-  `product_quantity` int unsigned NOT NULL DEFAULT '0',
+  `id_order_slip` int(10) unsigned NOT NULL,
+  `id_order_detail` int(10) unsigned NOT NULL,
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT 0,
   `unit_price_tax_excl` decimal(20,6) DEFAULT NULL,
   `unit_price_tax_incl` decimal(20,6) DEFAULT NULL,
   `total_price_tax_excl` decimal(20,6) DEFAULT NULL,
@@ -20808,28 +17155,28 @@ CREATE TABLE `ps_order_slip_detail` (
   `amount_tax_excl` decimal(20,6) DEFAULT NULL,
   `amount_tax_incl` decimal(20,6) DEFAULT NULL,
   PRIMARY KEY (`id_order_slip`,`id_order_detail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_order_state */
 DROP TABLE IF EXISTS `ps_order_state`;
 CREATE TABLE `ps_order_state` (
-  `id_order_state` int unsigned NOT NULL AUTO_INCREMENT,
-  `invoice` tinyint unsigned DEFAULT '0',
-  `send_email` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_order_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `invoice` tinyint(3) unsigned DEFAULT 0,
+  `send_email` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `module_name` varchar(255) DEFAULT NULL,
   `color` varchar(32) DEFAULT NULL,
-  `unremovable` tinyint unsigned NOT NULL,
-  `hidden` tinyint unsigned NOT NULL DEFAULT '0',
-  `logable` tinyint(1) NOT NULL DEFAULT '0',
-  `delivery` tinyint unsigned NOT NULL DEFAULT '0',
-  `shipped` tinyint unsigned NOT NULL DEFAULT '0',
-  `paid` tinyint unsigned NOT NULL DEFAULT '0',
-  `pdf_invoice` tinyint unsigned NOT NULL DEFAULT '0',
-  `pdf_delivery` tinyint unsigned NOT NULL DEFAULT '0',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `unremovable` tinyint(3) unsigned NOT NULL,
+  `hidden` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `logable` tinyint(1) NOT NULL DEFAULT 0,
+  `delivery` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `shipped` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `paid` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `pdf_invoice` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `pdf_delivery` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_state`),
   KEY `module_name` (`module_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_state` VALUES
 ('1','0','1','ps_checkpayment','#34209E','1','0','0','0','0','0','0','0','0'),
@@ -20856,12 +17203,12 @@ INSERT INTO `ps_order_state` VALUES
 /* Scheme for table ps_order_state_lang */
 DROP TABLE IF EXISTS `ps_order_state_lang`;
 CREATE TABLE `ps_order_state_lang` (
-  `id_order_state` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_order_state` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   `template` varchar(64) NOT NULL,
   PRIMARY KEY (`id_order_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_order_state_lang` VALUES
 ('1','1','Awaiting check payment','cheque'),
@@ -20909,53 +17256,53 @@ INSERT INTO `ps_order_state_lang` VALUES
 /* Scheme for table ps_orders */
 DROP TABLE IF EXISTS `ps_orders`;
 CREATE TABLE `ps_orders` (
-  `id_order` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `reference` varchar(9) DEFAULT NULL,
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_carrier` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `id_cart` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL,
-  `id_address_delivery` int unsigned NOT NULL,
-  `id_address_invoice` int unsigned NOT NULL,
-  `current_state` int unsigned NOT NULL,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_address_delivery` int(10) unsigned NOT NULL,
+  `id_address_invoice` int(10) unsigned NOT NULL,
+  `current_state` int(10) unsigned NOT NULL,
   `secure_key` varchar(32) NOT NULL DEFAULT '-1',
   `payment` varchar(255) NOT NULL,
-  `conversion_rate` decimal(13,6) NOT NULL DEFAULT '1.000000',
+  `conversion_rate` decimal(13,6) NOT NULL DEFAULT 1.000000,
   `module` varchar(255) DEFAULT NULL,
-  `recyclable` tinyint unsigned NOT NULL DEFAULT '0',
-  `gift` tinyint unsigned NOT NULL DEFAULT '0',
-  `gift_message` text,
-  `mobile_theme` tinyint(1) NOT NULL DEFAULT '0',
+  `recyclable` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `gift` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `gift_message` text DEFAULT NULL,
+  `mobile_theme` tinyint(1) NOT NULL DEFAULT 0,
   `shipping_number` varchar(64) DEFAULT NULL,
-  `total_discounts` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_discounts_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_discounts_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_paid_real` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_products` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_products_wt` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_shipping_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `carrier_tax_rate` decimal(10,3) NOT NULL DEFAULT '0.000',
-  `total_wrapping` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_wrapping_tax_incl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `total_wrapping_tax_excl` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `round_mode` tinyint(1) NOT NULL DEFAULT '2',
-  `round_type` tinyint(1) NOT NULL DEFAULT '1',
-  `invoice_number` int unsigned NOT NULL DEFAULT '0',
-  `delivery_number` int unsigned NOT NULL DEFAULT '0',
+  `total_discounts` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_discounts_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_discounts_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_paid_real` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_products` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_products_wt` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_shipping_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `carrier_tax_rate` decimal(10,3) NOT NULL DEFAULT 0.000,
+  `total_wrapping` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_wrapping_tax_incl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `total_wrapping_tax_excl` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `round_mode` tinyint(1) NOT NULL DEFAULT 2,
+  `round_type` tinyint(1) NOT NULL DEFAULT 1,
+  `invoice_number` int(10) unsigned NOT NULL DEFAULT 0,
+  `delivery_number` int(10) unsigned NOT NULL DEFAULT 0,
   `invoice_date` datetime NOT NULL,
   `delivery_date` datetime NOT NULL,
-  `valid` int unsigned NOT NULL DEFAULT '0',
+  `valid` int(10) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `note` text,
+  `note` text DEFAULT NULL,
   PRIMARY KEY (`id_order`),
   KEY `reference` (`reference`),
   KEY `id_customer` (`id_customer`),
@@ -20970,7 +17317,7 @@ CREATE TABLE `ps_orders` (
   KEY `current_state` (`current_state`),
   KEY `id_shop` (`id_shop`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_orders` VALUES
 ('1','XKBKNABJK','1','1','2','1','2','1','1','5','5','6','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','61.800000','68.200000','66.800000','0.000000','59.800000','59.800000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-10-25 19:38:32','2022-10-25 19:38:33','Test'),
@@ -20988,28 +17335,29 @@ INSERT INTO `ps_orders` VALUES
 ('13','SOHRDAESO','1','1','6','2','13','29','1','14','14','13','35f3e91844d426bb1bf89f534fa92e37','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','7067.050000','7067.050000','5745.570000','0.000000','5745.570000','7067.050000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-12-21 16:02:35','2022-12-21 16:02:36',NULL),
 ('14','SKMAIQYYS','1','1','6','2','14','30','1','15','15','13','254e79e6f9aa7e2cbcabd38e213ad20d','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','13437.100000','13437.100000','10924.470000','0.000000','10924.470000','13437.090000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-12-21 16:38:53','2022-12-21 16:38:53',NULL),
 ('15','HNUCQELCC','1','1','1','2','16','32','1','16','16','13','cd704be908f57d6425494ebfc4f40a99','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','139.000000','139.000000','113.010000','0.000000','113.010000','139.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2022-12-21 16:51:49','2022-12-21 16:51:49',NULL),
-('16','PEIAYXHXH','1','1','13','2','16','33','1','16','16','13','cd704be908f57d6425494ebfc4f40a99','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','269.230000','269.230000','218.890000','0.000000','217.890000','268.000000','1.230000','1.230000','1.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-07 12:54:13','2023-01-07 12:54:14',NULL);
+('16','PEIAYXHXH','1','1','13','2','16','33','1','16','16','13','cd704be908f57d6425494ebfc4f40a99','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','269.230000','269.230000','218.890000','0.000000','217.890000','268.000000','1.230000','1.230000','1.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-07 12:54:13','2023-01-07 12:54:14',NULL),
+('17','YXJTDSHFC','1','1','1','2','17','34','1','17','17','13','702fcecf3afaca7fa9b28c118c59ce4f','Płatność przy odbiorze','1.000000','ps_cashondelivery','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','139.000000','139.000000','113.010000','0.000000','113.010000','139.000000','0.000000','0.000000','0.000000','23.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-01-16 18:05:04','2023-01-16 18:05:04',NULL);
 /* Scheme for table ps_pack */
 DROP TABLE IF EXISTS `ps_pack`;
 CREATE TABLE `ps_pack` (
-  `id_product_pack` int unsigned NOT NULL,
-  `id_product_item` int unsigned NOT NULL,
-  `id_product_attribute_item` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL DEFAULT '1',
+  `id_product_pack` int(10) unsigned NOT NULL,
+  `id_product_item` int(10) unsigned NOT NULL,
+  `id_product_attribute_item` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_product_pack`,`id_product_item`,`id_product_attribute_item`),
   KEY `product_item` (`id_product_item`,`id_product_attribute_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_page */
 DROP TABLE IF EXISTS `ps_page`;
 CREATE TABLE `ps_page` (
-  `id_page` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_page_type` int unsigned NOT NULL,
-  `id_object` int unsigned DEFAULT NULL,
+  `id_page` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_page_type` int(10) unsigned NOT NULL,
+  `id_object` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_page` VALUES
 ('1','1',NULL),
@@ -21025,11 +17373,11 @@ INSERT INTO `ps_page` VALUES
 /* Scheme for table ps_page_type */
 DROP TABLE IF EXISTS `ps_page_type`;
 CREATE TABLE `ps_page_type` (
-  `id_page_type` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_page_type` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_page_type` VALUES
 ('5','authentication'),
@@ -21041,57 +17389,57 @@ INSERT INTO `ps_page_type` VALUES
 /* Scheme for table ps_page_viewed */
 DROP TABLE IF EXISTS `ps_page_viewed`;
 CREATE TABLE `ps_page_viewed` (
-  `id_page` int unsigned NOT NULL,
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_date_range` int unsigned NOT NULL,
-  `counter` int unsigned NOT NULL,
+  `id_page` int(10) unsigned NOT NULL,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_date_range` int(10) unsigned NOT NULL,
+  `counter` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_page`,`id_date_range`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_pagenotfound */
 DROP TABLE IF EXISTS `ps_pagenotfound`;
 CREATE TABLE `ps_pagenotfound` (
-  `id_pagenotfound` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
+  `id_pagenotfound` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
   `request_uri` varchar(256) NOT NULL,
   `http_referer` varchar(256) NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_pagenotfound`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_capture */
 DROP TABLE IF EXISTS `ps_paypal_capture`;
 CREATE TABLE `ps_paypal_capture` (
-  `id_paypal_capture` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_paypal_capture` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_capture` varchar(255) NOT NULL,
-  `id_paypal_order` int NOT NULL,
+  `id_paypal_order` int(11) NOT NULL,
   `capture_amount` decimal(10,2) NOT NULL,
   `result` varchar(255) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_capture`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_ipn */
 DROP TABLE IF EXISTS `ps_paypal_ipn`;
 CREATE TABLE `ps_paypal_ipn` (
-  `id_paypal_ipn` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_paypal_ipn` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_transaction` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `response` text NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_ipn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_order */
 DROP TABLE IF EXISTS `ps_paypal_order`;
 CREATE TABLE `ps_paypal_order` (
-  `id_paypal_order` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order` int unsigned NOT NULL,
-  `id_cart` int unsigned NOT NULL,
+  `id_paypal_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
   `id_transaction` varchar(255) NOT NULL,
   `id_payment` varchar(255) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
@@ -21102,113 +17450,113 @@ CREATE TABLE `ps_paypal_order` (
   `total_prestashop` decimal(10,2) NOT NULL,
   `method` varchar(255) NOT NULL,
   `payment_tool` varchar(255) NOT NULL,
-  `sandbox` tinyint unsigned NOT NULL,
+  `sandbox` tinyint(3) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_processlogger */
 DROP TABLE IF EXISTS `ps_paypal_processlogger`;
 CREATE TABLE `ps_paypal_processlogger` (
-  `id_paypal_processlogger` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order` int unsigned NOT NULL,
-  `id_cart` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_paypal_processlogger` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   `id_transaction` varchar(50) NOT NULL,
   `log` varchar(1000) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `sandbox` tinyint unsigned NOT NULL,
+  `sandbox` tinyint(3) unsigned NOT NULL,
   `tools` varchar(50) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_transaction` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_processlogger`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_vaulting */
 DROP TABLE IF EXISTS `ps_paypal_vaulting`;
 CREATE TABLE `ps_paypal_vaulting` (
-  `id_paypal_vaulting` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned NOT NULL,
+  `id_paypal_vaulting` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL,
   `rememberedCards` varchar(255) NOT NULL,
   `profile_key` varchar(255) NOT NULL,
-  `sandbox` tinyint unsigned NOT NULL,
+  `sandbox` tinyint(3) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_vaulting`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_paypal_webhook */
 DROP TABLE IF EXISTS `ps_paypal_webhook`;
 CREATE TABLE `ps_paypal_webhook` (
-  `id_paypal_webhook` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_paypal_order` int NOT NULL,
+  `id_paypal_webhook` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_paypal_order` int(11) NOT NULL,
   `id_webhook` varchar(255) NOT NULL,
   `event_type` varchar(255) NOT NULL,
   `data` text NOT NULL,
-  `id_state` int NOT NULL,
+  `id_state` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_completed` datetime NOT NULL,
   PRIMARY KEY (`id_paypal_webhook`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_product */
 DROP TABLE IF EXISTS `ps_product`;
 CREATE TABLE `ps_product` (
-  `id_product` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_supplier` int unsigned DEFAULT NULL,
-  `id_manufacturer` int unsigned DEFAULT NULL,
-  `id_category_default` int unsigned DEFAULT NULL,
-  `id_shop_default` int unsigned NOT NULL DEFAULT '1',
-  `id_tax_rules_group` int unsigned NOT NULL,
-  `on_sale` tinyint unsigned NOT NULL DEFAULT '0',
-  `online_only` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supplier` int(10) unsigned DEFAULT NULL,
+  `id_manufacturer` int(10) unsigned DEFAULT NULL,
+  `id_category_default` int(10) unsigned DEFAULT NULL,
+  `id_shop_default` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_tax_rules_group` int(10) unsigned NOT NULL,
+  `on_sale` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `online_only` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `ean13` varchar(13) DEFAULT NULL,
   `isbn` varchar(32) DEFAULT NULL,
   `upc` varchar(12) DEFAULT NULL,
   `mpn` varchar(40) DEFAULT NULL,
-  `ecotax` decimal(17,6) NOT NULL DEFAULT '0.000000',
-  `quantity` int NOT NULL DEFAULT '0',
-  `minimal_quantity` int unsigned NOT NULL DEFAULT '1',
-  `low_stock_threshold` int DEFAULT NULL,
-  `low_stock_alert` tinyint(1) NOT NULL DEFAULT '0',
-  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `ecotax` decimal(17,6) NOT NULL DEFAULT 0.000000,
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `minimal_quantity` int(10) unsigned NOT NULL DEFAULT 1,
+  `low_stock_threshold` int(11) DEFAULT NULL,
+  `low_stock_alert` tinyint(1) NOT NULL DEFAULT 0,
+  `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `unity` varchar(255) DEFAULT NULL,
-  `unit_price_ratio` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `additional_shipping_cost` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `unit_price_ratio` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `additional_shipping_cost` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `reference` varchar(64) DEFAULT NULL,
   `supplier_reference` varchar(64) DEFAULT NULL,
   `location` varchar(255) NOT NULL DEFAULT '',
-  `width` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `height` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `depth` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `weight` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `out_of_stock` int unsigned NOT NULL DEFAULT '2',
-  `additional_delivery_times` tinyint unsigned NOT NULL DEFAULT '1',
-  `quantity_discount` tinyint(1) DEFAULT '0',
-  `customizable` tinyint NOT NULL DEFAULT '0',
-  `uploadable_files` tinyint NOT NULL DEFAULT '0',
-  `text_fields` tinyint NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `width` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `height` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `depth` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `weight` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `out_of_stock` int(10) unsigned NOT NULL DEFAULT 2,
+  `additional_delivery_times` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `quantity_discount` tinyint(1) DEFAULT 0,
+  `customizable` tinyint(4) NOT NULL DEFAULT 0,
+  `uploadable_files` tinyint(4) NOT NULL DEFAULT 0,
+  `text_fields` tinyint(4) NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `redirect_type` enum('404','301-product','302-product','301-category','302-category') NOT NULL DEFAULT '404',
-  `id_type_redirected` int unsigned NOT NULL DEFAULT '0',
-  `available_for_order` tinyint(1) NOT NULL DEFAULT '1',
+  `id_type_redirected` int(10) unsigned NOT NULL DEFAULT 0,
+  `available_for_order` tinyint(1) NOT NULL DEFAULT 1,
   `available_date` date DEFAULT NULL,
-  `show_condition` tinyint(1) NOT NULL DEFAULT '0',
+  `show_condition` tinyint(1) NOT NULL DEFAULT 0,
   `condition` enum('new','used','refurbished') NOT NULL DEFAULT 'new',
-  `show_price` tinyint(1) NOT NULL DEFAULT '1',
-  `indexed` tinyint(1) NOT NULL DEFAULT '0',
+  `show_price` tinyint(1) NOT NULL DEFAULT 1,
+  `indexed` tinyint(1) NOT NULL DEFAULT 0,
   `visibility` enum('both','catalog','search','none') NOT NULL DEFAULT 'both',
-  `cache_is_pack` tinyint(1) NOT NULL DEFAULT '0',
-  `cache_has_attachments` tinyint(1) NOT NULL DEFAULT '0',
-  `is_virtual` tinyint(1) NOT NULL DEFAULT '0',
-  `cache_default_attribute` int unsigned DEFAULT NULL,
+  `cache_is_pack` tinyint(1) NOT NULL DEFAULT 0,
+  `cache_has_attachments` tinyint(1) NOT NULL DEFAULT 0,
+  `is_virtual` tinyint(1) NOT NULL DEFAULT 0,
+  `cache_default_attribute` int(10) unsigned DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `advanced_stock_management` tinyint(1) NOT NULL DEFAULT '0',
-  `pack_stock_type` int unsigned NOT NULL DEFAULT '3',
-  `state` int unsigned NOT NULL DEFAULT '1',
+  `advanced_stock_management` tinyint(1) NOT NULL DEFAULT 0,
+  `pack_stock_type` int(10) unsigned NOT NULL DEFAULT 3,
+  `state` int(10) unsigned NOT NULL DEFAULT 1,
   `product_type` enum('standard','pack','virtual','combinations','') NOT NULL DEFAULT '',
   PRIMARY KEY (`id_product`),
   KEY `reference_idx` (`reference`),
@@ -21219,7 +17567,7 @@ CREATE TABLE `ps_product` (
   KEY `indexed` (`indexed`),
   KEY `date_add` (`date_add`),
   KEY `state` (`state`,`date_upd`)
-) ENGINE=InnoDB AUTO_INCREMENT=1922 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1922 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product` VALUES
 ('1421','0','0','47','1','1','0','0',NULL,NULL,NULL,NULL,'0.000000','0','1',NULL,'0','113.010000','0.000000',NULL,'0.000000','0.000000',NULL,NULL,'','0.000000','0.000000','0.000000','0.000000','2','1','0','0','0','0','1','301-category','0','1','0000-00-00','0','new','1','1','both','0','0','0','385','2022-12-20 23:54:38','2022-12-21 00:51:15','0','3','1','combinations'),
@@ -21728,16 +18076,16 @@ INSERT INTO `ps_product` VALUES
 /* Scheme for table ps_product_attachment */
 DROP TABLE IF EXISTS `ps_product_attachment`;
 CREATE TABLE `ps_product_attachment` (
-  `id_product` int unsigned NOT NULL,
-  `id_attachment` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_attachment` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_attachment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_attribute */
 DROP TABLE IF EXISTS `ps_product_attribute`;
 CREATE TABLE `ps_product_attribute` (
-  `id_product_attribute` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
   `reference` varchar(64) DEFAULT NULL,
   `supplier_reference` varchar(64) DEFAULT NULL,
   `location` varchar(255) NOT NULL DEFAULT '',
@@ -21745,16 +18093,16 @@ CREATE TABLE `ps_product_attribute` (
   `isbn` varchar(32) DEFAULT NULL,
   `upc` varchar(12) DEFAULT NULL,
   `mpn` varchar(40) DEFAULT NULL,
-  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `ecotax` decimal(17,6) NOT NULL DEFAULT '0.000000',
-  `quantity` int NOT NULL DEFAULT '0',
-  `weight` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `unit_price_impact` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `default_on` tinyint unsigned DEFAULT NULL,
-  `minimal_quantity` int unsigned NOT NULL DEFAULT '1',
-  `low_stock_threshold` int DEFAULT NULL,
-  `low_stock_alert` tinyint(1) NOT NULL DEFAULT '0',
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `ecotax` decimal(17,6) NOT NULL DEFAULT 0.000000,
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `weight` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `unit_price_impact` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `default_on` tinyint(3) unsigned DEFAULT NULL,
+  `minimal_quantity` int(10) unsigned NOT NULL DEFAULT 1,
+  `low_stock_threshold` int(11) DEFAULT NULL,
+  `low_stock_alert` tinyint(1) NOT NULL DEFAULT 0,
   `available_date` date DEFAULT NULL,
   PRIMARY KEY (`id_product_attribute`),
   UNIQUE KEY `product_default` (`id_product`,`default_on`),
@@ -21762,7 +18110,7 @@ CREATE TABLE `ps_product_attribute` (
   KEY `reference` (`reference`),
   KEY `supplier_reference` (`supplier_reference`),
   KEY `id_product_id_product_attribute` (`id_product_attribute`,`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product_attribute` VALUES
 ('339','1599',NULL,NULL,'',NULL,NULL,NULL,NULL,'0.000000','0.000000','0.000000','564','0.000000','0.000000','1','1',NULL,'1','0000-00-00'),
@@ -21898,171 +18246,171 @@ INSERT INTO `ps_product_attribute` VALUES
 /* Scheme for table ps_product_attribute_combination */
 DROP TABLE IF EXISTS `ps_product_attribute_combination`;
 CREATE TABLE `ps_product_attribute_combination` (
-  `id_attribute` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
+  `id_attribute` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_attribute`,`id_product_attribute`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product_attribute_combination` VALUES
-('26','339'),
 ('1','340'),
-('2','341'),
-('26','342'),
 ('1','343'),
-('2','344'),
-('3','345'),
-('26','346'),
-('2','347'),
-('3','348'),
-('26','349'),
-('2','350'),
 ('1','351'),
-('3','352'),
-('4','353'),
 ('1','354'),
-('2','355'),
-('3','356'),
-('4','357'),
-('26','358'),
 ('1','359'),
-('2','360'),
-('4','361'),
 ('1','362'),
-('2','363'),
-('3','364'),
 ('1','365'),
-('2','366'),
-('3','367'),
-('4','368'),
-('26','369'),
-('26','370'),
 ('1','371'),
-('4','372'),
-('26','373'),
 ('1','374'),
-('2','375'),
-('3','376'),
-('4','377'),
-('2','378'),
-('3','379'),
-('4','380'),
-('26','381'),
-('2','382'),
-('3','383'),
-('4','384'),
-('26','385'),
 ('1','386'),
-('2','387'),
 ('1','388'),
-('2','389'),
-('3','390'),
-('3','391'),
-('4','392'),
-('2','393'),
-('2','394'),
-('4','395'),
-('3','396'),
 ('1','397'),
-('26','398'),
 ('1','399'),
-('3','400'),
 ('1','401'),
-('2','402'),
-('3','403'),
 ('1','404'),
-('3','405'),
-('4','406'),
 ('1','407'),
-('3','408'),
-('4','409'),
-('26','410'),
-('2','411'),
-('3','412'),
-('4','413'),
 ('1','414'),
 ('1','415'),
-('2','416'),
-('3','417'),
-('26','418'),
 ('1','419'),
-('2','420'),
-('3','421'),
 ('1','422'),
-('2','423'),
-('4','424'),
-('26','425'),
 ('1','426'),
+('1','432'),
+('1','435'),
+('1','438'),
+('1','442'),
+('1','446'),
+('1','450'),
+('1','453'),
+('1','459'),
+('1','464'),
+('2','341'),
+('2','344'),
+('2','347'),
+('2','350'),
+('2','355'),
+('2','360'),
+('2','363'),
+('2','366'),
+('2','375'),
+('2','378'),
+('2','382'),
+('2','387'),
+('2','389'),
+('2','393'),
+('2','394'),
+('2','402'),
+('2','411'),
+('2','416'),
+('2','420'),
+('2','423'),
 ('2','427'),
 ('2','428'),
-('3','429'),
-('4','430'),
-('26','431'),
-('1','432'),
 ('2','433'),
-('26','434'),
-('1','435'),
 ('2','436'),
-('26','437'),
-('1','438'),
 ('2','439'),
-('3','440'),
-('26','441'),
-('1','442'),
 ('2','443'),
-('3','444'),
-('26','445'),
-('1','446'),
 ('2','447'),
-('3','448'),
-('26','449'),
-('1','450'),
 ('2','451'),
-('3','452'),
-('1','453'),
-('26','454'),
 ('2','455'),
-('3','456'),
-('4','457'),
-('26','458'),
-('1','459'),
 ('2','460'),
+('2','468'),
+('3','345'),
+('3','348'),
+('3','352'),
+('3','356'),
+('3','364'),
+('3','367'),
+('3','376'),
+('3','379'),
+('3','383'),
+('3','390'),
+('3','391'),
+('3','396'),
+('3','400'),
+('3','403'),
+('3','405'),
+('3','408'),
+('3','412'),
+('3','417'),
+('3','421'),
+('3','429'),
+('3','440'),
+('3','444'),
+('3','448'),
+('3','452'),
+('3','456'),
 ('3','461'),
-('4','462'),
-('26','463'),
-('1','464'),
 ('3','465'),
 ('3','466'),
+('4','353'),
+('4','357'),
+('4','361'),
+('4','368'),
+('4','372'),
+('4','377'),
+('4','380'),
+('4','384'),
+('4','392'),
+('4','395'),
+('4','406'),
+('4','409'),
+('4','413'),
+('4','424'),
+('4','430'),
+('4','457'),
+('4','462'),
 ('4','467'),
-('2','468');
+('26','339'),
+('26','342'),
+('26','346'),
+('26','349'),
+('26','358'),
+('26','369'),
+('26','370'),
+('26','373'),
+('26','381'),
+('26','385'),
+('26','398'),
+('26','410'),
+('26','418'),
+('26','425'),
+('26','431'),
+('26','434'),
+('26','437'),
+('26','441'),
+('26','445'),
+('26','449'),
+('26','454'),
+('26','458'),
+('26','463');
 /* Scheme for table ps_product_attribute_image */
 DROP TABLE IF EXISTS `ps_product_attribute_image`;
 CREATE TABLE `ps_product_attribute_image` (
-  `id_product_attribute` int unsigned NOT NULL,
-  `id_image` int unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_image` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_attribute`,`id_image`),
   KEY `id_image` (`id_image`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_attribute_shop */
 DROP TABLE IF EXISTS `ps_product_attribute_shop`;
 CREATE TABLE `ps_product_attribute_shop` (
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `ecotax` decimal(17,6) NOT NULL DEFAULT '0.000000',
-  `weight` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `unit_price_impact` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `default_on` tinyint unsigned DEFAULT NULL,
-  `minimal_quantity` int unsigned NOT NULL DEFAULT '1',
-  `low_stock_threshold` int DEFAULT NULL,
-  `low_stock_alert` tinyint(1) NOT NULL DEFAULT '0',
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `ecotax` decimal(17,6) NOT NULL DEFAULT 0.000000,
+  `weight` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `unit_price_impact` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `default_on` tinyint(3) unsigned DEFAULT NULL,
+  `minimal_quantity` int(10) unsigned NOT NULL DEFAULT 1,
+  `low_stock_threshold` int(11) DEFAULT NULL,
+  `low_stock_alert` tinyint(1) NOT NULL DEFAULT 0,
   `available_date` date DEFAULT NULL,
   PRIMARY KEY (`id_product_attribute`,`id_shop`),
   UNIQUE KEY `id_product` (`id_product`,`id_shop`,`default_on`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product_attribute_shop` VALUES
 ('1599','339','1','0.000000','0.000000','0.000000','0.000000','0.000000','1','1',NULL,'1','0000-00-00'),
@@ -22198,19 +18546,19 @@ INSERT INTO `ps_product_attribute_shop` VALUES
 /* Scheme for table ps_product_carrier */
 DROP TABLE IF EXISTS `ps_product_carrier`;
 CREATE TABLE `ps_product_carrier` (
-  `id_product` int unsigned NOT NULL,
-  `id_carrier_reference` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_carrier_reference` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_carrier_reference`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_comment */
 DROP TABLE IF EXISTS `ps_product_comment`;
 CREATE TABLE `ps_product_comment` (
-  `id_product_comment` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `id_guest` int unsigned DEFAULT NULL,
+  `id_product_comment` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_guest` int(10) unsigned DEFAULT NULL,
   `title` varchar(64) DEFAULT NULL,
   `content` text NOT NULL,
   `customer_name` varchar(64) DEFAULT NULL,
@@ -22222,7 +18570,7 @@ CREATE TABLE `ps_product_comment` (
   KEY `id_product` (`id_product`),
   KEY `id_customer` (`id_customer`),
   KEY `id_guest` (`id_guest`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_product_comment` VALUES
 ('1','1','4','11','dfg','h',NULL,'3','0','0','2022-11-22 10:55:19'),
@@ -22230,31 +18578,31 @@ INSERT INTO `ps_product_comment` VALUES
 /* Scheme for table ps_product_comment_criterion */
 DROP TABLE IF EXISTS `ps_product_comment_criterion`;
 CREATE TABLE `ps_product_comment_criterion` (
-  `id_product_comment_criterion` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_product_comment_criterion` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product_comment_criterion_type` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_product_comment_criterion` VALUES
 ('1','1','1');
 /* Scheme for table ps_product_comment_criterion_category */
 DROP TABLE IF EXISTS `ps_product_comment_criterion_category`;
 CREATE TABLE `ps_product_comment_criterion_category` (
-  `id_product_comment_criterion` int unsigned NOT NULL,
-  `id_category` int unsigned NOT NULL,
+  `id_product_comment_criterion` int(10) unsigned NOT NULL,
+  `id_category` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`,`id_category`),
   KEY `id_category` (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_product_comment_criterion_lang */
 DROP TABLE IF EXISTS `ps_product_comment_criterion_lang`;
 CREATE TABLE `ps_product_comment_criterion_lang` (
-  `id_product_comment_criterion` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_product_comment_criterion` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`id_product_comment_criterion`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_product_comment_criterion_lang` VALUES
 ('1','1','Quality'),
@@ -22262,21 +18610,21 @@ INSERT INTO `ps_product_comment_criterion_lang` VALUES
 /* Scheme for table ps_product_comment_criterion_product */
 DROP TABLE IF EXISTS `ps_product_comment_criterion_product`;
 CREATE TABLE `ps_product_comment_criterion_product` (
-  `id_product` int unsigned NOT NULL,
-  `id_product_comment_criterion` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_comment_criterion` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_product_comment_criterion`),
   KEY `id_product_comment_criterion` (`id_product_comment_criterion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_product_comment_grade */
 DROP TABLE IF EXISTS `ps_product_comment_grade`;
 CREATE TABLE `ps_product_comment_grade` (
-  `id_product_comment` int unsigned NOT NULL,
-  `id_product_comment_criterion` int unsigned NOT NULL,
-  `grade` int unsigned NOT NULL,
+  `id_product_comment` int(10) unsigned NOT NULL,
+  `id_product_comment_criterion` int(10) unsigned NOT NULL,
+  `grade` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_product_comment_criterion`),
   KEY `id_product_comment_criterion` (`id_product_comment_criterion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_product_comment_grade` VALUES
 ('1','1','3'),
@@ -22284,62 +18632,62 @@ INSERT INTO `ps_product_comment_grade` VALUES
 /* Scheme for table ps_product_comment_report */
 DROP TABLE IF EXISTS `ps_product_comment_report`;
 CREATE TABLE `ps_product_comment_report` (
-  `id_product_comment` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
+  `id_product_comment` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_product_comment_usefulness */
 DROP TABLE IF EXISTS `ps_product_comment_usefulness`;
 CREATE TABLE `ps_product_comment_usefulness` (
-  `id_product_comment` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `usefulness` tinyint unsigned NOT NULL,
+  `id_product_comment` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `usefulness` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id_product_comment`,`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_product_country_tax */
 DROP TABLE IF EXISTS `ps_product_country_tax`;
 CREATE TABLE `ps_product_country_tax` (
-  `id_product` int NOT NULL,
-  `id_country` int NOT NULL,
-  `id_tax` int NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_country` int(11) NOT NULL,
+  `id_tax` int(11) NOT NULL,
   PRIMARY KEY (`id_product`,`id_country`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_download */
 DROP TABLE IF EXISTS `ps_product_download`;
 CREATE TABLE `ps_product_download` (
-  `id_product_download` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
+  `id_product_download` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
   `display_filename` varchar(255) DEFAULT NULL,
   `filename` varchar(255) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_expiration` datetime DEFAULT NULL,
-  `nb_days_accessible` int unsigned DEFAULT NULL,
-  `nb_downloadable` int unsigned DEFAULT '1',
-  `active` tinyint unsigned NOT NULL DEFAULT '1',
-  `is_shareable` tinyint unsigned NOT NULL DEFAULT '0',
+  `nb_days_accessible` int(10) unsigned DEFAULT NULL,
+  `nb_downloadable` int(10) unsigned DEFAULT 1,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `is_shareable` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_product_download`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_group_reduction_cache */
 DROP TABLE IF EXISTS `ps_product_group_reduction_cache`;
 CREATE TABLE `ps_product_group_reduction_cache` (
-  `id_product` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
   `reduction` decimal(5,4) NOT NULL,
   PRIMARY KEY (`id_product`,`id_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_lang */
 DROP TABLE IF EXISTS `ps_product_lang`;
 CREATE TABLE `ps_product_lang` (
-  `id_product` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
-  `description` text,
-  `description_short` text,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
+  `description` text DEFAULT NULL,
+  `description_short` text DEFAULT NULL,
   `link_rewrite` varchar(128) NOT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
@@ -22352,7 +18700,7 @@ CREATE TABLE `ps_product_lang` (
   PRIMARY KEY (`id_product`,`id_shop`,`id_lang`),
   KEY `id_lang` (`id_lang`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product_lang` VALUES
 ('1421','1','1','Calf-length, fitted dress in woven fabric. V-neck, a cut-out section and drawstring at the front to create a draped effect and long sleeves.',NULL,'krepowana-sukienka-z-marszczeniem',NULL,NULL,NULL,'Krepowana sukienka z marszczeniem',NULL,NULL,NULL,NULL),
@@ -23365,55 +19713,55 @@ INSERT INTO `ps_product_lang` VALUES
 /* Scheme for table ps_product_sale */
 DROP TABLE IF EXISTS `ps_product_sale`;
 CREATE TABLE `ps_product_sale` (
-  `id_product` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL DEFAULT '0',
-  `sale_nbr` int unsigned NOT NULL DEFAULT '0',
+  `id_product` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT 0,
+  `sale_nbr` int(10) unsigned NOT NULL DEFAULT 0,
   `date_upd` date DEFAULT NULL,
   PRIMARY KEY (`id_product`),
   KEY `quantity` (`quantity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_shop */
 DROP TABLE IF EXISTS `ps_product_shop`;
 CREATE TABLE `ps_product_shop` (
-  `id_product` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `id_category_default` int unsigned DEFAULT NULL,
-  `id_tax_rules_group` int unsigned NOT NULL,
-  `on_sale` tinyint unsigned NOT NULL DEFAULT '0',
-  `online_only` tinyint unsigned NOT NULL DEFAULT '0',
-  `ecotax` decimal(17,6) NOT NULL DEFAULT '0.000000',
-  `minimal_quantity` int unsigned NOT NULL DEFAULT '1',
-  `low_stock_threshold` int DEFAULT NULL,
-  `low_stock_alert` tinyint(1) NOT NULL DEFAULT '0',
-  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `id_product` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_category_default` int(10) unsigned DEFAULT NULL,
+  `id_tax_rules_group` int(10) unsigned NOT NULL,
+  `on_sale` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `online_only` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `ecotax` decimal(17,6) NOT NULL DEFAULT 0.000000,
+  `minimal_quantity` int(10) unsigned NOT NULL DEFAULT 1,
+  `low_stock_threshold` int(11) DEFAULT NULL,
+  `low_stock_alert` tinyint(1) NOT NULL DEFAULT 0,
+  `price` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT 0.000000,
   `unity` varchar(255) DEFAULT NULL,
-  `unit_price_ratio` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `additional_shipping_cost` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `customizable` tinyint NOT NULL DEFAULT '0',
-  `uploadable_files` tinyint NOT NULL DEFAULT '0',
-  `text_fields` tinyint NOT NULL DEFAULT '0',
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `unit_price_ratio` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `additional_shipping_cost` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `customizable` tinyint(4) NOT NULL DEFAULT 0,
+  `uploadable_files` tinyint(4) NOT NULL DEFAULT 0,
+  `text_fields` tinyint(4) NOT NULL DEFAULT 0,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `redirect_type` enum('','404','301-product','302-product','301-category','302-category') NOT NULL DEFAULT '',
-  `id_type_redirected` int unsigned NOT NULL DEFAULT '0',
-  `available_for_order` tinyint(1) NOT NULL DEFAULT '1',
+  `id_type_redirected` int(10) unsigned NOT NULL DEFAULT 0,
+  `available_for_order` tinyint(1) NOT NULL DEFAULT 1,
   `available_date` date DEFAULT NULL,
-  `show_condition` tinyint(1) NOT NULL DEFAULT '1',
+  `show_condition` tinyint(1) NOT NULL DEFAULT 1,
   `condition` enum('new','used','refurbished') NOT NULL DEFAULT 'new',
-  `show_price` tinyint(1) NOT NULL DEFAULT '1',
-  `indexed` tinyint(1) NOT NULL DEFAULT '0',
+  `show_price` tinyint(1) NOT NULL DEFAULT 1,
+  `indexed` tinyint(1) NOT NULL DEFAULT 0,
   `visibility` enum('both','catalog','search','none') NOT NULL DEFAULT 'both',
-  `cache_default_attribute` int unsigned DEFAULT NULL,
-  `advanced_stock_management` tinyint(1) NOT NULL DEFAULT '0',
+  `cache_default_attribute` int(10) unsigned DEFAULT NULL,
+  `advanced_stock_management` tinyint(1) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `pack_stock_type` int unsigned NOT NULL DEFAULT '3',
+  `pack_stock_type` int(10) unsigned NOT NULL DEFAULT 3,
   PRIMARY KEY (`id_product`,`id_shop`),
   KEY `id_category_default` (`id_category_default`),
   KEY `date_add` (`date_add`,`active`,`visibility`),
   KEY `indexed` (`indexed`,`active`,`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_product_shop` VALUES
 ('1421','1','47','1','0','0','0.000000','1',NULL,'0','113.010000','0.000000',NULL,'0.000000','0.000000','0','0','0','1','301-category','0','1','0000-00-00','0','new','1','1','both','385','0','2022-12-20 23:54:38','2022-12-21 00:51:15','3'),
@@ -23922,35 +20270,35 @@ INSERT INTO `ps_product_shop` VALUES
 /* Scheme for table ps_product_supplier */
 DROP TABLE IF EXISTS `ps_product_supplier`;
 CREATE TABLE `ps_product_supplier` (
-  `id_product_supplier` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL DEFAULT '0',
-  `id_supplier` int unsigned NOT NULL,
+  `id_product_supplier` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_supplier` int(10) unsigned NOT NULL,
   `product_supplier_reference` varchar(64) DEFAULT NULL,
-  `product_supplier_price_te` decimal(20,6) NOT NULL DEFAULT '0.000000',
-  `id_currency` int unsigned NOT NULL,
+  `product_supplier_price_te` decimal(20,6) NOT NULL DEFAULT 0.000000,
+  `id_currency` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product_supplier`),
   UNIQUE KEY `id_product` (`id_product`,`id_product_attribute`,`id_supplier`),
   KEY `id_supplier` (`id_supplier`,`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_product_tag */
 DROP TABLE IF EXISTS `ps_product_tag`;
 CREATE TABLE `ps_product_tag` (
-  `id_product` int unsigned NOT NULL,
-  `id_tag` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_tag` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_product`,`id_tag`),
   KEY `id_tag` (`id_tag`),
   KEY `id_lang` (`id_lang`,`id_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_profile */
 DROP TABLE IF EXISTS `ps_profile`;
 CREATE TABLE `ps_profile` (
-  `id_profile` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_profile` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_profile`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_profile` VALUES
 ('1'),
@@ -23960,11 +20308,11 @@ INSERT INTO `ps_profile` VALUES
 /* Scheme for table ps_profile_lang */
 DROP TABLE IF EXISTS `ps_profile_lang`;
 CREATE TABLE `ps_profile_lang` (
-  `id_lang` int unsigned NOT NULL,
-  `id_profile` int unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_profile` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id_profile`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_profile_lang` VALUES
 ('1','1','SuperAdmin'),
@@ -23978,80 +20326,80 @@ INSERT INTO `ps_profile_lang` VALUES
 /* Scheme for table ps_pscheckout_cart */
 DROP TABLE IF EXISTS `ps_pscheckout_cart`;
 CREATE TABLE `ps_pscheckout_cart` (
-  `id_pscheckout_cart` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_cart` int unsigned NOT NULL,
+  `id_pscheckout_cart` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned NOT NULL,
   `paypal_intent` varchar(20) DEFAULT 'CAPTURE',
   `paypal_order` varchar(20) DEFAULT NULL,
   `paypal_status` varchar(20) DEFAULT NULL,
   `paypal_funding` varchar(20) DEFAULT NULL,
-  `paypal_token` text,
+  `paypal_token` text DEFAULT NULL,
   `paypal_token_expire` datetime DEFAULT NULL,
   `paypal_authorization_expire` datetime DEFAULT NULL,
-  `isExpressCheckout` tinyint unsigned NOT NULL DEFAULT '0',
-  `isHostedFields` tinyint unsigned NOT NULL DEFAULT '0',
+  `isExpressCheckout` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `isHostedFields` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_pscheckout_cart`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_pscheckout_funding_source */
 DROP TABLE IF EXISTS `ps_pscheckout_funding_source`;
 CREATE TABLE `ps_pscheckout_funding_source` (
   `name` varchar(20) NOT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
-  `position` tinyint unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `position` tinyint(3) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`name`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_pscheckout_order_matrice */
 DROP TABLE IF EXISTS `ps_pscheckout_order_matrice`;
 CREATE TABLE `ps_pscheckout_order_matrice` (
-  `id_order_matrice` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_order_prestashop` int unsigned NOT NULL,
+  `id_order_matrice` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order_prestashop` int(10) unsigned NOT NULL,
   `id_order_paypal` varchar(20) NOT NULL,
   PRIMARY KEY (`id_order_matrice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_psgdpr_consent */
 DROP TABLE IF EXISTS `ps_psgdpr_consent`;
 CREATE TABLE `ps_psgdpr_consent` (
-  `id_gdpr_consent` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_module` int unsigned NOT NULL,
-  `active` int NOT NULL,
-  `error` int DEFAULT NULL,
-  `error_message` text,
+  `id_gdpr_consent` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_module` int(10) unsigned NOT NULL,
+  `active` int(11) NOT NULL,
+  `error` int(11) DEFAULT NULL,
+  `error_message` text DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_gdpr_consent`,`id_module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_psgdpr_consent_lang */
 DROP TABLE IF EXISTS `ps_psgdpr_consent_lang`;
 CREATE TABLE `ps_psgdpr_consent_lang` (
-  `id_gdpr_consent` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_lang` int unsigned NOT NULL,
-  `message` text,
-  `id_shop` int unsigned NOT NULL,
+  `id_gdpr_consent` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_lang` int(10) unsigned NOT NULL,
+  `message` text DEFAULT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_gdpr_consent`,`id_lang`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_psgdpr_log */
 DROP TABLE IF EXISTS `ps_psgdpr_log`;
 CREATE TABLE `ps_psgdpr_log` (
-  `id_gdpr_log` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned DEFAULT NULL,
-  `id_guest` int unsigned DEFAULT NULL,
+  `id_gdpr_log` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `id_guest` int(10) unsigned DEFAULT NULL,
   `client_name` varchar(250) DEFAULT NULL,
-  `id_module` int unsigned NOT NULL,
-  `request_type` int NOT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `request_type` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_gdpr_log`),
   KEY `id_customer` (`id_customer`),
   KEY `idx_id_customer` (`id_customer`,`id_guest`,`client_name`,`id_module`,`date_add`,`date_upd`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_psgdpr_log` VALUES
 ('1','3','0','a a','0','1','2022-10-26 09:12:14','2022-10-26 09:12:14'),
@@ -24067,22 +20415,23 @@ INSERT INTO `ps_psgdpr_log` VALUES
 ('11','13','0','rqlkvgjvg xczf','0','1','2022-12-21 16:02:32','2022-12-21 16:02:32'),
 ('12','14','0','jpyakntym wgoejshoh','0','1','2022-12-21 16:38:49','2022-12-21 16:38:49'),
 ('13','15','0','sfd hfg','0','1','2022-12-21 16:45:11','2022-12-21 16:45:11'),
-('14','16','0','sfd dfh','0','1','2022-12-21 16:51:14','2022-12-21 16:51:14');
+('14','16','0','sfd dfh','0','1','2022-12-21 16:51:14','2022-12-21 16:51:14'),
+('15','17','0','xdf hfdh','0','1','2023-01-16 18:04:47','2023-01-16 18:04:47');
 /* Scheme for table ps_psreassurance */
 DROP TABLE IF EXISTS `ps_psreassurance`;
 CREATE TABLE `ps_psreassurance` (
-  `id_psreassurance` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_psreassurance` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `icon` varchar(255) DEFAULT NULL,
   `custom_icon` varchar(255) DEFAULT NULL,
-  `status` int unsigned NOT NULL,
-  `position` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `type_link` int unsigned DEFAULT NULL,
-  `id_cms` int unsigned DEFAULT NULL,
+  `status` int(10) unsigned NOT NULL,
+  `position` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `type_link` int(10) unsigned DEFAULT NULL,
+  `id_cms` int(10) unsigned DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime DEFAULT NULL,
   PRIMARY KEY (`id_psreassurance`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_psreassurance` VALUES
 ('1','/prestashop/modules/blockreassurance/views/img/reassurance/pack2/security.svg',NULL,'1','1','1','0','5','2022-11-22 11:43:04','2022-11-22 11:43:04'),
@@ -24091,14 +20440,14 @@ INSERT INTO `ps_psreassurance` VALUES
 /* Scheme for table ps_psreassurance_lang */
 DROP TABLE IF EXISTS `ps_psreassurance_lang`;
 CREATE TABLE `ps_psreassurance_lang` (
-  `id_psreassurance` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_psreassurance` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id_psreassurance`,`id_shop`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_psreassurance_lang` VALUES
 ('1','1','1','Security policy','(edit with the Customer Reassurance module)',''),
@@ -24110,11 +20459,11 @@ INSERT INTO `ps_psreassurance_lang` VALUES
 /* Scheme for table ps_quick_access */
 DROP TABLE IF EXISTS `ps_quick_access`;
 CREATE TABLE `ps_quick_access` (
-  `id_quick_access` int unsigned NOT NULL AUTO_INCREMENT,
-  `new_window` tinyint(1) NOT NULL DEFAULT '0',
+  `id_quick_access` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `new_window` tinyint(1) NOT NULL DEFAULT 0,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id_quick_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_quick_access` VALUES
 ('1','0','index.php?controller=AdminOrders'),
@@ -24126,11 +20475,11 @@ INSERT INTO `ps_quick_access` VALUES
 /* Scheme for table ps_quick_access_lang */
 DROP TABLE IF EXISTS `ps_quick_access_lang`;
 CREATE TABLE `ps_quick_access_lang` (
-  `id_quick_access` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_quick_access` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_quick_access`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_quick_access_lang` VALUES
 ('1','1','Orders'),
@@ -24148,13 +20497,13 @@ INSERT INTO `ps_quick_access_lang` VALUES
 /* Scheme for table ps_range_price */
 DROP TABLE IF EXISTS `ps_range_price`;
 CREATE TABLE `ps_range_price` (
-  `id_range_price` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_carrier` int unsigned NOT NULL,
+  `id_range_price` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_carrier` int(10) unsigned NOT NULL,
   `delimiter1` decimal(20,6) NOT NULL,
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_price`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_range_price` VALUES
 ('1','2','0.000000','10000.000000'),
@@ -24181,13 +20530,13 @@ INSERT INTO `ps_range_price` VALUES
 /* Scheme for table ps_range_weight */
 DROP TABLE IF EXISTS `ps_range_weight`;
 CREATE TABLE `ps_range_weight` (
-  `id_range_weight` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_carrier` int unsigned NOT NULL,
+  `id_range_weight` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_carrier` int(10) unsigned NOT NULL,
   `delimiter1` decimal(20,6) NOT NULL,
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_weight`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_range_weight` VALUES
 ('1','2','0.000000','10000.000000'),
@@ -24201,7 +20550,7 @@ INSERT INTO `ps_range_weight` VALUES
 /* Scheme for table ps_referrer */
 DROP TABLE IF EXISTS `ps_referrer`;
 CREATE TABLE `ps_referrer` (
-  `id_referrer` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_referrer` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `passwd` varchar(255) DEFAULT NULL,
   `http_referer_regexp` varchar(64) DEFAULT NULL,
@@ -24212,64 +20561,64 @@ CREATE TABLE `ps_referrer` (
   `http_referer_like_not` varchar(64) DEFAULT NULL,
   `request_uri_regexp_not` varchar(64) DEFAULT NULL,
   `request_uri_like_not` varchar(64) DEFAULT NULL,
-  `base_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `percent_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `click_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `base_fee` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `percent_fee` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `click_fee` decimal(5,2) NOT NULL DEFAULT 0.00,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_referrer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_referrer_cache */
 DROP TABLE IF EXISTS `ps_referrer_cache`;
 CREATE TABLE `ps_referrer_cache` (
-  `id_connections_source` int unsigned NOT NULL,
-  `id_referrer` int unsigned NOT NULL,
+  `id_connections_source` int(10) unsigned NOT NULL,
+  `id_referrer` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_connections_source`,`id_referrer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_referrer_shop */
 DROP TABLE IF EXISTS `ps_referrer_shop`;
 CREATE TABLE `ps_referrer_shop` (
-  `id_referrer` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `cache_visitors` int DEFAULT NULL,
-  `cache_visits` int DEFAULT NULL,
-  `cache_pages` int DEFAULT NULL,
-  `cache_registrations` int DEFAULT NULL,
-  `cache_orders` int DEFAULT NULL,
+  `id_referrer` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `cache_visitors` int(11) DEFAULT NULL,
+  `cache_visits` int(11) DEFAULT NULL,
+  `cache_pages` int(11) DEFAULT NULL,
+  `cache_registrations` int(11) DEFAULT NULL,
+  `cache_orders` int(11) DEFAULT NULL,
   `cache_sales` decimal(17,2) DEFAULT NULL,
   `cache_reg_rate` decimal(5,4) DEFAULT NULL,
   `cache_order_rate` decimal(5,4) DEFAULT NULL,
   PRIMARY KEY (`id_referrer`,`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_request_sql */
 DROP TABLE IF EXISTS `ps_request_sql`;
 CREATE TABLE `ps_request_sql` (
-  `id_request_sql` int NOT NULL AUTO_INCREMENT,
+  `id_request_sql` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `sql` text NOT NULL,
   PRIMARY KEY (`id_request_sql`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_required_field */
 DROP TABLE IF EXISTS `ps_required_field`;
 CREATE TABLE `ps_required_field` (
-  `id_required_field` int NOT NULL AUTO_INCREMENT,
+  `id_required_field` int(11) NOT NULL AUTO_INCREMENT,
   `object_name` varchar(32) NOT NULL,
   `field_name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_required_field`),
   KEY `object_name` (`object_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_risk */
 DROP TABLE IF EXISTS `ps_risk`;
 CREATE TABLE `ps_risk` (
-  `id_risk` int unsigned NOT NULL AUTO_INCREMENT,
-  `percent` tinyint NOT NULL,
+  `id_risk` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `percent` tinyint(4) NOT NULL,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_risk`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_risk` VALUES
 ('1','0','#32CD32'),
@@ -24279,12 +20628,12 @@ INSERT INTO `ps_risk` VALUES
 /* Scheme for table ps_risk_lang */
 DROP TABLE IF EXISTS `ps_risk_lang`;
 CREATE TABLE `ps_risk_lang` (
-  `id_risk` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_risk` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id_risk`,`id_lang`),
   KEY `id_risk` (`id_risk`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_risk_lang` VALUES
 ('1','1','None'),
@@ -24298,11 +20647,11 @@ INSERT INTO `ps_risk_lang` VALUES
 /* Scheme for table ps_search_engine */
 DROP TABLE IF EXISTS `ps_search_engine`;
 CREATE TABLE `ps_search_engine` (
-  `id_search_engine` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_search_engine` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `server` varchar(64) NOT NULL,
   `getvar` varchar(16) NOT NULL,
   PRIMARY KEY (`id_search_engine`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_search_engine` VALUES
 ('1','google','q'),
@@ -24346,12 +20695,12 @@ INSERT INTO `ps_search_engine` VALUES
 /* Scheme for table ps_search_index */
 DROP TABLE IF EXISTS `ps_search_index`;
 CREATE TABLE `ps_search_index` (
-  `id_product` int unsigned NOT NULL,
-  `id_word` int unsigned NOT NULL,
-  `weight` smallint unsigned NOT NULL DEFAULT '1',
+  `id_product` int(10) unsigned NOT NULL,
+  `id_word` int(10) unsigned NOT NULL,
+  `weight` smallint(5) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_word`,`id_product`),
   KEY `id_product` (`id_product`,`weight`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_search_index` VALUES
 ('612','6737','1'),
@@ -71177,13 +67526,13 @@ INSERT INTO `ps_search_index` VALUES
 /* Scheme for table ps_search_word */
 DROP TABLE IF EXISTS `ps_search_word`;
 CREATE TABLE `ps_search_word` (
-  `id_word` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_lang` int unsigned NOT NULL,
+  `id_word` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_lang` int(10) unsigned NOT NULL,
   `word` varchar(30) NOT NULL,
   PRIMARY KEY (`id_word`),
   UNIQUE KEY `id_lang` (`id_lang`,`id_shop`,`word`)
-) ENGINE=InnoDB AUTO_INCREMENT=75137 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_search_word` VALUES
 ('66538','1','1','a-line'),
@@ -73267,12 +69616,12 @@ INSERT INTO `ps_search_word` VALUES
 /* Scheme for table ps_shop */
 DROP TABLE IF EXISTS `ps_shop`;
 CREATE TABLE `ps_shop` (
-  `id_shop` int NOT NULL AUTO_INCREMENT,
-  `id_shop_group` int NOT NULL,
-  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_category` int NOT NULL,
-  `theme_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_shop` int(11) NOT NULL AUTO_INCREMENT,
+  `id_shop_group` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `color` varchar(50) NOT NULL,
+  `id_category` int(11) NOT NULL,
+  `theme_name` varchar(255) NOT NULL,
   `active` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_shop`),
@@ -73284,9 +69633,9 @@ INSERT INTO `ps_shop` VALUES
 /* Scheme for table ps_shop_group */
 DROP TABLE IF EXISTS `ps_shop_group`;
 CREATE TABLE `ps_shop_group` (
-  `id_shop_group` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_shop_group` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `color` varchar(50) NOT NULL,
   `share_customer` tinyint(1) NOT NULL,
   `share_order` tinyint(1) NOT NULL,
   `share_stock` tinyint(1) NOT NULL,
@@ -73300,8 +69649,8 @@ INSERT INTO `ps_shop_group` VALUES
 /* Scheme for table ps_shop_url */
 DROP TABLE IF EXISTS `ps_shop_url`;
 CREATE TABLE `ps_shop_url` (
-  `id_shop_url` int NOT NULL AUTO_INCREMENT,
-  `id_shop` int NOT NULL,
+  `id_shop_url` int(11) NOT NULL AUTO_INCREMENT,
+  `id_shop` int(11) NOT NULL,
   `domain` varchar(150) NOT NULL,
   `domain_ssl` varchar(150) NOT NULL,
   `physical_uri` varchar(64) NOT NULL,
@@ -73310,23 +69659,23 @@ CREATE TABLE `ps_shop_url` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_shop_url`),
   KEY `IDX_279F19DA274A50A0` (`id_shop`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_shop_url` VALUES
-('1','1','localhost','localhost','/','','1','1');
+('1','1','localhost:18456','localhost:18455','/','','1','1');
 /* Scheme for table ps_smarty_cache */
 DROP TABLE IF EXISTS `ps_smarty_cache`;
 CREATE TABLE `ps_smarty_cache` (
   `id_smarty_cache` char(40) NOT NULL,
   `name` char(40) NOT NULL,
   `cache_id` varchar(254) DEFAULT NULL,
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` timestamp NOT NULL DEFAULT current_timestamp(),
   `content` longtext NOT NULL,
   PRIMARY KEY (`id_smarty_cache`),
   KEY `name` (`name`),
   KEY `cache_id` (`cache_id`),
   KEY `modified` (`modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_smarty_last_flush */
 DROP TABLE IF EXISTS `ps_smarty_last_flush`;
@@ -73334,7 +69683,7 @@ CREATE TABLE `ps_smarty_last_flush` (
   `type` enum('compile','template') NOT NULL,
   `last_flush` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_smarty_lazy_cache */
 DROP TABLE IF EXISTS `ps_smarty_lazy_cache`;
@@ -73345,26 +69694,26 @@ CREATE TABLE `ps_smarty_lazy_cache` (
   `filepath` varchar(255) NOT NULL DEFAULT '',
   `last_update` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`template_hash`,`cache_id`,`compile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_specific_price */
 DROP TABLE IF EXISTS `ps_specific_price`;
 CREATE TABLE `ps_specific_price` (
-  `id_specific_price` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_specific_price_rule` int unsigned NOT NULL,
-  `id_cart` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_shop_group` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL,
-  `id_country` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
-  `id_customer` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
+  `id_specific_price` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_specific_price_rule` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop_group` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
   `price` decimal(20,6) NOT NULL,
-  `from_quantity` mediumint unsigned NOT NULL,
+  `from_quantity` mediumint(8) unsigned NOT NULL,
   `reduction` decimal(20,6) NOT NULL,
-  `reduction_tax` tinyint(1) NOT NULL DEFAULT '1',
+  `reduction_tax` tinyint(1) NOT NULL DEFAULT 1,
   `reduction_type` enum('amount','percentage') NOT NULL,
   `from` datetime NOT NULL,
   `to` datetime NOT NULL,
@@ -73379,186 +69728,187 @@ CREATE TABLE `ps_specific_price` (
   KEY `id_customer` (`id_customer`),
   KEY `from` (`from`),
   KEY `to` (`to`)
-) ENGINE=InnoDB AUTO_INCREMENT=1273 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1442 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_specific_price` VALUES
-('876','1','0','1721','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('878','1','0','1722','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('880','1','0','1723','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('882','1','0','1724','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('884','1','0','1725','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('886','1','0','1726','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('888','1','0','1727','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('890','1','0','1729','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('892','1','0','1730','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('894','1','0','1732','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('896','1','0','1733','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('898','1','0','1736','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('900','1','0','1737','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('902','1','0','1738','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('904','1','0','1740','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('906','1','0','1741','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('908','1','0','1742','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('910','1','0','1744','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('912','1','0','1745','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('914','1','0','1746','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('916','1','0','1747','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('918','1','0','1748','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('920','1','0','1749','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('922','1','0','1751','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('924','1','0','1752','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('926','1','0','1753','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('928','1','0','1755','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('930','1','0','1756','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('932','1','0','1750','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('934','1','0','1743','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('936','1','0','1739','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('938','1','0','1735','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('940','1','0','1734','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('942','1','0','1731','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('944','1','0','1728','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('946','1','0','1621','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('948','1','0','1622','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('950','1','0','1623','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('952','1','0','1624','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('954','1','0','1625','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('956','1','0','1626','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('958','1','0','1627','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('960','1','0','1628','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('962','1','0','1629','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('964','1','0','1630','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('966','1','0','1631','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('968','1','0','1632','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('970','1','0','1633','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('972','1','0','1634','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('974','1','0','1635','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('976','1','0','1636','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('978','1','0','1637','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('980','1','0','1638','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('982','1','0','1639','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('984','1','0','1641','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('986','1','0','1642','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('988','1','0','1643','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('990','1','0','1644','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('992','1','0','1645','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('994','1','0','1646','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('996','1','0','1647','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('998','1','0','1648','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1000','1','0','1649','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1002','1','0','1650','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1004','1','0','1651','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1006','1','0','1652','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1008','1','0','1653','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1010','1','0','1654','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1012','1','0','1655','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1014','1','0','1656','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1016','1','0','1657','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1018','1','0','1658','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1020','1','0','1659','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1022','1','0','1660','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1024','1','0','1661','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1026','1','0','1662','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1028','1','0','1663','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1030','1','0','1664','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1032','1','0','1665','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1034','1','0','1666','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1036','1','0','1667','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1038','1','0','1668','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1040','1','0','1669','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1042','1','0','1670','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1044','1','0','1671','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1046','1','0','1672','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1048','1','0','1673','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1050','1','0','1674','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1052','1','0','1675','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1054','1','0','1676','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1056','1','0','1677','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1058','1','0','1679','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1060','1','0','1680','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1062','1','0','1681','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1064','1','0','1682','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1066','1','0','1683','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1068','1','0','1684','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1070','1','0','1685','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1072','1','0','1686','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1074','1','0','1687','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1076','1','0','1688','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1078','1','0','1689','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1080','1','0','1690','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1082','1','0','1691','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1084','1','0','1693','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1086','1','0','1694','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1088','1','0','1695','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1090','1','0','1696','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1092','1','0','1697','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1094','1','0','1698','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1096','1','0','1700','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1098','1','0','1701','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1100','1','0','1702','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1102','1','0','1703','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1104','1','0','1704','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1106','1','0','1706','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1108','1','0','1707','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1110','1','0','1708','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1112','1','0','1709','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1114','1','0','1710','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1116','1','0','1711','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1118','1','0','1712','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1120','1','0','1713','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1122','1','0','1714','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1124','1','0','1715','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1126','1','0','1716','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1128','1','0','1717','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1130','1','0','1718','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1132','1','0','1719','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1134','1','0','1720','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1138','1','0','1705','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1140','1','0','1699','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1142','1','0','1692','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1144','1','0','1678','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1146','1','0','1640','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1153','1','0','1599','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1160','1','0','1598','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1167','1','0','1597','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1174','1','0','1596','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1181','1','0','1595','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1188','1','0','1594','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1195','1','0','1593','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1202','1','0','1592','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1209','1','0','1591','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1216','1','0','1590','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1223','1','0','1589','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1230','1','0','1588','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1232','1','0','1600','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1234','1','0','1601','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1236','1','0','1602','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1238','1','0','1603','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1240','1','0','1604','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1242','1','0','1606','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1244','1','0','1607','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1246','1','0','1608','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1248','1','0','1609','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1250','1','0','1610','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1252','1','0','1611','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1254','1','0','1612','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1256','1','0','1613','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1258','1','0','1614','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1260','1','0','1615','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1262','1','0','1617','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1264','1','0','1618','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1266','1','0','1619','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1268','1','0','1620','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1270','1','0','1616','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
-('1272','1','0','1605','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00');
+('1273','1','0','1588','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1274','1','0','1589','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1275','1','0','1590','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1276','1','0','1591','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1277','1','0','1592','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1278','1','0','1593','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1279','1','0','1594','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1280','1','0','1595','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1281','1','0','1596','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1282','1','0','1597','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1283','1','0','1598','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1284','1','0','1599','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1285','1','0','1600','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1286','1','0','1601','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1287','1','0','1602','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1288','1','0','1603','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1289','1','0','1604','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1290','1','0','1605','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1291','1','0','1606','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1292','1','0','1607','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1293','1','0','1608','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1294','1','0','1609','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1295','1','0','1610','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1296','1','0','1611','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1297','1','0','1612','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1298','1','0','1613','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1299','1','0','1614','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1300','1','0','1615','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1301','1','0','1616','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1302','1','0','1617','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1303','1','0','1618','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1304','1','0','1619','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1305','1','0','1620','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1306','1','0','1621','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1307','1','0','1622','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1308','1','0','1623','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1309','1','0','1624','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1310','1','0','1625','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1311','1','0','1626','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1312','1','0','1627','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1313','1','0','1628','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1314','1','0','1629','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1315','1','0','1630','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1316','1','0','1631','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1317','1','0','1632','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1318','1','0','1633','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1319','1','0','1634','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1320','1','0','1635','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1321','1','0','1636','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1322','1','0','1637','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1323','1','0','1638','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1324','1','0','1639','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1325','1','0','1640','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1326','1','0','1641','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1327','1','0','1642','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1328','1','0','1643','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1329','1','0','1644','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1330','1','0','1645','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1331','1','0','1646','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1332','1','0','1647','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1333','1','0','1648','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1334','1','0','1649','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1335','1','0','1650','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1336','1','0','1651','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1337','1','0','1652','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1338','1','0','1653','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1339','1','0','1654','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1340','1','0','1655','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1341','1','0','1656','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1342','1','0','1657','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1343','1','0','1658','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1344','1','0','1659','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1345','1','0','1660','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1346','1','0','1661','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1347','1','0','1662','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1348','1','0','1663','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1349','1','0','1664','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1350','1','0','1665','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1351','1','0','1666','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1352','1','0','1667','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1353','1','0','1668','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1354','1','0','1669','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1355','1','0','1670','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1356','1','0','1671','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1357','1','0','1672','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1358','1','0','1673','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1359','1','0','1674','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1360','1','0','1675','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1361','1','0','1676','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1362','1','0','1677','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1363','1','0','1678','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1364','1','0','1679','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1365','1','0','1680','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1366','1','0','1681','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1367','1','0','1682','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1368','1','0','1683','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1369','1','0','1684','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1370','1','0','1685','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1371','1','0','1686','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1372','1','0','1687','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1373','1','0','1688','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1374','1','0','1689','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1375','1','0','1690','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1376','1','0','1691','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1377','1','0','1692','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1378','1','0','1693','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1379','1','0','1694','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1380','1','0','1695','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1381','1','0','1696','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1382','1','0','1697','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1383','1','0','1698','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1384','1','0','1699','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1385','1','0','1700','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1386','1','0','1701','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1387','1','0','1702','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1388','1','0','1703','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1389','1','0','1704','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1390','1','0','1705','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1391','1','0','1706','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1392','1','0','1707','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1393','1','0','1708','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1394','1','0','1709','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1395','1','0','1710','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1396','1','0','1711','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1397','1','0','1712','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1398','1','0','1713','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1399','1','0','1714','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1400','1','0','1715','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1401','1','0','1716','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1402','1','0','1717','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1403','1','0','1718','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1404','1','0','1719','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1405','1','0','1720','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1406','1','0','1721','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1407','1','0','1722','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1408','1','0','1723','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1409','1','0','1724','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1410','1','0','1725','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1411','1','0','1726','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1412','1','0','1727','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1413','1','0','1728','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1414','1','0','1729','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1415','1','0','1730','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1416','1','0','1731','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1417','1','0','1732','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1418','1','0','1733','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1419','1','0','1734','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1420','1','0','1735','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1421','1','0','1736','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1422','1','0','1737','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1423','1','0','1738','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1424','1','0','1739','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1425','1','0','1740','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1426','1','0','1741','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1427','1','0','1742','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1428','1','0','1743','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1429','1','0','1744','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1430','1','0','1745','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1431','1','0','1746','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1432','1','0','1747','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1433','1','0','1748','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1434','1','0','1749','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1435','1','0','1750','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1436','1','0','1751','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1437','1','0','1752','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1438','1','0','1753','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1439','1','0','1754','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1440','1','0','1755','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00'),
+('1441','1','0','1756','1','0','0','0','0','0','0','-1.000000','1','0.100000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00');
 /* Scheme for table ps_specific_price_priority */
 DROP TABLE IF EXISTS `ps_specific_price_priority`;
 CREATE TABLE `ps_specific_price_priority` (
-  `id_specific_price_priority` int NOT NULL AUTO_INCREMENT,
-  `id_product` int NOT NULL,
+  `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT,
+  `id_product` int(11) NOT NULL,
   `priority` varchar(80) NOT NULL,
   PRIMARY KEY (`id_specific_price_priority`,`id_product`),
   UNIQUE KEY `id_product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=1436 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1436 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_specific_price_priority` VALUES
 ('1','1','id_shop;id_currency;id_country;id_group'),
@@ -74608,63 +70958,63 @@ INSERT INTO `ps_specific_price_priority` VALUES
 /* Scheme for table ps_specific_price_rule */
 DROP TABLE IF EXISTS `ps_specific_price_rule`;
 CREATE TABLE `ps_specific_price_rule` (
-  `id_specific_price_rule` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_specific_price_rule` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_currency` int unsigned NOT NULL,
-  `id_country` int unsigned NOT NULL,
-  `id_group` int unsigned NOT NULL,
-  `from_quantity` mediumint unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_group` int(10) unsigned NOT NULL,
+  `from_quantity` mediumint(8) unsigned NOT NULL,
   `price` decimal(20,6) DEFAULT NULL,
   `reduction` decimal(20,6) NOT NULL,
-  `reduction_tax` tinyint(1) NOT NULL DEFAULT '1',
+  `reduction_tax` tinyint(1) NOT NULL DEFAULT 1,
   `reduction_type` enum('amount','percentage') NOT NULL,
   `from` datetime NOT NULL,
   `to` datetime NOT NULL,
   PRIMARY KEY (`id_specific_price_rule`),
   KEY `id_product` (`id_shop`,`id_currency`,`id_country`,`id_group`,`from_quantity`,`from`,`to`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_specific_price_rule` VALUES
 ('1','10% rabatu na wszystkie bluzy','1','0','0','0','1','-1.000000','10.000000','1','percentage','2022-12-06 00:00:00','2022-12-22 00:00:00');
 /* Scheme for table ps_specific_price_rule_condition */
 DROP TABLE IF EXISTS `ps_specific_price_rule_condition`;
 CREATE TABLE `ps_specific_price_rule_condition` (
-  `id_specific_price_rule_condition` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_specific_price_rule_condition_group` int unsigned NOT NULL,
+  `id_specific_price_rule_condition` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_specific_price_rule_condition_group` int(10) unsigned NOT NULL,
   `type` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id_specific_price_rule_condition`),
   KEY `id_specific_price_rule_condition_group` (`id_specific_price_rule_condition_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_specific_price_rule_condition` VALUES
-('3','3','category','48');
+('4','4','category','48');
 /* Scheme for table ps_specific_price_rule_condition_group */
 DROP TABLE IF EXISTS `ps_specific_price_rule_condition_group`;
 CREATE TABLE `ps_specific_price_rule_condition_group` (
-  `id_specific_price_rule_condition_group` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_specific_price_rule` int unsigned NOT NULL,
+  `id_specific_price_rule_condition_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_specific_price_rule` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_specific_price_rule_condition_group`,`id_specific_price_rule`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_specific_price_rule_condition_group` VALUES
-('3','1');
+('4','1');
 /* Scheme for table ps_state */
 DROP TABLE IF EXISTS `ps_state`;
 CREATE TABLE `ps_state` (
-  `id_state` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_country` int unsigned NOT NULL,
-  `id_zone` int unsigned NOT NULL,
+  `id_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_zone` int(10) unsigned NOT NULL,
   `name` varchar(80) NOT NULL,
   `iso_code` varchar(7) NOT NULL,
-  `tax_behavior` smallint NOT NULL DEFAULT '0',
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `tax_behavior` smallint(6) NOT NULL DEFAULT 0,
+  `active` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_state`),
   KEY `id_country` (`id_country`),
   KEY `name` (`name`),
   KEY `id_zone` (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=353 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_state` VALUES
 ('1','21','2','AA','AA','0','1'),
@@ -75023,49 +71373,49 @@ INSERT INTO `ps_state` VALUES
 /* Scheme for table ps_statssearch */
 DROP TABLE IF EXISTS `ps_statssearch`;
 CREATE TABLE `ps_statssearch` (
-  `id_statssearch` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_shop` int unsigned NOT NULL DEFAULT '1',
-  `id_shop_group` int unsigned NOT NULL DEFAULT '1',
+  `id_statssearch` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 1,
+  `id_shop_group` int(10) unsigned NOT NULL DEFAULT 1,
   `keywords` varchar(255) NOT NULL,
-  `results` int NOT NULL DEFAULT '0',
+  `results` int(11) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_statssearch`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_stock */
 DROP TABLE IF EXISTS `ps_stock`;
 CREATE TABLE `ps_stock` (
-  `id_stock` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_warehouse` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
+  `id_stock` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_warehouse` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
   `reference` varchar(64) NOT NULL,
   `ean13` varchar(13) DEFAULT NULL,
   `isbn` varchar(32) DEFAULT NULL,
   `upc` varchar(12) DEFAULT NULL,
   `mpn` varchar(40) DEFAULT NULL,
-  `physical_quantity` int unsigned NOT NULL,
-  `usable_quantity` int unsigned NOT NULL,
-  `price_te` decimal(20,6) DEFAULT '0.000000',
+  `physical_quantity` int(10) unsigned NOT NULL,
+  `usable_quantity` int(10) unsigned NOT NULL,
+  `price_te` decimal(20,6) DEFAULT 0.000000,
   PRIMARY KEY (`id_stock`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_product` (`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_stock_available */
 DROP TABLE IF EXISTS `ps_stock_available`;
 CREATE TABLE `ps_stock_available` (
-  `id_stock_available` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
-  `id_shop_group` int unsigned NOT NULL,
-  `quantity` int NOT NULL DEFAULT '0',
-  `physical_quantity` int NOT NULL DEFAULT '0',
-  `reserved_quantity` int NOT NULL DEFAULT '0',
-  `depends_on_stock` tinyint unsigned NOT NULL DEFAULT '0',
-  `out_of_stock` tinyint unsigned NOT NULL DEFAULT '0',
+  `id_stock_available` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_shop_group` int(10) unsigned NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `physical_quantity` int(11) NOT NULL DEFAULT 0,
+  `reserved_quantity` int(11) NOT NULL DEFAULT 0,
+  `depends_on_stock` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `out_of_stock` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `location` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_stock_available`),
   UNIQUE KEY `product_sqlstock` (`id_product`,`id_product_attribute`,`id_shop`,`id_shop_group`),
@@ -75073,7 +71423,7 @@ CREATE TABLE `ps_stock_available` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_product` (`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
-) ENGINE=InnoDB AUTO_INCREMENT=2464 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2464 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_stock_available` VALUES
 ('632','1','0','1','0','0','2','2','0','0',''),
@@ -75150,7 +71500,7 @@ INSERT INTO `ps_stock_available` VALUES
 ('1630','861','0','1','0','0','0','0','0','0',''),
 ('1631','862','0','1','0','0','0','0','0','0',''),
 ('1632','863','0','1','0','0','0','0','0','0',''),
-('1833','1421','0','1','0','367','367','0','0','2',''),
+('1833','1421','0','1','0','366','366','0','0','2',''),
 ('1834','1422','0','1','0','1257','1257','0','0','2',''),
 ('1835','1423','0','1','0','1592','1592','0','0','2',''),
 ('1836','1424','0','1','0','112','112','0','0','2',''),
@@ -75700,7 +72050,7 @@ INSERT INTO `ps_stock_available` VALUES
 ('2377','1588','382','1','0','34','34','0','0','2',''),
 ('2378','1588','383','1','0','34','34','0','0','2',''),
 ('2379','1588','384','1','0','34','34','0','0','2',''),
-('2380','1421','385','1','0','121','123','2','0','2',''),
+('2380','1421','385','1','0','120','123','3','0','2',''),
 ('2381','1421','386','1','0','123','123','0','0','2',''),
 ('2382','1421','387','1','0','123','123','0','0','2',''),
 ('2383','1422','388','1','0','415','421','6','0','2',''),
@@ -75787,21 +72137,21 @@ INSERT INTO `ps_stock_available` VALUES
 /* Scheme for table ps_stock_mvt */
 DROP TABLE IF EXISTS `ps_stock_mvt`;
 CREATE TABLE `ps_stock_mvt` (
-  `id_stock_mvt` bigint NOT NULL AUTO_INCREMENT,
-  `id_stock` int NOT NULL,
-  `id_order` int DEFAULT NULL,
-  `id_supply_order` int DEFAULT NULL,
-  `id_stock_mvt_reason` int NOT NULL,
-  `id_employee` int NOT NULL,
-  `employee_lastname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `employee_firstname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `physical_quantity` int NOT NULL,
+  `id_stock_mvt` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_stock` int(11) NOT NULL,
+  `id_order` int(11) DEFAULT NULL,
+  `id_supply_order` int(11) DEFAULT NULL,
+  `id_stock_mvt_reason` int(11) NOT NULL,
+  `id_employee` int(11) NOT NULL,
+  `employee_lastname` varchar(32) DEFAULT NULL,
+  `employee_firstname` varchar(32) DEFAULT NULL,
+  `physical_quantity` int(11) NOT NULL,
   `date_add` datetime NOT NULL,
-  `sign` smallint NOT NULL DEFAULT '1',
-  `price_te` decimal(20,6) DEFAULT '0.000000',
-  `last_wa` decimal(20,6) DEFAULT '0.000000',
-  `current_wa` decimal(20,6) DEFAULT '0.000000',
-  `referer` bigint DEFAULT NULL,
+  `sign` smallint(6) NOT NULL DEFAULT 1,
+  `price_te` decimal(20,6) DEFAULT 0.000000,
+  `last_wa` decimal(20,6) DEFAULT 0.000000,
+  `current_wa` decimal(20,6) DEFAULT 0.000000,
+  `referer` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_stock_mvt`),
   KEY `id_stock` (`id_stock`),
   KEY `id_stock_mvt_reason` (`id_stock_mvt_reason`)
@@ -76787,13 +73137,13 @@ INSERT INTO `ps_stock_mvt` VALUES
 /* Scheme for table ps_stock_mvt_reason */
 DROP TABLE IF EXISTS `ps_stock_mvt_reason`;
 CREATE TABLE `ps_stock_mvt_reason` (
-  `id_stock_mvt_reason` int unsigned NOT NULL AUTO_INCREMENT,
-  `sign` tinyint(1) NOT NULL DEFAULT '1',
+  `id_stock_mvt_reason` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sign` tinyint(1) NOT NULL DEFAULT 1,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_stock_mvt_reason`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_stock_mvt_reason` VALUES
 ('1','1','2022-10-25 19:36:53','2022-10-25 19:36:53','0'),
@@ -76811,11 +73161,11 @@ INSERT INTO `ps_stock_mvt_reason` VALUES
 /* Scheme for table ps_stock_mvt_reason_lang */
 DROP TABLE IF EXISTS `ps_stock_mvt_reason_lang`;
 CREATE TABLE `ps_stock_mvt_reason_lang` (
-  `id_stock_mvt_reason` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_stock_mvt_reason` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`id_stock_mvt_reason`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_stock_mvt_reason_lang` VALUES
 ('1','1','Increase'),
@@ -76845,9 +73195,9 @@ INSERT INTO `ps_stock_mvt_reason_lang` VALUES
 /* Scheme for table ps_store */
 DROP TABLE IF EXISTS `ps_store`;
 CREATE TABLE `ps_store` (
-  `id_store` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_country` int unsigned NOT NULL,
-  `id_state` int unsigned DEFAULT NULL,
+  `id_store` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_state` int(10) unsigned DEFAULT NULL,
   `city` varchar(64) NOT NULL,
   `postcode` varchar(12) NOT NULL,
   `latitude` decimal(13,8) DEFAULT NULL,
@@ -76855,11 +73205,11 @@ CREATE TABLE `ps_store` (
   `phone` varchar(16) DEFAULT NULL,
   `fax` varchar(16) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_store`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_store` VALUES
 ('6','14','0','Gdansk','80-806','54.34948000','18.64322000',NULL,NULL,NULL,'1','2022-12-07 13:25:12','2022-12-20 11:40:58'),
@@ -76867,15 +73217,15 @@ INSERT INTO `ps_store` VALUES
 /* Scheme for table ps_store_lang */
 DROP TABLE IF EXISTS `ps_store_lang`;
 CREATE TABLE `ps_store_lang` (
-  `id_store` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_store` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `address1` varchar(255) NOT NULL,
   `address2` varchar(255) DEFAULT NULL,
-  `hours` text,
-  `note` text,
+  `hours` text DEFAULT NULL,
+  `note` text DEFAULT NULL,
   PRIMARY KEY (`id_store`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_store_lang` VALUES
 ('6','1','FORUM GDANSK','ul. Targ Sienny 7',NULL,'[[\"\"],[\"\"],[\"\"],[\"\"],[\"\"],[\"\"],[\"\"]]',NULL),
@@ -76885,11 +73235,11 @@ INSERT INTO `ps_store_lang` VALUES
 /* Scheme for table ps_store_shop */
 DROP TABLE IF EXISTS `ps_store_shop`;
 CREATE TABLE `ps_store_shop` (
-  `id_store` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_store` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_store`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_store_shop` VALUES
 ('6','1'),
@@ -76897,13 +73247,13 @@ INSERT INTO `ps_store_shop` VALUES
 /* Scheme for table ps_supplier */
 DROP TABLE IF EXISTS `ps_supplier`;
 CREATE TABLE `ps_supplier` (
-  `id_supplier` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_supplier` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_supplier`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_supplier` VALUES
 ('1','Fashion supplier','2022-10-25 19:38:24','2022-10-25 19:38:24','1'),
@@ -76911,14 +73261,14 @@ INSERT INTO `ps_supplier` VALUES
 /* Scheme for table ps_supplier_lang */
 DROP TABLE IF EXISTS `ps_supplier_lang`;
 CREATE TABLE `ps_supplier_lang` (
-  `id_supplier` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `description` text,
+  `id_supplier` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `description` text DEFAULT NULL,
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
   `meta_description` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id_supplier`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_supplier_lang` VALUES
 ('1','1',NULL,NULL,NULL,NULL),
@@ -76928,11 +73278,11 @@ INSERT INTO `ps_supplier_lang` VALUES
 /* Scheme for table ps_supplier_shop */
 DROP TABLE IF EXISTS `ps_supplier_shop`;
 CREATE TABLE `ps_supplier_shop` (
-  `id_supplier` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_supplier` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_supplier`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_supplier_shop` VALUES
 ('1','1'),
@@ -76940,39 +73290,39 @@ INSERT INTO `ps_supplier_shop` VALUES
 /* Scheme for table ps_supply_order */
 DROP TABLE IF EXISTS `ps_supply_order`;
 CREATE TABLE `ps_supply_order` (
-  `id_supply_order` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_supplier` int unsigned NOT NULL,
+  `id_supply_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supplier` int(10) unsigned NOT NULL,
   `supplier_name` varchar(64) NOT NULL,
-  `id_lang` int unsigned NOT NULL,
-  `id_warehouse` int unsigned NOT NULL,
-  `id_supply_order_state` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL,
-  `id_ref_currency` int unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_warehouse` int(10) unsigned NOT NULL,
+  `id_supply_order_state` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_ref_currency` int(10) unsigned NOT NULL,
   `reference` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   `date_delivery_expected` datetime DEFAULT NULL,
-  `total_te` decimal(20,6) DEFAULT '0.000000',
-  `total_with_discount_te` decimal(20,6) DEFAULT '0.000000',
-  `total_tax` decimal(20,6) DEFAULT '0.000000',
-  `total_ti` decimal(20,6) DEFAULT '0.000000',
-  `discount_rate` decimal(20,6) DEFAULT '0.000000',
-  `discount_value_te` decimal(20,6) DEFAULT '0.000000',
-  `is_template` tinyint(1) DEFAULT '0',
+  `total_te` decimal(20,6) DEFAULT 0.000000,
+  `total_with_discount_te` decimal(20,6) DEFAULT 0.000000,
+  `total_tax` decimal(20,6) DEFAULT 0.000000,
+  `total_ti` decimal(20,6) DEFAULT 0.000000,
+  `discount_rate` decimal(20,6) DEFAULT 0.000000,
+  `discount_value_te` decimal(20,6) DEFAULT 0.000000,
+  `is_template` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id_supply_order`),
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `reference` (`reference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_supply_order_detail */
 DROP TABLE IF EXISTS `ps_supply_order_detail`;
 CREATE TABLE `ps_supply_order_detail` (
-  `id_supply_order_detail` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_supply_order` int unsigned NOT NULL,
-  `id_currency` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
+  `id_supply_order_detail` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supply_order` int(10) unsigned NOT NULL,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
   `reference` varchar(64) NOT NULL,
   `supplier_reference` varchar(64) NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -76980,69 +73330,69 @@ CREATE TABLE `ps_supply_order_detail` (
   `isbn` varchar(32) DEFAULT NULL,
   `upc` varchar(12) DEFAULT NULL,
   `mpn` varchar(40) DEFAULT NULL,
-  `exchange_rate` decimal(20,6) DEFAULT '0.000000',
-  `unit_price_te` decimal(20,6) DEFAULT '0.000000',
-  `quantity_expected` int unsigned NOT NULL,
-  `quantity_received` int unsigned NOT NULL,
-  `price_te` decimal(20,6) DEFAULT '0.000000',
-  `discount_rate` decimal(20,6) DEFAULT '0.000000',
-  `discount_value_te` decimal(20,6) DEFAULT '0.000000',
-  `price_with_discount_te` decimal(20,6) DEFAULT '0.000000',
-  `tax_rate` decimal(20,6) DEFAULT '0.000000',
-  `tax_value` decimal(20,6) DEFAULT '0.000000',
-  `price_ti` decimal(20,6) DEFAULT '0.000000',
-  `tax_value_with_order_discount` decimal(20,6) DEFAULT '0.000000',
-  `price_with_order_discount_te` decimal(20,6) DEFAULT '0.000000',
+  `exchange_rate` decimal(20,6) DEFAULT 0.000000,
+  `unit_price_te` decimal(20,6) DEFAULT 0.000000,
+  `quantity_expected` int(10) unsigned NOT NULL,
+  `quantity_received` int(10) unsigned NOT NULL,
+  `price_te` decimal(20,6) DEFAULT 0.000000,
+  `discount_rate` decimal(20,6) DEFAULT 0.000000,
+  `discount_value_te` decimal(20,6) DEFAULT 0.000000,
+  `price_with_discount_te` decimal(20,6) DEFAULT 0.000000,
+  `tax_rate` decimal(20,6) DEFAULT 0.000000,
+  `tax_value` decimal(20,6) DEFAULT 0.000000,
+  `price_ti` decimal(20,6) DEFAULT 0.000000,
+  `tax_value_with_order_discount` decimal(20,6) DEFAULT 0.000000,
+  `price_with_order_discount_te` decimal(20,6) DEFAULT 0.000000,
   PRIMARY KEY (`id_supply_order_detail`),
   KEY `id_supply_order` (`id_supply_order`,`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`),
   KEY `id_product_product_attribute` (`id_product`,`id_product_attribute`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_supply_order_history */
 DROP TABLE IF EXISTS `ps_supply_order_history`;
 CREATE TABLE `ps_supply_order_history` (
-  `id_supply_order_history` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_supply_order` int unsigned NOT NULL,
-  `id_employee` int unsigned NOT NULL,
+  `id_supply_order_history` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supply_order` int(10) unsigned NOT NULL,
+  `id_employee` int(10) unsigned NOT NULL,
   `employee_lastname` varchar(255) DEFAULT '',
   `employee_firstname` varchar(255) DEFAULT '',
-  `id_state` int unsigned NOT NULL,
+  `id_state` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_supply_order_history`),
   KEY `id_supply_order` (`id_supply_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_state` (`id_state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_supply_order_receipt_history */
 DROP TABLE IF EXISTS `ps_supply_order_receipt_history`;
 CREATE TABLE `ps_supply_order_receipt_history` (
-  `id_supply_order_receipt_history` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_supply_order_detail` int unsigned NOT NULL,
-  `id_employee` int unsigned NOT NULL,
+  `id_supply_order_receipt_history` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supply_order_detail` int(10) unsigned NOT NULL,
+  `id_employee` int(10) unsigned NOT NULL,
   `employee_lastname` varchar(255) DEFAULT '',
   `employee_firstname` varchar(255) DEFAULT '',
-  `id_supply_order_state` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL,
+  `id_supply_order_state` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_supply_order_receipt_history`),
   KEY `id_supply_order_detail` (`id_supply_order_detail`),
   KEY `id_supply_order_state` (`id_supply_order_state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_supply_order_state */
 DROP TABLE IF EXISTS `ps_supply_order_state`;
 CREATE TABLE `ps_supply_order_state` (
-  `id_supply_order_state` int unsigned NOT NULL AUTO_INCREMENT,
-  `delivery_note` tinyint(1) NOT NULL DEFAULT '0',
-  `editable` tinyint(1) NOT NULL DEFAULT '0',
-  `receipt_state` tinyint(1) NOT NULL DEFAULT '0',
-  `pending_receipt` tinyint(1) NOT NULL DEFAULT '0',
-  `enclosed` tinyint(1) NOT NULL DEFAULT '0',
+  `id_supply_order_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `delivery_note` tinyint(1) NOT NULL DEFAULT 0,
+  `editable` tinyint(1) NOT NULL DEFAULT 0,
+  `receipt_state` tinyint(1) NOT NULL DEFAULT 0,
+  `pending_receipt` tinyint(1) NOT NULL DEFAULT 0,
+  `enclosed` tinyint(1) NOT NULL DEFAULT 0,
   `color` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_supply_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_supply_order_state` VALUES
 ('1','0','1','0','0','0','#faab00'),
@@ -77054,11 +73404,11 @@ INSERT INTO `ps_supply_order_state` VALUES
 /* Scheme for table ps_supply_order_state_lang */
 DROP TABLE IF EXISTS `ps_supply_order_state_lang`;
 CREATE TABLE `ps_supply_order_state_lang` (
-  `id_supply_order_state` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_supply_order_state` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id_supply_order_state`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_supply_order_state_lang` VALUES
 ('1','1','1 - Creation in progress'),
@@ -77076,18 +73426,18 @@ INSERT INTO `ps_supply_order_state_lang` VALUES
 /* Scheme for table ps_tab */
 DROP TABLE IF EXISTS `ps_tab`;
 CREATE TABLE `ps_tab` (
-  `id_tab` int NOT NULL AUTO_INCREMENT,
-  `id_parent` int NOT NULL,
-  `position` int NOT NULL,
-  `module` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `class_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route_name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_tab` int(11) NOT NULL AUTO_INCREMENT,
+  `id_parent` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
+  `module` varchar(64) DEFAULT NULL,
+  `class_name` varchar(64) NOT NULL,
+  `route_name` varchar(256) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `hide_host_mode` tinyint(1) NOT NULL,
-  `icon` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `wording` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `wording_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(32) DEFAULT NULL,
+  `wording` varchar(255) DEFAULT NULL,
+  `wording_domain` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_tab`)
 ) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -77256,17 +73606,17 @@ INSERT INTO `ps_tab` VALUES
 /* Scheme for table ps_tab_advice */
 DROP TABLE IF EXISTS `ps_tab_advice`;
 CREATE TABLE `ps_tab_advice` (
-  `id_tab` int NOT NULL,
-  `id_advice` int NOT NULL,
+  `id_tab` int(11) NOT NULL,
+  `id_advice` int(11) NOT NULL,
   PRIMARY KEY (`id_tab`,`id_advice`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_tab_lang */
 DROP TABLE IF EXISTS `ps_tab_lang`;
 CREATE TABLE `ps_tab_lang` (
-  `id_tab` int NOT NULL,
-  `id_lang` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_tab` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id_tab`,`id_lang`),
   KEY `IDX_CFD9262DED47AB56` (`id_tab`),
   KEY `IDX_CFD9262DBA299860` (`id_lang`)
@@ -77591,46 +73941,46 @@ INSERT INTO `ps_tab_lang` VALUES
 /* Scheme for table ps_tab_module_preference */
 DROP TABLE IF EXISTS `ps_tab_module_preference`;
 CREATE TABLE `ps_tab_module_preference` (
-  `id_tab_module_preference` int NOT NULL AUTO_INCREMENT,
-  `id_employee` int NOT NULL,
-  `id_tab` int NOT NULL,
+  `id_tab_module_preference` int(11) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(11) NOT NULL,
+  `id_tab` int(11) NOT NULL,
   `module` varchar(191) NOT NULL,
   PRIMARY KEY (`id_tab_module_preference`),
   UNIQUE KEY `employee_module` (`id_employee`,`id_tab`,`module`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_tag */
 DROP TABLE IF EXISTS `ps_tag`;
 CREATE TABLE `ps_tag` (
-  `id_tag` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_lang` int unsigned NOT NULL,
+  `id_tag` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_tag`),
   KEY `tag_name` (`name`),
   KEY `id_lang` (`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_tag_count */
 DROP TABLE IF EXISTS `ps_tag_count`;
 CREATE TABLE `ps_tag_count` (
-  `id_group` int unsigned NOT NULL DEFAULT '0',
-  `id_tag` int unsigned NOT NULL DEFAULT '0',
-  `id_lang` int unsigned NOT NULL DEFAULT '0',
-  `id_shop` int unsigned NOT NULL DEFAULT '0',
-  `counter` int unsigned NOT NULL DEFAULT '0',
+  `id_group` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_tag` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_lang` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_shop` int(10) unsigned NOT NULL DEFAULT 0,
+  `counter` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_group`,`id_tag`),
   KEY `id_group` (`id_group`,`id_lang`,`id_shop`,`counter`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_tax */
 DROP TABLE IF EXISTS `ps_tax`;
 CREATE TABLE `ps_tax` (
-  `id_tax` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_tax` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `rate` decimal(10,3) NOT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '1',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_tax`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_tax` VALUES
 ('1','23.000','1','0'),
@@ -77667,11 +74017,11 @@ INSERT INTO `ps_tax` VALUES
 /* Scheme for table ps_tax_lang */
 DROP TABLE IF EXISTS `ps_tax_lang`;
 CREATE TABLE `ps_tax_lang` (
-  `id_tax` int unsigned NOT NULL,
-  `id_lang` int unsigned NOT NULL,
+  `id_tax` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_tax`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_tax_lang` VALUES
 ('1','1','PTU PL 23%'),
@@ -77739,20 +74089,20 @@ INSERT INTO `ps_tax_lang` VALUES
 /* Scheme for table ps_tax_rule */
 DROP TABLE IF EXISTS `ps_tax_rule`;
 CREATE TABLE `ps_tax_rule` (
-  `id_tax_rule` int NOT NULL AUTO_INCREMENT,
-  `id_tax_rules_group` int NOT NULL,
-  `id_country` int NOT NULL,
-  `id_state` int NOT NULL,
+  `id_tax_rule` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tax_rules_group` int(11) NOT NULL,
+  `id_country` int(11) NOT NULL,
+  `id_state` int(11) NOT NULL,
   `zipcode_from` varchar(12) NOT NULL,
   `zipcode_to` varchar(12) NOT NULL,
-  `id_tax` int NOT NULL,
-  `behavior` int NOT NULL,
+  `id_tax` int(11) NOT NULL,
+  `behavior` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id_tax_rule`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_tax` (`id_tax`),
   KEY `category_getproducts` (`id_tax_rules_group`,`id_country`,`id_state`,`zipcode_from`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_tax_rule` VALUES
 ('1','1','3','0','0','0','1','0',''),
@@ -77896,14 +74246,14 @@ INSERT INTO `ps_tax_rule` VALUES
 /* Scheme for table ps_tax_rules_group */
 DROP TABLE IF EXISTS `ps_tax_rules_group`;
 CREATE TABLE `ps_tax_rules_group` (
-  `id_tax_rules_group` int NOT NULL AUTO_INCREMENT,
+  `id_tax_rules_group` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `active` int NOT NULL,
-  `deleted` tinyint unsigned NOT NULL,
+  `active` int(11) NOT NULL,
+  `deleted` tinyint(3) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_tax_rules_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_tax_rules_group` VALUES
 ('1','PL Standard Rate (23%)','1','0','2022-10-25 19:36:56','2022-10-25 19:36:56'),
@@ -77914,11 +74264,11 @@ INSERT INTO `ps_tax_rules_group` VALUES
 /* Scheme for table ps_tax_rules_group_shop */
 DROP TABLE IF EXISTS `ps_tax_rules_group_shop`;
 CREATE TABLE `ps_tax_rules_group_shop` (
-  `id_tax_rules_group` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_tax_rules_group` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_tax_rules_group`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_tax_rules_group_shop` VALUES
 ('1','1'),
@@ -77929,10 +74279,10 @@ INSERT INTO `ps_tax_rules_group_shop` VALUES
 /* Scheme for table ps_timezone */
 DROP TABLE IF EXISTS `ps_timezone`;
 CREATE TABLE `ps_timezone` (
-  `id_timezone` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_timezone` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_timezone`)
-) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_timezone` VALUES
 ('1','Africa/Abidjan'),
@@ -78500,12 +74850,12 @@ INSERT INTO `ps_timezone` VALUES
 /* Scheme for table ps_translation */
 DROP TABLE IF EXISTS `ps_translation`;
 CREATE TABLE `ps_translation` (
-  `id_translation` int NOT NULL AUTO_INCREMENT,
-  `id_lang` int NOT NULL,
+  `id_translation` int(11) NOT NULL AUTO_INCREMENT,
+  `id_lang` int(11) NOT NULL,
   `key` text CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
-  `translation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `domain` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `theme` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `translation` text NOT NULL,
+  `domain` varchar(80) NOT NULL,
+  `theme` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_translation`),
   KEY `IDX_ADEBEB36BA299860` (`id_lang`),
   KEY `key` (`domain`)
@@ -78519,56 +74869,56 @@ INSERT INTO `ps_translation` VALUES
 /* Scheme for table ps_warehouse */
 DROP TABLE IF EXISTS `ps_warehouse`;
 CREATE TABLE `ps_warehouse` (
-  `id_warehouse` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_currency` int unsigned NOT NULL,
-  `id_address` int unsigned NOT NULL,
-  `id_employee` int unsigned NOT NULL,
+  `id_warehouse` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_currency` int(10) unsigned NOT NULL,
+  `id_address` int(10) unsigned NOT NULL,
+  `id_employee` int(10) unsigned NOT NULL,
   `reference` varchar(64) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
   `management_type` enum('WA','FIFO','LIFO') NOT NULL DEFAULT 'WA',
-  `deleted` tinyint unsigned NOT NULL DEFAULT '0',
+  `deleted` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_warehouse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_warehouse_carrier */
 DROP TABLE IF EXISTS `ps_warehouse_carrier`;
 CREATE TABLE `ps_warehouse_carrier` (
-  `id_carrier` int unsigned NOT NULL,
-  `id_warehouse` int unsigned NOT NULL,
+  `id_carrier` int(10) unsigned NOT NULL,
+  `id_warehouse` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_warehouse`,`id_carrier`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_carrier` (`id_carrier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_warehouse_product_location */
 DROP TABLE IF EXISTS `ps_warehouse_product_location`;
 CREATE TABLE `ps_warehouse_product_location` (
-  `id_warehouse_product_location` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
-  `id_warehouse` int unsigned NOT NULL,
+  `id_warehouse_product_location` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_warehouse` int(10) unsigned NOT NULL,
   `location` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_warehouse_product_location`),
   UNIQUE KEY `id_product` (`id_product`,`id_product_attribute`,`id_warehouse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_warehouse_shop */
 DROP TABLE IF EXISTS `ps_warehouse_shop`;
 CREATE TABLE `ps_warehouse_shop` (
-  `id_shop` int unsigned NOT NULL,
-  `id_warehouse` int unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_warehouse` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_warehouse`,`id_shop`),
   KEY `id_warehouse` (`id_warehouse`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_web_browser */
 DROP TABLE IF EXISTS `ps_web_browser`;
 CREATE TABLE `ps_web_browser` (
-  `id_web_browser` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_web_browser` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_web_browser` VALUES
 ('1','Safari'),
@@ -78585,87 +74935,87 @@ INSERT INTO `ps_web_browser` VALUES
 /* Scheme for table ps_webservice_account */
 DROP TABLE IF EXISTS `ps_webservice_account`;
 CREATE TABLE `ps_webservice_account` (
-  `id_webservice_account` int NOT NULL AUTO_INCREMENT,
+  `id_webservice_account` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(32) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `class_name` varchar(50) NOT NULL DEFAULT 'WebserviceRequest',
-  `is_module` tinyint NOT NULL DEFAULT '0',
+  `is_module` tinyint(4) NOT NULL DEFAULT 0,
   `module_name` varchar(50) DEFAULT NULL,
-  `active` tinyint NOT NULL,
+  `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_webservice_account`),
   KEY `key` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_webservice_account_shop */
 DROP TABLE IF EXISTS `ps_webservice_account_shop`;
 CREATE TABLE `ps_webservice_account_shop` (
-  `id_webservice_account` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_webservice_account` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_webservice_account`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_webservice_permission */
 DROP TABLE IF EXISTS `ps_webservice_permission`;
 CREATE TABLE `ps_webservice_permission` (
-  `id_webservice_permission` int NOT NULL AUTO_INCREMENT,
+  `id_webservice_permission` int(11) NOT NULL AUTO_INCREMENT,
   `resource` varchar(50) NOT NULL,
   `method` enum('GET','POST','PUT','DELETE','HEAD') NOT NULL,
-  `id_webservice_account` int NOT NULL,
+  `id_webservice_account` int(11) NOT NULL,
   PRIMARY KEY (`id_webservice_permission`),
   UNIQUE KEY `resource_2` (`resource`,`method`,`id_webservice_account`),
   KEY `resource` (`resource`),
   KEY `method` (`method`),
   KEY `id_webservice_account` (`id_webservice_account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 /* Scheme for table ps_wishlist */
 DROP TABLE IF EXISTS `ps_wishlist`;
 CREATE TABLE `ps_wishlist` (
-  `id_wishlist` int unsigned NOT NULL AUTO_INCREMENT,
-  `id_customer` int unsigned NOT NULL,
-  `id_shop` int unsigned DEFAULT '1',
-  `id_shop_group` int unsigned DEFAULT '1',
+  `id_wishlist` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned DEFAULT 1,
+  `id_shop_group` int(10) unsigned DEFAULT 1,
   `token` varchar(64) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `counter` int unsigned DEFAULT NULL,
+  `counter` int(10) unsigned DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `default` int unsigned DEFAULT '0',
+  `default` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`id_wishlist`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO `ps_wishlist` VALUES
 ('1','4','1','1','AFCDFFB246276228','My wishlist',NULL,'2022-11-22 11:34:10','2022-11-22 11:34:10','1');
 /* Scheme for table ps_wishlist_product */
 DROP TABLE IF EXISTS `ps_wishlist_product`;
 CREATE TABLE `ps_wishlist_product` (
-  `id_wishlist_product` int NOT NULL AUTO_INCREMENT,
-  `id_wishlist` int unsigned NOT NULL,
-  `id_product` int unsigned NOT NULL,
-  `id_product_attribute` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL,
-  `priority` int unsigned NOT NULL,
+  `id_wishlist_product` int(11) NOT NULL AUTO_INCREMENT,
+  `id_wishlist` int(10) unsigned NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
+  `priority` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_wishlist_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_wishlist_product_cart */
 DROP TABLE IF EXISTS `ps_wishlist_product_cart`;
 CREATE TABLE `ps_wishlist_product_cart` (
-  `id_wishlist_product` int unsigned NOT NULL,
-  `id_cart` int unsigned NOT NULL,
-  `quantity` int unsigned NOT NULL,
+  `id_wishlist_product` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 /* Scheme for table ps_zone */
 DROP TABLE IF EXISTS `ps_zone`;
 CREATE TABLE `ps_zone` (
-  `id_zone` int unsigned NOT NULL AUTO_INCREMENT,
+  `id_zone` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_zone`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_zone` VALUES
 ('1','Europe','1'),
@@ -78679,11 +75029,11 @@ INSERT INTO `ps_zone` VALUES
 /* Scheme for table ps_zone_shop */
 DROP TABLE IF EXISTS `ps_zone_shop`;
 CREATE TABLE `ps_zone_shop` (
-  `id_zone` int unsigned NOT NULL,
-  `id_shop` int unsigned NOT NULL,
+  `id_zone` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_zone`,`id_shop`),
   KEY `id_shop` (`id_shop`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=uca1400_as_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_as_ci;
 
 INSERT INTO `ps_zone_shop` VALUES
 ('1','1'),
