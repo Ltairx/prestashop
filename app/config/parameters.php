@@ -2,7 +2,7 @@
 return array(
  'parameters' =>
     array(
-      'database_host' => 'db',
+      'database_host' => 'be_184542_db',
       'database_port' => '3306',
       'database_name' => 'prestashop',
       'database_user' => 'prestashopuser',
