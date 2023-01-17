@@ -1,4 +1,4 @@
-version: '3.17'
+version: '3.7'
 
 services:
   be_184542_presta:
@@ -9,6 +9,12 @@ services:
       - DATABASE_NAME=prestashop
       - DATABASE_USER=prestashopuser
       - DATABASE_PASSWORD=test
+    deploy:
+      restart_policy:
+      condition: on-failure
+      delay: 3s
+      max_attempts: 3
+      window: 60s
     ports: 
       - 18456:80
       - 18455:443
@@ -19,3 +25,9 @@ services:
       - MARIADB_USER=prestashopuser
       - MARIADB_PASSWORD=test
       - MARIADB_DATABASE=prestashop
+    deploy:
+      restart_policy:
+      condition: on-failure
+      delay: 3s
+      max_attempts: 3
+      window: 60s
