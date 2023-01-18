@@ -10,7 +10,7 @@ return array(
       'database_prefix' => 'ps_',
       'database_engine' => 'InnoDB',
       'ps_caching' => 'CacheMemcache',
-      'ps_cache_enable' => false,
+      'ps_cache_enable' => true,
       'ps_creation_date' => '2023-01-01',
       'mailer_transport' => 'smtp',
       'mailer_host' => 'localhost',
